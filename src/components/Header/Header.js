@@ -16,7 +16,8 @@ function Header() {
     return (
         <div>
             <AppBar
-                    color="inherit">
+                    color="inherit"
+                    elevation={0}>
                 <Toolbar
                     className={styles.toolbar}
                 >
