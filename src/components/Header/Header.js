@@ -4,6 +4,9 @@ import Logo from '../../assets/icons/bookstore-logo.png';
 import { AppBar, Toolbar } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { NavLink } from 'react-router-dom';
+import About from '../../pages/About/About';
+import Browse from '../../pages/Browse/Browse';
+import Contact from '../../pages/Contact/Contact';
 
 const useStyles = makeStyles({
     header: {
@@ -16,6 +19,8 @@ const useStyles = makeStyles({
 
 function Header() {
     const styles = useStyles();
+
+    const yolo = () => <div>yolo</div>
 
     return (
         <div>
@@ -35,12 +40,14 @@ function Header() {
                     </div>
                 </Toolbar>
                 <Toolbar className={styles.navBar}>
-                    <NavLink to='/about' className={classes.navlink}>About</NavLink>
-                    <NavLink to='/browse' className={classes.navlink}>Browse</NavLink>
-                    <NavLink to='/contact' className={classes.navlink}>Contact</NavLink>
+                    <nav >
+                    <NavLink exact to='/about' className={classes.navlink} activeClassName={classes.activeNavLink}>About</NavLink>
+                    <NavLink to='/browse' className={classes.navlink} activeClassName={classes.activeNavLink}>Browse</NavLink>
+                    <NavLink to='/contact' className={classes.navlink} activeClassName={classes.activeNavLink}>Contact</NavLink>
+                    </nav>
                 </Toolbar>
             </AppBar>
-        </div>
+      </div>
     )
 }
 

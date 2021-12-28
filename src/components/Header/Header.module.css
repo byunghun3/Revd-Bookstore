@@ -10,6 +10,12 @@
 }
 
 .navlink {
+    text-decoration: none;
     margin: 20px;
+
 }
 
+.activeNavLink {
+    color: white;
+    font-size: 50px;
+}
