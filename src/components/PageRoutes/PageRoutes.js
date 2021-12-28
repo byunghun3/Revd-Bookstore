@@ -8,7 +8,7 @@ import Error from '../../pages/Error/Error';
 function PageRoutes() {
     return (
         <Routes className="routes"> 
-            <Route path='/' element={<About/>} />
+            {/* <Route path='/' element={<About/>} /> */}
             <Route path='/about' element={<About/>} />
             <Route path='/browse' element={<Browse/>} /> 
             <Route path='/contact' element={<Contact/>} />

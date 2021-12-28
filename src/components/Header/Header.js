@@ -25,8 +25,9 @@ function Header() {
     return (
         <div>
             <AppBar
-                    color="inherit"
-                    elevation={0}>
+                color="inherit"
+                elevation={0}
+            >
                 <Toolbar
                     className={styles.header}
                 >
@@ -40,10 +41,10 @@ function Header() {
                     </div>
                 </Toolbar>
                 <Toolbar className={styles.navBar}>
-                    <nav >
-                    <NavLink exact to='/about' className={classes.navlink} activeClassName={classes.activeNavLink}>About</NavLink>
-                    <NavLink to='/browse' className={classes.navlink} activeClassName={classes.activeNavLink}>Browse</NavLink>
-                    <NavLink to='/contact' className={classes.navlink} activeClassName={classes.activeNavLink}>Contact</NavLink>
+                    <nav className={classes.nav}>
+                    <NavLink exact to='/about' className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
+                    <NavLink to='/browse' className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Browse</NavLink>
+                    <NavLink to='/contact' className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Contact</NavLink>
                     </nav>
                 </Toolbar>
             </AppBar>
