@@ -4,9 +4,6 @@ import Logo from '../../assets/icons/bookstore-logo.png';
 import { AppBar, Toolbar } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { NavLink } from 'react-router-dom';
-import About from '../../pages/About/About';
-import Browse from '../../pages/Browse/Browse';
-import Contact from '../../pages/Contact/Contact';
 
 const useStyles = makeStyles({
     header: {
@@ -20,13 +17,12 @@ const useStyles = makeStyles({
 function Header() {
     const styles = useStyles();
 
-    const yolo = () => <div>yolo</div>
-
     return (
         <div>
             <AppBar
                 color="inherit"
                 elevation={0}
+                position="sticky"
             >
                 <Toolbar
                     className={styles.header}
