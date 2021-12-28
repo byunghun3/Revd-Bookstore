@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Books() {
+function Browse() {
     return (
         <div>
             Books
@@ -8,4 +8,4 @@ function Books() {
     )
 }
 
-export default Books;
+export default Browse;
