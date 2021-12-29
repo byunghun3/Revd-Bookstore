@@ -1,0 +1,25 @@
+.bookCover {
+    width: 100%;
+}
+
+.bookTitle {
+    margin: 1px 5px 0 5px;
+}
+
+.bookAuthor {
+    margin: 5px 5px 0 5px; 
+}
+
+.bookAuthorBy {
+    font-weight: 500;
+}
+
+
+.bookAuthorName {
+    font-weight: 800;
+    color: green;
+}
+
+.bookType {
+    margin: 5px 5px 0 5px; 
+}

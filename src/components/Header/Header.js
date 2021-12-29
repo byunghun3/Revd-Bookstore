@@ -2,15 +2,18 @@ import React from 'react';
 import classes from './Header.module.css';
 import Logo from '../../assets/icons/bookstore-logo.png';
 import { AppBar, Toolbar } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+// import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
     header: {
-        justifyContent: 'space-between'
+        justifyContent: "space-between",
+        // maxWidth: '100vw'
     },
     navBar: {
-        backgroundColor: '#d7ccc8'
+        backgroundColor: "#d7ccc8",
+        // margin: '0'
     }
 })
 
@@ -23,9 +26,11 @@ function Header() {
                 color="inherit"
                 elevation={0}
                 position="sticky"
+                // width="100%"
             >
                 <Toolbar
                     className={styles.header}
+                    width="100%"
                 >
                     <div>
                         <img className={classes.logo} src={Logo} alt="" />
