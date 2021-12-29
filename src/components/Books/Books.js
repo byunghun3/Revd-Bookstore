@@ -8,16 +8,7 @@ import Namesake from '../../assets/images/the-namesake.jpeg';
 import Greenlights from '../../assets/images/greenlights.jpeg';
 import HVRoad from '../../assets/images/hidden-valley-road.jpeg';
 import HVRoad2 from '../../assets/images/hidden-valley-road2.jpeg';
-// import { makeStyles } from '@mui/styles';
 import classes from './Books.module.css';
-
-const useStyles = makeStyles({
-    card: {
-        // height: "300px"
-        // display: "block",
-        // overflow: "auto"
-    }
-})
 
 const books = [
     {
@@ -103,11 +94,9 @@ const books = [
 ]
 
 function Books() {
-    const styles = useStyles();
-
     const bookList = books.map((book) => {
         return <Grid item xs={12} sm={6} md={4}>
-                    <Card className={styles.card}>
+                    <Card>
                         <img className={classes.bookCover} src={book.image} alt="" />
                         <h2 className={classes.bookTitle}>{book.title}</h2>
                         <h4 className={classes.bookAuthor}>
