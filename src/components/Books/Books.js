@@ -1,12 +1,11 @@
 import React from 'react';
 import { Grid, Card } from '@mui/material';
-// import ChromeReaderModeOutlinedIcon from '@mui/icons-material/ChromeReaderModeOutlined';
-// import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
-// import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined';
+import ChromeReaderModeOutlinedIcon from '@mui/icons-material/ChromeReaderModeOutlined';
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined';
 import SoundAndFury from '../../assets/images/the-sound-and-the-fury.jpeg';
 import Namesake from '../../assets/images/the-namesake.jpeg';
 import Greenlights from '../../assets/images/greenlights.jpeg';
-import HVRoad from '../../assets/images/hidden-valley-road.jpeg';
 import HVRoad2 from '../../assets/images/hidden-valley-road2.jpeg';
 import classes from './Books.module.css';
 
@@ -93,6 +92,10 @@ const books = [
     }
 ]
 
+// const icon = (
+//     <ChromeReaderModeOutlinedIcon /> ? {book.type} === ""
+// )
+
 function Books() {
     const bookList = books.map((book) => {
         return <Grid item xs={12} sm={6} md={4}>
@@ -108,8 +111,10 @@ function Books() {
                             </span>
                         </h4>
                         <h4 className={classes.bookType}>
-                            {/* <ChromeReaderModeOutlinedIcon /> */}
-                            {book.type}</h4>
+                            {book.type === "EBOOK" ? <ChromeReaderModeOutlinedIcon className={classes.bookTypeIcon} /> : 
+                            book.type === "AUDIOBOOK" ? <HeadphonesOutlinedIcon className={classes.bookTypeIcon} /> : 
+                            <MenuBookOutlinedIcon />}&nbsp;
+                            <span className={classes.bookTypeWord}>{book.type}</span></h4>
                         <h4>{book.rating}</h4>
                         <h3>{book.price}</h3>
                     </Card>

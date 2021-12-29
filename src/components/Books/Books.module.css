@@ -23,3 +23,13 @@
 .bookType {
     margin: 5px 5px 0 5px; 
 }
+
+.bookTypeIcon {
+    vertical-align: middle;
+    color: grey;
+}
+
+.bookTypeWord {
+    vertical-align: middle;
+    color: grey;
+}
