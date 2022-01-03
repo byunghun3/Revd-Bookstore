@@ -8,7 +8,7 @@ type BookRatingProps = {
 }
 
 function BookRating(props: BookRatingProps) {
-    const renderStars = rating => {
+    const renderStars = (rating:number) => {
         switch (rating) {
             case 0.5:
                 return <div><StarHalfIcon /><StarOutlineIcon /><StarOutlineIcon /><StarOutlineIcon /><StarOutlineIcon /></div>;
