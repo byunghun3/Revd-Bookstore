@@ -1,100 +1,50 @@
-import React from 'react';
-import SoundAndFury from '../../assets/images/the-sound-and-the-fury.jpeg';
-import Namesake from '../../assets/images/the-namesake.jpeg';
-import Greenlights from '../../assets/images/greenlights.jpeg';
-import HVRoad2 from '../../assets/images/hidden-valley-road2.jpeg';
+import { FC } from 'react';
+import BookRating from '../BookRating/BookRating';
+import { Card } from '@mui/material';
+import ChromeReaderModeOutlinedIcon from '@mui/icons-material/ChromeReaderModeOutlined';
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined';
+import { styled } from '@mui/system';
+import classes from './Books.module.css';
 
-type BookProps = {
+const BookCard = styled(Card)({
+    width: "20vw"
+})
+
+type BooksProps = {
     title: string;
     author: string;
     image: any;
     rating: number;
-    type: string;
+    type?: string;
     price: number;
 }
 
+export const Books: FC<BooksProps> = ({ title, author, image, rating, type, price }) => {
+    return (
+        <div>
+                <BookCard>
+                    <img className={classes.bookCover} src={image} alt="" />
+                    <h2 className={classes.bookTitle}>{title}</h2>
+                    <h4 className={classes.bookAuthor}>
+                    <span className={classes.bookAuthorBy}>
+                        by&nbsp;
+                    </span>  
+                    <span className={classes.bookAuthorName}>
+                                {author}
+                            </span>
+                        </h4>
+                        <h4 className={classes.bookType}>
+                            {type === "EBOOK" ? <ChromeReaderModeOutlinedIcon className={classes.bookTypeIcon} /> : 
+                            type === "AUDIOBOOK" ? <HeadphonesOutlinedIcon className={classes.bookTypeIcon} /> : 
+                            <MenuBookOutlinedIcon />}&nbsp;
+                            <span className={classes.bookTypeWord}>{type}</span></h4>
+                        <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
+                        <h3 className={classes.bookPrice}>${price}</h3>
+                    </BookCard>
+        </div>
+    )
+}
 
-const Books = ({ title, author, image, rating, type }: BookProps) => [
-    {
-        title: "The Sound and the Fury",
-        author: "William Faulkner",
-        image: SoundAndFury,
-        rating: 4,
-        type: "EBOOK",
-        price: 4.99
-    },
-    {
-        title: "Hidden Valley Road: Inside the Mind of an American Family",
-        author: "Robert Kolker",
-        image: HVRoad2,
-        rating: 4,
-        type: "AUDIOBOOK",
-        price: 4.99
-    },
-    {
-        title: "Greenlights",
-        author: "Matthew McConaughey",
-        image: Greenlights,
-        rating: 3,
-        type: "EBOOK",
-        price: 4.99
-    },
-    {
-        title: "The Namesake",
-        author: "Jhumpa Lahiri",
-        image: Namesake,
-        rating: 3,
-        type: "EBOOK",
-        price: 4.99
-    },
-    {
-        title: "The Sound and the Fury",
-        author: "William Faulkner",
-        price: 4.99,
-        rating: 4
-    },
-    {
-        title: "Hidden Valley Road: Inside the Mind of an American Family",
-        author: "Robert Kolker",
-        price: 4.99,
-        rating: 4
-    },
-    {
-        title: "Greenlights",
-        author: "Matthew McConaughey",
-        price: 4.99,
-        rating: 3
-    },
-    {
-        title: "The Namesake",
-        author: "Jhumpa Lahiri",
-        price: 4.99,
-        rating: 3
-    },
-    {
-        title: "The Sound and the Fury",
-        author: "William Faulkner",
-        price: 4.99,
-        rating: 4
-    },
-    {
-        title: "Hidden Valley Road: Inside the Mind of an American Family",
-        author: "Robert Kolker",
-        price: 4.99,
-        rating: 4
-    },
-    {
-        title: "Greenlights",
-        author: "Matthew McConaughey",
-        price: 4.99,
-        rating: 3
-    },
-    {
-        title: "The Namesake",
-        author: "Jhumpa Lahiri",
-        price: 4.99,
-        rating: 3
-    }
-]
 
-export default Books;
+// export default Books;

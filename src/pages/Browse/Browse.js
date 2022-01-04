@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import React from 'react';
-import Books from '../../components/Books/Books';
+import BookList from '../../components/BookList/BookList';
 
 function Browse() {
     return (
@@ -19,7 +19,7 @@ function Browse() {
 <br/>
 <br/>
 <br/>
-            <Books />
+            <BookList />
         </Container>
     )
 }
