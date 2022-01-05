@@ -39,11 +39,32 @@
 
 .bookRating {
     margin: 1px 0 0 0;
-
 }
 
 .bookPrice {
-    font-size: 12px;
     margin: 1px 0 0 0;
+    font-size: 12px;
+}
 
+.bookAction {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+
+.iconBackground {
+    position: relative;
+    width: 75px;
+    height: 75px; 
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transition: ease 0.3s;
+}
+
+.iconBackground:hover {
+    transform: scale(1.25);
+    cursor: pointer;
 }
