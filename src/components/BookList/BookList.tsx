@@ -44,7 +44,7 @@ function BookList() {
             title: "The Namesake",
             author: "Jhumpa Lahiri",
             image: Namesake,
-            rating: 3,
+            rating: 3.5,
             type: "EBOOK",
             price: 4.99
         },
