@@ -8,7 +8,12 @@ import { styled } from '@mui/system';
 import classes from './Books.module.css';
 
 const BookCard = styled(Card)({
-    width: "20vw"
+    width: "20vw",
+    "&:hover": {
+        opacity: "0.5",
+        transform: "scale(1.05)",
+        cursor: "pointer"
+    } 
 })
 
 type BooksProps = {
