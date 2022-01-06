@@ -1,13 +1,13 @@
-import React from 'react';
-import { Books } from '../Books/Books';
-import { Grid } from '@mui/material';
+import React from "react"
+import { Grid } from "@mui/material"
+import { styled } from "@mui/system"
 // import ReactStars from 'react-rating-stars-component';
-import SoundAndFury from '../../assets/images/the-sound-and-the-fury.jpeg';
-import Namesake from '../../assets/images/the-namesake.jpeg';
-import Greenlights from '../../assets/images/greenlights.jpeg';
-import HVRoad2 from '../../assets/images/hidden-valley-road2.jpeg';
-import { styled } from '@mui/system';
-import classes from './BookList.module.css';
+import { Books } from "../Books/Books"
+import SoundAndFury from "../../assets/images/the-sound-and-the-fury.jpeg"
+import Namesake from "../../assets/images/the-namesake.jpeg"
+import Greenlights from "../../assets/images/greenlights.jpeg"
+import HVRoad2 from "../../assets/images/hidden-valley-road2.jpeg"
+import classes from "./BookList.module.css"
 
 const ContainerGrid = styled(Grid)({
     padding: "0 50px 0 50px"
@@ -108,7 +108,7 @@ function BookList() {
                 price={book.price}
             />
         </Grid>
-    });
+    })
 
     return (
         <ContainerGrid container className={classes.gridContainer} spacing={15}>
@@ -117,4 +117,4 @@ function BookList() {
     )
 }
 
-export default BookList;
+export default BookList

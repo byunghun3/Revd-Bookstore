@@ -1,14 +1,16 @@
-import { useState, FC } from 'react';
-import BookRating from '../BookRating/BookRating';
-import { Card } from '@mui/material';
-import ChromeReaderModeOutlinedIcon from '@mui/icons-material/ChromeReaderModeOutlined';
-import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
-import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined';
-import SearchIcon from '@mui/icons-material/Search';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import React, { useState, FC } from "react"
+// import {BookInfoModal} from '../BookInfoModal/BookInfoModal';
+import { Link } from "react-router-dom"
+import { Card, Modal } from "@mui/material"
+import ChromeReaderModeOutlinedIcon from "@mui/icons-material/ChromeReaderModeOutlined"
+import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined"
+import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined"
+import SearchIcon from "@mui/icons-material/Search"
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 // import DetailsIcon from '@mui/icons-material/Details';
-import { styled } from '@mui/system';
-import classes from './Books.module.css';
+import { styled } from "@mui/system"
+import BookRating from "../BookRating/BookRating"
+import classes from "./Books.module.css"
 
 const BookCard = styled(Card)({
     position: "relative",
@@ -44,6 +46,7 @@ type BooksProps = {
     rating: number;
     type?: string;
     price: number;
+    // onClick: FC;
 }
 
 export const Books: FC<BooksProps> = ({ title, author, image, rating, type, price }) => {
@@ -57,13 +60,19 @@ export const Books: FC<BooksProps> = ({ title, author, image, rating, type, pric
         setShowDetails(false)
     }
 
+    // const openModal = () => {
+    //     setInfoModal(true)
+    // }
+
     return (
         <div>
             <BookCard onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
                 {showDetails &&
                     <span className={classes.bookAction}>
                         <div className={classes.iconBackground}>
+                            {/* <Link to='/`$(title)`'> */}
                             <Info />
+                            {/* </Link> */}
                         </div>
                         <div className={classes.iconBackground}>
                             <Cart />
@@ -87,6 +96,10 @@ export const Books: FC<BooksProps> = ({ title, author, image, rating, type, pric
                 <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
                 <h3 className={classes.bookPrice}>${price}</h3>
             </BookCard>
+            {/* {infoModal &&  */}
+            {/* <Modal open={infoModal}><div>hi hi</div></Modal> */}
+            {/* } */}
+            {/* {infoModal && <BookInfoModal open={infoModal}/>} */}
         </div>
     )
 }

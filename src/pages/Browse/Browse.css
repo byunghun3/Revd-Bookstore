@@ -1,0 +1,8 @@
+.modal {
+    background-color: white;
+    width: 40px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

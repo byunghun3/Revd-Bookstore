@@ -1,6 +1,7 @@
-import './App.css';
-import Header from './components/Header/Header';
-import PageRoutes from './components/PageRoutes/PageRoutes';
+import React from "react"
+import Header from "./components/Header/Header"
+import PageRoutes from "./components/PageRoutes/PageRoutes"
+import "./App.css"
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       <Header />
       <PageRoutes />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
