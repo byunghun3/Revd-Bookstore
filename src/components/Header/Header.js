@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { AppBar, Toolbar } from "@mui/material"
 import { styled } from "@mui/system"
 import Logo from "../../assets/icons/bookstore-logo.png"
@@ -26,7 +26,9 @@ function Header() {
                 >
                     <div>
                         <img className={classes.logo} src={Logo} alt="" />
-                        <span className={classes.title}>Revd Bookstore</span>
+                        <Link exact to="/" className={classes.HomeLink}>
+                            <span className={classes.title}>Revd Bookstore</span>
+                        </Link>
                     </div>
                     <div>
                         Log In
@@ -35,9 +37,9 @@ function Header() {
                 </HeaderToolbar>
                 <NavBarToolbar>
                     <nav className={classes.nav}>
-                        <NavLink exact to='/about' className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
-                        <NavLink to='/browse' className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Browse</NavLink>
-                        <NavLink to='/contact' className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Contact</NavLink>
+                        <NavLink exact to="/about" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
+                        <NavLink to="/browse" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Browse</NavLink>
+                        <NavLink to="/contact" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Contact</NavLink>
                     </nav>
                 </NavBarToolbar>
             </AppBar>
