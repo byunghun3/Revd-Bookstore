@@ -99,8 +99,9 @@ function BookList() {
     ]
 
     const bookList = books.map((book) => {
-        return <Grid item xs={12} sm={6} md={4}>
-            <Books title={book.title}
+        return <Grid key={book.title} item xs={12} sm={6} md={4}>
+            <Books
+                title={book.title}
                 author={book.author}
                 image={book.image}
                 rating={book.rating}
