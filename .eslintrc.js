@@ -22,6 +22,7 @@ module.exports = {
     "rules": {
         "semi": [1, "never"],
         "quotes": [1, "double", { "avoidEscape": true }],
+        "react/prop-types": "off",
         "indent": "off",
         "quote-props": "off",
         "comma-dangle": "off",
