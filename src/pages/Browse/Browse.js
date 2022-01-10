@@ -14,9 +14,19 @@ function Browse() {
             <Header />
             <Container>
                 <select name="filter">
-                    <option value="type">Typaae</option>
+                    <option value="">Filter</option>
                     <option value="ebook">Ebook</option>
                     <option value="audiobook">Audiobook</option>
+                    <option value="hard-copy">Hard copy</option>
+                    <option value="nonfiction">Nonfiction</option>
+                    <option value="fiction">Fiction</option>
+                </select>
+                <select name="sort">
+                    <option value="">Sort</option>
+                    <option value="highest-price">Highest price</option>
+                    <option value="lowest-price">Lowest price</option>
+                    <option value="highest-rating">Lowest rating</option>
+                    <option value="lowest-rating">Lowest rating</option>
                 </select>
                 <br />
                 <br />

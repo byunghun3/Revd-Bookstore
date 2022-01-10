@@ -95,7 +95,7 @@ export const Books: FC<BooksProps> = ({ title, author, image, rating, type, pric
                 <h4 className={classes.bookType}>
                     {type === "EBOOK" ? <ChromeReaderModeOutlinedIcon className={classes.bookTypeIcon} /> :
                         type === "AUDIOBOOK" ? <HeadphonesOutlinedIcon className={classes.bookTypeIcon} /> :
-                            <MenuBookOutlinedIcon />}&nbsp;
+                            <MenuBookOutlinedIcon className={classes.bookTypeIcon} />}&nbsp;
                     <span className={classes.bookTypeWord}>{type}</span></h4>
                 <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
                 <h3 className={classes.bookPrice}>${price}</h3>
