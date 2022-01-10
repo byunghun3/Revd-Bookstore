@@ -31,7 +31,7 @@ function Header() {
                         </Link>
                     </div>
                     <div>
-                        Log In
+                        <Link exact to="/login" >Log In</Link>
                         Cart
                     </div>
                 </HeaderToolbar>
