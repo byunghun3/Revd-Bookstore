@@ -12,6 +12,7 @@ import Perfume from "./assets/images/perfume.jpeg"
 import BluestEye from "./assets/images/the-bluest-eye.jpeg"
 
 export const Data = [{
+    id: 1,
     title: "Greenlights",
     author: "Matthew McConaughey",
     image: Greenlights,
@@ -23,6 +24,7 @@ export const Data = [{
     status: "new"
 },
 {
+    id: 2,
     title: "The Sound and the Fury",
     author: "William Faulkner",
     image: SoundAndFury,
@@ -34,6 +36,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 3,
     title: "Hidden Valley Road: Inside the Mind of an American Family",
     author: "Robert Kolker",
     image: HVRoad,
@@ -45,6 +48,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 4,
     title: "The Namesake",
     author: "Jhumpa Lahiri",
     image: Namesake,
@@ -56,6 +60,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 5,
     title: "Lord of the Flies",
     author: "William Golding",
     image: LordOfFlies,
@@ -67,6 +72,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 6,
     title: "In Cold Blood",
     author: "Truman Capote",
     image: InColdBlood,
@@ -78,6 +84,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 7,
     title: "The Sirens of Titan",
     author: "Kurt Vonnegut",
     image: SirensOfTitan,
@@ -89,6 +96,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 8,
     title: "Born a Crime: Stories from a South African Childhood ",
     author: "Trevor Noah",
     image: BornACrime,
@@ -100,6 +108,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 9,
     title: "Hamnet",
     author: "Maggie O'Farrell",
     image: Hamnet,
@@ -111,6 +120,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 10,
     title: "Harry Potter and the Order of Phoenix",
     author: "J. K. Rowling",
     image: HPOP,
@@ -122,6 +132,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 11,
     title: "Perfume: The Story of a Murderer",
     author: "Patrick Süskind",
     image: Perfume,
@@ -133,6 +144,7 @@ export const Data = [{
     status: "old"
 },
 {
+    id: 12,
     title: "The Bluest Eye",
     author: "Toni Morrison",
     image: BluestEye,

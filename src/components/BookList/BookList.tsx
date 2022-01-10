@@ -14,7 +14,7 @@ function BookList() {
     const books = Data
 
     const bookList = books.map((book) => {
-        return <Grid key={book.title} item xs={12} sm={6} md={4}>
+        return <Grid key={book.id} item xs={12} sm={6} md={4}>
             <Books
                 title={book.title}
                 author={book.author}
