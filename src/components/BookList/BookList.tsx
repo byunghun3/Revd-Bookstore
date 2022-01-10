@@ -22,7 +22,8 @@ function BookList() {
             image: SoundAndFury,
             rating: 4,
             type: "EBOOK",
-            price: 4.99
+            price: 4.99,
+            stock: 3
         },
         {
             title: "Hidden Valley Road: Inside the Mind of an American Family",
@@ -30,7 +31,8 @@ function BookList() {
             image: HVRoad2,
             rating: 4,
             type: "AUDIOBOOK",
-            price: 4.99
+            price: 4.99,
+            stock: 5
         },
         {
             title: "Greenlights",
@@ -38,7 +40,8 @@ function BookList() {
             image: Greenlights,
             rating: 3,
             type: "EBOOK",
-            price: 4.99
+            price: 4.99,
+            stock: 5
         },
         {
             title: "The Namesake",
@@ -46,55 +49,64 @@ function BookList() {
             image: Namesake,
             rating: 3.5,
             type: "EBOOK",
-            price: 4.99
+            price: 4.99,
+            stock: 5
         },
         {
             title: "The Sound and the Fury",
             author: "William Faulkner",
             price: 4.99,
-            rating: 4
+            rating: 4,
+            stock: 5
         },
         {
             title: "Hidden Valley Road: Inside the Mind of an American Family",
             author: "Robert Kolker",
             price: 4.99,
-            rating: 4
+            rating: 4,
+            stock: 5
         },
         {
             title: "Greenlights",
             author: "Matthew McConaughey",
             price: 4.99,
-            rating: 3
+            rating: 3,
+            stock: 5
         },
         {
             title: "The Namesake",
             author: "Jhumpa Lahiri",
             price: 4.99,
-            rating: 3
+            rating: 3,
+            stock: 5
         },
         {
             title: "The Sound and the Fury",
             author: "William Faulkner",
             price: 4.99,
-            rating: 4
+            rating: 4,
+            stock: 5
         },
         {
             title: "Hidden Valley Road: Inside the Mind of an American Family",
             author: "Robert Kolker",
             price: 4.99,
-            rating: 4
+            rating: 4,
+            stock: 5
         },
         {
             title: "Greenlights",
             author: "Matthew McConaughey",
             price: 4.99,
-            rating: 3
+            rating: 3,
+            stock: 5
         },
         {
             title: "The Namesake",
             author: "Jhumpa Lahiri",
             price: 4.99,
-            rating: 3
+            rating: 3,
+            stock: 5
         }
     ]
 
@@ -107,6 +119,7 @@ function BookList() {
                 rating={book.rating}
                 type={book.type}
                 price={book.price}
+                stock={book.stock}
             />
         </Grid>
     })

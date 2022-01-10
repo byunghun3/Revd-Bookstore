@@ -40,16 +40,17 @@ const Cart = styled(ShoppingCartIcon)({
 })
 
 type BooksProps = {
-    title: string;
-    author: string;
-    image: any;
-    rating: number;
-    type?: string;
-    price: number;
+    title: string
+    author: string
+    image: any
+    rating: number
+    type?: string
+    price: number
+    stock: number
     // onClick: FC;
 }
 
-export const Books: FC<BooksProps> = ({ title, author, image, rating, type, price }) => {
+export const Books: FC<BooksProps> = ({ title, author, image, rating, type, price, stock }) => {
     const [showDetails, setShowDetails] = useState(false)
 
     const handleMouseOver = () => {
@@ -65,7 +66,7 @@ export const Books: FC<BooksProps> = ({ title, author, image, rating, type, pric
     // }
 
     return (
-        <div>
+        <div className={classes.book}>
             <BookCard onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
                 {showDetails &&
                     <span className={classes.bookAction}>
@@ -96,6 +97,7 @@ export const Books: FC<BooksProps> = ({ title, author, image, rating, type, pric
                 <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
                 <h3 className={classes.bookPrice}>${price}</h3>
             </BookCard>
+            <h4 className={classes.bookStock}>{stock < 4 ? <div>Only {stock} books left in stock</div> : null}</h4>
             {/* {infoModal &&  */}
             {/* <Modal open={infoModal}><div>hi hi</div></Modal> */}
             {/* } */}

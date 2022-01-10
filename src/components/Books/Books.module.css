@@ -1,3 +1,9 @@
+/* .book {
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+} */
+
 .bookCover {
     width: 100%;
 }
@@ -44,6 +50,11 @@
 .bookPrice {
     margin: 1px 0 0 0;
     font-size: 12px;
+}
+
+.bookStock {
+    margin: 5px 0 0 -15px;
+    color: red;
 }
 
 .bookAction {
