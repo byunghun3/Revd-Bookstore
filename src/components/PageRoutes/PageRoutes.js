@@ -6,6 +6,7 @@ import Browse from "../../pages/Browse/Browse"
 import Contact from "../../pages/Contact/Contact"
 import Error from "../../pages/Error/Error"
 import { Login } from "../../pages/Login/Login"
+import Product from "../../pages/Product/Product"
 
 function PageRoutes() {
     return (
@@ -15,6 +16,7 @@ function PageRoutes() {
             <Route path="/browse" element={<Browse />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/browse/:product" element={<Product />} />
             <Route path="*" element={<Error />} />
         </Routes>
     )
