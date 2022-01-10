@@ -1,11 +1,19 @@
 /* .book {
-    align-content: center;
-    justify-content: center;
-    text-align: center;
+    position: relative;
 } */
 
 .bookCover {
     width: 100%;
+}
+
+.bookRibbon {
+    position: absolute;
+    top: 3%; 
+    left: -10%;
+    width: 100px;
+    height: 20px;
+    background-color: red;
+    transform: rotate(-45deg);
 }
 
 .bookTitle {

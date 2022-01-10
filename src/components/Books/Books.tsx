@@ -14,6 +14,7 @@ import classes from "./Books.module.css"
 
 const BookCard = styled(Card)({
     position: "relative",
+    zIndex: "-1",
     width: "20vw",
     transition: "ease 0.3s",
     "&:hover": {
@@ -47,10 +48,11 @@ type BooksProps = {
     type?: string
     price: number
     stock: number
+    status: string
     // onClick: FC;
 }
 
-export const Books: FC<BooksProps> = ({ title, author, image, rating, type, price, stock }) => {
+export const Books: FC<BooksProps> = ({ title, author, image, rating, type, price, stock, status }) => {
     const [showDetails, setShowDetails] = useState(false)
 
     const handleMouseOver = () => {
@@ -80,6 +82,7 @@ export const Books: FC<BooksProps> = ({ title, author, image, rating, type, pric
                         </div>
                     </span>}
                 <img className={classes.bookCover} src={image} alt="" />
+                {status === "new" ? <div className={classes.bookRibbon}>New!</div> : null}
                 <h2 className={classes.bookTitle}>{title}</h2>
                 <h4 className={classes.bookAuthor}>
                     <span className={classes.bookAuthorBy}>
