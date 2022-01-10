@@ -3,6 +3,7 @@ import { Container, Box } from "@mui/material"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { styled } from "@mui/system"
+import Header from "../../components/Header/Header"
 import SliderImgOne from "../../assets/images/holiday-gift.jpg"
 import BookPile from "../../assets/images/book-pile.png"
 import GreenlightsSlider from "../../assets/images/greenlights-slider.jpeg"
@@ -93,35 +94,38 @@ export default function HomePage() {
     }
 
     return (
-        <div className={classes.container}>
-            <SlideContainer>
-                {/* <HomePageContainer> */}
-                <LeftArrow id="left" onClick={handleClick} />
-                <RightArrow id="right" onClick={handleClick} />
-                <img src={SliderImgOne} alt="" className={classes.sliderOne} />
-                <TextBox>Holiday Sale 30%</TextBox>
-                {/* </HomePageContainer> */}
-            </SlideContainer>
-            <SlideContainer>
-                <div className={classes.sliderTwo}>
+        <div>
+            <Header />
+            <div className={classes.container}>
+                <SlideContainer>
                     {/* <HomePageContainer> */}
                     <LeftArrow id="left" onClick={handleClick} />
                     <RightArrow id="right" onClick={handleClick} />
-                    <img src={BookPile} alt="" className={classes.sliderTwoImg} />
-                    <TextBox>Recommend a book for review</TextBox>
+                    <img src={SliderImgOne} alt="" className={classes.sliderOne} />
+                    <TextBox>Holiday Sale 30%</TextBox>
                     {/* </HomePageContainer> */}
-                </div>
-            </SlideContainer>
-            <SlideContainer>
-                <div className={classes.sliderThree}>
-                    {/* <HomePageContainer> */}
-                    <LeftArrow id="left" onClick={handleClick} />
-                    <RightArrow id="right" onClick={handleClick} />
-                    <img src={GreenlightsSlider} alt="" className={classes.sliderThreeImg} />
-                    <TextBox>New book</TextBox>
-                    {/* </HomePageContainer> */}
-                </div>
-            </SlideContainer>
-        </div >
+                </SlideContainer>
+                <SlideContainer>
+                    <div className={classes.sliderTwo}>
+                        {/* <HomePageContainer> */}
+                        <LeftArrow id="left" onClick={handleClick} />
+                        <RightArrow id="right" onClick={handleClick} />
+                        <img src={BookPile} alt="" className={classes.sliderTwoImg} />
+                        <TextBox>Recommend a book for review</TextBox>
+                        {/* </HomePageContainer> */}
+                    </div>
+                </SlideContainer>
+                <SlideContainer>
+                    <div className={classes.sliderThree}>
+                        {/* <HomePageContainer> */}
+                        <LeftArrow id="left" onClick={handleClick} />
+                        <RightArrow id="right" onClick={handleClick} />
+                        <img src={GreenlightsSlider} alt="" className={classes.sliderThreeImg} />
+                        <TextBox>New book</TextBox>
+                        {/* </HomePageContainer> */}
+                    </div>
+                </SlideContainer>
+            </div >
+        </div>
     )
 }

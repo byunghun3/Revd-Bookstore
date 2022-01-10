@@ -1,12 +1,16 @@
-import React from 'react';
-import './Contact.css'
+import React from "react"
+import Header from "../../components/Header/Header"
+import "./Contact.css"
 
 function Contact() {
     return (
-        <div className="contact">
-            Contact
+        <div>
+            <Header />
+            <div className="contact">
+                Contact
+            </div>
         </div>
     )
 }
 
-export default Contact;
+export default Contact

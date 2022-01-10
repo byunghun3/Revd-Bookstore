@@ -4,6 +4,8 @@ import FormControl from "@mui/material/FormControl"
 import OutlinedInput from "@mui/material/OutlinedInput"
 import Checkbox from "@mui/material/Checkbox"
 import Button from "@mui/material/Button"
+import Header from "../../components/Header/Header"
+
 
 interface Props {
 
@@ -12,6 +14,7 @@ interface Props {
 export const Login = (props: Props) => {
     return (
         <div>
+            <Header />
             <FormControl>
                 <InputLabel>Username</InputLabel>
                 <OutlinedInput required />
