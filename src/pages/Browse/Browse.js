@@ -4,6 +4,8 @@ import BookList from "../../components/BookList/BookList"
 import Header from "../../components/Header/Header"
 import "./Browse.css"
 import { Filter } from "../../components/Filter/Filter"
+// import { styled } from "@mui/system"
+import styles from "styled-components"
 
 function Browse(props) {
     // const [infoModal, setInfoModal] = useState(true);

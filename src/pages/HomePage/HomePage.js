@@ -1,8 +1,9 @@
-import React, { ReactElement, useState } from "react"
+import React, { ReactElement, useState, FC } from "react"
 import { Container, Box } from "@mui/material"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { styled } from "@mui/system"
+import styles from "styled-components"
 import Header from "../../components/Header/Header"
 import { Footer } from "../../components/Footer/Footer"
 import SliderImgOne from "../../assets/images/holiday-gift.jpg"
@@ -21,35 +22,21 @@ const HomePageContainer = styled(Container)({
 
 })
 
-const a = `${(props: any) => props.slideOrder}`
-// const b = -200
-const c = `${5 + 10}`
-
-
-const SlideContainer = styled("div")({
-    position: "relative",
-    display: "flex",
-    width: "100vw",
-    height: "100%",
-    // padding: 8,
-    /* height: 100vh; */
-    /* flex: 1; */
-    // transform: `translateX(${b}vw)`
-    // transform: "translateX(-200vw)"
-    // transform: `translateX(${1 * (-100)}vw)`
-    // transform: `translateX(${a}vw)`
-    // transform: `translateX(${(props: any) => props.slideOrder * -100}vw)`
-    transform: `translateX(${(props: any) => props.slideOrder})`
-})
-
+const SlideContainer = styles.div`
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    transform: translateX(${(props) => props.slideOrderTwo * -100}vw);
+`
 
 const LeftArrow = styled(ArrowBackIosIcon)({
     position: "absolute",
     left: "0",
     top: "50%",
     zIndex: "2",
-    margin: "0 10px"
-
+    margin: "0 10px",
+    cursor: "pointer"
 })
 
 const RightArrow = styled(ArrowForwardIosIcon)({
@@ -57,7 +44,8 @@ const RightArrow = styled(ArrowForwardIosIcon)({
     right: "0",
     top: "50%",
     zIndex: "2",
-    margin: "0 10px"
+    margin: "0 10px",
+    cursor: "pointer"
 })
 
 const TextBox = styled(Box)({
@@ -69,36 +57,26 @@ const TextBox = styled(Box)({
     fontSize: "50px"
 })
 
+function HomePage(props) {
+    const [slideOrder, setSlideOrder] = useState(0)
 
-// type Props {
-//     value: string
-// }
-
-
-export default function HomePage() {
-    const [slideOrder, setSlideOrder] = useState("-100vw")
-    console.log(a)
-    console.log(c)
-    const handleClick = (e: any) => {
+    const handleClick = (e) => {
         if (e.currentTarget.id === "left") {
-            // setSlideOrder(slideOrder > 0 ? slideOrder - 1 : 2)
-            setSlideOrder(slideOrder)
+            setSlideOrder(slideOrder > 0 ? slideOrder - 1 : 2)
             console.log("left")
-            console.log(slideOrder)
         } else {
-            // setSlideOrder(slideOrder < 2 ? slideOrder + 1 : 0)
+            setSlideOrder(slideOrder < 2 ? slideOrder + 1 : 0)
             console.log("right")
-            console.log(slideOrder)
-
         }
-
     }
+
+    console.log(slideOrder)
 
     return (
         <div>
             <Header />
             <div className={classes.container}>
-                <SlideContainer>
+                <SlideContainer slideOrderTwo={slideOrder}>
                     {/* <HomePageContainer> */}
                     <LeftArrow id="left" onClick={handleClick} />
                     <RightArrow id="right" onClick={handleClick} />
@@ -106,7 +84,7 @@ export default function HomePage() {
                     <TextBox>Holiday Sale 30%</TextBox>
                     {/* </HomePageContainer> */}
                 </SlideContainer>
-                <SlideContainer>
+                <SlideContainer slideOrderTwo={slideOrder}>
                     <div className={classes.sliderTwo}>
                         {/* <HomePageContainer> */}
                         <LeftArrow id="left" onClick={handleClick} />
@@ -116,7 +94,7 @@ export default function HomePage() {
                         {/* </HomePageContainer> */}
                     </div>
                 </SlideContainer>
-                <SlideContainer>
+                <SlideContainer slideOrderTwo={slideOrder}>
                     <div className={classes.sliderThree}>
                         {/* <HomePageContainer> */}
                         <LeftArrow id="left" onClick={handleClick} />
@@ -131,3 +109,5 @@ export default function HomePage() {
         </div>
     )
 }
+
+export default HomePage
