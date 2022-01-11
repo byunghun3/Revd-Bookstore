@@ -9,7 +9,8 @@ import Logo from "../../assets/icons/bookstore-logo.png"
 import classes from "./Header.module.css"
 
 const HeaderToolbar = styled(Toolbar)({
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    maxWidth: "100%"
 })
 
 const NavBarToolbar = styled(Toolbar)({
@@ -24,9 +25,7 @@ function Header() {
                 elevation={0}
                 position="sticky"
             >
-                <HeaderToolbar
-                    width="100%"
-                >
+                <HeaderToolbar>
                     <div>
                         <img className={classes.logo} src={Logo} alt="" />
                         <Link exact to="/" className={classes.homeLink}>
@@ -40,7 +39,7 @@ function Header() {
                 </HeaderToolbar>
                 <NavBarToolbar>
                     <nav className={classes.nav}>
-                        <NavLink exact to="/about" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
+                        <NavLink to="/about" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
                         <NavLink to="/browse" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Browse</NavLink>
                         <NavLink to="/contact" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Contact</NavLink>
                     </nav>

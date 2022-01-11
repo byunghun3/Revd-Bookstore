@@ -4,6 +4,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { styled } from "@mui/system"
 import Header from "../../components/Header/Header"
+import { Footer } from "../../components/Footer/Footer"
 import SliderImgOne from "../../assets/images/holiday-gift.jpg"
 import BookPile from "../../assets/images/book-pile.png"
 import GreenlightsSlider from "../../assets/images/greenlights-slider.jpeg"
@@ -126,6 +127,7 @@ export default function HomePage() {
                     </div>
                 </SlideContainer>
             </div >
+            <Footer />
         </div>
     )
 }
