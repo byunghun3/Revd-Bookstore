@@ -15,7 +15,7 @@ import classes from "./Books.module.css"
 const BookCard = styled(Card)({
     position: "relative",
     overflow: "inherit",
-    width: "20vw",
+    minWidth: "5vw",
     transition: "ease 0.3s",
     "&:hover": {
         opacity: "0.8",
