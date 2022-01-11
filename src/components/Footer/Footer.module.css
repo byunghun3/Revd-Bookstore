@@ -1,0 +1,39 @@
+.leftSection {
+    flex: 1;
+    /* display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column; */
+}
+
+.socialMediaIcons {
+    display: flex;
+    /* justify-content: center; */
+    /* align-content: center; */
+}
+
+.middleSection {
+    flex: 1;
+}
+
+.rightSection {
+    flex: 1;
+}
+
+.iconLink {
+    text-decoration: none !important;
+    margin: 10px;
+}
+
+.nav {
+    vertical-align: top;
+}
+
+.navLink {
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    margin: 20px;
+    vertical-align: middle;
+    transition: ease 1s;
+}
