@@ -81,16 +81,16 @@ export const Footer = (props: Props) => {
                 <FooterToolbar>
                     <div className={classes.leftSection}>
                         {/* <div className={classes.socialMediaIcons}> */}
-                        <a href="https://www.facebook.com/" className={classes.iconLink}>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className={classes.iconLink}>
                             <FacebookIcon />
                         </a>
-                        <a href="https://www.instagram.com/" className={classes.iconLink}>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className={classes.iconLink}>
                             <InstagramIcon />
                         </a>
-                        <a href="https://twitter.com/" className={classes.iconLink}>
+                        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className={classes.iconLink}>
                             <TwitterIcon />
                         </a>
-                        <a href="https://www.youtube.com/" className={classes.iconLink}>
+                        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className={classes.iconLink}>
                             <YouTubeIcon />
                         </a>
                         {/* </div> */}
