@@ -72,7 +72,7 @@ interface Props {
 
 export const Footer = (props: Props) => {
     return (
-        <div>
+        <div className={classes.footer}>
             <AppBar
                 color="inherit"
                 elevation={0}

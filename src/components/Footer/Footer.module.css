@@ -37,3 +37,18 @@
     vertical-align: middle;
     transition: ease 1s;
 }
+
+.navLink:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.activeNavLink {
+    vertical-align: middle;
+    margin: 20px;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+    transition: ease 1s;
+}
