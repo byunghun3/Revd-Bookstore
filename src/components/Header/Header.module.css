@@ -39,7 +39,7 @@
     font-weight: 700;
     color: white;
     text-decoration: none;
-    transition: ease 2s;
+    transition: ease 1s;
 }
 
 .activeNavLink:hover {

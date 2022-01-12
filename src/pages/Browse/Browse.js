@@ -1,7 +1,6 @@
 import { React, useState } from "react"
 import { Container, Modal } from "@mui/material"
 import BookList from "../../components/BookList/BookList"
-import Header from "../../components/Header/Header"
 import "./Browse.css"
 import { Filter } from "../../components/Filter/Filter"
 // import { styled } from "@mui/system"
@@ -14,7 +13,6 @@ function Browse(props) {
 
     return (
         <div>
-            <Header />
             <Container>
                 <Filter />
                 <select name="sort"
