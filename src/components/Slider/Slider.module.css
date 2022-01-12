@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.div {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 100%;
+}
+
+.sliderOne {
+    width: 100vw;
+}
+
+.sliderTwo {
+    width: 100vw;
+}
+
+.sliderTwoImg {
+    position: absolute;
+    left: 20%;
+}
+
+.sliderThree {
+    width: 100vw;
+}
+
+.sliderThreeImg {
+    position: absolute;
+    left: 20%;
+    width: 50vw;
+    height: auto;
+}
