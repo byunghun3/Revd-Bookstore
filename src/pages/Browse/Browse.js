@@ -53,7 +53,6 @@ function Browse(props) {
             <Container>
                 {filterArray}
                 {filterArrayTwo}
-                <Filter />
                 <select name="sort"
                 // value={props.sort} onChange={props.sortBooks}
                 >

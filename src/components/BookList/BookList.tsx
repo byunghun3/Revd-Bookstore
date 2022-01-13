@@ -4,6 +4,7 @@ import { styled } from "@mui/system"
 // import ReactStars from 'react-rating-stars-component';
 import { Books } from "../Books/Books"
 import { Data } from "../../Data"
+import { Filter } from "../Filter/Filter"
 import classes from "./BookList.module.css"
 
 const ContainerGrid = styled(Grid)({
@@ -30,6 +31,7 @@ function BookList() {
 
     return (
         <ContainerGrid container className={classes.gridContainer} spacing={15}>
+            <Filter />
             {bookList}
         </ContainerGrid>
     )
