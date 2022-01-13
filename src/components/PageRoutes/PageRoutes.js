@@ -22,7 +22,7 @@ function PageRoutes() {
                 <Route path="/browse" element={<Browse />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/browse/:product" element={<Product />} />
+                <Route path="/browse/:id" element={<Product />} />
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />
