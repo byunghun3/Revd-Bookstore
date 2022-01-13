@@ -9,11 +9,50 @@ import styles from "styled-components"
 function Browse(props) {
     // const [infoModal, setInfoModal] = useState(true);
 
+    const testArray = [
+        {
+            number: 1,
+            name: "john1"
+        },
+        {
+            number: 2,
+            name: "john2"
+        },
+        {
+            number: 3,
+            name: "john3"
+        },
+        {
+            number: 4,
+            name: "john4"
+        },
+        {
+            number: 5,
+            name: "john5"
+        },
+    ]
 
+    const filterArray = testArray.filter(e =>
+        e.number === 3).map(filteredPerson =>
+            (filteredPerson.name)
+            // && (e => e.number === 2).map(filteredPerson =>
+            // (filteredPerson.name))
+        )
+
+    console.log(filterArray)
+
+    const testArrayTwo = [1, 2, 3, 4]
+
+    const filterArrayTwo = testArrayTwo.filter(e =>
+        e < 3
+    )
+    console.log(filterArrayTwo)
 
     return (
         <div>
             <Container>
+                {filterArray}
+                {filterArrayTwo}
                 <Filter />
                 <select name="sort"
                 // value={props.sort} onChange={props.sortBooks}

@@ -1,63 +1,89 @@
 import React, { FC, useState } from "react"
+import { Grid } from "@mui/material"
 import { Books } from "../Books/Books"
 import { Data } from "../../Data"
 
 
 type Props = {
     filterate: string
-    // filterBooks: (event: React.ChangeEvent<HTMLElement>) => void
 }
 
 export const Filter: FC<Props> = ({ filterate }) => {
-    const [filter, setFilter] = useState("")
-    const [filteredBooks, setFilteredBooks] = useState(Data)
+    const [filterValue, setFilterValue] = useState("")
+    // const [filteredBooks, setFilteredBooks] = useState(Data)
+    const filteredBooks = Data
 
-    // const filterBooks = (e: any) => {
-    //     const result = Data.filter((curData) => {
-    //         return e.currentTarget.value === curData.type
-    //     })
-    //     setFilter(result)
-    //     console.log(result)
-    // }
+
+
+    console.log(filterValue)
+
+    const typeFilter = filteredBooks.filter(book =>
+        book.type === filterValue).map(book => {
+            return <Grid key={book.id} item xs={12} sm={6} md={4}>
+                <Books
+                    title={book.title}
+                    author={book.author}
+                    image={book.image}
+                    rating={book.rating}
+                    type={book.type}
+                    price={book.price}
+                    stock={book.stock}
+                    status={book.status}
+                />
+            </Grid>
+        })
+
+    const genreFilter = filteredBooks.filter(book =>
+        book.genre === filterValue).map(book => {
+            return <Grid key={book.id} item xs={12} sm={6} md={4}>
+                <Books
+                    title={book.title}
+                    author={book.author}
+                    image={book.image}
+                    rating={book.rating}
+                    type={book.type}
+                    price={book.price}
+                    stock={book.stock}
+                    status={book.status}
+                />
+            </Grid>
+        })
+
+    const testArray = [1, 2, 3]
 
     const handleChange = (e: any) => {
-        setFilter(e.currentTarget.value)
+        setFilterValue(e.currentTarget.value)
+        // setFilteredBooks(typeFilter)
+        // => filteredBooks.filter(book =>
+        // book.type === filterValue).map(book => {
+        //     return <Grid key={book.id} item xs={12} sm={6} md={4}>
+        //         <Books
+        //             title={book.title}
+        //             author={book.author}
+        //             image={book.image}
+        //             rating={book.rating}
+        //             type={book.type}
+        //             price={book.price}
+        //             stock={book.stock}
+        //             status={book.status}
+        //         />
+        //     </Grid>
+        // }))
     }
-
-    console.log(filter)
-
-    const filterResult = filteredBooks.filter((book) => {
-        book.type === filter ?
-            <Books
-                title={book.title}
-                author={book.author}
-                image={book.image}
-                rating={book.rating}
-                type={book.type}
-                price={book.price}
-                stock={book.stock}
-                status={book.status}
-            />
-            : null
-    })
-
-
-
-    // const filteredBooks = filter.filter((result) => {
-    //     return result.
-    // })
 
     return (
         <div>
             <select name="filter" value={filterate} onChange={handleChange}>
                 <option value="">Filter</option>
                 <option value="EBOOK">Ebook</option>
-                <option value="audiobook">Audiobook</option>
-                <option value="hard-copy">Hard copy</option>
-                <option value="nonfiction">Nonfiction</option>
-                <option value="fiction">Fiction</option>
+                <option value="AUDIOBOOK">Audiobook</option>
+                <option value="HARD COPY">Hard copy</option>
+                <option value="Nonfiction">Nonfiction</option>
+                <option value="Fiction">Fiction</option>
             </select>
-            {filterResult}
+            {/* {filteredBooks} */}
+            {typeFilter}
+            {genreFilter}
         </div>
     )
 }
