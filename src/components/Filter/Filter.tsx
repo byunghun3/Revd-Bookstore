@@ -21,6 +21,7 @@ export const Filter: FC = () => {
         .map(book =>
             <Grid key={book.id} item xs={12} sm={6} md={4}>
                 <Books
+                    id={book.id}
                     title={book.title}
                     author={book.author}
                     image={book.image}
@@ -37,6 +38,7 @@ export const Filter: FC = () => {
         book.genre === filterValue).map(book => {
             return <Grid key={book.id} item xs={12} sm={6} md={4}>
                 <Books
+                    id={book.id}
                     title={book.title}
                     author={book.author}
                     image={book.image}
@@ -52,6 +54,7 @@ export const Filter: FC = () => {
     const bookList = filteredBooks.map(book => {
         return <Grid key={book.id} item xs={12} sm={6} md={4}>
             <Books
+                id={book.id}
                 title={book.title}
                 author={book.author}
                 image={book.image}

@@ -28,12 +28,12 @@ function Header() {
                 <HeaderToolbar>
                     <div>
                         <img className={classes.logo} src={Logo} alt="" />
-                        <Link exact to="/" className={classes.homeLink}>
+                        <Link to="/" className={classes.homeLink}>
                             <span className={classes.title}>Revd Bookstore</span>
                         </Link>
                     </div>
                     <div>
-                        <Link exact to="/login" ><AccountCircleIcon /></Link>
+                        <Link to="/login" ><AccountCircleIcon /></Link>
                         <ShoppingCartIcon />
                     </div>
                 </HeaderToolbar>

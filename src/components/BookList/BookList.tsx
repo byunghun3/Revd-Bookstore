@@ -17,6 +17,7 @@ function BookList() {
     const bookList = books.map((book) => {
         return <Grid key={book.id} item xs={12} sm={6} md={4}>
             <Books
+                id={book.id}
                 title={book.title}
                 author={book.author}
                 image={book.image}

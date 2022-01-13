@@ -41,6 +41,7 @@ const Cart = styled(ShoppingCartIcon)({
 })
 
 type BooksProps = {
+    id: number
     title: string
     author: string
     image: any
@@ -52,7 +53,7 @@ type BooksProps = {
     // onClick: FC;
 }
 
-export const Books: FC<BooksProps> = ({ title, author, image, rating, type, price, stock, status }) => {
+export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, status }) => {
     const [showDetails, setShowDetails] = useState(false)
 
     const handleMouseOver = () => {
@@ -73,9 +74,9 @@ export const Books: FC<BooksProps> = ({ title, author, image, rating, type, pric
                 {showDetails &&
                     <span className={classes.bookAction}>
                         <div className={classes.iconBackground}>
-                            {/* <Link to='/`$(title)`'> */}
-                            <Info />
-                            {/* </Link> */}
+                            <Link to={`/browse/${id}`}>
+                                <Info />
+                            </Link>
                         </div>
                         <div className={classes.iconBackground}>
                             <Cart />
