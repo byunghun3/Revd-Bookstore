@@ -14,8 +14,8 @@ const Product: React.FC<Props> = ({ }) => {
   const { id } : any = useParams()
   return (
     <div className={classes.productPage}>
-      Product image {id}
-      <img src={book[id].image} alt="" />
+      Product image {id - 1}
+      <img src={book[id - 1].image} alt="" />
     </div>
   )
 }

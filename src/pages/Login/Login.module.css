@@ -1,3 +1,10 @@
+.loginPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .title {
     vertical-align: middle;
     margin-left: 10px;

@@ -86,7 +86,7 @@ export const Filter: FC = () => {
     //     else { setShowBookList(false) }
     // }
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setFilterValue(e.currentTarget.value)
         setShowBookList(false)
     }
