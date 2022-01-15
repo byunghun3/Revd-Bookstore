@@ -58,22 +58,29 @@ const FormInputLabel = styled(InputLabel)({
     margin: "0"
 })
 
+const SignUpButton = styled(Button)({
+    marginBottom: "20px"
+})
+
 interface SignUpProps {
     // showPassword: boolean
 }
 
 export const SignUp: FC<SignUpProps> = ({ }) => {
-    const [showPassword, setShowPassword] = useState(false)
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [passwordError, setPasswordError] = useState("")
     const [email, setEmail] = useState("")
     const [firstname, setFirstname] = useState("")
     const [lastname, setLastname] = useState("")
 
-    const handleClickShowPassword = () => {
-        setShowPassword(
-            !showPassword
-        )
+    const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.value !== password) {
+            setPasswordError("Passwords don't match")
+        } else {
+            setPasswordError("")
+        }
+        setConfirmPassword(e.target.value)
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -147,15 +154,12 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 name="Confirm Password"
                                 type="text"
                                 value={confirmPassword}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setConfirmPassword(e.target.value) }}
+                                onChange={handleConfirmPassword}
                                 required />
                         </StyledForm>
+                        <div className={passwordError !== "" ? classes.passwordError : classes.passwordNoError}>{passwordError}</div>
 
-                        <Button type="submit" color="primary" variant="contained">Log in</Button>
-                        Don&apos;t have account?
-                        <Link to="/signup">
-                            <Button type="button">Sign up</Button>
-                        </Link>
+                        <SignUpButton type="submit" color="primary" variant="contained">Sign Up</SignUpButton>
                     </form>
                 </LoginCard>
             </FormGrid>

@@ -62,9 +62,11 @@ interface LoginProps {
 export const Login: FC<LoginProps> = ({ }) => {
     const [showPassword, setShowPassword] = useState(false)
     const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("")
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.currentTarget.value)
+        `set${e.currentTarget.name} = e.currentTarget.value`
+        // console.log(username, password)
     }
 
     const handleClickShowPassword = () => {
@@ -75,13 +77,16 @@ export const Login: FC<LoginProps> = ({ }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        alert("signed in!")
+
+
     }
     return (
         <div className={classes.loginPage}>
             <AppBar
                 color="inherit"
                 elevation={0}
-                position="sticky"
+                position="relative"
             >
                 <HeaderToolbar>
                     <div>
@@ -97,15 +102,21 @@ export const Login: FC<LoginProps> = ({ }) => {
                     <form onSubmit={handleSubmit}>
                         <UsernameForm variant="outlined">
                             <FormInputLabel>Username</FormInputLabel>
-                            <OutlinedInput label="Username" required />
+                            <OutlinedInput
+                                label="Username"
+                                name="Username"
+                                value={username}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUsername(e.target.value) }}
+                                required />
                         </UsernameForm>
                         <PasswordForm>
                             <InputLabel>Password</InputLabel>
                             <OutlinedInput
+                                label="Password"
+                                name="Password"
                                 type={showPassword ? "text" : "password"}
                                 value={password}
-                                label="Password"
-                                onChange={handleChange}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value) }}
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
@@ -122,7 +133,10 @@ export const Login: FC<LoginProps> = ({ }) => {
                         <span><Checkbox />Remember me
                             <Button type="button">Forgot password?</Button></span>
                         <Button type="submit" color="primary" variant="contained">Log in</Button>
-                        Don&apos;t have account? <Button type="button">Sign up</Button>
+                        Don&apos;t have account?
+                        <Link to="/signup">
+                            <Button type="button">Sign up</Button>
+                        </Link>
                     </form>
                 </LoginCard>
             </FormGrid>

@@ -16,3 +16,19 @@
 .homeLink {
     text-decoration: none;
 }
+
+.passwordError {
+    margin-top: -20px;
+    margin-left: -40%;
+    margin-bottom: 19px;
+    font-size: 16px;
+    color: red;
+
+}
+
+.passwordNoError {
+    margin-top: -20px;
+    margin-left: -40%;
+    margin-bottom: 37px;
+
+}
