@@ -18,6 +18,7 @@
     "react-scripts": "5.0.0",
     "react-simple-star-rating": "^4.0.5",
     "styled-components": "^5.3.3",
+    "uuidv4": "^6.2.12",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
