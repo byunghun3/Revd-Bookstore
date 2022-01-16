@@ -7,6 +7,7 @@ import Contact from "../../pages/Contact/Contact"
 import Error from "../../pages/Error/Error"
 import { Login } from "../../pages/Login/Login"
 import { SignUp } from "../../pages/SignUp/SignUp"
+import { Cart } from "../../pages/Cart/Cart"
 import Product from "../../pages/Product/Product"
 import Header from "../Header/Header"
 import { Footer } from "../Footer/Footer"
@@ -16,7 +17,10 @@ function PageRoutes() {
     const location = useLocation()
     return (
         <div>
-            {location.pathname === "/login" || location.pathname === "/signup" ? null : <Header />}
+            {location.pathname === "/login" ||
+                location.pathname === "/cart" ||
+                location.pathname === "/signup" ?
+                null : <Header />}
             <Routes className="routes">
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />
@@ -24,6 +28,7 @@ function PageRoutes() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="/browse/:id" element={<Product />} />
                 <Route path="*" element={<Error />} />
             </Routes>

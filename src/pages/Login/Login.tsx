@@ -79,6 +79,7 @@ export const Login: FC<LoginProps> = ({ }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        
         alert("signed in!")
 
         navigate(-1)

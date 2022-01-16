@@ -10,8 +10,13 @@
     color: black;
 }
 
-.homeLink {
+.headerLink {
     text-decoration: none;
+    color: black;
+}
+
+.cartLength {
+    vertical-align: middle;
 }
 
 .nav {

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
@@ -17,7 +17,20 @@ const NavBarToolbar = styled(Toolbar)({
     backgroundColor: "#d7ccc8"
 })
 
+const StyledAccountIcon = styled(AccountCircleIcon)({
+    verticalAlign: "middle",
+    color: "black"
+})
+
+const StyledCartIcon = styled(ShoppingCartIcon)({
+    verticalAlign: "middle",
+    color: "black"
+
+})
+
 function Header() {
+    const [cart, setCart] = useState([])
+
     return (
         <div>
             <AppBar
@@ -28,13 +41,16 @@ function Header() {
                 <HeaderToolbar>
                     <div>
                         <img className={classes.logo} src={Logo} alt="" />
-                        <Link to="/" className={classes.homeLink}>
+                        <Link to="/" className={classes.headerLink}>
                             <span className={classes.title}>Revd Bookstore</span>
                         </Link>
                     </div>
                     <div>
-                        <Link to="/login" ><AccountCircleIcon /></Link>
-                        <ShoppingCartIcon />
+                        <Link to="/login" className={classes.headerLink}><StyledAccountIcon /></Link>
+                        <Link to="/cart" className={classes.headerLink}>
+                            <StyledCartIcon />
+                            <span className={classes.cartLength}>({cart.length})</span>
+                        </Link>
                     </div>
                 </HeaderToolbar>
                 <NavBarToolbar>
