@@ -1,5 +1,5 @@
 import React, { useState, FC } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import Grid from "@mui/material/Grid"
@@ -60,6 +60,8 @@ interface LoginProps {
 }
 
 export const Login: FC<LoginProps> = ({ }) => {
+    const navigate = useNavigate()
+
     const [showPassword, setShowPassword] = useState(false)
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
@@ -79,7 +81,7 @@ export const Login: FC<LoginProps> = ({ }) => {
         e.preventDefault()
         alert("signed in!")
 
-
+        navigate(-1)
     }
     return (
         <div className={classes.loginPage}>

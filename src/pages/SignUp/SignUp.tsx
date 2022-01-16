@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FC } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
@@ -71,6 +71,8 @@ interface SignUpProps {
 }
 
 export const SignUp: FC<SignUpProps> = ({ }) => {
+    const navigate = useNavigate()
+
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
@@ -139,9 +141,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
 
         localStorage.setItem("user", JSON.stringify(user))
 
-        alert("signed up!")
-
-
+        navigate(-2)
     }
 
     return (
