@@ -1,5 +1,6 @@
-import React, { useState, FC } from "react"
+import React, { useState, useEffect, FC } from "react"
 import { Link } from "react-router-dom"
+import { v4 as uuidv4 } from "uuid"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import Grid from "@mui/material/Grid"
@@ -63,21 +64,27 @@ const SignUpButton = styled(Button)({
     marginBottom: "20px"
 })
 
+// const userLocalStorage = JSON.parse(localStorage.getItem("user") || "[]")
+
 interface SignUpProps {
     // showPassword: boolean
 }
 
 export const SignUp: FC<SignUpProps> = ({ }) => {
-    const [firstname, setFirstname] = useState("")
-    const [lastname, setLastname] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
     const [passwordLengthError, setPasswordLengthError] = useState("")
-    const [isInputValid, setIsInputValid] = useState(false)
+    const [isInputInvalid, setIsInputInvalid] = useState(false)
     const [passwordMatchError, setPasswordMatchError] = useState("")
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user") || "[]"))
 
+    useEffect(() => {
+        localStorage.setItem("user", JSON.stringify(user))
+    }, [user])
 
     const handleClickShowPassword = () => {
         setShowPassword(
@@ -88,8 +95,10 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value !== password) {
             setPasswordMatchError("Passwords don't match")
+            setIsInputInvalid(true)
         } else {
             setPasswordMatchError("")
+            setIsInputInvalid(false)
         }
         setConfirmPassword(e.target.value)
     }
@@ -97,13 +106,13 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     const handlePasswordLength = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length < 8) {
             setPasswordLengthError("Password should be at least 8 characters")
-            setIsInputValid(true)
+            setIsInputInvalid(true)
         } else if (e.target.value.length > 16) {
             setPasswordLengthError("Password should not exceed 16 characters")
-            setIsInputValid(true)
+            setIsInputInvalid(true)
         } else {
             setPasswordLengthError("")
-            setIsInputValid(false)
+            setIsInputInvalid(false)
         }
         setPassword(e.target.value)
     }
@@ -113,7 +122,24 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        alert("signed in!")
+        if (!email.includes("@")) {
+            alert("Please enter a valid email")
+        }
+        let newUser = [...user]
+
+        newUser.push({
+            id: uuidv4(),
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+        })
+
+        setUser(newUser)
+
+        localStorage.setItem("user", JSON.stringify(user))
+
+        alert("signed up!")
 
 
     }
@@ -143,8 +169,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 label="Firstname"
                                 name="firstName"
                                 type="text"
-                                value={firstname}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setFirstname(e.target.value) }}
+                                value={firstName}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setFirstName(e.target.value) }}
                                 required />
                         </NameForm>
                         <NameForm variant="outlined">
@@ -153,8 +179,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 label="Lastname"
                                 name="lastName"
                                 type="text"
-                                value={lastname}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setLastname(e.target.value) }}
+                                value={lastName}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setLastName(e.target.value) }}
                                 required />
                         </NameForm>
                         <StyledForm variant="outlined">
@@ -177,7 +203,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 onChange={handlePasswordLength}
                                 // helperText={password.length < 8 ? "Password should be at least 8 characters" : (password.length > 16 ? "Password should not exceed 16 characters" : null)}
                                 // error={password.length < 8 || password.length > 16}
-                                error={isInputValid}
+                                error={isInputInvalid}
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
@@ -199,7 +225,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 type={showPassword ? "text" : "password"}
                                 value={confirmPassword}
                                 onChange={handleConfirmPassword}
-                                error={password !== confirmPassword}
+                                error={isInputInvalid}
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
