@@ -28,8 +28,8 @@ const StyledCartIcon = styled(ShoppingCartIcon)({
 
 })
 
-function Header() {
-    const [cart, setCart] = useState([])
+function Header({ cartLength }) {
+    // const [cart, setCart] = useState([])
 
     return (
         <div>
@@ -49,7 +49,7 @@ function Header() {
                         <Link to="/login" className={classes.headerLink}><StyledAccountIcon /></Link>
                         <Link to="/cart" className={classes.headerLink}>
                             <StyledCartIcon />
-                            <span className={classes.cartLength}>({cart.length})</span>
+                            <span className={classes.cartLength}></span>
                         </Link>
                     </div>
                 </HeaderToolbar>

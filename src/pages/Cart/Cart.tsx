@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { useState, useEffect, FC } from "react"
 import { Link } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
@@ -7,7 +7,7 @@ import classes from "./Cart.module.css"
 
 const HeaderToolbar = styled(Toolbar)({
     justifyContent: "space-between",
-    width: "100%"
+    maxWidth: "100%"
 })
 
 interface CartProps {
@@ -15,6 +15,12 @@ interface CartProps {
 }
 
 export const Cart: FC<CartProps> = ({ }) => {
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart])
+
     return (
         <div className={classes.cartPage}>
             <AppBar
@@ -30,6 +36,12 @@ export const Cart: FC<CartProps> = ({ }) => {
                     </div>
                 </HeaderToolbar>
             </AppBar>
+            {cart.map((product: any) => {
+                return <h1 key={product.id}>
+                    {product.title}
+                    {product.author}
+                </h1>
+            })}
         </div>
     )
 }

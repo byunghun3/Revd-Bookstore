@@ -4,3 +4,14 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.bookCover {
+    height: auto;
+    width: 30vw;
+    margin: 50px;
+}
+
+.bookStock {
+    margin: 5px 0 0 -15px;
+    color: red;
+}

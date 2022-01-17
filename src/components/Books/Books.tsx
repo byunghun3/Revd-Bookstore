@@ -1,6 +1,7 @@
-import React, { useState, FC } from "react"
+import React, { useState, useEffect, FC } from "react"
 // import {BookInfoModal} from '../BookInfoModal/BookInfoModal';
 import { Link } from "react-router-dom"
+import { v4 as uuidv4 } from "uuid"
 import { Card, Modal } from "@mui/material"
 import ChromeReaderModeOutlinedIcon from "@mui/icons-material/ChromeReaderModeOutlined"
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined"
@@ -55,6 +56,11 @@ type BooksProps = {
 
 export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, status }) => {
     const [showDetails, setShowDetails] = useState(false)
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart])
 
     const handleMouseOver = () => {
         setShowDetails(true)
@@ -64,6 +70,22 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
         setShowDetails(false)
     }
 
+    const handleAddToCart = () => {
+        let newCart = [...cart]
+
+        newCart.push({
+            id: uuidv4(),
+            title: title,
+            author: author,
+            image: image
+
+        })
+
+        setCart(newCart)
+
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }
+
     // const openModal = () => {
     //     setInfoModal(true)
     // }
@@ -71,42 +93,44 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
     return (
         <div className={classes.book}>
             <BookCard onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
-                {showDetails &&
-                    <span className={classes.bookAction}>
-                        <div className={classes.iconBackground}>
-                            <Link to={`/browse/${id}`}>
-                                <Info />
-                            </Link>
-                        </div>
-                        <div className={classes.iconBackground}>
-                            <Cart />
-                        </div>
-                    </span>}
-                <img className={classes.bookCover} src={image} alt="" />
-                {status === "new" ? <div className={classes.bookRibbon}>New!</div> : null}
-                <h2 className={classes.bookTitle}>{title}</h2>
-                <h4 className={classes.bookAuthor}>
-                    <span className={classes.bookAuthorBy}>
-                        by&nbsp;
-                    </span>
-                    <span className={classes.bookAuthorName}>
-                        {author}
-                    </span>
-                </h4>
-                <h4 className={classes.bookType}>
-                    {type === "EBOOK" ? <ChromeReaderModeOutlinedIcon className={classes.bookTypeIcon} /> :
-                        type === "AUDIOBOOK" ? <HeadphonesOutlinedIcon className={classes.bookTypeIcon} /> :
-                            <MenuBookOutlinedIcon className={classes.bookTypeIcon} />}&nbsp;
-                    <span className={classes.bookTypeWord}>{type}</span></h4>
-                <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
-                <h3 className={classes.bookPrice}>${price}</h3>
+                <form onSubmit={handleAddToCart}>
+                    {showDetails &&
+                        <span className={classes.bookAction}>
+                            <div className={classes.iconBackground}>
+                                <Link to={`/browse/${id}`}>
+                                    <Info />
+                                </Link>
+                            </div>
+                            <button className={classes.iconBackground} type="submit">
+                                <Cart />
+                            </button>
+                        </span>}
+                    <img className={classes.bookCover} src={image} alt="" />
+                    {status === "new" ? <div className={classes.bookRibbon}>New!</div> : null}
+                    <h2 className={classes.bookTitle}>{title}</h2>
+                    <h4 className={classes.bookAuthor}>
+                        <span className={classes.bookAuthorBy}>
+                            by&nbsp;
+                        </span>
+                        <span className={classes.bookAuthorName}>
+                            {author}
+                        </span>
+                    </h4>
+                    <h4 className={classes.bookType}>
+                        {type === "EBOOK" ? <ChromeReaderModeOutlinedIcon className={classes.bookTypeIcon} /> :
+                            type === "AUDIOBOOK" ? <HeadphonesOutlinedIcon className={classes.bookTypeIcon} /> :
+                                <MenuBookOutlinedIcon className={classes.bookTypeIcon} />}&nbsp;
+                        <span className={classes.bookTypeWord}>{type}</span></h4>
+                    <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
+                    <h3 className={classes.bookPrice}>${price}</h3>
+                </form>
             </BookCard>
             <h4 className={classes.bookStock}>{stock < 4 ? <div>Only {stock} books left in stock</div> : null}</h4>
             {/* {infoModal &&  */}
             {/* <Modal open={infoModal}><div>hi hi</div></Modal> */}
             {/* } */}
             {/* {infoModal && <BookInfoModal open={infoModal}/>} */}
-        </div>
+        </div >
     )
 }
 
