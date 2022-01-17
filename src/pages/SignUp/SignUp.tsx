@@ -20,7 +20,7 @@ import { Card, TextField } from "@mui/material"
 
 const HeaderToolbar = styled(Toolbar)({
     justifyContent: "space-between",
-    width: "100%"
+    maxWidth: "100%"
 })
 
 const FormGrid = styled(Grid)({

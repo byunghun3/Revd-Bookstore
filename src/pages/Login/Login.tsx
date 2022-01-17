@@ -19,7 +19,7 @@ import { Card } from "@mui/material"
 
 const HeaderToolbar = styled(Toolbar)({
     justifyContent: "space-between",
-    width: "100%"
+    maxWidth: "100%"
 })
 
 const FormGrid = styled(Grid)({
@@ -79,7 +79,7 @@ export const Login: FC<LoginProps> = ({ }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        
+
         alert("signed in!")
 
         navigate(-1)
