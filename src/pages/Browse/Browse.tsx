@@ -10,7 +10,8 @@ import classes from "./Browse.module.css"
 
 const ContainerGrid = styled(Grid)({
     padding: "0 50px 0 50px",
-    zIndex: 0
+    zIndex: 0,
+    justifyContent: "center",
 })
 
 interface BrowseProps {
@@ -26,7 +27,7 @@ export const Browse: FC<BrowseProps> = () => {
     const typeFilter = filteredBooks.filter(book =>
         book.type === filterValue)
         .map(book =>
-            <Grid key={book.id} item xs={12} sm={6} md={4}>
+            <Grid key={book.id} item sm={8} md={5} lg={4}>
                 <Books
                     id={book.id}
                     title={book.title}
@@ -43,7 +44,7 @@ export const Browse: FC<BrowseProps> = () => {
 
     const genreFilter = filteredBooks.filter(book =>
         book.genre === filterValue).map(book => {
-            return <Grid key={book.id} item xs={12} sm={6} md={4}>
+            return <Grid key={book.id} item sm={8} md={5} lg={4}>
                 <Books
                     id={book.id}
                     title={book.title}
@@ -59,7 +60,7 @@ export const Browse: FC<BrowseProps> = () => {
         })
 
     const bookList = filteredBooks.map(book => {
-        return <Grid key={book.id} item xs={12} sm={6} md={4}>
+        return <Grid key={book.id} item sm={8} md={5} lg={4}>
             <Books
                 id={book.id}
                 title={book.title}

@@ -102,7 +102,9 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                                 </Link>
                             </div>
                             <button className={classes.iconBackground} type="submit">
-                                <Cart />
+                                <Link to="/cart">
+                                    <Cart />
+                                </Link>
                             </button>
                         </span>}
                     <img className={classes.bookCover} src={image} alt="" />
