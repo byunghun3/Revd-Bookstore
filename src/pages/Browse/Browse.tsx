@@ -1,12 +1,12 @@
 import React, { FC, useState, useEffect } from "react"
 import { Container } from "@mui/material"
 import { Grid } from "@mui/material"
-import "./Browse.css"
 import { Filter } from "../../components/Filter/Filter"
 import { Books } from "../../components/Books/Books"
 import { Data } from "../../Data"
 import { styled } from "@mui/system"
 import styles from "styled-components"
+import classes from "./Browse.module.css"
 
 const ContainerGrid = styled(Grid)({
     padding: "0 50px 0 50px"
@@ -77,19 +77,24 @@ export const Browse: FC<BrowseProps> = () => {
         setShowBookList(false)
     }
 
+    const handleClearFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
+        setFilterValue("")
+        setShowBookList(true)
+    }
+
     return (
-        <div>
+        <div className={classes.browsePage}>
             <Container>
-                <Filter filter={filterValue} onChange={handleChange} />
-                <select name="sort"
-                // value={props.sort} onChange={props.sortBooks}
+                <Filter filter={filterValue} onChange={handleChange} onClick={handleClearFilter} />
+                {/* <select name="sort"
+                value={props.sort} onChange={props.sortBooks}
                 >
                     <option value="">Sort</option>
                     <option value="highest-price">Highest price</option>
                     <option value="lowest-price">Lowest price</option>
                     <option value="highest-rating">Lowest rating</option>
                     <option value="lowest-rating">Lowest rating</option>
-                </select>
+                </select> */}
                 <ContainerGrid container spacing={15}>
                     {showBookList && bookList}
                     {typeFilter}
