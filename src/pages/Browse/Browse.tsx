@@ -9,8 +9,9 @@ import styles from "styled-components"
 import classes from "./Browse.module.css"
 
 const ContainerGrid = styled(Grid)({
-    padding: "0 50px 0 50px",
-    zIndex: 0,
+    padding: "50px 50px 0 50px",
+    // marginTop: "10px",
+    // zIndex: -1,
     justifyContent: "center",
 })
 
@@ -91,6 +92,7 @@ export const Browse: FC<BrowseProps> = () => {
         <div className={classes.browsePage}>
             <Container>
                 <Filter filter={filterValue} onChange={handleChange} onClick={handleClearFilter} showClearButton={showClearButton} />
+                {/* <button>placeholder</button> */}
                 {/* <select name="sort"
                 value={props.sort} onChange={props.sortBooks}
                 >

@@ -1,8 +1,9 @@
 .filter {
-    margin-bottom: 10px;
+    position: absolute;
+    right: 0.5%;
+    margin-top: 10px;
 }
 
 .select {
-    border-radius: 30%;
-    z-index: 1;
+    border-radius: 10%;
 }
