@@ -32,7 +32,6 @@ function BookList() {
 
     return (
         <ContainerGrid container className={classes.gridContainer} spacing={15}>
-            <Filter />
             {bookList}
         </ContainerGrid>
     )
