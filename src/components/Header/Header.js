@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import { Link, NavLink } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
@@ -28,8 +28,12 @@ const StyledCartIcon = styled(ShoppingCartIcon)({
 
 })
 
-function Header({ cartLength }) {
-    // const [cart, setCart] = useState([])
+function Header() {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]")
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart])
 
     return (
         <div>
@@ -49,7 +53,7 @@ function Header({ cartLength }) {
                         <Link to="/login" className={classes.headerLink}><StyledAccountIcon /></Link>
                         <Link to="/cart" className={classes.headerLink}>
                             <StyledCartIcon />
-                            <span className={classes.cartLength}></span>
+                            <span className={classes.cartLength}>({cart.length})</span>
                         </Link>
                     </div>
                 </HeaderToolbar>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from "react"
+import React, { useEffect, FC } from "react"
 import { Link } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
@@ -15,7 +15,7 @@ interface CartProps {
 }
 
 export const Cart: FC<CartProps> = ({ }) => {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]")
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
