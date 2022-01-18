@@ -9,7 +9,8 @@ import styles from "styled-components"
 import classes from "./Browse.module.css"
 
 const ContainerGrid = styled(Grid)({
-    padding: "0 50px 0 50px"
+    padding: "0 50px 0 50px",
+    zIndex: 0
 })
 
 interface BrowseProps {
@@ -19,6 +20,7 @@ interface BrowseProps {
 export const Browse: FC<BrowseProps> = () => {
     const [filterValue, setFilterValue] = useState("")
     const [showBookList, setShowBookList] = useState(true)
+    const [showClearButton, setShowClearButton] = useState(false)
     const filteredBooks = Data
 
     const typeFilter = filteredBooks.filter(book =>
@@ -75,17 +77,19 @@ export const Browse: FC<BrowseProps> = () => {
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setFilterValue(e.currentTarget.value)
         setShowBookList(false)
+        setShowClearButton(true)
     }
 
     const handleClearFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
         setFilterValue("")
         setShowBookList(true)
+        setShowClearButton(false)
     }
 
     return (
         <div className={classes.browsePage}>
             <Container>
-                <Filter filter={filterValue} onChange={handleChange} onClick={handleClearFilter} />
+                <Filter filter={filterValue} onChange={handleChange} onClick={handleClearFilter} showClearButton={showClearButton} />
                 {/* <select name="sort"
                 value={props.sort} onChange={props.sortBooks}
                 >

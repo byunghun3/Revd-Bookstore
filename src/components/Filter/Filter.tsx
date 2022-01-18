@@ -8,9 +8,10 @@ interface FilterProps {
     filter: string
     onChange: React.ChangeEventHandler<HTMLSelectElement>
     onClick: React.MouseEventHandler<HTMLButtonElement>
+    showClearButton: boolean
 }
 
-export const Filter: FC<FilterProps> = ({ filter, onChange, onClick }) => {
+export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearButton }) => {
     return (
         <div className={classes.filter}>
             {/* <FormControl>
@@ -23,14 +24,13 @@ export const Filter: FC<FilterProps> = ({ filter, onChange, onClick }) => {
                     <MenuItem value="Fiction">Fiction</MenuItem> */}
             <select className={classes.select} name="filter" value={filter} onChange={onChange}>
                 <option value="" disabled selected>Filter</option>
-                <option value="ALL">All books</option>
                 <option value="EBOOK">Ebook</option>
                 <option value="AUDIOBOOK">Audiobook</option>
                 <option value="HARD COPY">Hard copy</option>
                 <option value="Nonfiction">Nonfiction</option>
                 <option value="Fiction">Fiction</option>
             </select>
-            <Button onClick={onClick}>Clear Filter</Button>
+            {showClearButton && <Button onClick={onClick}>Clear Filter</Button>}
             {/* </Select> */}
             {/* </FormControl > */}
         </div >
