@@ -1,14 +1,12 @@
 import React, { useState, useEffect, FC } from "react"
-// import {BookInfoModal} from '../BookInfoModal/BookInfoModal';
 import { Link } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
-import { Card, Modal } from "@mui/material"
+import { Card } from "@mui/material"
 import ChromeReaderModeOutlinedIcon from "@mui/icons-material/ChromeReaderModeOutlined"
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined"
 import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined"
 import SearchIcon from "@mui/icons-material/Search"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-// import DetailsIcon from '@mui/icons-material/Details';
 import { styled } from "@mui/system"
 import BookRating from "../BookRating/BookRating"
 import classes from "./Books.module.css"
@@ -51,7 +49,6 @@ type BooksProps = {
     price: number
     stock: number
     status: string
-    // onClick: FC;
 }
 
 export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, status }) => {
@@ -86,10 +83,6 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
         localStorage.setItem("cart", JSON.stringify(cart))
     }
 
-    // const openModal = () => {
-    //     setInfoModal(true)
-    // }
-
     return (
         <div className={classes.book}>
             <BookCard onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
@@ -102,9 +95,7 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                                 </Link>
                             </div>
                             <button className={classes.iconBackground} type="submit">
-                                <Link to="/cart">
-                                    <Cart />
-                                </Link>
+                                <Cart />
                             </button>
                         </span>}
                     <img className={classes.bookCover} src={image} alt="" />
@@ -128,13 +119,6 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                 </form>
             </BookCard>
             <h4 className={classes.bookStock}>{stock < 4 ? <div>Only {stock} books left in stock</div> : null}</h4>
-            {/* {infoModal &&  */}
-            {/* <Modal open={infoModal}><div>hi hi</div></Modal> */}
-            {/* } */}
-            {/* {infoModal && <BookInfoModal open={infoModal}/>} */}
         </div >
     )
 }
-
-
-// export default Books;

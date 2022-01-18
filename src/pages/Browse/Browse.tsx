@@ -9,7 +9,7 @@ import styles from "styled-components"
 import classes from "./Browse.module.css"
 
 const ContainerGrid = styled(Grid)({
-    padding: "50px 50px 0 50px",
+    padding: "70px 50px 70px 50px",
     // marginTop: "10px",
     // zIndex: -1,
     justifyContent: "center",
