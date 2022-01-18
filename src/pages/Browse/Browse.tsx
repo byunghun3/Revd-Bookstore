@@ -4,7 +4,6 @@ import { Grid } from "@mui/material"
 import "./Browse.css"
 import { Filter } from "../../components/Filter/Filter"
 import { Books } from "../../components/Books/Books"
-// import BookList from "../../components/BookList/BookList"
 import { Data } from "../../Data"
 import { styled } from "@mui/system"
 import styles from "styled-components"
@@ -95,7 +94,6 @@ export const Browse: FC<BrowseProps> = () => {
                     {showBookList && bookList}
                     {typeFilter}
                     {genreFilter}
-                    {/* <BookList /> */}
                 </ContainerGrid>
             </Container>
         </div>
