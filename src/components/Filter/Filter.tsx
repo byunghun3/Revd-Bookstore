@@ -1,8 +1,13 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
 import React, { FC } from "react"
-
+import { styled } from "@mui/system"
 import classes from "./Filter.module.css"
 
+const ClearButton = styled(Button)({
+    position: "relative",
+    margin: "0 5px 0 0",
+    display: "flex"
+})
 
 interface FilterProps {
     filter: string
@@ -21,8 +26,10 @@ export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearBu
                     <MenuItem value="AUDIOBOOK">Audiobook</MenuItem>
                     <MenuItem value="HARD COPY">Hard copy</MenuItem>
                     <MenuItem value="Nonfiction">Nonfiction</MenuItem>
-                    <MenuItem value="Fiction">Fiction</MenuItem> */}
-            {showClearButton && <Button onClick={onClick}>Clear Filter</Button>}
+                    <MenuItem value="Fiction">Fiction</MenuItem>
+            </Select>
+            </FormControl > */}
+            {showClearButton && <ClearButton onClick={onClick}>Clear Filter</ClearButton>}
             <select className={classes.select} name="filter" value={filter} onChange={onChange}>
                 <option value="" disabled selected>Filter</option>
                 <option value="EBOOK">Ebook</option>
@@ -31,8 +38,7 @@ export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearBu
                 <option value="Nonfiction">Nonfiction</option>
                 <option value="Fiction">Fiction</option>
             </select>
-            {/* </Select> */}
-            {/* </FormControl > */}
+
         </div >
     )
 }
