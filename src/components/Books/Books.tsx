@@ -74,13 +74,14 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
             id: uuidv4(),
             title: title,
             author: author,
-            image: image
+            image: image,
+            price: price
 
         })
 
         setCart(newCart)
 
-        localStorage.setItem("cart", JSON.stringify(cart))
+        localStorage.setItem("cart", JSON.stringify(newCart))
     }
 
     return (

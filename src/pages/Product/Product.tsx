@@ -51,15 +51,16 @@ const Product: React.FC<Props> = ({ }) => {
 
     newCart.push({
       id: uuidv4(),
-      title: book[id-1].title,
-      author: book[id-1].author,
-      image: book[id-1].image
+      title: book[id - 1].title,
+      author: book[id - 1].author,
+      image: book[id - 1].image,
+      price: book[id - 1].price
 
     })
 
     setCart(newCart)
 
-    localStorage.setItem("cart", JSON.stringify(cart))
+    localStorage.setItem("cart", JSON.stringify(newCart))
   }
 
   return (
