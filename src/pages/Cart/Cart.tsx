@@ -2,6 +2,7 @@ import React, { useState, useEffect, FC } from "react"
 import { Link } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
+import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import { styled } from "@mui/system"
 import classes from "./Cart.module.css"
@@ -9,6 +10,21 @@ import classes from "./Cart.module.css"
 const HeaderToolbar = styled(Toolbar)({
     justifyContent: "space-between",
     maxWidth: "100%"
+})
+
+const ContainerGrid = styled(Grid)({
+    display: "flex",
+    padding: "0 50px 0 50px"
+})
+
+const ItemGrid = styled(Grid)({
+    flex: "1",
+    display: "flex",
+    // width: "40%",
+    margin: "0 50px 0 50px",
+    border: "black solid",
+    justifyContent: "space-between",
+    alignItems: "center"
 })
 
 interface CartProps {
@@ -24,11 +40,15 @@ export const Cart: FC<CartProps> = ({ }) => {
 
     // e: React.MouseEvent < HTMLButtonElement >
 
-    const handleRemoveFromCart = (id: any) => {
+    const handleRemoveFromCart = (id: number) => {
         let newCart = cart.filter((el: any) => el.id !== id)
         setCart(newCart)
         localStorage.setItem("cart", JSON.stringify(newCart))
     }
+
+    const totalPrice = cart.reduce((total: number, book: any) => {
+        return total + book.price
+    }, 0)
 
     return (
         <div className={classes.cartPage}>
@@ -45,15 +65,25 @@ export const Cart: FC<CartProps> = ({ }) => {
                     </div>
                 </HeaderToolbar>
             </AppBar>
-            {cart.map((product: any) => {
-                return <h1 key={product.id} id={product.id}>
-                    <img src={product.image} alt="" />
-                    {product.title}
-                    {product.author}
-                    {product.price}
-                    <Button onClick={() => handleRemoveFromCart(product.id)}>Remove</Button>
-                </h1>
+            {/* <ContainerGrid container spacing={5}> */}
+            {/* <Grid key={book.id} item sm={8} md={5} lg={4}> */}
+            {/* <ItemGrid item key={book.id} xs={12} sm={6} md={6}> */}
+
+            {cart.map((book: any) => {
+                return <ItemGrid item key={book.id} id={book.id}>
+                    {/* <div id={book.id}> */}
+                    <img className={classes.bookCover} src={book.image} alt="" />
+                    {book.title}
+                    {book.author}
+                    {book.price}
+                    {book.quantity}
+                    <Button onClick={() => handleRemoveFromCart(book.id)}>Remove</Button>
+                    {/* </div> */}
+                </ItemGrid>
+                /* </Grid> */
             })}
+            {/* </ContainerGrid> */}
+            ${totalPrice}
         </div>
     )
 }

@@ -1,8 +1,9 @@
 .cartPage {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .title {
@@ -15,4 +16,10 @@
 
 .homeLink {
     text-decoration: none;
+}
+
+.bookCover {
+    /* display: flex; */
+    /* height: 30%; */
+    width: 15%;
 }
