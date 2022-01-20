@@ -49,6 +49,7 @@ type BooksProps = {
     price: number
     stock: number
     status: string
+    // onSubmit: any
 }
 
 export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, status }) => {
@@ -70,15 +71,22 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
     const handleAddToCart = () => {
         let newCart = [...cart]
 
-        newCart.push({
-            id: uuidv4(),
-            title: title,
-            author: author,
-            image: image,
-            price: price
-
+        let duplicateInCart = newCart.find((el: any) => {
+            return el.id === id
         })
 
+        if (duplicateInCart) {
+            duplicateInCart.quantity++
+        } else {
+            newCart.push({
+                id: id,
+                title: title,
+                author: author,
+                image: image,
+                price: price,
+                quantity: 1
+            })
+        }
         setCart(newCart)
 
         localStorage.setItem("cart", JSON.stringify(newCart))

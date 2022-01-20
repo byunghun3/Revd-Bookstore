@@ -39,7 +39,7 @@ interface Props {
 const Product: React.FC<Props> = ({ }) => {
   // const bookTitle = match.params.bookTitle
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
-  const book = Data
+  const books = Data
   const { id }: any = useParams()
 
   useEffect(() => {
@@ -49,15 +49,22 @@ const Product: React.FC<Props> = ({ }) => {
   const handleAddToCart = () => {
     let newCart = [...cart]
 
-    newCart.push({
-      id: uuidv4(),
-      title: book[id - 1].title,
-      author: book[id - 1].author,
-      image: book[id - 1].image,
-      price: book[id - 1].price
-
+    let duplicateInCart = newCart.find((el: any) => {
+      return el.id === books[id - 1].id
     })
 
+    if (duplicateInCart) {
+      duplicateInCart.quantity++
+    } else {
+      newCart.push({
+        id: books[id - 1].id,
+        title: books[id - 1].title,
+        author: books[id - 1].author,
+        image: books[id - 1].image,
+        price: books[id - 1].price,
+        quantity: 1
+      })
+    }
     setCart(newCart)
 
     localStorage.setItem("cart", JSON.stringify(newCart))
@@ -69,7 +76,7 @@ const Product: React.FC<Props> = ({ }) => {
         <ItemGrid item xs={12} sm={6} md={6}>
 
           {/* <BookCard> */}
-          <img className={classes.bookCover} src={book[id - 1].image} alt="" />
+          <img className={classes.bookCover} src={books[id - 1].image} alt="" />
           {/* </BookCard> */}
 
         </ItemGrid>
@@ -77,19 +84,19 @@ const Product: React.FC<Props> = ({ }) => {
 
           <BookCard>
             <form onSubmit={handleAddToCart}>
-              {book[id - 1].title}
+              {books[id - 1].title}
               <span className={classes.bookAuthorBy}>
                 by&nbsp;
               </span>
               <span className={classes.bookAuthorName}>
-                {book[id - 1].author}
+                {books[id - 1].author}
               </span>
               <h4 className={classes.bookType}>
-                <span className={classes.bookTypeWord}>{book[id - 1].type}</span></h4>
-              <h4 className={classes.bookRating}><BookRating rating={book[id - 1].rating} /></h4>
-              <h3 className={classes.bookPrice}>${book[id - 1].price}</h3>
+                <span className={classes.bookTypeWord}>{books[id - 1].type}</span></h4>
+              <h4 className={classes.bookRating}><BookRating rating={books[id - 1].rating} /></h4>
+              <h3 className={classes.bookPrice}>${books[id - 1].price}</h3>
               <Button type="submit">Add to Cart</Button>
-              <h4 className={classes.bookStock}>{book[id - 1].stock < 4 ? <div>Only {book[id - 1].stock} books left in stock</div> : null}</h4>
+              <h4 className={classes.bookStock}>{books[id - 1].stock < 4 ? <div>Only {books[id - 1].stock} books left in stock</div> : null}</h4>
             </form>
           </BookCard>
         </ItemGrid>
