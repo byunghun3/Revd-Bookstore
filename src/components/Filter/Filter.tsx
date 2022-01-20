@@ -31,7 +31,7 @@ export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearBu
             </FormControl > */}
             {showClearButton && <ClearButton onClick={onClick}>Clear Filter</ClearButton>}
             <select className={classes.select} name="filter" value={filter} onChange={onChange}>
-                <option value="" disabled selected>Filter</option>
+                <option value="" disabled>Filter</option>
                 <option value="EBOOK">Ebook</option>
                 <option value="AUDIOBOOK">Audiobook</option>
                 <option value="HARD COPY">Hard copy</option>

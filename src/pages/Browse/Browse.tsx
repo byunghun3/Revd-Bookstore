@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useState } from "react"
 import { Container } from "@mui/material"
 import { Grid } from "@mui/material"
 import { Filter } from "../../components/Filter/Filter"
@@ -23,10 +23,22 @@ export const Browse: FC<BrowseProps> = () => {
     const [filterValue, setFilterValue] = useState("")
     const [showBookList, setShowBookList] = useState(true)
     const [showClearButton, setShowClearButton] = useState(false)
-    const filteredBooks = Data
+    const books = Data
 
-    const typeFilter = filteredBooks.filter(book =>
-        book.type === filterValue)
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setFilterValue(e.currentTarget.value)
+        setShowBookList(false)
+        setShowClearButton(true)
+    }
+
+    const handleClearFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
+        setFilterValue("")
+        setShowBookList(true)
+        setShowClearButton(false)
+    }
+
+    const typeFilter = books.filter(el =>
+        el.type === filterValue)
         .map(book =>
             <Grid key={book.id} item sm={8} md={5} lg={4}>
                 <Books
@@ -43,8 +55,8 @@ export const Browse: FC<BrowseProps> = () => {
             </Grid>
         )
 
-    const genreFilter = filteredBooks.filter(book =>
-        book.genre === filterValue).map(book => {
+    const genreFilter = books.filter(el =>
+        el.genre === filterValue).map(book => {
             return <Grid key={book.id} item sm={8} md={5} lg={4}>
                 <Books
                     id={book.id}
@@ -60,7 +72,7 @@ export const Browse: FC<BrowseProps> = () => {
             </Grid>
         })
 
-    const bookList = filteredBooks.map(book => {
+    const bookList = books.map(book => {
         return <Grid key={book.id} item sm={8} md={5} lg={4}>
             <Books
                 id={book.id}
@@ -75,18 +87,6 @@ export const Browse: FC<BrowseProps> = () => {
             />
         </Grid>
     })
-
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setFilterValue(e.currentTarget.value)
-        setShowBookList(false)
-        setShowClearButton(true)
-    }
-
-    const handleClearFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
-        setFilterValue("")
-        setShowBookList(true)
-        setShowClearButton(false)
-    }
 
     return (
         <div className={classes.browsePage}>

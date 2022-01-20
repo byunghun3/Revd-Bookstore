@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FC } from "react"
 import { Link } from "react-router-dom"
+import { v4 as uuidv4 } from "uuid"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import Grid from "@mui/material/Grid"
@@ -48,7 +49,7 @@ export const Cart: FC<CartProps> = ({ }) => {
 
     const totalPrice = cart.reduce((total: number, book: any) => {
         return total + book.price
-    }, 0)
+    }, 0).toFixed(2)
 
     return (
         <div className={classes.cartPage}>
@@ -70,13 +71,13 @@ export const Cart: FC<CartProps> = ({ }) => {
             {/* <ItemGrid item key={book.id} xs={12} sm={6} md={6}> */}
 
             {cart.map((book: any) => {
-                return <ItemGrid item key={book.id} id={book.id}>
+                return <ItemGrid item key={uuidv4()} id={book.id}>
                     {/* <div id={book.id}> */}
                     <img className={classes.bookCover} src={book.image} alt="" />
                     {book.title}
                     {book.author}
                     {book.price}
-                    {book.quantity}
+                    qty {book.quantity}
                     <Button onClick={() => handleRemoveFromCart(book.id)}>Remove</Button>
                     {/* </div> */}
                 </ItemGrid>
