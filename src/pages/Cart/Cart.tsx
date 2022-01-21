@@ -39,16 +39,14 @@ export const Cart: FC<CartProps> = ({ }) => {
     //     localStorage.setItem("cart", JSON.stringify(cart))
     // }, [cart])
 
-    // e: React.MouseEvent < HTMLButtonElement >
-
     const handleRemoveFromCart = (id: number) => {
         let newCart = cart.filter((el: any) => el.id !== id)
         setCart(newCart)
         localStorage.setItem("cart", JSON.stringify(newCart))
     }
 
-    const totalPrice = cart.reduce((total: number, book: any) => {
-        return total + book.price
+    const totalPrice = cart.reduce((total: number, el: any) => {
+        return total + (el.price * el.quantity)
     }, 0).toFixed(2)
 
     return (
@@ -69,22 +67,26 @@ export const Cart: FC<CartProps> = ({ }) => {
             {/* <ContainerGrid container spacing={5}> */}
             {/* <Grid key={book.id} item sm={8} md={5} lg={4}> */}
             {/* <ItemGrid item key={book.id} xs={12} sm={6} md={6}> */}
-
-            {cart.map((book: any) => {
-                return <ItemGrid item key={uuidv4()} id={book.id}>
-                    {/* <div id={book.id}> */}
-                    <img className={classes.bookCover} src={book.image} alt="" />
-                    {book.title}
-                    {book.author}
-                    {book.price}
-                    qty {book.quantity}
-                    <Button onClick={() => handleRemoveFromCart(book.id)}>Remove</Button>
-                    {/* </div> */}
-                </ItemGrid>
-                /* </Grid> */
-            })}
-            {/* </ContainerGrid> */}
-            ${totalPrice}
+            <form>
+                {cart.map((book: any) => {
+                    return <ItemGrid item key={uuidv4()} id={book.id}>
+                        {/* <div id={book.id}> */}
+                        <img className={classes.bookCover} src={book.image} alt="" />
+                        {book.title}
+                        {book.author}
+                        ${book.price}
+                        qty {book.quantity}
+                        <Button onClick={() => handleRemoveFromCart(book.id)}>Remove</Button>
+                        {/* </div> */}
+                    </ItemGrid>
+                    /* </Grid> */
+                })}
+                {/* </ContainerGrid> */}
+                ${totalPrice}
+                <Link to="/checkout">
+                    <Button type="submit">Check Out</Button>
+                </Link>
+            </form>
         </div>
     )
 }
