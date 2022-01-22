@@ -1,17 +1,10 @@
 import React, { useState, useEffect, FC } from "react"
 import { Link } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
-import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
 import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import { styled } from "@mui/system"
 import classes from "./Cart.module.css"
-
-const HeaderToolbar = styled(Toolbar)({
-    justifyContent: "space-between",
-    maxWidth: "100%"
-})
 
 const ContainerGrid = styled(Grid)({
     display: "flex",
@@ -51,19 +44,6 @@ export const Cart: FC<CartProps> = ({ }) => {
 
     return (
         <div className={classes.cartPage}>
-            <AppBar
-                color="inherit"
-                elevation={0}
-                position="relative"
-            >
-                <HeaderToolbar>
-                    <div>
-                        <Link to="/" className={classes.homeLink}>
-                            <span className={classes.title}>Revd Bookstore</span>
-                        </Link>
-                    </div>
-                </HeaderToolbar>
-            </AppBar>
             {/* <ContainerGrid container spacing={5}> */}
             {/* <Grid key={book.id} item sm={8} md={5} lg={4}> */}
             {/* <ItemGrid item key={book.id} xs={12} sm={6} md={6}> */}

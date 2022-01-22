@@ -1,7 +1,5 @@
 import React, { useState, FC } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
 import Grid from "@mui/material/Grid"
 import InputLabel from "@mui/material/InputLabel"
 import FormControl from "@mui/material/FormControl"
@@ -16,11 +14,6 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff"
 import { styled } from "@mui/system"
 import classes from "./Login.module.css"
 import { Card } from "@mui/material"
-
-const HeaderToolbar = styled(Toolbar)({
-    justifyContent: "space-between",
-    maxWidth: "100%"
-})
 
 const FormGrid = styled(Grid)({
     justifyContent: "center",
@@ -86,19 +79,6 @@ export const Login: FC<LoginProps> = ({ }) => {
     }
     return (
         <div className={classes.loginPage}>
-            <AppBar
-                color="inherit"
-                elevation={0}
-                position="relative"
-            >
-                <HeaderToolbar>
-                    <div>
-                        <Link to="/" className={classes.homeLink}>
-                            <span className={classes.title}>Revd Bookstore</span>
-                        </Link>
-                    </div>
-                </HeaderToolbar>
-            </AppBar>
             <FormGrid>
                 <LoginCard>
                     <AccountCircleIcon />

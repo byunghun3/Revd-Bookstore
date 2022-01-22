@@ -11,8 +11,8 @@ import { Cart } from "../../pages/Cart/Cart"
 import { CheckOut } from "../../pages/CheckOut/CheckOut"
 import Product from "../../pages/Product/Product"
 import Header from "../Header/Header"
+import { HeaderTwo } from "../HeaderTwo/HeaderTwo"
 import { Footer } from "../Footer/Footer"
-
 
 function PageRoutes() {
     const location = useLocation()
@@ -23,6 +23,11 @@ function PageRoutes() {
                 location.pathname === "/signup" ||
                 location.pathname === "/checkout" ?
                 null : <Header />}
+            {location.pathname === "/login" ||
+                location.pathname === "/cart" ||
+                location.pathname === "/signup" ||
+                location.pathname === "/checkout" ?
+                <HeaderTwo /> : null}
             <Routes className="routes">
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />

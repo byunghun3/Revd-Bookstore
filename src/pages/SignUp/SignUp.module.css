@@ -5,18 +5,6 @@
     justify-content: space-between;
 }
 
-.title {
-    vertical-align: middle;
-    margin-left: 10px;
-    font-family: 'Bangers', 'Luxurious Roman';
-    font-size: 40px;
-    color: black;
-}
-
-.homeLink {
-    text-decoration: none;
-}
-
 .passwordError {
     position: relative;
     display: flex;
