@@ -21,7 +21,7 @@ export const CheckOut = (props: CheckOutProps) => {
                 <section>
                     <ShippingInfo />
                 </section>
-                <section>
+                <section className={classes.paymentInfo}>
                     <PaymentInfo />
                 </section>
                 <section>
