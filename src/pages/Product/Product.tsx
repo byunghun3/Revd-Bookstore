@@ -61,7 +61,9 @@ const Product: React.FC<Props> = ({ }) => {
         title: books[id - 1].title,
         author: books[id - 1].author,
         image: books[id - 1].image,
+        type: books[id - 1].type,
         price: books[id - 1].price,
+        stock: books[id - 1].stock,
         quantity: 1
       })
     }

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 import Cards from "react-credit-cards"
 import InputLabel from "@mui/material/InputLabel"
 import FormControl from "@mui/material/FormControl"
@@ -25,15 +25,23 @@ const FormInputLabel = styled(InputLabel)({
 })
 
 interface PaymentInfoProps {
-
+    name: string
+    number: string
+    expiry: string
+    cvc: string
+    // focus: string
+    onChangeName: React.ChangeEventHandler<HTMLInputElement>
+    onChangeNumber: React.ChangeEventHandler<HTMLInputElement>
+    onChangeExpiry: React.ChangeEventHandler<HTMLInputElement>
+    onChangeCvc: React.ChangeEventHandler<HTMLInputElement>
 }
 
-export const PaymentInfo = (props: PaymentInfoProps) => {
-    const [cvc, setCvc] = useState("")
-    const [expiry, setExpiry] = useState("")
+export const PaymentInfo: FC<PaymentInfoProps> = ({
+    name, number, expiry, cvc,
+    onChangeName, onChangeNumber, onChangeExpiry, onChangeCvc
+}) => {
     const [focus, setFocus] = useState("")
-    const [name, setName] = useState("")
-    const [number, setNumber] = useState("")
+
 
     return (
         <div>
@@ -51,7 +59,8 @@ export const PaymentInfo = (props: PaymentInfoProps) => {
                     name="number"
                     type="tel"
                     value={number}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setNumber(e.target.value) }}
+                    onChange={onChangeNumber}
+                    // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setNumber(e.target.value) }}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
                     required />
             </NameForm>
@@ -62,7 +71,7 @@ export const PaymentInfo = (props: PaymentInfoProps) => {
                     name="name"
                     type="text"
                     value={name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setName(e.target.value) }}
+                    onChange={onChangeName}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
                     required />
             </NameForm>
@@ -73,7 +82,7 @@ export const PaymentInfo = (props: PaymentInfoProps) => {
                     name="expiry"
                     type="text"
                     value={expiry}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setExpiry(e.target.value) }}
+                    onChange={onChangeExpiry}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
                     required />
             </NameForm>
@@ -84,7 +93,7 @@ export const PaymentInfo = (props: PaymentInfoProps) => {
                     name="cvc"
                     type="tel"
                     value={cvc}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCvc(e.target.value) }}
+                    onChange={onChangeCvc}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
                     required />
             </NameForm>

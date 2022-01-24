@@ -38,9 +38,9 @@ export const Cart: FC<CartProps> = ({ }) => {
         localStorage.setItem("cart", JSON.stringify(newCart))
     }
 
-    const totalPrice = cart.reduce((total: number, el: any) => {
+    const itemPrice = cart.reduce((total: number, el: any) => {
         return total + (el.price * el.quantity)
-    }, 0).toFixed(2)
+    }, 0)
 
     return (
         <div className={classes.cartPage}>
@@ -62,7 +62,7 @@ export const Cart: FC<CartProps> = ({ }) => {
                     /* </Grid> */
                 })}
                 {/* </ContainerGrid> */}
-                ${totalPrice}
+                ${itemPrice.toFixed(2)}
                 <Link to="/checkout">
                     <Button type="submit">Check Out</Button>
                 </Link>

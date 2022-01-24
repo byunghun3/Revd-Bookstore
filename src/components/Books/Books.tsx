@@ -45,7 +45,7 @@ type BooksProps = {
     author: string
     image: any
     rating: number
-    type?: string
+    type: string
     price: number
     stock: number
     status: string
@@ -83,7 +83,9 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                 title: title,
                 author: author,
                 image: image,
+                type: type,
                 price: price,
+                stock: stock,
                 quantity: 1
             })
         }

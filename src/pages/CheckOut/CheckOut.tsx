@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { Card } from "@mui/material"
@@ -14,18 +14,43 @@ interface CheckOutProps {
 }
 
 export const CheckOut = (props: CheckOutProps) => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]")
-    const [order, setOrder] = JSON.parse(localStorage.getItem("order") || "[]")
     const [streetAddress, setStreetAddress] = useState("")
     const [city, setCity] = useState("")
     const [stateCode, setStateCode] = useState("")
     const [zipCode, setZipCode] = useState("")
+    const [order, setOrder] = useState(JSON.parse(localStorage.getItem("order") || "[]"))
+    const [name, setName] = useState("")
+    const [number, setNumber] = useState("")
+    const [expiry, setExpiry] = useState("")
+    const [cvc, setCvc] = useState("")
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]")
+
+
+    useEffect(() => {
+        localStorage.setItem("order", JSON.stringify(order))
+    }, [order])
+
+    const itemPrice = cart.reduce((total: number, el: any) => {
+        return total + (el.price * el.quantity)
+    }, 0)
+
+    const shippingPrice = (cart.find((el: any) => { return el.type === "HARD COPY" }) ? 7.50 : 0)
+
+    const taxPrice = (0.06625 * (itemPrice + shippingPrice))
+
+    const totalPrice = itemPrice + shippingPrice + taxPrice
 
     const capitalizeStateCode = (code: string) => {
         return code.toUpperCase()
     }
 
-    const saveOrder = () => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        `set${e.currentTarget.name}(e.currentTarget.value)`
+    }
+
+    const handleSaveOrder = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
         let newOrder = [...order]
 
         newOrder.push({
@@ -33,47 +58,67 @@ export const CheckOut = (props: CheckOutProps) => {
             address: {
                 street: streetAddress,
                 city: city,
-                state: stateCode,
+                state: capitalizeStateCode(stateCode),
                 zipCode: zipCode
             },
-            // author: books[id - 1].author,
-            // image: books[id - 1].image,
-            // price: books[id - 1].price,
-            // quantity: 1
+            payment: {
+                name: name,
+                number: number,
+                expiry: expiry,
+                cvc: cvc
+            }
         })
 
-        // setOrder(newOrder)
+        setOrder(newOrder)
 
-        // localStorage.setItem("cart", JSON.stringify(newCart))
-        // capitalizeStateCode()
+        localStorage.setItem("order", JSON.stringify(newOrder))
+
     }
 
     return (
         <div className={classes.checkOutPage}>
-            Checkout - {cart.length} item(s)
-            <form onSubmit={saveOrder}>
+            {/* Checkout - {cart.length} item(s) */}
+            <form onSubmit={handleSaveOrder}>
                 <Card>
                     <section>
                         <ShippingInfo
                             streetAddress={streetAddress}
-                            onChangeStreetAddress={(e: React.ChangeEvent<HTMLInputElement>) => { setStreetAddress(e.target.value) }}
                             city={city}
-                            onChangeCity={(e: React.ChangeEvent<HTMLInputElement>) => { setCity(e.target.value) }}
                             stateCode={stateCode}
-                            onChangeStateCode={(e: React.ChangeEvent<HTMLInputElement>) => { setStateCode(e.target.value) }}
                             zipCode={zipCode}
+                            onChangeStreetAddress={(e: React.ChangeEvent<HTMLInputElement>) => { setStreetAddress(e.target.value) }}
+                            onChangeCity={(e: React.ChangeEvent<HTMLInputElement>) => { setCity(e.target.value) }}
+                            onChangeStateCode={(e: React.ChangeEvent<HTMLInputElement>) => { setStateCode(e.target.value) }}
                             onChangeZipCode={(e: React.ChangeEvent<HTMLInputElement>) => { setZipCode(e.target.value) }}
+                        // onChangeStreetAddress={handleChange}
+                        // onChangeCity={handleChange}
+                        // onChangeStateCode={handleChange}
+                        // onChangeZipCode={handleChange}
                         />
                     </section>
                     <section className={classes.paymentInfo}>
-                        <PaymentInfo />
+                        <PaymentInfo
+                            name={name}
+                            number={number}
+                            expiry={expiry}
+                            cvc={cvc}
+                            onChangeName={(e: React.ChangeEvent<HTMLInputElement>) => { setName(e.target.value) }}
+                            onChangeNumber={(e: React.ChangeEvent<HTMLInputElement>) => { setNumber(e.target.value) }}
+                            onChangeExpiry={(e: React.ChangeEvent<HTMLInputElement>) => { setExpiry(e.target.value) }}
+                            onChangeCvc={(e: React.ChangeEvent<HTMLInputElement>) => { setCvc(e.target.value) }}
+                        />
                     </section>
                     <section>
                         3. Review and Shipping
                     </section>
                 </Card>
                 <Card>
-                    <OrderSummary />
+                    <OrderSummary
+                        item={itemPrice.toFixed(2)}
+                        shipping={shippingPrice.toFixed(2)}
+                        tax={taxPrice.toFixed(2)}
+                        total={totalPrice.toFixed(2)}
+                    />
                 </Card>
                 <Button type="submit">Complete Order</Button>
             </form>
