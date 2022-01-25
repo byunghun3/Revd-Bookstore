@@ -144,9 +144,9 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                     <AccountCircleIcon />
                     <form onSubmit={handleSubmit}>
                         <NameForm variant="outlined">
-                            <FormInputLabel>First name</FormInputLabel>
+                            <FormInputLabel>First Name</FormInputLabel>
                             <OutlinedInput
-                                label="Firstname"
+                                label="First Name"
                                 name="firstName"
                                 type="text"
                                 value={firstName}
@@ -154,9 +154,9 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 required />
                         </NameForm>
                         <NameForm variant="outlined">
-                            <FormInputLabel>Last name</FormInputLabel>
+                            <FormInputLabel>Last Name</FormInputLabel>
                             <OutlinedInput
-                                label="Lastname"
+                                label="Last Name"
                                 name="lastName"
                                 type="text"
                                 value={lastName}

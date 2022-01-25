@@ -59,7 +59,7 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
             <NameForm variant="outlined">
                 <FormInputLabel>Town/City</FormInputLabel>
                 <OutlinedInput
-                    label="Firstname"
+                    label="Town/City"
                     name="city"
                     type="text"
                     value={city}
@@ -82,7 +82,7 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
             <NameForm variant="outlined">
                 <FormInputLabel>Zip/Postal</FormInputLabel>
                 <OutlinedInput
-                    label="Firstname"
+                    label="Zip/Postal"
                     name="zipCode"
                     type="text"
                     value={zipCode}

@@ -21,7 +21,9 @@ const StyledForm = styled(FormControl)({
 })
 
 const FormInputLabel = styled(InputLabel)({
-    margin: "0"
+    margin: "0",
+    // fontSize: "12px",
+    // display: "inline-block"
 })
 
 interface PaymentInfoProps {
@@ -48,7 +50,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
 
 
     return (
-        <div>
+        <div className={classes.paymentInfo}>
             {/* 2. Payment Info */}
             <Cards
                 cvc={cvc}
@@ -59,7 +61,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
             <NameForm variant="outlined">
                 <FormInputLabel>Credit Card Number</FormInputLabel>
                 <OutlinedInput
-                    label="Card number"
+                    label="Credit Card Number"
                     name="number"
                     type="tel"
                     value={cardNumber}
@@ -72,7 +74,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
             <NameForm variant="outlined">
                 <FormInputLabel>Name on Card</FormInputLabel>
                 <OutlinedInput
-                    label="Name"
+                    label="Name on Card"
                     name="name"
                     type="text"
                     value={cardName}
@@ -83,7 +85,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
             <NameForm variant="outlined">
                 <FormInputLabel>Expiration Date</FormInputLabel>
                 <OutlinedInput
-                    label="Expiry"
+                    label="Expiration Date"
                     name="expiry"
                     type="text"
                     value={expiry}
