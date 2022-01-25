@@ -62,32 +62,40 @@ export const CheckOut = (props: CheckOutProps) => {
         }
     }
 
+
     const handleSaveOrder = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
+        const thisMonth = new Date().getMonth() + 1
         const thisYear = new Date().getFullYear().toString().slice(-2)
-        if (cardNumber.length < 13 || cardNumber.length > 19 || !/^\d+$/.test(cardNumber)) {
+        const cardNumberError = cardNumber.length < 13 || cardNumber.length > 19 || !/^\d+$/.test(cardNumber)
+        const expiryError = Number(expiry.substring(0, 2)) < 1 || Number(expiry.substring(0, 1)) > 12 ||
+            Number(expiry.substring(2, 4)) < Number(thisYear) || (Number(expiry.substring(0, 2)) < thisMonth &&
+                Number(expiry.substring(2, 4)) === Number(thisYear))
+        const cvcError = cvc.length < 3 || cvc.length > 4
+
+        if (cardNumberError) {
             e.preventDefault()
             setIsCardInvalid(true)
         } else {
             setIsCardInvalid(false)
         }
-        if (Number(expiry.substring(0, 2)) < 1 || Number(expiry.substring(0, 1)) > 12 ||
-            Number(expiry.substring(2, 4)) < Number(thisYear)) {
+
+        if (expiryError) {
             e.preventDefault()
             setIsExpiryInvalid(true)
         } else {
             setIsExpiryInvalid(false)
         }
 
-        if (cvc.length < 3 || cvc.length > 4) {
+        if (cvcError) {
             e.preventDefault()
             setIsCvcInvalid(true)
         } else {
             setIsCvcInvalid(false)
         }
 
-        if (isCardInvalid === false && isExpiryInvalid === false && isCvcInvalid === false) {
+        if (!cardNumberError && !expiryError && !cvcError) {
             let newOrder = [...order]
 
             newOrder.push({
@@ -114,7 +122,7 @@ export const CheckOut = (props: CheckOutProps) => {
 
     return (
         <div className={classes.checkOutPage}>
-            {/* Checkout - {cart.length} item(s) */}
+            Checkout - {cart.length} item(s)
             <form onSubmit={handleSaveOrder}>
                 <Card>
                     <section>
