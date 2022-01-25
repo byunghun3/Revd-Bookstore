@@ -19,10 +19,13 @@ export const CheckOut = (props: CheckOutProps) => {
     const [stateCode, setStateCode] = useState("")
     const [zipCode, setZipCode] = useState("")
     const [order, setOrder] = useState(JSON.parse(localStorage.getItem("order") || "[]"))
-    const [name, setName] = useState("")
-    const [number, setNumber] = useState("")
+    const [cardName, setCardName] = useState("")
+    const [cardNumber, setCardNumber] = useState("")
     const [expiry, setExpiry] = useState("")
     const [cvc, setCvc] = useState("")
+    const [isCardInvalid, setIsCardInvalid] = useState(false)
+    const [isExpiryInvalid, setIsExpiryInvalid] = useState(false)
+    const [isCvcInvalid, setIsCvcInvalid] = useState(false)
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
 
 
@@ -48,31 +51,65 @@ export const CheckOut = (props: CheckOutProps) => {
         `set${e.currentTarget.name}(e.currentTarget.value)`
     }
 
+    const handleChangeCardNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (cardNumber.length < 13 || cardNumber.length > 19 || !/^\d+$/.test(cardNumber)) {
+            setIsCardInvalid(true)
+            setCardNumber(e.currentTarget.value)
+
+        } else {
+            setIsCardInvalid(false)
+            setCardNumber(e.currentTarget.value)
+        }
+    }
+
     const handleSaveOrder = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        let newOrder = [...order]
+        const thisYear = new Date().getFullYear().toString().slice(-2)
+        if (cardNumber.length < 13 || cardNumber.length > 19 || !/^\d+$/.test(cardNumber)) {
+            e.preventDefault()
+            setIsCardInvalid(true)
+        } else {
+            setIsCardInvalid(false)
+        }
+        if (Number(expiry.substring(0, 2)) < 1 || Number(expiry.substring(0, 1)) > 12 ||
+            Number(expiry.substring(2, 4)) < Number(thisYear)) {
+            e.preventDefault()
+            setIsExpiryInvalid(true)
+        } else {
+            setIsExpiryInvalid(false)
+        }
 
-        newOrder.push({
-            id: uuidv4(),
-            address: {
-                street: streetAddress,
-                city: city,
-                state: capitalizeStateCode(stateCode),
-                zipCode: zipCode
-            },
-            payment: {
-                name: name,
-                number: number,
-                expiry: expiry,
-                cvc: cvc
-            }
-        })
+        if (cvc.length < 3 || cvc.length > 4) {
+            e.preventDefault()
+            setIsCvcInvalid(true)
+        } else {
+            setIsCvcInvalid(false)
+        }
 
-        setOrder(newOrder)
+        if (isCardInvalid === false && isExpiryInvalid === false && isCvcInvalid === false) {
+            let newOrder = [...order]
 
-        localStorage.setItem("order", JSON.stringify(newOrder))
+            newOrder.push({
+                id: uuidv4(),
+                address: {
+                    street: streetAddress,
+                    city: city,
+                    state: capitalizeStateCode(stateCode),
+                    zipCode: zipCode
+                },
+                payment: {
+                    name: cardName,
+                    number: cardNumber,
+                    expiry: expiry,
+                    cvc: cvc
+                }
+            })
 
+            setOrder(newOrder)
+
+            localStorage.setItem("order", JSON.stringify(newOrder))
+        }
     }
 
     return (
@@ -98,14 +135,21 @@ export const CheckOut = (props: CheckOutProps) => {
                     </section>
                     <section className={classes.paymentInfo}>
                         <PaymentInfo
-                            name={name}
-                            number={number}
+                            cardName={cardName}
+                            cardNumber={cardNumber}
                             expiry={expiry}
                             cvc={cvc}
-                            onChangeName={(e: React.ChangeEvent<HTMLInputElement>) => { setName(e.target.value) }}
-                            onChangeNumber={(e: React.ChangeEvent<HTMLInputElement>) => { setNumber(e.target.value) }}
+                            onChangeName={(e: React.ChangeEvent<HTMLInputElement>) => { setCardName(e.target.value) }}
+                            // onChangeNumber={handleChangeCardNumber}
                             onChangeExpiry={(e: React.ChangeEvent<HTMLInputElement>) => { setExpiry(e.target.value) }}
                             onChangeCvc={(e: React.ChangeEvent<HTMLInputElement>) => { setCvc(e.target.value) }}
+                            // onChangeName={(e: React.ChangeEvent<HTMLInputElement>) => { setCardName(e.target.value) }}
+                            onChangeNumber={(e: React.ChangeEvent<HTMLInputElement>) => { setCardNumber(e.target.value) }}
+                            // onChangeExpiry={(e: React.ChangeEvent<HTMLInputElement>) => { setExpiry(e.target.value) }}
+                            // onChangeCvc={(e: React.ChangeEvent<HTMLInputElement>) => { setCvc(e.target.value) }}
+                            cardError={isCardInvalid}
+                            expiryError={isExpiryInvalid}
+                            cvcError={isCvcInvalid}
                         />
                     </section>
                     <section>
@@ -120,6 +164,11 @@ export const CheckOut = (props: CheckOutProps) => {
                         total={totalPrice.toFixed(2)}
                     />
                 </Card>
+                <Button type="button">
+                    <Link to="/cart">
+                        Back to Cart
+                    </Link>
+                </Button>
                 <Button type="submit">Complete Order</Button>
             </form>
         </div>

@@ -25,8 +25,8 @@ const FormInputLabel = styled(InputLabel)({
 })
 
 interface PaymentInfoProps {
-    name: string
-    number: string
+    cardName: string
+    cardNumber: string
     expiry: string
     cvc: string
     // focus: string
@@ -34,11 +34,15 @@ interface PaymentInfoProps {
     onChangeNumber: React.ChangeEventHandler<HTMLInputElement>
     onChangeExpiry: React.ChangeEventHandler<HTMLInputElement>
     onChangeCvc: React.ChangeEventHandler<HTMLInputElement>
+    cardError: boolean
+    expiryError: boolean
+    cvcError: boolean
 }
 
 export const PaymentInfo: FC<PaymentInfoProps> = ({
-    name, number, expiry, cvc,
-    onChangeName, onChangeNumber, onChangeExpiry, onChangeCvc
+    cardName, cardNumber, expiry, cvc,
+    onChangeName, onChangeNumber, onChangeExpiry, onChangeCvc,
+    cardError, expiryError, cvcError
 }) => {
     const [focus, setFocus] = useState("")
 
@@ -50,18 +54,19 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                 cvc={cvc}
                 expiry={expiry}
                 focused={focus}
-                name={name}
-                number={number} />
+                name={cardName}
+                number={cardNumber} />
             <NameForm variant="outlined">
                 <FormInputLabel>Credit Card Number</FormInputLabel>
                 <OutlinedInput
                     label="Card number"
                     name="number"
                     type="tel"
-                    value={number}
+                    value={cardNumber}
                     onChange={onChangeNumber}
                     // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setNumber(e.target.value) }}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
+                    error={cardError}
                     required />
             </NameForm>
             <NameForm variant="outlined">
@@ -70,7 +75,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     label="Name"
                     name="name"
                     type="text"
-                    value={name}
+                    value={cardName}
                     onChange={onChangeName}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
                     required />
@@ -84,6 +89,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     value={expiry}
                     onChange={onChangeExpiry}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
+                    error={expiryError}
                     required />
             </NameForm>
             <NameForm variant="outlined">
@@ -95,6 +101,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     value={cvc}
                     onChange={onChangeCvc}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
+                    error={cvcError}
                     required />
             </NameForm>
         </div>
