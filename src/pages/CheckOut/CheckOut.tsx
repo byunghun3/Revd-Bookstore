@@ -26,6 +26,12 @@ export const CheckOut = (props: CheckOutProps) => {
     const [isCardInvalid, setIsCardInvalid] = useState(false)
     const [isExpiryInvalid, setIsExpiryInvalid] = useState(false)
     const [isCvcInvalid, setIsCvcInvalid] = useState(false)
+    const [cardNumberErrorText, setCardNumberErrorText] = useState("")
+    const [expiryErrorText, setExpiryErrorText] = useState("")
+    const [cvcErrorText, setCvcErrorText] = useState("")
+    // const [cardNumberErrorText, setCardNumberErrorText] = useState("Please enter a valid card number")
+    // const [expiryErrorText, setExpiryErrorText] = useState("Please enter a valid date")
+    // const [cvcErrorText, setCvcErrorText] = useState("Please enter a valid CVC")
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
 
 
@@ -68,34 +74,37 @@ export const CheckOut = (props: CheckOutProps) => {
 
         const thisMonth = new Date().getMonth() + 1
         const thisYear = new Date().getFullYear().toString().slice(-2)
-        const cardNumberError = cardNumber.length < 13 || cardNumber.length > 19 || !/^\d+$/.test(cardNumber)
-        const expiryError = Number(expiry.substring(0, 2)) < 1 || Number(expiry.substring(0, 1)) > 12 ||
+        const cardNumberRules = cardNumber.length < 13 || cardNumber.length > 19 || !/^\d+$/.test(cardNumber)
+        const expiryRules = Number(expiry.substring(0, 2)) < 1 || Number(expiry.substring(0, 1)) > 12 ||
             Number(expiry.substring(2, 4)) < Number(thisYear) || (Number(expiry.substring(0, 2)) < thisMonth &&
                 Number(expiry.substring(2, 4)) === Number(thisYear))
-        const cvcError = cvc.length < 3 || cvc.length > 4
+        const cvcRules = cvc.length < 3 || cvc.length > 4
 
-        if (cardNumberError) {
+        if (cardNumberRules) {
             e.preventDefault()
             setIsCardInvalid(true)
+            setCardNumberErrorText("Please enter a valid card number")
         } else {
             setIsCardInvalid(false)
         }
 
-        if (expiryError) {
+        if (expiryRules) {
             e.preventDefault()
             setIsExpiryInvalid(true)
+            setExpiryErrorText("Please enter a valid date")
         } else {
             setIsExpiryInvalid(false)
         }
 
-        if (cvcError) {
+        if (cvcRules) {
             e.preventDefault()
             setIsCvcInvalid(true)
+            setCvcErrorText("Please enter a valid CVC")
         } else {
             setIsCvcInvalid(false)
         }
 
-        if (!cardNumberError && !expiryError && !cvcError) {
+        if (!cardNumberRules && !expiryRules && !cvcRules) {
             let newOrder = [...order]
 
             newOrder.push({
@@ -155,9 +164,12 @@ export const CheckOut = (props: CheckOutProps) => {
                             onChangeNumber={(e: React.ChangeEvent<HTMLInputElement>) => { setCardNumber(e.target.value) }}
                             // onChangeExpiry={(e: React.ChangeEvent<HTMLInputElement>) => { setExpiry(e.target.value) }}
                             // onChangeCvc={(e: React.ChangeEvent<HTMLInputElement>) => { setCvc(e.target.value) }}
-                            cardError={isCardInvalid}
+                            cardNumberError={isCardInvalid}
                             expiryError={isExpiryInvalid}
                             cvcError={isCvcInvalid}
+                            cardNumberErrorText={cardNumberErrorText}
+                            expiryErrorText={expiryErrorText}
+                            cvcErrorText={cvcErrorText}
                         />
                     </section>
                     <section>

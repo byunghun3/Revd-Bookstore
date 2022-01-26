@@ -36,15 +36,19 @@ interface PaymentInfoProps {
     onChangeNumber: React.ChangeEventHandler<HTMLInputElement>
     onChangeExpiry: React.ChangeEventHandler<HTMLInputElement>
     onChangeCvc: React.ChangeEventHandler<HTMLInputElement>
-    cardError: boolean
+    cardNumberError: boolean
     expiryError: boolean
     cvcError: boolean
+    cardNumberErrorText: string
+    expiryErrorText: string
+    cvcErrorText: string
 }
 
 export const PaymentInfo: FC<PaymentInfoProps> = ({
     cardName, cardNumber, expiry, cvc,
     onChangeName, onChangeNumber, onChangeExpiry, onChangeCvc,
-    cardError, expiryError, cvcError
+    cardNumberError, expiryError, cvcError, cardNumberErrorText,
+    expiryErrorText, cvcErrorText
 }) => {
     const [focus, setFocus] = useState("")
 
@@ -68,9 +72,10 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     onChange={onChangeNumber}
                     // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setNumber(e.target.value) }}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
-                    error={cardError}
+                    error={cardNumberError}
                     required />
             </NameForm>
+            <div className={cardNumberErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{cardNumberErrorText}</div>
             <NameForm variant="outlined">
                 <FormInputLabel>Name on Card</FormInputLabel>
                 <OutlinedInput
@@ -82,6 +87,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
                     required />
             </NameForm>
+            <div className={classes.noErrorMessage}></div>
             <NameForm variant="outlined">
                 <FormInputLabel>Expiration Date</FormInputLabel>
                 <OutlinedInput
@@ -94,6 +100,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     error={expiryError}
                     required />
             </NameForm>
+            <div className={expiryErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{expiryErrorText}</div>
             <NameForm variant="outlined">
                 <FormInputLabel>CVC</FormInputLabel>
                 <OutlinedInput
@@ -106,6 +113,7 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     error={cvcError}
                     required />
             </NameForm>
+            <div className={cvcErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{cvcErrorText}</div>
         </div>
     )
 }

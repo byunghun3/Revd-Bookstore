@@ -72,8 +72,10 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
+    // const [passwordLengthError, setPasswordLengthError] = useState("Password should not exceed 16 characters")
     const [passwordLengthError, setPasswordLengthError] = useState("")
     const [isInputInvalid, setIsInputInvalid] = useState(false)
+    // const [passwordMatchError, setPasswordMatchError] = useState("Passwords don't match")
     const [passwordMatchError, setPasswordMatchError] = useState("")
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user") || "[]"))
 
@@ -196,7 +198,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 </InputAdornment>}
                                 required />
                         </StyledForm>
-                        <div className={passwordLengthError !== "" ? classes.passwordError : classes.passwordNoError}>{passwordLengthError}</div>
+                        <div className={passwordLengthError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{passwordLengthError}</div>
                         <StyledForm>
                             <InputLabel>Confirm Password</InputLabel>
                             <OutlinedInput
@@ -218,7 +220,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 </InputAdornment>}
                                 required />
                         </StyledForm>
-                        <div className={passwordMatchError !== "" ? classes.passwordError : classes.passwordNoError}>{passwordMatchError}</div>
+                        <div className={passwordMatchError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{passwordMatchError}</div>
 
                         <SignUpButton type="submit" color="primary" variant="contained">Sign Up</SignUpButton>
                     </form>

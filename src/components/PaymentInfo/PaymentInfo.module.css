@@ -3,3 +3,21 @@
     flex-direction: column;
     align-items: center;
 }
+
+.errorMessage {
+    position: relative;
+    width: 35%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: -20px;
+    margin-left: -2%;
+    margin-bottom: 19px;
+    font-size: 16px;
+    color: red;
+}
+
+.noErrorMessage {
+    margin-top: -20px;
+    margin-left: 15%;
+    margin-bottom: 37px;
+}
