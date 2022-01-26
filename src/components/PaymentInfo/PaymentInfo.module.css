@@ -1,23 +1,32 @@
 .paymentInfo {
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
+    /* flex-direction: row; */
     align-items: center;
+    justify-content: center;
+}
+
+.paymentInfoHeader {
+    margin-left: 5%;
+    margin-bottom: 25px;
+    /* border: solid black; */
+    text-align: left;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .errorMessage {
     position: relative;
-    width: 35%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
-    margin-top: -20px;
-    margin-left: -2%;
+    margin-left: 2%;
     margin-bottom: 19px;
     font-size: 16px;
     color: red;
 }
 
 .noErrorMessage {
-    margin-top: -20px;
+    /* margin-top: -20px; */
     margin-left: 15%;
     margin-bottom: 37px;
 }

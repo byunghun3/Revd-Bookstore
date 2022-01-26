@@ -1,4 +1,4 @@
-.checkOutPage {
+.checkoutPage {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -6,11 +6,36 @@
     align-items: center;
 }
 
+.checkoutHeader {
+    position: relative;
+    width: 100%;
+    align-items: center;
+}
+
+.checkoutForm {
+    display: flex;
+    flex-direction: row;
+}
+
 .selectState {
     /* width: 20%; */
     font-size: 20px;
 }
 
-.paymentInfo {
-    margin-top: 150px;
+.shippingInfoSection {
+    /* align-items: left; */
+    margin-top: 30px;
+}
+
+.paymentInfoSection {
+    /* display: flex; */
+    /* border: solid black; */
+    /* align-items: center; */
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.buttonLink {
+    text-decoration: none;
+    /* color: primary; */
 }

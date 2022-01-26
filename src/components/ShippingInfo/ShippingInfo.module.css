@@ -1,0 +1,20 @@
+.shippingInfo {
+    display: inline-block;
+    justify-content: left;
+}
+
+.shippingInfoHeader {
+    margin-left: 5%;
+    margin-bottom: 15px;
+    /* border: solid black; */
+    text-align: left;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.shippingInputs {
+    display: inline;
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    align-items: left;
+}

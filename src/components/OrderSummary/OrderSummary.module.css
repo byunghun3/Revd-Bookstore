@@ -1,0 +1,51 @@
+.orderSummary {
+    display: block;
+    align-items: center;
+}
+
+.orderSummaryHeader {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    /* border: solid black; */
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.orderSummaryCosts {
+    display: block;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    padding: 10px;
+}
+
+.costLine {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.costLineText {
+    text-align: left;
+}
+
+.totalCost {
+    font-weight: 800;
+    color: rgb(201, 1, 1);
+}
+
+/* .costLabel {
+    text-align: left;
+}
+
+.costLabel > div {
+    margin: 10px 0;
+}
+
+.costs {
+    text-align: right;
+}
+
+.costs > div {
+    margin: 10px 0;
+} */

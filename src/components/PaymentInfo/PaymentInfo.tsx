@@ -8,22 +8,27 @@ import { styled } from "@mui/system"
 import classes from "./PaymentInfo.module.css"
 import { useHref } from "react-router-dom"
 
-const NameForm = styled(FormControl)({
-    margin: "20px",
-    width: "40%",
-
+const CardNumberForm = styled(FormControl)({
+    marginTop: "12px",
+    width: "80%"
 })
 
-const StyledForm = styled(FormControl)({
-    margin: "20px",
-    width: "80%",
+const CardNameForm = styled(FormControl)({
+    width: "80%"
+})
 
+const ExpiryForm = styled(FormControl)({
+    margin: "0 12px",
+    width: "38%",
+})
+
+const CvcForm = styled(FormControl)({
+    margin: "0 12px",
+    width: "38%",
 })
 
 const FormInputLabel = styled(InputLabel)({
     margin: "0",
-    // fontSize: "12px",
-    // display: "inline-block"
 })
 
 interface PaymentInfoProps {
@@ -31,7 +36,8 @@ interface PaymentInfoProps {
     cardNumber: string
     expiry: string
     cvc: string
-    // focus: string
+    focus: string
+    onFocus: React.FocusEventHandler<HTMLInputElement>
     onChangeName: React.ChangeEventHandler<HTMLInputElement>
     onChangeNumber: React.ChangeEventHandler<HTMLInputElement>
     onChangeExpiry: React.ChangeEventHandler<HTMLInputElement>
@@ -45,24 +51,27 @@ interface PaymentInfoProps {
 }
 
 export const PaymentInfo: FC<PaymentInfoProps> = ({
-    cardName, cardNumber, expiry, cvc,
+    cardName, cardNumber, expiry, cvc, focus, onFocus,
     onChangeName, onChangeNumber, onChangeExpiry, onChangeCvc,
     cardNumberError, expiryError, cvcError, cardNumberErrorText,
     expiryErrorText, cvcErrorText
 }) => {
-    const [focus, setFocus] = useState("")
 
 
     return (
         <div className={classes.paymentInfo}>
-            {/* 2. Payment Info */}
-            <Cards
-                cvc={cvc}
-                expiry={expiry}
-                focused={focus}
-                name={cardName}
-                number={cardNumber} />
-            <NameForm variant="outlined">
+            <div className={classes.paymentInfoHeader}>Payment Info</div>
+            <div>
+                <Cards
+                    rccs-size="100%"
+                    cvc={cvc}
+                    expiry={expiry}
+                    focused={focus}
+                    name={cardName}
+                    number={cardNumber} />
+            </div>
+            {/* <div> */}
+            <CardNumberForm variant="outlined">
                 <FormInputLabel>Credit Card Number</FormInputLabel>
                 <OutlinedInput
                     label="Credit Card Number"
@@ -71,12 +80,13 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     value={cardNumber}
                     onChange={onChangeNumber}
                     // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setNumber(e.target.value) }}
-                    onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
+                    onFocus={onFocus}
                     error={cardNumberError}
                     required />
-            </NameForm>
-            <div className={cardNumberErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{cardNumberErrorText}</div>
-            <NameForm variant="outlined">
+                <div className={cardNumberErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{cardNumberErrorText}</div>
+            </CardNumberForm>
+            {/* </div> */}
+            <CardNameForm variant="outlined">
                 <FormInputLabel>Name on Card</FormInputLabel>
                 <OutlinedInput
                     label="Name on Card"
@@ -84,11 +94,11 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     type="text"
                     value={cardName}
                     onChange={onChangeName}
-                    onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
+                    onFocus={onFocus}
                     required />
-            </NameForm>
-            <div className={classes.noErrorMessage}></div>
-            <NameForm variant="outlined">
+                <div className={classes.noErrorMessage}></div>
+            </CardNameForm>
+            <ExpiryForm variant="outlined">
                 <FormInputLabel>Expiration Date</FormInputLabel>
                 <OutlinedInput
                     label="Expiration Date"
@@ -96,12 +106,12 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     type="text"
                     value={expiry}
                     onChange={onChangeExpiry}
-                    onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
+                    onFocus={onFocus}
                     error={expiryError}
                     required />
-            </NameForm>
-            <div className={expiryErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{expiryErrorText}</div>
-            <NameForm variant="outlined">
+                <div className={expiryErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{expiryErrorText}</div>
+            </ExpiryForm>
+            <CvcForm variant="outlined">
                 <FormInputLabel>CVC</FormInputLabel>
                 <OutlinedInput
                     label="CVC"
@@ -109,11 +119,12 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     type="tel"
                     value={cvc}
                     onChange={onChangeCvc}
-                    onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
+                    onFocus={onFocus}
                     error={cvcError}
                     required />
-            </NameForm>
-            <div className={cvcErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{cvcErrorText}</div>
+                <div className={cvcErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{cvcErrorText}</div>
+            </CvcForm>
+            {/* </div> */}
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import classes from "./ShippingInfo.module.css"
+import classes from "./OrderSummary.module.css"
 
 
 interface OrderSummaryProps {
@@ -11,12 +11,41 @@ interface OrderSummaryProps {
 
 export const OrderSummary: FC<OrderSummaryProps> = ({ item, shipping, tax, total }) => {
     return (
-        <div>
-            Order Summary
-            <div>Items: ${item}</div>
-            <div>Shipping & handling: ${shipping}</div>
-            <div>Estimated tax: ${tax}</div>
-            <div>Total: ${total}</div>
-        </div>
+        <div className={classes.orderSummary}>
+            <div className={classes.orderSummaryHeader}>Order Summary</div>
+            <div className={classes.orderSummaryCosts}>
+                <div className={classes.costLine}>
+                    <div className={classes.costLineText}>Items:</div>
+                    <div>${item}</div>
+                </div>
+                <div className={classes.costLine}>
+                    <div className={classes.costLineText}>Shipping & handling:</div>
+                    <div>${shipping}</div>
+                </div>
+                <div className={classes.costLine}>
+                    <div className={classes.costLineText}>Estimated tax:</div>
+                    <div>${tax}</div>
+                </div>
+                <hr />
+                <div className={`${classes.costLine} ${classes.totalCost}`}>
+                    <div className={classes.costLineText}>Total: </div>
+                    <div>${total}</div>
+                </div>
+            </div>
+            {/* <div className={classes.costLabel}>
+                    <div>Items:</div>
+                    <div>Shipping & handling:</div>
+                    <div>Estimated tax:</div>
+                    <hr />
+                    <div>Total: </div>
+                </div>
+                <div className={classes.costs}>
+                    <div>${item}</div>
+                    <div>${shipping}</div>
+                    <div>${tax}</div>
+                    <div>${total}</div>
+                </div> */}
+            {/* </div> */}
+        </div >
     )
 }

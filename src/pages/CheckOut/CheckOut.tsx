@@ -6,15 +6,37 @@ import { Button } from "@mui/material"
 import { PaymentInfo } from "../../components/PaymentInfo/PaymentInfo"
 import { ShippingInfo } from "../../components/ShippingInfo/ShippingInfo"
 import { styled } from "@mui/system"
-import classes from "./CheckOut.module.css"
+import classes from "./Checkout.module.css"
 import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
 
-interface CheckOutProps {
+const ReviewCard = styled(Card)({
+    position: "relative",
+    minWidth: "40vw",
+    margin: "5% 5% 5% 5%"
+})
+
+const CheckoutCard = styled(Card)({
+    position: "relative",
+    height: "75%",
+    minWidth: "30vw",
+    margin: "5% 5% 5% 0"
+})
+
+const CartButton = styled(Button)({
+    position: "absolute",
+    top: "50%",
+    right: "0",
+    transform: "translate(-50%, -50%)"
+})
+
+interface CheckoutProps {
 
 }
 
-export const CheckOut = (props: CheckOutProps) => {
-    const [streetAddress, setStreetAddress] = useState("")
+export const Checkout = (props: CheckoutProps) => {
+    const [numItems, setNumItems] = useState("items")
+    const [addressLineOne, setAddressLineOne] = useState("")
+    const [addressLineTwo, setAddressLineTwo] = useState("")
     const [city, setCity] = useState("")
     const [stateCode, setStateCode] = useState("")
     const [zipCode, setZipCode] = useState("")
@@ -23,21 +45,24 @@ export const CheckOut = (props: CheckOutProps) => {
     const [cardNumber, setCardNumber] = useState("")
     const [expiry, setExpiry] = useState("")
     const [cvc, setCvc] = useState("")
+    const [focus, setFocus] = useState("")
     const [isCardInvalid, setIsCardInvalid] = useState(false)
     const [isExpiryInvalid, setIsExpiryInvalid] = useState(false)
     const [isCvcInvalid, setIsCvcInvalid] = useState(false)
-    const [cardNumberErrorText, setCardNumberErrorText] = useState("")
-    const [expiryErrorText, setExpiryErrorText] = useState("")
-    const [cvcErrorText, setCvcErrorText] = useState("")
-    // const [cardNumberErrorText, setCardNumberErrorText] = useState("Please enter a valid card number")
-    // const [expiryErrorText, setExpiryErrorText] = useState("Please enter a valid date")
-    // const [cvcErrorText, setCvcErrorText] = useState("Please enter a valid CVC")
+    // const [cardNumberErrorText, setCardNumberErrorText] = useState("")
+    // const [expiryErrorText, setExpiryErrorText] = useState("")
+    // const [cvcErrorText, setCvcErrorText] = useState("")
+    const [cardNumberErrorText, setCardNumberErrorText] = useState("Please enter a valid card number")
+    const [expiryErrorText, setExpiryErrorText] = useState("Please enter a valid date")
+    const [cvcErrorText, setCvcErrorText] = useState("Please enter a valid CVC")
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
 
 
     useEffect(() => {
-        localStorage.setItem("order", JSON.stringify(order))
-    }, [order])
+        if (cart.length === 1) {
+            setNumItems("item")
+        } else { numItems }
+    }, [cart])
 
     const itemPrice = cart.reduce((total: number, el: any) => {
         return total + (el.price * el.quantity)
@@ -56,18 +81,6 @@ export const CheckOut = (props: CheckOutProps) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         `set${e.currentTarget.name}(e.currentTarget.value)`
     }
-
-    const handleChangeCardNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (cardNumber.length < 13 || cardNumber.length > 19 || !/^\d+$/.test(cardNumber)) {
-            setIsCardInvalid(true)
-            setCardNumber(e.currentTarget.value)
-
-        } else {
-            setIsCardInvalid(false)
-            setCardNumber(e.currentTarget.value)
-        }
-    }
-
 
     const handleSaveOrder = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -110,7 +123,8 @@ export const CheckOut = (props: CheckOutProps) => {
             newOrder.push({
                 id: uuidv4(),
                 address: {
-                    street: streetAddress,
+                    addressLineOne: addressLineOne,
+                    addressLineTwo: addressLineTwo,
                     city: city,
                     state: capitalizeStateCode(stateCode),
                     zipCode: zipCode
@@ -130,17 +144,28 @@ export const CheckOut = (props: CheckOutProps) => {
     }
 
     return (
-        <div className={classes.checkOutPage}>
-            Checkout - {cart.length} item(s)
-            <form onSubmit={handleSaveOrder}>
-                <Card>
-                    <section>
+        <div className={classes.checkoutPage}>
+            <div className={classes.checkoutHeader}>
+                <div className={classes.checkoutHeaderText}>
+                    Checkout - {cart.length} {numItems}
+                </div>
+                <CartButton type="button">
+                    <Link className={classes.buttonLink} to="/cart">
+                        Back to Cart
+                    </Link>
+                </CartButton>
+            </div>
+            <form className={classes.checkoutForm} onSubmit={handleSaveOrder}>
+                <ReviewCard>
+                    <section className={classes.shippingInfoSection}>
                         <ShippingInfo
-                            streetAddress={streetAddress}
+                            addressLineOne={addressLineOne}
+                            addressLineTwo={addressLineTwo}
                             city={city}
                             stateCode={stateCode}
                             zipCode={zipCode}
-                            onChangeStreetAddress={(e: React.ChangeEvent<HTMLInputElement>) => { setStreetAddress(e.target.value) }}
+                            onChangeAddressLineOne={(e: React.ChangeEvent<HTMLInputElement>) => { setAddressLineOne(e.target.value) }}
+                            onChangeAddressLineTwo={(e: React.ChangeEvent<HTMLInputElement>) => { setAddressLineTwo(e.target.value) }}
                             onChangeCity={(e: React.ChangeEvent<HTMLInputElement>) => { setCity(e.target.value) }}
                             onChangeStateCode={(e: React.ChangeEvent<HTMLInputElement>) => { setStateCode(e.target.value) }}
                             onChangeZipCode={(e: React.ChangeEvent<HTMLInputElement>) => { setZipCode(e.target.value) }}
@@ -150,12 +175,14 @@ export const CheckOut = (props: CheckOutProps) => {
                         // onChangeZipCode={handleChange}
                         />
                     </section>
-                    <section className={classes.paymentInfo}>
+                    <section className={classes.paymentInfoSection}>
                         <PaymentInfo
                             cardName={cardName}
                             cardNumber={cardNumber}
                             expiry={expiry}
                             cvc={cvc}
+                            focus={focus}
+                            onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
                             onChangeName={(e: React.ChangeEvent<HTMLInputElement>) => { setCardName(e.target.value) }}
                             // onChangeNumber={handleChangeCardNumber}
                             onChangeExpiry={(e: React.ChangeEvent<HTMLInputElement>) => { setExpiry(e.target.value) }}
@@ -172,24 +199,16 @@ export const CheckOut = (props: CheckOutProps) => {
                             cvcErrorText={cvcErrorText}
                         />
                     </section>
-                    <section>
-                        3. Review and Shipping
-                    </section>
-                </Card>
-                <Card>
+                </ReviewCard>
+                <CheckoutCard>
                     <OrderSummary
                         item={itemPrice.toFixed(2)}
                         shipping={shippingPrice.toFixed(2)}
                         tax={taxPrice.toFixed(2)}
                         total={totalPrice.toFixed(2)}
                     />
-                </Card>
-                <Button type="button">
-                    <Link to="/cart">
-                        Back to Cart
-                    </Link>
-                </Button>
-                <Button type="submit">Complete Order</Button>
+                    <Button type="submit">Confirm and Pay</Button>
+                </CheckoutCard>
             </form>
         </div>
     )

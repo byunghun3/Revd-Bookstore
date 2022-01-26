@@ -6,16 +6,24 @@ import OutlinedInput from "@mui/material/OutlinedInput"
 import { styled } from "@mui/system"
 import classes from "./ShippingInfo.module.css"
 
-const NameForm = styled(FormControl)({
-    margin: "20px",
-    width: "40%",
-
+const StreetForm = styled(FormControl)({
+    margin: "12px",
+    width: "80%",
 })
 
-const StyledForm = styled(FormControl)({
-    margin: "20px",
+const CityForm = styled(FormControl)({
+    margin: "12px",
     width: "80%",
+})
 
+const StateCodeForm = styled(FormControl)({
+    margin: "12px",
+    width: "38%",
+})
+
+const ZipCodeForm = styled(FormControl)({
+    margin: "12px",
+    width: "38%",
 })
 
 const FormInputLabel = styled(InputLabel)({
@@ -23,73 +31,88 @@ const FormInputLabel = styled(InputLabel)({
 })
 
 interface ShippingInfoProps {
-    streetAddress: string
+    addressLineOne: string
+    addressLineTwo: string
     city: string
     stateCode: string
     zipCode: string
-    onChangeStreetAddress: React.ChangeEventHandler<HTMLInputElement>
+    onChangeAddressLineOne: React.ChangeEventHandler<HTMLInputElement>
+    onChangeAddressLineTwo: React.ChangeEventHandler<HTMLInputElement>
     onChangeCity: React.ChangeEventHandler<HTMLInputElement>
     onChangeStateCode: React.ChangeEventHandler<HTMLInputElement>
     onChangeZipCode: React.ChangeEventHandler<HTMLInputElement>
 }
 
 export const ShippingInfo: FC<ShippingInfoProps> = ({
-    streetAddress, city, stateCode, zipCode, onChangeStreetAddress,
-    onChangeCity, onChangeStateCode, onChangeZipCode }) => {
-    // const [streetAddress, setStreetAddress] = useState("")
-    // const [city, setCity] = useState("")
-    // const [stateCode, setStateCode] = useState("")
-    // const [zipCode, setZipCode] = useState("")
-
-
+    addressLineOne, addressLineTwo, city, stateCode, zipCode,
+    onChangeAddressLineOne, onChangeAddressLineTwo, onChangeCity,
+    onChangeStateCode, onChangeZipCode
+}) => {
     return (
-        <div>
-            1. Shipping Address
-            <NameForm variant="outlined">
-                <FormInputLabel>Street Address</FormInputLabel>
-                <OutlinedInput
-                    label="Street Address"
-                    name="streetAddress"
-                    type="text"
-                    value={streetAddress}
-                    onChange={onChangeStreetAddress}
+        <div className={classes.shippingInfo}>
+            <div className={classes.shippingInfoHeader}>Shipping Address</div>
+            <div className={classes.shippingInputs}>
+                <StreetForm variant="outlined">
+                    <FormInputLabel>Address Line 1</FormInputLabel>
+                    <OutlinedInput
+                        label="Address Line 1"
+                        name="addressLineOne"
+                        type="text"
+                        value={addressLineOne}
+                        onChange={onChangeAddressLineOne}
+                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setStreetAddress(e.target.value) }}
+                        required
+                    />
+                </StreetForm>
+                <StreetForm variant="outlined">
+                    <FormInputLabel>Address Line 2 (optional)</FormInputLabel>
+                    <OutlinedInput
+                        label="Address Line 2 (optional)"
+                        name="addressLineTwo"
+                        type="text"
+                        value={addressLineTwo}
+                        onChange={onChangeAddressLineTwo}
                     // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setStreetAddress(e.target.value) }}
-                    required />
-            </NameForm>
-            <NameForm variant="outlined">
-                <FormInputLabel>Town/City</FormInputLabel>
-                <OutlinedInput
-                    label="Town/City"
-                    name="city"
-                    type="text"
-                    value={city}
-                    onChange={onChangeCity}
-                    // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCity(e.target.value) }}
-                    required />
-            </NameForm>
-            <NameForm variant="outlined">
-                <FormInputLabel>State Code</FormInputLabel>
-                <OutlinedInput
-                    label="State Code"
-                    name="stateCode"
-                    type="text"
-                    value={stateCode}
-                    onChange={onChangeStateCode}
-                    // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setStateCode(e.target.value) }}
-                    required />
-            </NameForm>
-            {/* <SelectUSState className={classes.selectState} /> */}
-            <NameForm variant="outlined">
-                <FormInputLabel>Zip/Postal</FormInputLabel>
-                <OutlinedInput
-                    label="Zip/Postal"
-                    name="zipCode"
-                    type="text"
-                    value={zipCode}
-                    onChange={onChangeZipCode}
-                    // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setZipCode(e.target.value) }}
-                    required />
-            </NameForm>
+                    />
+                </StreetForm>
+                <CityForm variant="outlined">
+                    <FormInputLabel>Town/City</FormInputLabel>
+                    <OutlinedInput
+                        label="Town/City"
+                        name="city"
+                        type="text"
+                        value={city}
+                        onChange={onChangeCity}
+                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCity(e.target.value) }}
+                        required
+                    />
+                </CityForm>
+                <StateCodeForm variant="outlined">
+                    <FormInputLabel>State Code</FormInputLabel>
+                    <OutlinedInput
+                        label="State Code"
+                        name="stateCode"
+                        type="text"
+                        value={stateCode}
+                        onChange={onChangeStateCode}
+                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setStateCode(e.target.value) }}
+                        required
+                    />
+                </StateCodeForm>
+                {/* <SelectUSState className={classes.selectState} /> */}
+                <ZipCodeForm variant="outlined">
+                    <FormInputLabel>Zip/Postal</FormInputLabel>
+                    <OutlinedInput
+                        label="Zip/Postal"
+                        name="zipCode"
+                        type="text"
+                        value={zipCode}
+                        onChange={onChangeZipCode}
+                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setZipCode(e.target.value) }}
+                        required
+                    />
+                </ZipCodeForm>
+            </div>
         </div>
     )
 }

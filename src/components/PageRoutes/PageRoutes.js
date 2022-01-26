@@ -8,7 +8,7 @@ import Error from "../../pages/Error/Error"
 import { Login } from "../../pages/Login/Login"
 import { SignUp } from "../../pages/SignUp/SignUp"
 import { Cart } from "../../pages/Cart/Cart"
-import { CheckOut } from "../../pages/CheckOut/CheckOut"
+import { Checkout } from "../../pages/Checkout/Checkout"
 import Product from "../../pages/Product/Product"
 import Header from "../Header/Header"
 import { HeaderTwo } from "../HeaderTwo/HeaderTwo"
@@ -36,7 +36,7 @@ function PageRoutes() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<CheckOut />} />
+                <Route path="/checkout" element={<Checkout />} />
                 <Route path="/browse/:id" element={<Product />} />
                 <Route path="*" element={<Error />} />
             </Routes>
