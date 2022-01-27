@@ -7,6 +7,7 @@ import Contact from "../../pages/Contact/Contact"
 import Error from "../../pages/Error/Error"
 import { Login } from "../../pages/Login/Login"
 import { SignUp } from "../../pages/SignUp/SignUp"
+import { ForgotPassword } from "../../pages/ForgotPassword/ForgotPassword"
 import { Cart } from "../../pages/Cart/Cart"
 import { Checkout } from "../../pages/Checkout/Checkout"
 import { OrderComplete } from "../../pages/OrderComplete/OrderComplete"
@@ -22,24 +23,27 @@ function PageRoutes() {
             {location.pathname === "/login" ||
                 location.pathname === "/cart" ||
                 location.pathname === "/signup" ||
+                location.pathname === "/forgotpassword" ||
                 location.pathname === "/checkout" ?
                 null : <Header />}
             {location.pathname === "/login" ||
                 location.pathname === "/cart" ||
                 location.pathname === "/signup" ||
+                location.pathname === "/forgotpassword" ||
                 location.pathname === "/checkout" ?
                 <HeaderTwo /> : null}
             <Routes className="routes">
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/browse" element={<Browse />} />
+                <Route path="/browse/:id" element={<Product />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/forgotpassword" element={<ForgotPassword />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/ordercomplete" element={<OrderComplete />} />
-                <Route path="/browse/:id" element={<Product />} />
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />

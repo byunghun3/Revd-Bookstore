@@ -16,6 +16,7 @@ import classes from "./Login.module.css"
 import { Card } from "@mui/material"
 
 const FormGrid = styled(Grid)({
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
@@ -46,6 +47,18 @@ const PasswordForm = styled(FormControl)({
 
 const FormInputLabel = styled(InputLabel)({
     margin: "0"
+})
+
+const ForgotPWButton = styled(Button)({
+    textDecoration: "none"
+})
+
+const LogInButton = styled(Button)({
+    width: "80%"
+})
+
+const SignUpButton = styled(Button)({
+    textDecoration: "none"
 })
 
 interface LoginProps {
@@ -128,17 +141,22 @@ export const Login: FC<LoginProps> = ({ }) => {
                                 required />
                         </PasswordForm>
                         <div>
-                            <Checkbox />Remember me
-                            <Button type="button">
-                                Forgot password?
-                            </Button>
+                            <span>
+                                <Checkbox />
+                                <span>Remember me</span>
+                            </span>
+                            <Link className={classes.link} to="/forgotpassword">
+                                <ForgotPWButton type="button">
+                                    Forgot password?
+                                </ForgotPWButton>
+                            </Link>
                         </div>
-                        <Button type="submit" color="primary" variant="contained">
+                        <LogInButton type="submit" color="primary" variant="contained">
                             Log in
-                        </Button>
+                        </LogInButton>
                         <div>
-                            Don&apos;t have account?
-                            <Link to="/signup">
+                            <span>Don&apos;t have account?</span>
+                            <Link className={classes.link} to="/signup">
                                 <Button type="button">
                                     Sign up
                                 </Button>
@@ -147,7 +165,7 @@ export const Login: FC<LoginProps> = ({ }) => {
                     </form>
                 </LoginCard>
             </FormGrid>
-            {/* <div></div> */}
+            {/* <div>ehllo</div> */}
         </div >
     )
 }
