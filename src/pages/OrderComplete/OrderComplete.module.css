@@ -1,0 +1,35 @@
+.orderCompletePage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.thankYou {
+    /* margin-top: 20px; */
+    font-size: 30px;
+}
+
+.confirmation {
+    margin-top: 20px;
+}
+
+.bookCover {
+    width: 10vw;
+}
+
+.bookList {
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 60%;
+}
+

@@ -63,12 +63,12 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
             <div className={classes.paymentInfoHeader}>Payment Info</div>
             <div>
                 <Cards
-                    rccs-size="100%"
                     cvc={cvc}
                     expiry={expiry}
                     focused={focus}
                     name={cardName}
-                    number={cardNumber} />
+                    number={cardNumber}
+                />
             </div>
             {/* <div> */}
             <CardNumberForm variant="outlined">

@@ -207,7 +207,11 @@ export const Checkout = (props: CheckoutProps) => {
                         tax={taxPrice.toFixed(2)}
                         total={totalPrice.toFixed(2)}
                     />
-                    <Button type="submit">Confirm and Pay</Button>
+                    <Button type="submit">
+                        <Link to="/ordercomplete">
+                            Confirm and Pay
+                        </Link>
+                    </Button>
                 </CheckoutCard>
             </form>
         </div>
