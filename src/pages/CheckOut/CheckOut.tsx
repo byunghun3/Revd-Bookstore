@@ -149,11 +149,11 @@ export const Checkout = (props: CheckoutProps) => {
                 <div className={classes.checkoutHeaderText}>
                     Checkout - {cart.length} {numItems}
                 </div>
-                <CartButton type="button">
-                    <Link className={classes.buttonLink} to="/cart">
+                <Link className={classes.buttonLink} to="/cart">
+                    <CartButton type="button">
                         Back to Cart
-                    </Link>
-                </CartButton>
+                    </CartButton>
+                </Link>
             </div>
             <form className={classes.checkoutForm} onSubmit={handleSaveOrder}>
                 <ReviewCard>
@@ -207,11 +207,11 @@ export const Checkout = (props: CheckoutProps) => {
                         tax={taxPrice.toFixed(2)}
                         total={totalPrice.toFixed(2)}
                     />
-                    <Button type="submit">
-                        <Link to="/ordercomplete">
+                    <Link to="/ordercomplete">
+                        <Button type="submit">
                             Confirm and Pay
-                        </Link>
-                    </Button>
+                        </Button>
+                    </Link>
                 </CheckoutCard>
             </form>
         </div>

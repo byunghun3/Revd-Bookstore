@@ -77,11 +77,11 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     const [isInputInvalid, setIsInputInvalid] = useState(false)
     // const [passwordMatchError, setPasswordMatchError] = useState("Passwords don't match")
     const [passwordMatchError, setPasswordMatchError] = useState("")
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user") || "[]"))
+    const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || "[]"))
 
     useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(user))
-    }, [user])
+        localStorage.setItem("users", JSON.stringify(users))
+    }, [users])
 
     const handleClickShowPassword = () => {
         setShowPassword(
@@ -122,7 +122,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
         if (!email.includes("@")) {
             alert("Please enter a valid email")
         }
-        let newUser = [...user]
+        let newUser = [...users]
 
         newUser.push({
             id: uuidv4(),
@@ -132,9 +132,9 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
             password: password
         })
 
-        setUser(newUser)
+        setUsers(newUser)
 
-        localStorage.setItem("user", JSON.stringify(user))
+        localStorage.setItem("users", JSON.stringify(users))
 
         navigate(-2)
     }

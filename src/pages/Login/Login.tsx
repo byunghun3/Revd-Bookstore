@@ -55,9 +55,13 @@ interface LoginProps {
 export const Login: FC<LoginProps> = ({ }) => {
     const navigate = useNavigate()
 
-    const [showPassword, setShowPassword] = useState(false)
+    const [email, setEmail] = useState("")
+    const [emailMatch, setEmailMatch] = useState("")
     const [password, setPassword] = useState("")
-    const [username, setUsername] = useState("")
+    const [showPassword, setShowPassword] = useState(false)
+    const [passwordMatch, setPasswordMatch] = useState("")
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const users = JSON.parse(localStorage.getItem("users") || "[]")
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         `set${e.currentTarget.name} = e.currentTarget.value`
@@ -70,13 +74,24 @@ export const Login: FC<LoginProps> = ({ }) => {
         )
     }
 
+    console.log(email)
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        alert("signed in!")
+        const userExists = users.filter((el: any) => {
+            return email === el.email
+        }).find((el: any) => {
+            return password === el.password
+        })
 
-        navigate(-1)
+        if (userExists) {
+            alert("signed in!")
+            setIsLoggedIn(true)
+            navigate(-1)
+        }
     }
+
     return (
         <div className={classes.loginPage}>
             <FormGrid>
@@ -84,12 +99,12 @@ export const Login: FC<LoginProps> = ({ }) => {
                     <AccountCircleIcon />
                     <form onSubmit={handleSubmit}>
                         <UsernameForm variant="outlined">
-                            <FormInputLabel>Username</FormInputLabel>
+                            <FormInputLabel>Email</FormInputLabel>
                             <OutlinedInput
-                                label="Username"
-                                name="Username"
-                                value={username}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUsername(e.target.value) }}
+                                label="Email"
+                                name="Email"
+                                value={email}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
                                 required />
                         </UsernameForm>
                         <PasswordForm>
@@ -112,18 +127,27 @@ export const Login: FC<LoginProps> = ({ }) => {
                                 </InputAdornment>}
                                 required />
                         </PasswordForm>
-
-                        <span><Checkbox />Remember me
-                            <Button type="button">Forgot password?</Button></span>
-                        <Button type="submit" color="primary" variant="contained">Log in</Button>
-                        Don&apos;t have account?
-                        <Link to="/signup">
-                            <Button type="button">Sign up</Button>
-                        </Link>
+                        <div>
+                            <Checkbox />Remember me
+                            <Button type="button">
+                                Forgot password?
+                            </Button>
+                        </div>
+                        <Button type="submit" color="primary" variant="contained">
+                            Log in
+                        </Button>
+                        <div>
+                            Don&apos;t have account?
+                            <Link to="/signup">
+                                <Button type="button">
+                                    Sign up
+                                </Button>
+                            </Link>
+                        </div>
                     </form>
                 </LoginCard>
             </FormGrid>
-            <div></div>
+            {/* <div></div> */}
         </div >
     )
 }

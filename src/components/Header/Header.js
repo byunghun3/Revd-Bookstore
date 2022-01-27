@@ -50,7 +50,9 @@ function Header() {
                         </Link>
                     </div>
                     <div>
-                        <Link to="/login" className={classes.headerLink}><StyledAccountIcon /></Link>
+                        <Link to="/login" className={classes.headerLink}>
+                            <StyledAccountIcon />
+                        </Link>
                         <Link to="/cart" className={classes.headerLink}>
                             <StyledCartIcon />
                             <span className={classes.cartLength}>({cart.length})</span>
