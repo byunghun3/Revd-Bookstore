@@ -12,7 +12,7 @@ const ContainerGrid = styled(Grid)({
     padding: "70px 50px 70px 50px",
     // marginTop: "10px",
     // zIndex: -1,
-    justifyContent: "center",
+    justifyContent: "left"
 })
 
 interface BrowseProps {
