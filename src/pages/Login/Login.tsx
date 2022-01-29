@@ -71,10 +71,12 @@ export const Login: FC<LoginProps> = ({ }) => {
     const navigate = useNavigate()
 
     const [email, setEmail] = useState("")
-    const [emailMatch, setEmailMatch] = useState("")
+    const [emailMatchError, setEmailMatchError] = useState("")
+    const [isEmailInvalid, setIsEmailInvalid] = useState(false)
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
-    const [passwordMatch, setPasswordMatch] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+    const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
     // const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
     const users = JSON.parse(localStorage.getItem("users") || "[]")
@@ -102,8 +104,8 @@ export const Login: FC<LoginProps> = ({ }) => {
         })
 
         if (userExists) {
-            // alert("signed in!")
-            // setIsLoggedIn(true)
+            setEmailMatchError("")
+            setIsEmailInvalid(false)
 
             let newCurrentUser = [...currentUser]
 
@@ -131,6 +133,9 @@ export const Login: FC<LoginProps> = ({ }) => {
             localStorage.setItem("currentUser", JSON.stringify(newCurrentUser))
 
             // navigate(-1)
+        } else {
+            setEmailMatchError("Incorrect email or password")
+            setIsEmailInvalid(true)
         }
     }
 
@@ -140,12 +145,14 @@ export const Login: FC<LoginProps> = ({ }) => {
                 <LoginCard>
                     <AccountCircleIcon />
                     <form onSubmit={handleSubmit}>
+                        <div className={emailMatchError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{emailMatchError}</div>
                         <UsernameForm variant="outlined">
                             <FormInputLabel>Email</FormInputLabel>
                             <OutlinedInput
                                 label="Email"
                                 name="Email"
                                 value={email}
+                                // error={isEmailInvalid}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
                                 required />
                         </UsernameForm>
@@ -156,6 +163,7 @@ export const Login: FC<LoginProps> = ({ }) => {
                                 name="Password"
                                 type={showPassword ? "text" : "password"}
                                 value={password}
+                                // error={isPasswordInvalid}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value) }}
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
@@ -168,6 +176,7 @@ export const Login: FC<LoginProps> = ({ }) => {
                                     </IconButton>
                                 </InputAdornment>}
                                 required />
+                            <div className={passwordError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{passwordError}</div>
                         </PasswordForm>
                         <div>
                             <span>
