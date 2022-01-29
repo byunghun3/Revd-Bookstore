@@ -57,13 +57,17 @@ function Header() {
                             <span className={classes.title}>Revd Bookstore</span>
                         </Link>
                     </div>
-                    <button onClick={() => localStorage.removeItem("currentUser")}>logout</button>
                     <div>
-                        {isLoggedIn ? <div>Hello, {currentUser.firstName} {currentUser.lastName}</div> : null}
+                        {isLoggedIn ? <div>Hello, {currentUser[0].firstName} {currentUser[0].lastName}</div> : null}
                         {/* <div>Hello, {currentUser[0].firstName} {currentUser[0].lastName}</div> */}
-                        <Link to="/login" className={classes.headerLink}>
-                            <StyledAccountIcon />
-                        </Link>
+                        {isLoggedIn ?
+                            <Link to="/profile" className={classes.headerLink}>
+                                <StyledAccountIcon />
+                            </Link> :
+                            <Link to="/login" className={classes.headerLink}>
+                                <StyledAccountIcon />
+                            </Link>
+                        }
                         <Link to="/cart" className={classes.headerLink}>
                             <StyledCartIcon />
                             <span className={classes.cartLength}>({cart.length})</span>

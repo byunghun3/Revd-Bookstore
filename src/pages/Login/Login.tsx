@@ -120,8 +120,8 @@ export const Login: FC<LoginProps> = ({ }) => {
             })
 
             newCurrentUser.push({
-                firstName: currentUserFirstName,
-                lastName: currentUserLastName,
+                firstName: `${currentUserFirstName}`,
+                lastName: `${currentUserLastName}`,
                 email: email,
                 password: password,
             })

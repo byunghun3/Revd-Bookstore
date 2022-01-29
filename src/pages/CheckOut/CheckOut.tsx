@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { Card } from "@mui/material"
 import { Button } from "@mui/material"
@@ -49,13 +49,15 @@ export const Checkout = (props: CheckoutProps) => {
     const [isCardInvalid, setIsCardInvalid] = useState(false)
     const [isExpiryInvalid, setIsExpiryInvalid] = useState(false)
     const [isCvcInvalid, setIsCvcInvalid] = useState(false)
-    // const [cardNumberErrorText, setCardNumberErrorText] = useState("")
-    // const [expiryErrorText, setExpiryErrorText] = useState("")
-    // const [cvcErrorText, setCvcErrorText] = useState("")
-    const [cardNumberErrorText, setCardNumberErrorText] = useState("Please enter a valid card number")
-    const [expiryErrorText, setExpiryErrorText] = useState("Please enter a valid date")
-    const [cvcErrorText, setCvcErrorText] = useState("Please enter a valid CVC")
+    const [cardNumberErrorText, setCardNumberErrorText] = useState("")
+    const [expiryErrorText, setExpiryErrorText] = useState("")
+    const [cvcErrorText, setCvcErrorText] = useState("")
+    // const [cardNumberErrorText, setCardNumberErrorText] = useState("Please enter a valid card number")
+    // const [expiryErrorText, setExpiryErrorText] = useState("Please enter a valid date")
+    // const [cvcErrorText, setCvcErrorText] = useState("Please enter a valid CVC")
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -134,12 +136,23 @@ export const Checkout = (props: CheckoutProps) => {
                     number: cardNumber,
                     expiry: expiry,
                     cvc: cvc
-                }
+                },
+                user: {
+                    firstName: currentUser[0].firstName,
+                    lastName: currentUser[0].lastName,
+                    email: currentUser[0].email,
+                    password: currentUser[0].password
+                },
+                details: [
+                    ...cart
+                ]
             })
 
             setOrder(newOrder)
 
             localStorage.setItem("order", JSON.stringify(newOrder))
+
+            navigate("/ordercomplete")
         }
     }
 
@@ -207,11 +220,11 @@ export const Checkout = (props: CheckoutProps) => {
                         tax={taxPrice.toFixed(2)}
                         total={totalPrice.toFixed(2)}
                     />
-                    <Link to="/ordercomplete">
-                        <Button type="submit">
-                            Confirm and Pay
-                        </Button>
-                    </Link>
+                    <Button type="submit">
+                        {/* <Link to="/ordercomplete"> */}
+                        Confirm and Pay
+                        {/* </Link> */}
+                    </Button>
                 </CheckoutCard>
             </form>
         </div>

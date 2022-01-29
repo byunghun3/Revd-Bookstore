@@ -7,6 +7,7 @@ import { Suggest } from "../../pages/Suggest/Suggest"
 import Contact from "../../pages/Contact/Contact"
 import Error from "../../pages/Error/Error"
 import { Login } from "../../pages/Login/Login"
+import { Profile } from "../../pages/Profile/Profile"
 import { SignUp } from "../../pages/SignUp/SignUp"
 import { ForgotPassword } from "../../pages/ForgotPassword/ForgotPassword"
 import { Cart } from "../../pages/Cart/Cart"
@@ -44,6 +45,7 @@ function PageRoutes() {
                     <Route path="/suggest" element={<Suggest />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/profile" element={<Profile />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
                     <Route path="/cart" element={<Cart />} />
