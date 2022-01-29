@@ -73,8 +73,10 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
     // const [passwordLengthError, setPasswordLengthError] = useState("Password should not exceed 16 characters")
+    const [emailInputError, setEmailInputError] = useState("")
     const [passwordLengthError, setPasswordLengthError] = useState("")
-    const [isInputInvalid, setIsInputInvalid] = useState(false)
+    const [isEmailInvalid, setIsEmailInvalid] = useState(false)
+    const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
     // const [passwordMatchError, setPasswordMatchError] = useState("Passwords don't match")
     const [passwordMatchError, setPasswordMatchError] = useState("")
     const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || "[]"))
@@ -82,6 +84,17 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     useEffect(() => {
         localStorage.setItem("users", JSON.stringify(users))
     }, [users])
+
+    const handleValidateEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.value.includes("@")) {
+            setEmailInputError("Please enter a valid email")
+            setIsEmailInvalid(true)
+        } else {
+            setEmailInputError("")
+            setIsEmailInvalid(false)
+        }
+        setEmail(e.target.value)
+    }
 
     const handleClickShowPassword = () => {
         setShowPassword(
@@ -92,10 +105,10 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value !== password) {
             setPasswordMatchError("Passwords don't match")
-            setIsInputInvalid(true)
+            setIsPasswordInvalid(true)
         } else {
             setPasswordMatchError("")
-            setIsInputInvalid(false)
+            setIsPasswordInvalid(false)
         }
         setConfirmPassword(e.target.value)
     }
@@ -103,13 +116,13 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     const handlePasswordLength = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length < 8) {
             setPasswordLengthError("Password should be at least 8 characters")
-            setIsInputInvalid(true)
+            setIsPasswordInvalid(true)
         } else if (e.target.value.length > 16) {
             setPasswordLengthError("Password should not exceed 16 characters")
-            setIsInputInvalid(true)
+            setIsPasswordInvalid(true)
         } else {
             setPasswordLengthError("")
-            setIsInputInvalid(false)
+            setIsPasswordInvalid(false)
         }
         setPassword(e.target.value)
     }
@@ -119,24 +132,34 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!email.includes("@")) {
-            alert("Please enter a valid email")
-        }
-        let newUser = [...users]
 
-        newUser.push({
-            id: uuidv4(),
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password
+        const userExists = users.find((el: any) => {
+            return el.email === email
         })
 
-        setUsers(newUser)
+        if (userExists) {
+            setEmailInputError("Account already exists with this email")
+            setIsEmailInvalid(true)
+        } else {
+            setEmailInputError("")
+            setIsEmailInvalid(false)
 
-        localStorage.setItem("users", JSON.stringify(newUser))
+            let newUser = [...users]
 
-        navigate(-2)
+            newUser.push({
+                id: uuidv4(),
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
+            })
+
+            setUsers(newUser)
+
+            localStorage.setItem("users", JSON.stringify(newUser))
+
+            navigate(-2)
+        }
     }
 
     return (
@@ -174,9 +197,11 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 name="email"
                                 type="text"
                                 value={email}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
+                                error={isEmailInvalid}
+                                onChange={handleValidateEmail}
                                 required
                             />
+                            <div className={emailInputError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{emailInputError}</div>
                         </StyledForm>
                         <StyledForm>
                             <InputLabel>Password</InputLabel>
@@ -188,7 +213,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 onChange={handlePasswordLength}
                                 // helperText={password.length < 8 ? "Password should be at least 8 characters" : (password.length > 16 ? "Password should not exceed 16 characters" : null)}
                                 // error={password.length < 8 || password.length > 16}
-                                error={isInputInvalid}
+                                error={isPasswordInvalid}
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
@@ -211,7 +236,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 type={showPassword ? "text" : "password"}
                                 value={confirmPassword}
                                 onChange={handleConfirmPassword}
-                                error={isInputInvalid}
+                                error={isPasswordInvalid}
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
