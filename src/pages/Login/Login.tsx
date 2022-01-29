@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react"
+import React, { useState, useContext, FC } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Grid from "@mui/material/Grid"
 import InputLabel from "@mui/material/InputLabel"
@@ -11,6 +11,7 @@ import Button from "@mui/material/Button"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
+import { UserContext } from "../../utils/auth"
 import { styled } from "@mui/system"
 import classes from "./Login.module.css"
 import { Card } from "@mui/material"
@@ -63,6 +64,7 @@ const SignUpButton = styled(Button)({
 
 interface LoginProps {
     // showPassword: boolean
+    isLoggedIn: boolean
 }
 
 export const Login: FC<LoginProps> = ({ }) => {
@@ -73,7 +75,8 @@ export const Login: FC<LoginProps> = ({ }) => {
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
     const [passwordMatch, setPasswordMatch] = useState("")
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    // const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
     const users = JSON.parse(localStorage.getItem("users") || "[]")
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,9 +102,35 @@ export const Login: FC<LoginProps> = ({ }) => {
         })
 
         if (userExists) {
-            alert("signed in!")
-            setIsLoggedIn(true)
-            navigate(-1)
+            // alert("signed in!")
+            // setIsLoggedIn(true)
+
+            let newCurrentUser = [...currentUser]
+
+            const currentUserFirstName = users.filter((el: any) => {
+                return email === el.email
+            }).map((el: any) => {
+                return el.firstName
+            })
+
+            const currentUserLastName = users.filter((el: any) => {
+                return email === el.email
+            }).map((el: any) => {
+                return el.lastName
+            })
+
+            newCurrentUser.push({
+                firstName: currentUserFirstName,
+                lastName: currentUserLastName,
+                email: email,
+                password: password,
+            })
+
+            setCurrentUser(newCurrentUser)
+
+            localStorage.setItem("currentUser", JSON.stringify(newCurrentUser))
+
+            // navigate(-1)
         }
     }
 
