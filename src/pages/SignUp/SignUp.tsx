@@ -134,7 +134,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
 
         setUsers(newUser)
 
-        localStorage.setItem("users", JSON.stringify(users))
+        localStorage.setItem("users", JSON.stringify(newUser))
 
         navigate(-2)
     }
@@ -153,7 +153,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 type="text"
                                 value={firstName}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setFirstName(e.target.value) }}
-                                required />
+                                required
+                            />
                         </NameForm>
                         <NameForm variant="outlined">
                             <FormInputLabel>Last Name</FormInputLabel>
@@ -163,7 +164,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 type="text"
                                 value={lastName}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setLastName(e.target.value) }}
-                                required />
+                                required
+                            />
                         </NameForm>
                         <StyledForm variant="outlined">
                             <FormInputLabel>Email</FormInputLabel>
@@ -173,7 +175,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 type="text"
                                 value={email}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
-                                required />
+                                required
+                            />
                         </StyledForm>
                         <StyledForm>
                             <InputLabel>Password</InputLabel>
@@ -196,7 +199,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                         {showPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
                                 </InputAdornment>}
-                                required />
+                                required
+                            />
                         </StyledForm>
                         <div className={passwordLengthError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{passwordLengthError}</div>
                         <StyledForm>
@@ -218,7 +222,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                         {showPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
                                 </InputAdornment>}
-                                required />
+                                required
+                            />
                         </StyledForm>
                         <div className={passwordMatchError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{passwordMatchError}</div>
 
