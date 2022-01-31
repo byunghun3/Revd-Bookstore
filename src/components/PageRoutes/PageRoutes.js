@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Route, Routes, useLocation } from "react-router-dom"
+import React, { useState, useContext } from "react"
+import { Route, Routes, useLocation, Navigate } from "react-router-dom"
 import HomePage from "../../pages/HomePage/HomePage"
 import About from "../../pages/About/About"
 import { Browse } from "../../pages/Browse/Browse"
@@ -17,27 +17,26 @@ import Product from "../../pages/Product/Product"
 import Header from "../Header/Header"
 import { HeaderTwo } from "../HeaderTwo/HeaderTwo"
 import { Footer } from "../Footer/Footer"
-import { LoginProvider } from "../../contexts/LoginContext"
+import { LoginContext, LoginProvider } from "../../contexts/LoginContext"
 
 function PageRoutes() {
     const location = useLocation()
-    const [isLoggedIn, setIsLoggedIn] = useState("hello")
+    const { isLoggedIn } = useContext(LoginContext)
     return (
         <LoginProvider>
-        <div>
-            {location.pathname === "/login" ||
-                location.pathname === "/cart" ||
-                location.pathname === "/signup" ||
-                location.pathname === "/forgotpassword" ||
-                location.pathname === "/checkout" ?
-                null : <Header />}
-            {location.pathname === "/login" ||
-                location.pathname === "/cart" ||
-                location.pathname === "/signup" ||
-                location.pathname === "/forgotpassword" ||
-                location.pathname === "/checkout" ?
-                <HeaderTwo /> : null}
-                {/* <LoginContext value={{ isLoggedIn, setIsLoggedIn }}> */}
+            <div>
+                {location.pathname === "/login" ||
+                    location.pathname === "/cart" ||
+                    location.pathname === "/signup" ||
+                    location.pathname === "/forgotpassword" ||
+                    location.pathname === "/checkout" ?
+                    null : <Header />}
+                {location.pathname === "/login" ||
+                    location.pathname === "/cart" ||
+                    location.pathname === "/signup" ||
+                    location.pathname === "/forgotpassword" ||
+                    location.pathname === "/checkout" ?
+                    <HeaderTwo /> : null}
                 <Routes className="routes">
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<About />} />
@@ -46,7 +45,7 @@ function PageRoutes() {
                     <Route path="/suggest" element={<Suggest />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
                     <Route path="/cart" element={<Cart />} />
@@ -54,9 +53,9 @@ function PageRoutes() {
                     <Route path="/ordercomplete" element={<OrderComplete />} />
                     <Route path="*" element={<Error />} />
                 </Routes>
-            <Footer />
-        </div>
-            </LoginProvider >
+                <Footer />
+            </div>
+        </LoginProvider >
     )
 }
 
