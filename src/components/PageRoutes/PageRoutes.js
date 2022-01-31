@@ -30,13 +30,7 @@ function PageRoutes() {
                     location.pathname === "/signup" ||
                     location.pathname === "/forgotpassword" ||
                     location.pathname === "/checkout" ?
-                    null : <Header />}
-                {location.pathname === "/login" ||
-                    location.pathname === "/cart" ||
-                    location.pathname === "/signup" ||
-                    location.pathname === "/forgotpassword" ||
-                    location.pathname === "/checkout" ?
-                    <HeaderTwo /> : null}
+                    <HeaderTwo /> : <Header />}
                 <Routes className="routes">
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<About />} />
