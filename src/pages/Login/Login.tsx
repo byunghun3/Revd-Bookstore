@@ -11,7 +11,7 @@ import Button from "@mui/material/Button"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
-import { UserContext } from "../../utils/auth"
+import { LoginContext } from "../../contexts/LoginContext"
 import { styled } from "@mui/system"
 import classes from "./Login.module.css"
 import { Card } from "@mui/material"
@@ -77,7 +77,7 @@ export const Login: FC<LoginProps> = ({ }) => {
     const [showPassword, setShowPassword] = useState(false)
     const [passwordError, setPasswordError] = useState("")
     const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
-    // const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
+    const { setIsLoggedIn } = useContext(LoginContext)
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
     const users = JSON.parse(localStorage.getItem("users") || "[]")
 
@@ -132,6 +132,7 @@ export const Login: FC<LoginProps> = ({ }) => {
 
             localStorage.setItem("currentUser", JSON.stringify(newCurrentUser))
 
+            setIsLoggedIn(true)
             // navigate(-1)
         } else {
             setEmailMatchError("Incorrect email or password")

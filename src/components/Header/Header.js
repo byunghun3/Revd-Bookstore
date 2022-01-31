@@ -6,7 +6,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import { styled } from "@mui/system"
 import Logo from "../../assets/icons/bookstore-logo.png"
-// import { UserContext } from "../../utils/auth"
+import { LoginContext } from "../../contexts/LoginContext"
 import classes from "./Header.module.css"
 
 const HeaderToolbar = styled(Toolbar)({
@@ -30,17 +30,17 @@ const StyledCartIcon = styled(ShoppingCartIcon)({
 })
 
 function Header() {
-    // const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const { isLoggedIn } = useContext(LoginContext)
+    // const [isLoggedIn, setIsLoggedIn] = useState(false)
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
 
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
-        if (currentUser.length > 0) {
-            setIsLoggedIn(true)
-        } else { setIsLoggedIn(false) }
+        // if (currentUser.length > 0) {
+        //     setIsLoggedIn(true)
+        // } else { setIsLoggedIn(false) }
     }, [cart, currentUser])
 
     return (

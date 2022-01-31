@@ -17,12 +17,13 @@ import Product from "../../pages/Product/Product"
 import Header from "../Header/Header"
 import { HeaderTwo } from "../HeaderTwo/HeaderTwo"
 import { Footer } from "../Footer/Footer"
-import { UserContext } from "../../utils/auth"
+import { LoginProvider } from "../../contexts/LoginContext"
 
 function PageRoutes() {
     const location = useLocation()
     const [isLoggedIn, setIsLoggedIn] = useState("hello")
     return (
+        <LoginProvider>
         <div>
             {location.pathname === "/login" ||
                 location.pathname === "/cart" ||
@@ -36,7 +37,7 @@ function PageRoutes() {
                 location.pathname === "/forgotpassword" ||
                 location.pathname === "/checkout" ?
                 <HeaderTwo /> : null}
-            <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+                {/* <LoginContext value={{ isLoggedIn, setIsLoggedIn }}> */}
                 <Routes className="routes">
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<About />} />
@@ -53,9 +54,9 @@ function PageRoutes() {
                     <Route path="/ordercomplete" element={<OrderComplete />} />
                     <Route path="*" element={<Error />} />
                 </Routes>
-            </UserContext.Provider>
             <Footer />
         </div>
+            </LoginProvider >
     )
 }
 
