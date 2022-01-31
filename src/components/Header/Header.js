@@ -30,7 +30,7 @@ const StyledCartIcon = styled(ShoppingCartIcon)({
 })
 
 function Header() {
-    const { isLoggedIn } = useContext(LoginContext)
+    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
     // const [isLoggedIn, setIsLoggedIn] = useState(false)
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
@@ -38,10 +38,14 @@ function Header() {
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
-        // if (currentUser.length > 0) {
-        //     setIsLoggedIn(true)
-        // } else { setIsLoggedIn(false) }
+        if (currentUser.length) {
+            setIsLoggedIn(true)
+        } else { setIsLoggedIn(false) }
     }, [cart, currentUser])
+
+    const greeting = currentUser.map(el => {
+        return <div key={el.email}>Hello, {el.firstName} {el.lastName}</div>
+    })
 
     return (
         <div>
@@ -58,7 +62,7 @@ function Header() {
                         </Link>
                     </div>
                     <div>
-                        {isLoggedIn ? <div>Hello, {currentUser[0].firstName} {currentUser[0].lastName}</div> : null}
+                        {isLoggedIn ? greeting : null}
                         {/* <div>Hello, {currentUser[0].firstName} {currentUser[0].lastName}</div> */}
                         {isLoggedIn ?
                             <Link to="/profile" className={classes.headerLink}>

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useEffect, useContext } from "react"
 import { Route, Routes, useLocation, Navigate } from "react-router-dom"
 import HomePage from "../../pages/HomePage/HomePage"
 import About from "../../pages/About/About"
@@ -8,6 +8,7 @@ import Contact from "../../pages/Contact/Contact"
 import Error from "../../pages/Error/Error"
 import { Login } from "../../pages/Login/Login"
 import { Profile } from "../../pages/Profile/Profile"
+import { ProtectedRoute } from "../../components/ProtectedRoute/ProtectedRoute"
 import { SignUp } from "../../pages/SignUp/SignUp"
 import { ForgotPassword } from "../../pages/ForgotPassword/ForgotPassword"
 import { Cart } from "../../pages/Cart/Cart"
@@ -22,6 +23,8 @@ import { LoginContext, LoginProvider } from "../../contexts/LoginContext"
 function PageRoutes() {
     const location = useLocation()
     const { isLoggedIn } = useContext(LoginContext)
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
+
     return (
         <LoginProvider>
             <div>
@@ -39,7 +42,11 @@ function PageRoutes() {
                     <Route path="/suggest" element={<Suggest />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
+                    <Route path="/profile" element={<Profile />} />
+                    {/* <ProtectedRoute /> */}
+                    {/* {isLoggedIn ? <Route path="/profile" element={<Profile />} /> :
+                        <Route path="/profile" element={<Navigate to="/login" />} />} */}
+                    {/* <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} /> */}
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
                     <Route path="/cart" element={<Cart />} />

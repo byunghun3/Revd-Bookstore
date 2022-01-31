@@ -133,6 +133,9 @@ export const Login: FC<LoginProps> = ({ }) => {
             localStorage.setItem("currentUser", JSON.stringify(newCurrentUser))
 
             setIsLoggedIn(true)
+
+            // localStorage.setItem("isLoggedIn", isLoggedIn)
+
             // navigate(-1)
         } else {
             setEmailMatchError("Incorrect email or password")
