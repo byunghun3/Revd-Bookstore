@@ -10,6 +10,7 @@ interface Props {
 export const Profile = (props: Props) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const order = JSON.parse(localStorage.getItem("order") || "[]")
+    const suggestion = JSON.parse(localStorage.getItem("suggestion") || "[]")
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const navigate = useNavigate()
     // useEffect(() => {
@@ -25,7 +26,7 @@ export const Profile = (props: Props) => {
     }
 
     const currentUserEmail = currentUser.map((el: any) => {
-        return `${el.email}`
+        return el.email
     })
 
     const orderHistory = order.filter((el: any) => {
@@ -35,7 +36,20 @@ export const Profile = (props: Props) => {
             return <div key={el.id}>
                 <img src={el.img} alt="" />
                 {el.title}
-                {el.author}</div>
+                {el.author}
+            </div>
+        })
+    })
+
+    const suggestionHistory = suggestion.filter((el: any) => {
+        return el.user.email === `${currentUserEmail}`
+    }).map((el: any) => {
+        return el.suggested.map((el: any) => {
+            return <div key={el.id}>
+                {el.title}
+                {el.author}
+                {el.comments}
+            </div>
         })
     })
 
@@ -48,6 +62,8 @@ export const Profile = (props: Props) => {
             <div className={classes.pageContent}>
                 Order History
                 {orderHistory}
+                Suggestion History
+                {suggestionHistory}
                 < Button onClick={handleClick}>Log Out</Button>
             </div>
         </div >

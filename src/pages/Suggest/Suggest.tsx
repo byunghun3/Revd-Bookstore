@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { v4 as uuidv4 } from "uuid"
 import { FormControl, Grid, TextField } from "@mui/material"
 import InputLabel from "@mui/material/InputLabel"
 import OutlinedInput from "@mui/material/OutlinedInput"
@@ -14,24 +15,18 @@ const BrowseButton = styled(Button)({
 })
 
 const TitleForm = styled(FormControl)({
-    margin: "20px 0"
+    width: "30%",
+    margin: "1% 0"
 })
 
-const CommentsForm = styled(FormControl)({
-    margin: "20px 0",
-    overflowWrap: "break-word"
-
+const AuthorForm = styled(FormControl)({
+    width: "30%",
+    margin: "1% 0"
 })
 
 const CommentsTextField = styled(TextField)({
-    height: "150px",
-    overflowWrap: "break-word"
-
-})
-
-const CommentsInput = styled(OutlinedInput)({
-    height: "150px",
-    wordWrap: "break-word"
+    width: "40%",
+    margin: "1% 0"
 })
 
 interface Props {
@@ -42,7 +37,37 @@ export const Suggest = (props: Props) => {
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
     const [comments, setComments] = useState("")
+    const [suggestion, setSuggestion] = useState(JSON.parse(localStorage.getItem("suggestion") || "[]"))
     const books = Data
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
+    const navigate = useNavigate()
+
+    const handleSubmitSuggestion = () => {
+        if (currentUser.length) {
+            let newSuggestion = [...suggestion]
+
+            newSuggestion.push({
+                user: {
+                    firstName: currentUser[0].firstName,
+                    lastName: currentUser[0].lastName,
+                    email: currentUser[0].email,
+                    password: currentUser[0].password
+                },
+                suggested: [{
+                    id: uuidv4(),
+                    title: title,
+                    author: author,
+                    comments: comments
+                }]
+            })
+
+            setSuggestion(newSuggestion)
+
+            localStorage.setItem("suggestion", JSON.stringify(newSuggestion))
+        } else {
+            navigate("/login")
+        }
+    }
 
     const bookList = books.map(book => {
         return <Link key={book.id} to={`/browse/${book.id}`}>
@@ -53,10 +78,13 @@ export const Suggest = (props: Props) => {
     return (
         <div className={classes.suggestPage}>
             <div className={classes.pageContent}>
-                <div className={classes.thankYou}>
+                <div className={classes.firstLine}>
                     Suggest a book for review!
                 </div>
-                <form className={classes.suggestForm}>
+                <div>
+                    Let us know below if there&apos;s a book you want us to review and put up
+                </div>
+                <form className={classes.suggestForm} onSubmit={handleSubmitSuggestion}>
                     <TitleForm>
                         <InputLabel>Title</InputLabel>
                         <OutlinedInput
@@ -68,7 +96,7 @@ export const Suggest = (props: Props) => {
                             required
                         />
                     </TitleForm>
-                    <FormControl>
+                    <AuthorForm>
                         <InputLabel>Author</InputLabel>
                         <OutlinedInput
                             label="Author"
@@ -78,7 +106,7 @@ export const Suggest = (props: Props) => {
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setAuthor(e.target.value) }}
                             required
                         />
-                    </FormControl>
+                    </AuthorForm>
                     <CommentsTextField
                         multiline
                         minRows={3}
@@ -88,16 +116,6 @@ export const Suggest = (props: Props) => {
                         value={comments}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setComments(e.target.value) }}
                     />
-                    {/* <CommentsForm>
-                        <InputLabel>Comments...</InputLabel>
-                        <CommentsInput
-                            label="Comments..."
-                            name="firstName"
-                            type="text"
-                            value={comments}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setComments(e.target.value) }}
-                        />
-                    </CommentsForm> */}
                     <Button type="submit">
                         Submit
                     </Button>
