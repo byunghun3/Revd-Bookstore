@@ -53,10 +53,6 @@ export const Profile = (props: Props) => {
         })
     })
 
-
-    // console.log(order[0].user.email, currentUser[0].email)
-    // console.log(order[0].details)
-
     return (
         <div className={classes.profilePage}>
             <div className={classes.pageContent}>

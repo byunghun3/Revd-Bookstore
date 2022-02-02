@@ -111,7 +111,7 @@ export const Suggest = (props: Props) => {
                         multiline
                         minRows={3}
                         label="Comments..."
-                        name="firstName"
+                        name="comments"
                         type="text"
                         value={comments}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setComments(e.target.value) }}

@@ -15,3 +15,28 @@
     margin: 5px 0 0 -15px;
     color: red;
 }
+
+.reviews {
+    margin-bottom: 2%;
+}
+
+.reviews:before,
+.reviews:after {
+  content: "";
+  position: relative;
+  height: 1px;
+  min-width: 40%;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #000;
+}
+
+.reviews:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.reviews:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
