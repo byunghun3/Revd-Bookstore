@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import React, { useState, useEffect, useContext } from "react"
+import { Link, useParams } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { Rating } from "react-simple-star-rating"
 import { Button, Card } from "@mui/material"
@@ -11,6 +11,9 @@ import { Data } from "../../Data"
 import { CustomerReviewData } from "../../CustomerReviewData"
 import BookRating from "../../components/BookRating/BookRating"
 import CustomerRating from "../../components/CustomerRating/CustomerRating"
+import AvgCustomerRating from "../../components/AvgCustomerRating/AvgCustomerRating"
+import { LoginContext } from "../../contexts/LoginContext"
+
 
 const ContainerGrid = styled(Grid)({
   display: "flex",
@@ -25,12 +28,13 @@ const ItemGrid = styled(Grid)({
 
 const CustomerReviewGrid = styled(Grid)({
   // display: "flex",
+  // width: "100%",
   flex: "1",
   justifyContent: "space-between",
   marginBottom: "5%"
 })
 
-const BookCard = styled(Card)({
+const BookDetailsCard = styled(Card)({
   // flex: "1",
   position: "relative",
   overflow: "inherit",
@@ -40,6 +44,20 @@ const BookCard = styled(Card)({
   "&:hover": {
     opacity: "0.8",
   }
+})
+
+const ReviewCard = styled(Card)({
+  // flex: "1",
+  position: "relative",
+  overflow: "inherit",
+  maxWidth: "100%",
+  // minWidth: "5vw",
+  display: "flex",
+  justifyContent: "flex-start",
+  margin: "0",
+  padding: "1% 2%",
+  border: "solid gray 1px",
+  borderRadius: "0%"
 })
 
 const ReviewTextField = styled(TextField)({
@@ -55,13 +73,17 @@ interface Props {
 const Product: React.FC<Props> = ({ }) => {
   // const bookTitle = match.params.bookTitle
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
-  const [review, setReview] = useState(JSON.parse(localStorage.getItem("review") || "[]"))
+  const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
   const [reviewComments, setReviewComments] = useState("")
   const [rating, setRating] = useState(0)
+  const { isLoggedIn } = useContext(LoginContext)
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
   const books = Data
   const customerReviews = CustomerReviewData
   const { id }: any = useParams()
+
+  // let hardCodedRatings = 0
+  // let numberOfHardCodedRatings = 0
 
   const hardCodedRatings = customerReviews.filter((el: any) => {
     return el.bookId === books[id - 1].id
@@ -69,17 +91,50 @@ const Product: React.FC<Props> = ({ }) => {
     return el.review.customerRating
   }).reduce((total: number, el: number) => {
     return total + el
-  })
+  }, 0)
 
-  const numberOfHardCodedRatings = customerReviews.filter((el: any) => {
+  // const initialHardCodedRatings = hardCodedRatings ? hardCodedRatings : 0
+
+  const numOfHardCodedRatings = customerReviews.filter((el: any) => {
     return el.bookId === books[id - 1].id
   }).length
 
-  const avgRating = review.reduce((total: number, el: any) => {
-    return (total + el.readerRating) / (el.length)
-  }, (hardCodedRatings / numberOfHardCodedRatings))
+  // const initialNumOfHardCodedRatings = numOfHardCodedRatings ? numOfHardCodedRatings : 1
 
-  console.log(avgRating)
+  const avgRating = reviews.filter((el: any) => {
+    return el.bookId === books[id - 1].id
+  }).reduce((total: number, el: any) => {
+    return (total + el.readerRating) / (el.length)
+  }, (hardCodedRatings / numOfHardCodedRatings))
+
+  const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((el: any) => {
+    return el.bookId === books[id - 1].id
+  }).length
+
+  const displayHardCodedCustomerReviews = customerReviews.filter((el: any) => {
+    return el.bookId === books[id - 1].id
+  }).map((el: any) => {
+    return <ReviewCard key={el.review.id} elevation={0}>
+      <CustomerRating rating={el.review.customerRating} />
+      <div>{el.review.date}</div>
+      <div>{el.user.firstName}</div>
+      <div>{el.user.lastName}</div>
+      <div>{el.review.reviewComments}</div>
+    </ReviewCard>
+  })
+
+  const displayCustomerReviews = reviews.filter((el: any) => {
+    return el.bookId === books[id - 1].id
+  }).map((el: any) => {
+    return <ReviewCard key={el.review.id} elevation={0}>
+      {el.review.date}
+      {el.user.firstName}
+      {el.user.lastName}
+      {el.review.reviewComments}
+      <CustomerRating rating={el.review.customerRating} />
+    </ReviewCard>
+  })
+  // console.log(initialHardCodedRatings, initialNumOfHardCodedRatings, (initialHardCodedRatings / initialNumOfHardCodedRatings))
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart))
@@ -116,7 +171,7 @@ const Product: React.FC<Props> = ({ }) => {
     const thisMonth = new Date().getMonth() + 1
     const thisYear = new Date().getFullYear()
 
-    let newReview = [...review]
+    let newReview = [...reviews]
 
     newReview.push({
       bookId: books[id - 1].id,
@@ -136,27 +191,15 @@ const Product: React.FC<Props> = ({ }) => {
       }]
     })
 
-    setReview(newReview)
+    setReviews(newReview)
 
-    localStorage.setItem("review", JSON.stringify(newReview))
+    localStorage.setItem("reviews", JSON.stringify(newReview))
   }
 
   const handleRating = (rate: number) => {
     setRating(rate)
     // other logic
   }
-
-  const displayCustomerReviews = customerReviews.filter((el: any) => {
-    return el.bookId === books[id - 1].id
-  }).map((el: any) => {
-    return <div key={el.review.id}>
-      {el.review.date}
-      {el.user.firstName}
-      {el.user.lastName}
-      {el.review.reviewComments}
-      <CustomerRating rating={el.review.customerRating} />
-    </div>
-  })
 
   return (
     <div className={classes.productPage}>
@@ -170,7 +213,7 @@ const Product: React.FC<Props> = ({ }) => {
         </ItemGrid>
         <ItemGrid item xs={12} sm={6} md={6}>
 
-          <BookCard>
+          <BookDetailsCard>
             <form onSubmit={handleAddToCart}>
               {books[id - 1].title}
               <span className={classes.bookAuthorBy}>
@@ -186,14 +229,17 @@ const Product: React.FC<Props> = ({ }) => {
               <Button type="submit">Add to Cart</Button>
               <h4 className={classes.bookStock}>{books[id - 1].stock < 4 ? <div>Only {books[id - 1].stock} books left in stock</div> : null}</h4>
             </form>
-          </BookCard>
+          </BookDetailsCard>
         </ItemGrid>
       </ContainerGrid>
       <CustomerReviewGrid>
         <div className={classes.reviews}>Readers Reviews</div>
         <div>
           Readers Rating
-          <CustomerRating rating={avgRating} />
+          <AvgCustomerRating rating={avgRating} />
+          {avgRating.toFixed(1)}
+          ({numOfTotalRatings} reviews)
+          {displayHardCodedCustomerReviews}
           {displayCustomerReviews}
         </div>
         <form onSubmit={handleSubmitReview}>
@@ -207,17 +253,22 @@ const Product: React.FC<Props> = ({ }) => {
             />
             <Button type="submit">Submit</Button>
           </div>
-          {/* <div> */}
-          <ReviewTextField
-            multiline
-            minRows={3}
-            label="Leave a review..."
-            name="review"
-            type="text"
-            value={reviewComments}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setReviewComments(e.target.value) }}
-          />
-          {/* </div> */}
+          {isLoggedIn ?
+            <ReviewTextField
+              multiline
+              minRows={3}
+              label="Leave a review..."
+              name="reviewComments"
+              type="text"
+              value={reviewComments}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setReviewComments(e.target.value) }}
+            /> :
+            <Link to="/login">
+              <Button type="button">
+                Log in to leave a review
+              </Button>
+            </Link>
+          }
         </form>
       </CustomerReviewGrid>
     </div >

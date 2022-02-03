@@ -15,6 +15,7 @@ const HeaderToolbar = styled(Toolbar)({
 })
 
 const NavBarToolbar = styled(Toolbar)({
+    maxWidth: "100%",
     backgroundColor: "#d7ccc8"
 })
 
