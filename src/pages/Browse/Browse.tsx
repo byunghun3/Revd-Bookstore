@@ -1,6 +1,8 @@
 import React, { FC, useState } from "react"
+import { Link } from "react-router-dom"
 import { Container } from "@mui/material"
 import { Grid } from "@mui/material"
+import { Button } from "@mui/material"
 import { Filter } from "../../components/Filter/Filter"
 import { Books } from "../../components/Books/Books"
 import { Data } from "../../Data"
@@ -72,6 +74,12 @@ export const Browse: FC<BrowseProps> = () => {
             </Grid>
         })
 
+    const typeFilterLength = books.filter(el =>
+        el.type === filterValue).length
+
+    const genreFilterLength = books.filter(el =>
+        el.genre === filterValue).length
+
     const bookList = books.map(book => {
         return <Grid key={book.id} item sm={8} md={5} lg={4}>
             <Books
@@ -107,7 +115,10 @@ export const Browse: FC<BrowseProps> = () => {
                     {typeFilter}
                     {genreFilter}
                 </ContainerGrid>
-            </Container>
+                <div className={classes.numberOfItems}>
+                    -showing {showBookList ? books.length : genreFilterLength || typeFilterLength} of {books.length} items-
+                </div>
+                </Container>
         </div>
 
     )
