@@ -3,6 +3,9 @@ import { Link } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
+import { Data } from "../../Data"
 import { styled } from "@mui/system"
 import classes from "./Cart.module.css"
 
@@ -27,7 +30,7 @@ interface CartProps {
 
 export const Cart: FC<CartProps> = ({ }) => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
-
+    const books = Data
     // useEffect(() => {
     //     localStorage.setItem("cart", JSON.stringify(cart))
     // }, [cart])
@@ -36,6 +39,45 @@ export const Cart: FC<CartProps> = ({ }) => {
         let newCart = cart.filter((el: any) => el.id !== id)
         setCart(newCart)
         localStorage.setItem("cart", JSON.stringify(newCart))
+    }
+
+    const handleIncrementQty = (id: number) => {
+        let item = cart.find((el: any) => {
+            return el.id === id
+        })
+
+
+        const maxStock = books.find((el: any) => {
+            return el.id === id
+        })?.stock
+
+            console.log(maxStock)
+
+        if (item.quantity < maxStock!) {
+            item.quantity++
+            let newCart = [...cart]
+            setCart(newCart)
+            localStorage.setItem("cart", JSON.stringify(newCart))
+        }
+    }
+
+    // const item = cart.find((el: any) => {
+    //     return el.id === 1
+    // }).quantity
+
+    // console.log(item)
+
+    const handleDecrementQty = (id: number) => {
+        let item = cart.find((el: any) => {
+            return el.id === id
+        })
+
+        if (item.quantity > 1) {
+            item.quantity--
+            let newCart = [...cart]
+            setCart(newCart)
+            localStorage.setItem("cart", JSON.stringify(newCart))
+        }
     }
 
     const itemPrice = cart.reduce((total: number, el: any) => {
@@ -56,6 +98,14 @@ export const Cart: FC<CartProps> = ({ }) => {
                         {book.author}
                         ${book.price}
                         qty {book.quantity}
+                        <ArrowDropUpIcon
+                            id={book.id}
+                            onClick={() => handleIncrementQty(book.id)}
+                        />
+                        <ArrowDropDownIcon
+                            id={book.id}
+                            onClick={() => handleDecrementQty(book.id)}
+                        />
                         <Button onClick={() => handleRemoveFromCart(book.id)}>Remove</Button>
                         {/* </div> */}
                     </ItemGrid>
