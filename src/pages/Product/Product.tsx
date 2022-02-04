@@ -140,6 +140,10 @@ const Product: React.FC<Props> = ({ }) => {
     localStorage.setItem("cart", JSON.stringify(cart))
   }, [cart])
 
+  const maxStock = books.find((el: any) => {
+    return el.id === books[id - 1].id
+  })?.stock
+
   const handleAddToCart = () => {
     let newCart = [...cart]
 
@@ -147,7 +151,9 @@ const Product: React.FC<Props> = ({ }) => {
       return el.id === books[id - 1].id
     })
 
-    if (duplicateInCart) {
+    if (duplicateInCart.quantity === maxStock) {
+      alert("out of stock")
+    } else if (duplicateInCart) {
       duplicateInCart.quantity++
     } else {
       newCart.push({
@@ -164,7 +170,12 @@ const Product: React.FC<Props> = ({ }) => {
     setCart(newCart)
 
     localStorage.setItem("cart", JSON.stringify(newCart))
+
   }
+
+  const decStock = books.find((el: any) => {
+    return el.id === books[id - 1].id
+  })
 
   const handleSubmitReview = () => {
     const thisDay = new Date().getDate()
@@ -237,7 +248,7 @@ const Product: React.FC<Props> = ({ }) => {
         <div>
           Readers Rating
           <AvgCustomerRating rating={avgRating} />
-          {avgRating.toFixed(1)}
+          {avgRating ? avgRating.toFixed(1) : null}
           ({numOfTotalRatings} reviews)
           {displayHardCodedCustomerReviews}
           {displayCustomerReviews}
