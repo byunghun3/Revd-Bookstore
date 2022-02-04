@@ -29,6 +29,7 @@
 
 .bookCover {
     width: 10vw;
+    margin-bottom: -3px;
 }
 
 .bookList {
