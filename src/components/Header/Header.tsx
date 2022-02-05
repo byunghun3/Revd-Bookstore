@@ -36,13 +36,9 @@ function Header() {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
 
-
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
-        if (currentUser.length) {
-            setIsLoggedIn(true)
-        } else { setIsLoggedIn(false) }
-    }, [cart, currentUser])
+    }, [cart])
 
     const greeting = currentUser.map((el: any) => {
         return <div key={el.email}>Hello, {el.firstName} {el.lastName}</div>
