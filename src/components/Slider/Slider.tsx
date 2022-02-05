@@ -17,7 +17,7 @@ interface SliderProps {
 const SlideContainer = styles.div<SliderProps>`
     position: relative;
     display: flex;
-    width: 100vw;
+    maxWidth: 100%;
     height: 100%;
     transform: translateX(${(props) => props.newSlideOrder * -100}vw);
     transition: ease 1.0s;

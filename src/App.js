@@ -1,12 +1,16 @@
 import React from "react"
-import PageRoutes from "./components/PageRoutes/PageRoutes"
+import { PageRoutes } from "./components/PageRoutes/PageRoutes"
+import { LoginProvider } from "./contexts/LoginContext"
 import "./App.css"
 
 function App() {
   return (
-    <div className="App">
-      <PageRoutes />
-    </div>
+    <LoginProvider>
+      <div className="App">
+        <PageRoutes />
+      </div>
+    </LoginProvider >
+
   )
 }
 

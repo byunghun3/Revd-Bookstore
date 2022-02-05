@@ -4,7 +4,7 @@ import classes from "./HomePage.module.css"
 
 function HomePage() {
     return (
-        <div>
+        <div className={classes.homePage}>
             <Slider />
         </div>
     )

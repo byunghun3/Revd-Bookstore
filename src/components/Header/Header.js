@@ -64,7 +64,6 @@ function Header() {
                     </div>
                     <div>
                         {isLoggedIn ? greeting : null}
-                        {/* <div>Hello, {currentUser[0].firstName} {currentUser[0].lastName}</div> */}
                         {isLoggedIn ?
                             <Link to="/profile" className={classes.headerLink}>
                                 <StyledAccountIcon />

@@ -68,7 +68,7 @@ const ReviewTextField = styled(TextField)({
 })
 
 interface Props {
-  bookTitle: string
+  // bookTitle: string
   // id: number
 }
 

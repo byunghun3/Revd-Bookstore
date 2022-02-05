@@ -64,7 +64,7 @@ const SignUpButton = styled(Button)({
 
 interface LoginProps {
     // showPassword: boolean
-    isLoggedIn: boolean
+    // isLoggedIn: boolean
 }
 
 export const Login: FC<LoginProps> = ({ }) => {
@@ -77,7 +77,7 @@ export const Login: FC<LoginProps> = ({ }) => {
     const [showPassword, setShowPassword] = useState(false)
     const [passwordError, setPasswordError] = useState("")
     const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
-    const { setIsLoggedIn } = useContext(LoginContext)
+    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
     const users = JSON.parse(localStorage.getItem("users") || "[]")
 
