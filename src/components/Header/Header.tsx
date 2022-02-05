@@ -44,7 +44,7 @@ function Header() {
         } else { setIsLoggedIn(false) }
     }, [cart, currentUser])
 
-    const greeting = currentUser.map(el => {
+    const greeting = currentUser.map((el: any) => {
         return <div key={el.email}>Hello, {el.firstName} {el.lastName}</div>
     })
 
