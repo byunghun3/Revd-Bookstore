@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from "react"
+import React, { useState, useContext, FC } from "react"
 import { Link } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import Grid from "@mui/material/Grid"
@@ -6,6 +6,7 @@ import Button from "@mui/material/Button"
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
 import { BooksData } from "../../data/BooksData"
+import { LoginContext } from "../../contexts/LoginContext"
 import { styled } from "@mui/system"
 import classes from "./Cart.module.css"
 
@@ -30,6 +31,7 @@ interface CartProps {
 
 export const Cart: FC<CartProps> = ({ }) => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
+    const { isLoggedIn } = useContext(LoginContext)
     const books = BooksData
     // useEffect(() => {
     //     localStorage.setItem("cart", JSON.stringify(cart))
@@ -113,9 +115,17 @@ export const Cart: FC<CartProps> = ({ }) => {
                 })}
                 {/* </ContainerGrid> */}
                 ${itemPrice.toFixed(2)}
-                <Link to="/checkout">
-                    <Button type="submit">Check Out</Button>
-                </Link>
+                {isLoggedIn ?
+                    <Link className={classes.headerLink} to="/checkout">
+                        {/* <Button type="submit"> */}
+                        Check Out
+                        {/* </Button> */}
+                    </Link>
+                    :
+                    <Link className={classes.headerLink} to="/login">
+                        Check Out
+                    </Link>
+                }
             </form>
         </div>
     )

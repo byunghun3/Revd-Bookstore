@@ -11,3 +11,8 @@
     /* height: 30%; */
     width: 15%;
 }
+
+.headerLink {
+    text-decoration: none;
+    color: #1976d2;
+}
