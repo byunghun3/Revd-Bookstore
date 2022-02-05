@@ -86,7 +86,8 @@ export const Checkout = (props: CheckoutProps) => {
 
     const handleSaveOrder = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
+        const thisDay = new Date().getDate()
+        const thisFullYear = new Date().getFullYear()
         const thisMonth = new Date().getMonth() + 1
         const thisYear = new Date().getFullYear().toString().slice(-2)
         const cardNumberRules = cardNumber.length < 13 || cardNumber.length > 19 || !/^\d+$/.test(cardNumber)
@@ -124,28 +125,33 @@ export const Checkout = (props: CheckoutProps) => {
 
             newOrder.push({
                 id: uuidv4(),
-                address: {
+                date: `${thisMonth}/${thisDay}/${thisFullYear}`,
+                address:
+                {
                     addressLineOne: addressLineOne,
                     addressLineTwo: addressLineTwo,
                     city: city,
                     state: capitalizeStateCode(stateCode),
                     zipCode: zipCode
                 },
-                payment: {
+                payment:
+                {
                     name: cardName,
                     number: cardNumber,
                     expiry: expiry,
                     cvc: cvc
                 },
-                user: {
+                user:
+                {
                     firstName: currentUser[0].firstName,
                     lastName: currentUser[0].lastName,
                     email: currentUser[0].email,
                     password: currentUser[0].password
                 },
-                details: [
+                details:
+                {
                     ...cart
-                ]
+                }
             })
 
             setOrder(newOrder)

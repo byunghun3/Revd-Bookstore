@@ -1,13 +1,15 @@
-export const CustomerReviewData = [
+export const CustomerReviewsData = [
     {
         bookId: 1,
-        user: {
+        user:
+        {
             firstName: "Anne",
             lastName: "Carson",
             email: "anniecars@gmail.com",
             password: "anneCarson"
         },
-        review: {
+        review:
+        {
             id: "1a",
             title: "Greenlights",
             author: "Matthew McConaughey",
@@ -18,13 +20,15 @@ export const CustomerReviewData = [
     },
     {
         bookId: 1,
-        user: {
+        user:
+        {
             firstName: "Isaac",
             lastName: "Babel",
             email: "isaacbabel@gmail.com",
             password: "isaacBabel"
         },
-        review: {
+        review:
+        {
             id: "1b",
             title: "Greenlights",
             author: "Matthew McConaughey",
@@ -35,13 +39,15 @@ export const CustomerReviewData = [
     },
     {
         bookId: 1,
-        user: {
+        user:
+        {
             firstName: "John",
             lastName: "Steinbeck",
             email: "johnsteinbeck@gmail.com",
             password: "johnSteinbeck"
         },
-        review: {
+        review:
+        {
             id: "1c",
             title: "Greenlights",
             author: "Matthew McConaughey",

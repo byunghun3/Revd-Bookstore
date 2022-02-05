@@ -6,7 +6,7 @@ import InputLabel from "@mui/material/InputLabel"
 import OutlinedInput from "@mui/material/OutlinedInput"
 import { Button } from "@mui/material"
 import { Books } from "../../components/Books/Books"
-import { Data } from "../../Data"
+import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
 import classes from "./Suggest.module.css"
 
@@ -38,27 +38,34 @@ export const Suggest = (props: Props) => {
     const [author, setAuthor] = useState("")
     const [comments, setComments] = useState("")
     const [suggestion, setSuggestion] = useState(JSON.parse(localStorage.getItem("suggestion") || "[]"))
-    const books = Data
+    const books = BooksData
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const navigate = useNavigate()
 
     const handleSubmitSuggestion = () => {
+        const thisDay = new Date().getDate()
+        const thisMonth = new Date().getMonth() + 1
+        const thisFullYear = new Date().getFullYear()
+
         if (currentUser.length) {
             let newSuggestion = [...suggestion]
 
             newSuggestion.push({
-                user: {
+                date: `${thisMonth}/${thisDay}/${thisFullYear}`,
+                user:
+                {
                     firstName: currentUser[0].firstName,
                     lastName: currentUser[0].lastName,
                     email: currentUser[0].email,
                     password: currentUser[0].password
                 },
-                suggested: [{
+                suggested:
+                {
                     id: uuidv4(),
                     title: title,
                     author: author,
                     comments: comments
-                }]
+                }
             })
 
             setSuggestion(newSuggestion)

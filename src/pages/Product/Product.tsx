@@ -4,11 +4,13 @@ import { v4 as uuidv4 } from "uuid"
 import { Rating } from "react-simple-star-rating"
 import { Button, Card } from "@mui/material"
 import { Grid } from "@mui/material"
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material"
 import { TextField } from "@mui/material"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { styled } from "@mui/system"
 import classes from "./Product.module.css"
-import { Data } from "../../Data"
-import { CustomerReviewData } from "../../CustomerReviewData"
+import { BooksData } from "../../data/BooksData"
+import { CustomerReviewsData } from "../../data/CustomerReviewsData"
 import BookRating from "../../components/BookRating/BookRating"
 import CustomerRating from "../../components/CustomerRating/CustomerRating"
 import AvgCustomerRating from "../../components/AvgCustomerRating/AvgCustomerRating"
@@ -78,8 +80,8 @@ const Product: React.FC<Props> = ({ }) => {
   const [rating, setRating] = useState(0)
   const { isLoggedIn } = useContext(LoginContext)
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
-  const books = Data
-  const customerReviews = CustomerReviewData
+  const books = BooksData
+  const customerReviews = CustomerReviewsData
   const { id }: any = useParams()
 
   // let hardCodedRatings = 0
@@ -116,7 +118,7 @@ const Product: React.FC<Props> = ({ }) => {
   }).map((el: any) => {
     return <ReviewCard key={el.review.id} elevation={0}>
       <CustomerRating rating={el.review.customerRating} />
-      <div>{el.review.date}</div>
+      <div>{el.date}</div>
       <div>{el.user.firstName}</div>
       <div>{el.user.lastName}</div>
       <div>{el.review.reviewComments}</div>
@@ -127,7 +129,7 @@ const Product: React.FC<Props> = ({ }) => {
     return el.bookId === books[id - 1].id
   }).map((el: any) => {
     return <ReviewCard key={el.review.id} elevation={0}>
-      {el.review.date}
+      {el.date}
       {el.user.firstName}
       {el.user.lastName}
       {el.review.reviewComments}
@@ -180,12 +182,13 @@ const Product: React.FC<Props> = ({ }) => {
   const handleSubmitReview = () => {
     const thisDay = new Date().getDate()
     const thisMonth = new Date().getMonth() + 1
-    const thisYear = new Date().getFullYear()
+    const thisFullYear = new Date().getFullYear()
 
     let newReview = [...reviews]
 
     newReview.push({
       bookId: books[id - 1].id,
+      date: `${thisMonth}/${thisDay}/${thisFullYear}`,
       user: {
         firstName: currentUser[0].firstName,
         lastName: currentUser[0].lastName,
@@ -197,8 +200,7 @@ const Product: React.FC<Props> = ({ }) => {
         title: books[id - 1].title,
         author: books[id - 1].author,
         reviewComments: reviewComments,
-        readerRating: rating,
-        date: `${thisMonth}/${thisDay}/${thisYear}`
+        readerRating: rating
       }]
     })
 
@@ -240,6 +242,16 @@ const Product: React.FC<Props> = ({ }) => {
               <Button type="submit">Add to Cart</Button>
               <h4 className={classes.bookStock}>{books[id - 1].stock < 4 ? <div>Only {books[id - 1].stock} books left in stock</div> : null}</h4>
             </form>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+              >
+                Revd Review (may contain spoilers!)
+              </AccordionSummary>
+              <AccordionDetails>
+                spoiler hehe
+              </AccordionDetails>
+            </Accordion>
           </BookDetailsCard>
         </ItemGrid>
       </ContainerGrid>

@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
-import { Data } from "../../Data"
+import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
 import classes from "./Cart.module.css"
 
@@ -30,7 +30,7 @@ interface CartProps {
 
 export const Cart: FC<CartProps> = ({ }) => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
-    const books = Data
+    const books = BooksData
     // useEffect(() => {
     //     localStorage.setItem("cart", JSON.stringify(cart))
     // }, [cart])
@@ -51,7 +51,7 @@ export const Cart: FC<CartProps> = ({ }) => {
             return el.id === id
         })?.stock
 
-            console.log(maxStock)
+        console.log(maxStock)
 
         if (item.quantity < maxStock!) {
             item.quantity++

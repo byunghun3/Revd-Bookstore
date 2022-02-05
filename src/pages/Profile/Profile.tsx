@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { Button } from "@mui/material"
+import { OrdersData } from "../../data/OrdersData"
 import classes from "./Profile.module.css"
 
 interface Props {
@@ -12,6 +13,7 @@ export const Profile = (props: Props) => {
     const order = JSON.parse(localStorage.getItem("order") || "[]")
     const suggestion = JSON.parse(localStorage.getItem("suggestion") || "[]")
     const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const customerOrders = OrdersData
     const navigate = useNavigate()
     // useEffect(() => {
     //     if (currentUser.length) {
@@ -29,6 +31,23 @@ export const Profile = (props: Props) => {
         return el.email
     })
 
+    const displayHardCodedOrderHistory = customerOrders.filter((el: any) => {
+        return el.user.email === `${currentUserEmail}`
+    }).map((el: any) => {
+        return <div key={el.id}>
+            {el.date}
+            {el.details.title}
+            {el.details.author}
+            {/* {el.details.map((el: any) => {
+                return <div key={el.id}>
+                    <img src={el.img} alt="" />
+                    {el.title}
+                    {el.author}
+                </div>
+            })} */}
+        </div>
+    })
+
     const orderHistory = order.filter((el: any) => {
         return el.user.email === `${currentUserEmail}`
     }).map((el: any) => {
@@ -44,19 +63,25 @@ export const Profile = (props: Props) => {
     const suggestionHistory = suggestion.filter((el: any) => {
         return el.user.email === `${currentUserEmail}`
     }).map((el: any) => {
-        return el.suggested.map((el: any) => {
-            return <div key={el.id}>
-                {el.title}
-                {el.author}
-                {el.comments}
-            </div>
-        })
+        return <div key={el.id}>
+            {el.suggested.title}
+            {el.suggested.author}
+            {el.suggested.comments}
+        </div>
+        // map((el: any) => {
+        // return <div key={el.id}>
+        // {el.title}
+        // {el.author}
+        // {el.comments}
+        // </div>
+        // })
     })
 
     return (
         <div className={classes.profilePage}>
             <div className={classes.pageContent}>
                 Order History
+                {displayHardCodedOrderHistory}
                 {orderHistory}
                 Suggestion History
                 {suggestionHistory}

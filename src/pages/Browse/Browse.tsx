@@ -5,7 +5,7 @@ import { Grid } from "@mui/material"
 import { Button } from "@mui/material"
 import { Filter } from "../../components/Filter/Filter"
 import { Books } from "../../components/Books/Books"
-import { Data } from "../../Data"
+import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
 import styles from "styled-components"
 import classes from "./Browse.module.css"
@@ -25,7 +25,7 @@ export const Browse: FC<BrowseProps> = () => {
     const [filterValue, setFilterValue] = useState("")
     const [showBookList, setShowBookList] = useState(true)
     const [showClearButton, setShowClearButton] = useState(false)
-    const books = Data
+    const books = BooksData
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setFilterValue(e.currentTarget.value)
@@ -118,7 +118,7 @@ export const Browse: FC<BrowseProps> = () => {
                 <div className={classes.numberOfItems}>
                     -showing {showBookList ? books.length : genreFilterLength || typeFilterLength} of {books.length} items-
                 </div>
-                </Container>
+            </Container>
         </div>
 
     )

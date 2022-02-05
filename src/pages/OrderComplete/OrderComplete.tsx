@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { Grid } from "@mui/material"
 import { Button } from "@mui/material"
 import { Books } from "../../components/Books/Books"
-import { Data } from "../../Data"
+import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
 import classes from "./OrderComplete.module.css"
 
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const OrderComplete = (props: Props) => {
-    const books = Data
+    const books = BooksData
 
     const bookList = books.map(book => {
         return <Link key={book.id} to={`/browse/${book.id}`}>
