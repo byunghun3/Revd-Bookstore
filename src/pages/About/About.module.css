@@ -4,3 +4,11 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.sideNav {
+    flex: 1
+}
+
+.aboutContent {
+    flex: 7
+}

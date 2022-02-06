@@ -11,12 +11,14 @@ import classes from "./Header.module.css"
 
 const HeaderToolbar = styled(Toolbar)({
     justifyContent: "space-between",
-    maxWidth: "100%"
+    maxWidth: "100%",
+    zIndex: "2"
 })
 
 const NavBarToolbar = styled(Toolbar)({
     maxWidth: "100%",
-    backgroundColor: "#d7ccc8"
+    backgroundColor: "#d7ccc8",
+    zIndex: "2"
 })
 
 const StyledAccountIcon = styled(AccountCircleIcon)({
