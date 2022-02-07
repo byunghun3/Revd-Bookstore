@@ -11,14 +11,12 @@ import classes from "./Header.module.css"
 
 const HeaderToolbar = styled(Toolbar)({
     justifyContent: "space-between",
-    maxWidth: "100%",
-    zIndex: "2"
+    maxWidth: "100%"
 })
 
 const NavBarToolbar = styled(Toolbar)({
     maxWidth: "100%",
-    backgroundColor: "#d7ccc8",
-    zIndex: "2"
+    backgroundColor: "#d7ccc8"
 })
 
 const StyledAccountIcon = styled(AccountCircleIcon)({
@@ -29,7 +27,6 @@ const StyledAccountIcon = styled(AccountCircleIcon)({
 const StyledCartIcon = styled(ShoppingCartIcon)({
     verticalAlign: "middle",
     color: "black"
-
 })
 
 function Header() {

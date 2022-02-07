@@ -15,12 +15,13 @@ function About() {
             <AboutContainer>
                 <div className={classes.sideNav}>
                     <NavHashLink smooth to="#sectionOne">
-                        About us
+                        About Us
                     </NavHashLink>
                 </div>
                 <div className={classes.aboutContent}>
-                    About
-                    <p id="sectionOne">Hello and welcome to [SHOP NAME], the place to find the best [PRODUCTS CATEGORY NAME] for every taste and occasion. We thoroughly check the quality of our goods, working only with reliable suppliers so that you only receive the best quality product.
+                    <div id="sectionOne">Welcome to Revd Bookstore!</div>
+                    <p>Revd is an online bookstore with a mission to foster a community of readers through only providing the books that we have read and reviewed personally.</p>
+                    <p>We are a group of three friends, Byung-Hun, Alefiya, and John, who during the COVID-19 pandemic.  believe  the place to find the best [PRODUCTS CATEGORY NAME] for every taste and occasion. We thoroughly check the quality of our goods, working only with reliable suppliers so that you only receive the best quality product.
 
                         We at [SHOP NAME] believe in high quality and exceptional customer service. But most importantly, we believe shopping is a right, not a luxury, so we strive to deliver the best products at the most affordable prices, and ship them to you regardless of where you are located.</p>
                     <p>Hello and welcome to [SHOP NAME], the place to find the best [PRODUCTS CATEGORY NAME] for every taste and occasion. We thoroughly check the quality of our goods, working only with reliable suppliers so that you only receive the best quality product.
