@@ -44,7 +44,7 @@ export const OrderComplete = (props: Props) => {
                     Thank you, your order has been placed!
                 </div>
                 <div className={classes.confirmation}>
-                    You will receive a onfirmation email shortly.
+                    You will receive a confirmation email shortly.
                 </div>
                 <Link className={classes.browseLink} to="/browse">
                     <BrowseButton>

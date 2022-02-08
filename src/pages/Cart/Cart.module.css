@@ -28,14 +28,14 @@
 }
 
 .bookCover {
-    /* display: flex; */
-    /* height: 30%; */
     flex: 1;
+    margin: 0 2%;
     width: 15%;
 }
 
 .bookInfo{
     flex: 3;
+    padding: 0 2%;
 }
 
 .bookTitle {

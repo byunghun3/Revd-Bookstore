@@ -149,15 +149,14 @@ export const Checkout = (props: CheckoutProps) => {
                     email: currentUser[0].email,
                     password: currentUser[0].password
                 },
-                details:
-                {
-                    ...cart
-                }
+                details: [...cart]
             })
 
             setOrders(newOrder)
 
             localStorage.setItem("orders", JSON.stringify(newOrder))
+
+            localStorage.setItem("cart", JSON.stringify([]))
 
             navigate("/ordercomplete")
         }

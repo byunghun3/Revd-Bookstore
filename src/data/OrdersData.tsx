@@ -6,6 +6,7 @@ export const OrdersData = [
     {
         id: uuidv4(),
         date: "2/20/2021",
+        total: 4.99,
         address:
         {
             addressLineOne: "1 Revd Street",
@@ -29,23 +30,39 @@ export const OrdersData = [
             password: "byunghun3"
         },
         details:
-        {
-            id: 5,
-            title: "Lord of the Flies",
-            author: "William Golding",
-            image: LordOfFlies,
-            type: "EBOOK",
-            genre: "Fiction",
-            rating: 4.5,
-            price: 4.99,
-            stock: Infinity,
-            status: "old",
-            quantity: 1
-        }
+            [
+                {
+                    id: 5,
+                    title: "Lord of the Flies",
+                    author: "William Golding",
+                    image: LordOfFlies,
+                    type: "EBOOK",
+                    genre: "Fiction",
+                    rating: 4.5,
+                    price: 4.99,
+                    stock: Infinity,
+                    status: "old",
+                    quantity: 1
+                },
+                {
+                    id: 6,
+                    title: "In Cold Blood",
+                    author: "Truman Capote",
+                    image: InColdBlood,
+                    type: "HARD COPY",
+                    genre: "Nonfiction",
+                    rating: 4.5,
+                    price: 4.99,
+                    stock: 100,
+                    status: "old",
+                    quantity: 3
+                }
+            ]
     },
     {
         id: uuidv4(),
         date: "10/15/2021",
+        total: 5.36,
         address:
         {
             addressLineOne: "1 Revd Street",
@@ -69,7 +86,7 @@ export const OrdersData = [
             password: "byunghun3"
         },
         details:
-        {
+        [{
             id: 6,
             title: "In Cold Blood",
             author: "Truman Capote",
@@ -81,6 +98,6 @@ export const OrdersData = [
             stock: 100,
             status: "old",
             quantity: 1
-        }
+        }]
     }
 ]
