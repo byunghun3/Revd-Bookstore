@@ -3,45 +3,49 @@ import StarIcon from "@mui/icons-material/Star"
 import StarHalfIcon from "@mui/icons-material/StarHalf"
 import StarOutlineIcon from "@mui/icons-material/StarOutline"
 import { styled } from "@mui/system"
+import classes from "./AvgReaderRating.module.css"
 
 const CheckedStarIcon = styled(StarIcon)({
+    fontSize: "50px",
     color: "#FDCC0D"
 })
 
 const CheckedStarHalfIcon = styled(StarHalfIcon)({
+    fontSize: "50px",
     color: "#FDCC0D"
 })
 
 const UncheckedStarOutlineIcon = styled(StarOutlineIcon)({
+    fontSize: "50px",
     color: "#FDCC0D"
 })
 
-interface CustomerRatingProps {
+interface AvgReaderRatingProps {
     rating: number
 }
 
-function CustomerRating(props: CustomerRatingProps) {
+function AvgReaderRating(props: AvgReaderRatingProps) {
     const renderStars = (rating: number) => {
-        switch (rating) {
-            case 0.5:
+        switch (true) {
+            case (rating < 0.75):
                 return <div><CheckedStarHalfIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /></div>
-            case 1:
+            case (rating >= 0.75 && rating < 1.25):
                 return <div><CheckedStarIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /></div>
-            case 1.5:
+            case (rating >= 1.25 && rating < 1.75):
                 return <div><CheckedStarIcon /><CheckedStarHalfIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /></div>
-            case 2:
+            case (rating >= 1.75 && rating < 2.25):
                 return <div><CheckedStarIcon /><CheckedStarIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /></div>
-            case 2.5:
+            case (rating >= 2.25 && rating < 2.75):
                 return <div><CheckedStarIcon /><CheckedStarIcon /><CheckedStarHalfIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /></div>
-            case 3:
+            case (rating >= 2.75 && rating < 3.25):
                 return <div><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /></div>
-            case 3.5:
+            case (rating >= 3.25 && rating < 3.75):
                 return <div><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /><CheckedStarHalfIcon /><UncheckedStarOutlineIcon /></div>
-            case 4:
+            case (rating >= 3.75 && rating < 4.25):
                 return <div><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /><UncheckedStarOutlineIcon /></div>
-            case 4.5:
+            case (rating >= 4.25 && rating < 4.75):
                 return <div><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /><CheckedStarHalfIcon /></div>
-            case 5:
+            case (rating >= 4.75):
                 return <div><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /><CheckedStarIcon /></div>
             default:
                 return <div><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /><UncheckedStarOutlineIcon /></div>
@@ -55,4 +59,4 @@ function CustomerRating(props: CustomerRatingProps) {
     )
 }
 
-export default CustomerRating
+export default AvgReaderRating

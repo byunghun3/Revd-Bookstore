@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { Rating } from "react-simple-star-rating"
-import { Button, Card } from "@mui/material"
+import { Button, Card, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import { Grid } from "@mui/material"
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material"
 import { TextField } from "@mui/material"
@@ -10,10 +10,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { styled } from "@mui/system"
 import classes from "./Product.module.css"
 import { BooksData } from "../../data/BooksData"
-import { CustomerReviewsData } from "../../data/CustomerReviewsData"
+import { ReaderReviewsData } from "../../data/ReaderReviewsData"
 import BookRating from "../../components/BookRating/BookRating"
-import CustomerRating from "../../components/CustomerRating/CustomerRating"
-import AvgCustomerRating from "../../components/AvgCustomerRating/AvgCustomerRating"
+import ReaderRating from "../../components/ReaderRating/ReaderRating"
+import AvgReaderRating from "../../components/AvgReaderRating/AvgReaderRating"
 import { LoginContext } from "../../contexts/LoginContext"
 
 
@@ -28,14 +28,6 @@ const ItemGrid = styled(Grid)({
   justifyContent: "space-between"
 })
 
-const CustomerReviewGrid = styled(Grid)({
-  // display: "flex",
-  // width: "100%",
-  flex: "1",
-  justifyContent: "space-between",
-  marginBottom: "5%"
-})
-
 const BookDetailsCard = styled(Card)({
   // flex: "1",
   position: "relative",
@@ -48,17 +40,29 @@ const BookDetailsCard = styled(Card)({
   }
 })
 
+const ReaderReviewGrid = styled(Grid)({
+  // display: "flex",
+  // width: "100%",
+  flex: "1",
+  // display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  // alignContent: "center",
+  alignItems: "center",
+  marginBottom: "5%",
+  width: "100%",
+  // border: "solid black"
+})
+
 const ReviewCard = styled(Card)({
-  // flex: "1",
   position: "relative",
   overflow: "inherit",
-  maxWidth: "100%",
-  // minWidth: "5vw",
   display: "flex",
-  justifyContent: "flex-start",
+  justifyContent: "center",
+  alignItems: "center",
   margin: "0",
-  padding: "1% 2%",
-  border: "solid gray 1px",
+  padding: "2% 2%",
+  borderBottom: "solid #adadad 1px",
   borderRadius: "0%"
 })
 
@@ -68,79 +72,74 @@ const ReviewTextField = styled(TextField)({
 })
 
 interface Props {
-  // bookTitle: string
-  // id: number
+
 }
 
 const Product: React.FC<Props> = ({ }) => {
-  // const bookTitle = match.params.bookTitle
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
   const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
   const [reviewComments, setReviewComments] = useState("")
   const [rating, setRating] = useState(0)
+  const [showAlert, setShowAlert] = useState(false)
   const { isLoggedIn } = useContext(LoginContext)
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
   const books = BooksData
-  const customerReviews = CustomerReviewsData
+  const readerReviews = ReaderReviewsData
   const { id }: any = useParams()
-
-  // let hardCodedRatings = 0
-  // let numberOfHardCodedRatings = 0
-
-  const hardCodedRatings = customerReviews.filter((el: any) => {
-    return el.bookId === books[id - 1].id
-  }).map((el: any) => {
-    return el.review.customerRating
-  }).reduce((total: number, el: number) => {
-    return total + el
-  }, 0)
-
-  // const initialHardCodedRatings = hardCodedRatings ? hardCodedRatings : 0
-
-  const numOfHardCodedRatings = customerReviews.filter((el: any) => {
-    return el.bookId === books[id - 1].id
-  }).length
-
-  // const initialNumOfHardCodedRatings = numOfHardCodedRatings ? numOfHardCodedRatings : 1
-
-  const avgRating = reviews.filter((el: any) => {
-    return el.bookId === books[id - 1].id
-  }).reduce((total: number, el: any) => {
-    return (total + el.readerRating) / (el.length)
-  }, (hardCodedRatings / numOfHardCodedRatings))
-
-  const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((el: any) => {
-    return el.bookId === books[id - 1].id
-  }).length
-
-  const displayHardCodedCustomerReviews = customerReviews.filter((el: any) => {
-    return el.bookId === books[id - 1].id
-  }).map((el: any) => {
-    return <ReviewCard key={el.review.id} elevation={0}>
-      <CustomerRating rating={el.review.customerRating} />
-      <div>{el.date}</div>
-      <div>{el.user.firstName}</div>
-      <div>{el.user.lastName}</div>
-      <div>{el.review.reviewComments}</div>
-    </ReviewCard>
-  })
-
-  const displayCustomerReviews = reviews.filter((el: any) => {
-    return el.bookId === books[id - 1].id
-  }).map((el: any) => {
-    return <ReviewCard key={el.review.id} elevation={0}>
-      {el.date}
-      {el.user.firstName}
-      {el.user.lastName}
-      {el.review.reviewComments}
-      <CustomerRating rating={el.review.customerRating} />
-    </ReviewCard>
-  })
-  // console.log(initialHardCodedRatings, initialNumOfHardCodedRatings, (initialHardCodedRatings / initialNumOfHardCodedRatings))
+  const navigate = useNavigate()
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart))
+    navigate(`/browse/${books[id - 1].id}`)
   }, [cart])
+
+  const hardCodedRatings = readerReviews.filter((el: any) => {
+    return el.review.bookId === books[id - 1].id
+  }).reduce((total: number, el: any) => {
+    return total + el.review.readerRating
+  }, 0)
+
+  const numOfHardCodedRatings = readerReviews.filter((el: any) => {
+    return el.review.bookId === books[id - 1].id
+  }).length
+
+  const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((el: any) => {
+    return el.review.bookId === books[id - 1].id
+  }).length
+
+  const avgRating = reviews.filter((el: any) => {
+    return el.review.bookId === books[id - 1].id
+  }).reduce((total: number, el: any) => {
+    return total + el.review.readerRating
+  }, (hardCodedRatings)) / numOfTotalRatings
+
+  const displayHardCodedReaderReviews = readerReviews.filter((el: any) => {
+    return el.review.bookId === books[id - 1].id
+  }).map((el: any) => {
+    return <ReviewCard key={el.id} elevation={0}>
+      <ReaderRating rating={el.review.readerRating} />
+      <div className={classes.readerReviewName}>
+        {el.user.firstName}&nbsp;
+        {el.user.lastName}
+      </div>
+      <div className={classes.readerReviewComments}>{el.review.reviewComments}</div>
+      <div className={classes.readerReviewDate}>{el.date}</div>
+    </ReviewCard>
+  })
+
+  const displayReaderReviews = reviews.filter((el: any) => {
+    return el.review.bookId === books[id - 1].id
+  }).map((el: any) => {
+    return <ReviewCard key={el.id} elevation={0}>
+      <ReaderRating rating={el.review.readerRating} />
+      <div className={classes.readerReviewName}>
+        {el.user.firstName}&nbsp;
+        {el.user.lastName}
+      </div>
+      <div className={classes.readerReviewComments}>{el.review.reviewComments}</div>
+      <div className={classes.readerReviewDate}>{el.date}</div>
+    </ReviewCard>
+  })
 
   const maxStock = books.find((el: any) => {
     return el.id === books[id - 1].id
@@ -172,60 +171,78 @@ const Product: React.FC<Props> = ({ }) => {
     setCart(newCart)
 
     localStorage.setItem("cart", JSON.stringify(newCart))
-
   }
 
-  const decStock = books.find((el: any) => {
-    return el.id === books[id - 1].id
-  })
+  const handleRating = (rate: number) => {
+    if (isLoggedIn) {
+      // const finalRate = rate / 20
+      setRating(rate)
+    } else {
+      setRating(0)
+      setShowAlert(true)
+    }
+  }
 
-  const handleSubmitReview = () => {
+  const handleSubmitReview = (e: React.FormEvent<HTMLFormElement>) => {
     const thisDay = new Date().getDate()
     const thisMonth = new Date().getMonth() + 1
     const thisFullYear = new Date().getFullYear()
 
-    let newReview = [...reviews]
+    if (isLoggedIn) {
+      let newReview = [...reviews]
 
-    newReview.push({
-      bookId: books[id - 1].id,
-      date: `${thisMonth}/${thisDay}/${thisFullYear}`,
-      user: {
-        firstName: currentUser[0].firstName,
-        lastName: currentUser[0].lastName,
-        email: currentUser[0].email,
-        password: currentUser[0].password
-      },
-      review: [{
+      newReview.push({
         id: uuidv4(),
-        title: books[id - 1].title,
-        author: books[id - 1].author,
-        reviewComments: reviewComments,
-        readerRating: rating
-      }]
-    })
+        date: `${thisMonth}/${thisDay}/${thisFullYear}`,
+        user:
+        {
+          firstName: currentUser[0].firstName,
+          lastName: currentUser[0].lastName,
+          email: currentUser[0].email,
+          password: currentUser[0].password
+        },
+        review:
+        {
+          bookId: books[id - 1].id,
+          title: books[id - 1].title,
+          author: books[id - 1].author,
+          reviewComments: reviewComments,
+          readerRating: rating / 20
+        }
+      })
 
-    setReviews(newReview)
+      setReviews(newReview)
 
-    localStorage.setItem("reviews", JSON.stringify(newReview))
+      localStorage.setItem("reviews", JSON.stringify(newReview))
+    } else {
+      e.preventDefault()
+      setShowAlert(true)
+    }
   }
 
-  const handleRating = (rate: number) => {
-    setRating(rate)
-    // other logic
+  const handleReviewTextOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isLoggedIn) {
+      setReviewComments(e.target.value)
+    } else {
+      setShowAlert(true)
+    }
+  }
+
+  const handleCloseAlert = () => {
+    setShowAlert(false)
+  }
+
+  const handleGoToLogin = () => {
+    navigate("/login")
   }
 
   return (
     <div className={classes.productPage}>
       <ContainerGrid container spacing={5}>
         <ItemGrid item xs={12} sm={6} md={6}>
-
-          {/* <BookCard> */}
           <img className={classes.bookCover} src={books[id - 1].image} alt="" />
-          {/* </BookCard> */}
-
         </ItemGrid>
         <ItemGrid item xs={12} sm={6} md={6}>
-
           <BookDetailsCard>
             <form onSubmit={handleAddToCart}>
               {books[id - 1].title}
@@ -255,18 +272,21 @@ const Product: React.FC<Props> = ({ }) => {
           </BookDetailsCard>
         </ItemGrid>
       </ContainerGrid>
-      <CustomerReviewGrid>
-        <div className={classes.reviews}>Readers Reviews</div>
+      <ReaderReviewGrid>
+        <div className={classes.readerReviewsTitle}>Readers Reviews</div>
         <div>
-          Readers Rating
-          <AvgCustomerRating rating={avgRating} />
-          {avgRating ? avgRating.toFixed(1) : null}
-          ({numOfTotalRatings} reviews)
-          {displayHardCodedCustomerReviews}
-          {displayCustomerReviews}
+          <div className={classes.avgReaderRating}>
+            <AvgReaderRating rating={avgRating} />
+            {avgRating ? avgRating.toFixed(1) : null}&nbsp;
+            ({numOfTotalRatings} reviews)
+          </div>
+          <div className={classes.readerReviews}>
+            {displayHardCodedReaderReviews}
+            {displayReaderReviews}
+          </div>
         </div>
-        <form onSubmit={handleSubmitReview}>
-          <div>
+        <form className={classes.readerReviewsForm} onSubmit={handleSubmitReview}>
+          <div className={classes.submitRatingAndButton}>
             <Rating
               onClick={handleRating}
               ratingValue={rating}
@@ -274,27 +294,36 @@ const Product: React.FC<Props> = ({ }) => {
               fillColor="#FDCC0D"
               emptyColor="#EEE"
             />
-            <Button type="submit">Submit</Button>
+            <Button variant="outlined" type="submit">Submit</Button>
           </div>
-          {isLoggedIn ?
-            <ReviewTextField
-              multiline
-              minRows={3}
-              label="Leave a review..."
-              name="reviewComments"
-              type="text"
-              value={reviewComments}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setReviewComments(e.target.value) }}
-            /> :
-            <Link to="/login">
-              <Button type="button">
-                Log in to leave a review
-              </Button>
-            </Link>
-          }
+          {/* {isLoggedIn ? */}
+          <ReviewTextField
+            multiline
+            minRows={3}
+            label="Leave a review..."
+            name="reviewComments"
+            type="text"
+            value={reviewComments}
+            // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setReviewComments(e.target.value) }}
+            onChange={handleReviewTextOnChange}
+            required
+          />
         </form>
-      </CustomerReviewGrid>
-    </div >
+        <Dialog
+          open={showAlert}
+          onClose={handleCloseAlert}
+        >
+          <DialogContent>
+            <DialogContentText>
+              Please log in to submit your review
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleGoToLogin}>Login</Button>
+          </DialogActions>
+        </Dialog>
+      </ReaderReviewGrid>
+    </div>
   )
 }
 

@@ -1,6 +1,7 @@
-export const CustomerReviewsData = [
+export const ReaderReviewsData = [
     {
-        bookId: 1,
+        id: "1a",
+        date: "12/27/2021",
         user:
         {
             firstName: "Anne",
@@ -10,16 +11,16 @@ export const CustomerReviewsData = [
         },
         review:
         {
-            id: "1a",
+            bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
             reviewComments: "I found it interesting",
-            customerRating: 4,
-            date: "12/27/2021"
+            readerRating: 4,
         }
     },
     {
-        bookId: 1,
+        id: "1b",
+        date: "1/4/2021",
         user:
         {
             firstName: "Isaac",
@@ -29,16 +30,16 @@ export const CustomerReviewsData = [
         },
         review:
         {
-            id: "1b",
+            bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
             reviewComments: "I found it less interesting",
-            customerRating: 3,
-            date: "1/4/2021"
+            readerRating: 3
         }
     },
     {
-        bookId: 1,
+        id: "1c",
+        date: "1/8/2021",
         user:
         {
             firstName: "John",
@@ -48,12 +49,11 @@ export const CustomerReviewsData = [
         },
         review:
         {
-            id: "1c",
+            bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
             reviewComments: "meh",
-            customerRating: 3,
-            date: "1/8/2021"
+            readerRating: 3,
         }
     }
 ]

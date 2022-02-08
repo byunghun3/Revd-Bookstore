@@ -22,8 +22,8 @@
     margin-bottom: 2%;
 }
 
-.reviews:before,
-.reviews:after {
+.readerReviewsTitle:before,
+.readerReviewsTitle:after {
   content: "";
   position: relative;
   height: 1px;
@@ -33,12 +33,61 @@
   background-color: #000;
 }
 
-.reviews:before {
+.readerReviewsTitle:before {
   right: 0.5em;
   margin-left: -50%;
 }
 
-.reviews:after {
+.readerReviewsTitle:after {
   left: 0.5em;
   margin-right: -50%;
+}
+
+.readerReviews {
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin: auto;
+  width: 80%;
+  border-top: solid #adadad 1px;
+  border-left: solid #adadad 1px;
+  border-right: solid #adadad 1px;
+  /* width: 100%; */
+  /* border: solid black; */
+  /* margin: auto; */
+}
+
+.avgReaderRating {
+  margin: 2% 0 3% 0;
+}
+
+.readerReviewName {
+  flex: 1;
+  text-align: left;
+  margin-left: 2%;
+  font-weight: 500;
+}
+
+.readerReviewComments {
+  flex: 4;
+  text-align: left;
+  margin-left: 2%;
+}
+
+.readerReviewDate {
+  flex: 1;
+  text-align: right;
+}
+
+.readerReviewsForm {
+  margin-top: 5%; 
+}
+
+.submitRatingAndButton {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+  padding: 0 30%;
 }
