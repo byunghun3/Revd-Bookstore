@@ -36,8 +36,8 @@ interface Props {
 export const Suggest = (props: Props) => {
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
-    const [comments, setComments] = useState("")
-    const [suggestion, setSuggestion] = useState(JSON.parse(localStorage.getItem("suggestion") || "[]"))
+    const [comment, setComment] = useState("")
+    const [suggestion, setSuggestion] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
     const books = BooksData
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const navigate = useNavigate()
@@ -64,13 +64,13 @@ export const Suggest = (props: Props) => {
                     id: uuidv4(),
                     title: title,
                     author: author,
-                    comments: comments
+                    comment: comment
                 }
             })
 
             setSuggestion(newSuggestion)
 
-            localStorage.setItem("suggestion", JSON.stringify(newSuggestion))
+            localStorage.setItem("suggestions", JSON.stringify(newSuggestion))
         } else {
             navigate("/login")
         }
@@ -118,10 +118,10 @@ export const Suggest = (props: Props) => {
                         multiline
                         minRows={3}
                         label="Comments..."
-                        name="comments"
+                        name="comment"
                         type="text"
-                        value={comments}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setComments(e.target.value) }}
+                        value={comment}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setComment(e.target.value) }}
                     />
                     <Button type="submit">
                         Submit
