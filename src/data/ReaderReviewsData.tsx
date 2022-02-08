@@ -14,8 +14,8 @@ export const ReaderReviewsData = [
             bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
-            reviewComments: "I found it interesting",
-            readerRating: 4,
+            comments: "I found it interesting",
+            rating: 4,
         }
     },
     {
@@ -33,8 +33,8 @@ export const ReaderReviewsData = [
             bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
-            reviewComments: "I found it less interesting",
-            readerRating: 3
+            comments: "I found it less interesting",
+            rating: 3
         }
     },
     {
@@ -52,8 +52,8 @@ export const ReaderReviewsData = [
             bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
-            reviewComments: "meh",
-            readerRating: 3,
+            comments: "meh",
+            rating: 3,
         }
     }
 ]

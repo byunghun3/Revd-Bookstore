@@ -19,25 +19,39 @@ import { LoginContext } from "../../contexts/LoginContext"
 
 const ContainerGrid = styled(Grid)({
   display: "flex",
-  padding: "0 50px 0 50px"
+  justifyContent: "center",
+  // alignItems: "center"
+  // padding: "0 50px"
 })
 
 const ItemGrid = styled(Grid)({
-  // display: "flex",
-  flex: "1",
-  justifyContent: "space-between"
+  // flex: "1",
+  display: "flex",
+  // flexDirection: "row",
+  justifyContent: "center",
+  // padding: "auto",
+  // border: "solid black"
 })
 
 const BookDetailsCard = styled(Card)({
   // flex: "1",
-  position: "relative",
-  overflow: "inherit",
-  minWidth: "5vw",
-  margin: "50px",
+  // position: "relative",
+  // overflow: "inherit",
+  display: "flex",
+  flexDirection: "column",
+  // height: "auto",
+  // minWidth: "50vw",
+  width: "60%",
+  margin: "50px 0",
   transition: "ease 0.3s",
   "&:hover": {
     opacity: "0.8",
   }
+})
+
+const RevdReviewAccordion = styled(Accordion)({
+  margin: "0 0 10% 0",
+  // width: "100%"
 })
 
 const ReaderReviewGrid = styled(Grid)({
@@ -54,7 +68,7 @@ const ReaderReviewGrid = styled(Grid)({
   // border: "solid black"
 })
 
-const ReviewCard = styled(Card)({
+const ReaderReviewCard = styled(Card)({
   position: "relative",
   overflow: "inherit",
   display: "flex",
@@ -88,15 +102,32 @@ const Product: React.FC<Props> = ({ }) => {
   const { id }: any = useParams()
   const navigate = useNavigate()
 
+
+  const handleSaveEdit = (id: string, updatedReview: string) => {
+    const editRev = reviews.map((el: any) => {
+      return el.id === id
+        ? { ...el, comments: updatedReview }
+        : el
+    })
+  }
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart))
     navigate(`/browse/${books[id - 1].id}`)
   }, [cart])
 
+  const handleReviewTextOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isLoggedIn) {
+      setReviewComments(e.target.value)
+    } else {
+      setShowAlert(true)
+    }
+  }
+
   const hardCodedRatings = readerReviews.filter((el: any) => {
     return el.review.bookId === books[id - 1].id
   }).reduce((total: number, el: any) => {
-    return total + el.review.readerRating
+    return total + el.review.rating
   }, 0)
 
   const numOfHardCodedRatings = readerReviews.filter((el: any) => {
@@ -110,35 +141,34 @@ const Product: React.FC<Props> = ({ }) => {
   const avgRating = reviews.filter((el: any) => {
     return el.review.bookId === books[id - 1].id
   }).reduce((total: number, el: any) => {
-    return total + el.review.readerRating
+    return total + el.review.rating
   }, (hardCodedRatings)) / numOfTotalRatings
 
   const displayHardCodedReaderReviews = readerReviews.filter((el: any) => {
     return el.review.bookId === books[id - 1].id
   }).map((el: any) => {
-    return <ReviewCard key={el.id} elevation={0}>
-      <ReaderRating rating={el.review.readerRating} />
+    return <ReaderReviewCard key={el.id} elevation={0}>
+      <ReaderRating rating={el.review.rating} />
       <div className={classes.readerReviewName}>
         {el.user.firstName}&nbsp;
         {el.user.lastName}
       </div>
-      <div className={classes.readerReviewComments}>{el.review.reviewComments}</div>
+      <div className={classes.readerReviewComments}>{el.review.comments}</div>
       <div className={classes.readerReviewDate}>{el.date}</div>
-    </ReviewCard>
+    </ReaderReviewCard>
   })
 
   const displayReaderReviews = reviews.filter((el: any) => {
     return el.review.bookId === books[id - 1].id
   }).map((el: any) => {
-    return <ReviewCard key={el.id} elevation={0}>
-      <ReaderRating rating={el.review.readerRating} />
+    return <ReaderReviewCard key={el.id} elevation={0}>
+      <ReaderRating rating={el.review.rating} />
       <div className={classes.readerReviewName}>
         {el.user.firstName}&nbsp;
         {el.user.lastName}
       </div>
-      <div className={classes.readerReviewComments}>{el.review.reviewComments}</div>
       <div className={classes.readerReviewDate}>{el.date}</div>
-    </ReviewCard>
+    </ReaderReviewCard>
   })
 
   const maxStock = books.find((el: any) => {
@@ -206,8 +236,8 @@ const Product: React.FC<Props> = ({ }) => {
           bookId: books[id - 1].id,
           title: books[id - 1].title,
           author: books[id - 1].author,
-          reviewComments: reviewComments,
-          readerRating: rating / 20
+          comments: reviewComments,
+          rating: rating / 20
         }
       })
 
@@ -216,14 +246,6 @@ const Product: React.FC<Props> = ({ }) => {
       localStorage.setItem("reviews", JSON.stringify(newReview))
     } else {
       e.preventDefault()
-      setShowAlert(true)
-    }
-  }
-
-  const handleReviewTextOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (isLoggedIn) {
-      setReviewComments(e.target.value)
-    } else {
       setShowAlert(true)
     }
   }
@@ -238,28 +260,37 @@ const Product: React.FC<Props> = ({ }) => {
 
   return (
     <div className={classes.productPage}>
-      <ContainerGrid container spacing={5}>
+      <ContainerGrid container >
         <ItemGrid item xs={12} sm={6} md={6}>
           <img className={classes.bookCover} src={books[id - 1].image} alt="" />
         </ItemGrid>
         <ItemGrid item xs={12} sm={6} md={6}>
           <BookDetailsCard>
-            <form onSubmit={handleAddToCart}>
+            <form className={classes.bookDetails} onSubmit={handleAddToCart}>
               {books[id - 1].title}
-              <span className={classes.bookAuthorBy}>
-                by&nbsp;
-              </span>
-              <span className={classes.bookAuthorName}>
-                {books[id - 1].author}
-              </span>
+              <div className={classes.bookAuthor}>
+                <span className={classes.bookAuthorBy}>
+                  by&nbsp;
+                </span>
+                <span className={classes.bookAuthorName}>
+                  {books[id - 1].author}
+                </span>
+              </div>
               <h4 className={classes.bookType}>
-                <span className={classes.bookTypeWord}>{books[id - 1].type}</span></h4>
+                <div className={classes.bookTypeWord}>{books[id - 1].type}</div></h4>
               <h4 className={classes.bookRating}><BookRating rating={books[id - 1].rating} /></h4>
               <h3 className={classes.bookPrice}>${books[id - 1].price}</h3>
               <Button type="submit">Add to Cart</Button>
-              <h4 className={classes.bookStock}>{books[id - 1].stock < 4 ? <div>Only {books[id - 1].stock} books left in stock</div> : null}</h4>
+              {/* <h4 className={classes.bookStock}> */}
+              {books[id - 1].stock < 4 ?
+                <div className={classes.bookStock}>
+                  Only {books[id - 1].stock} books left in stock
+                </div> :
+                <div className={classes.bookStock}>
+                </div>}
+              {/* </h4> */}
             </form>
-            <Accordion>
+            <RevdReviewAccordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
               >
@@ -268,12 +299,12 @@ const Product: React.FC<Props> = ({ }) => {
               <AccordionDetails>
                 spoiler hehe
               </AccordionDetails>
-            </Accordion>
+            </RevdReviewAccordion>
           </BookDetailsCard>
         </ItemGrid>
       </ContainerGrid>
       <ReaderReviewGrid>
-        <div className={classes.readerReviewsTitle}>Readers Reviews</div>
+        <div className={classes.readerReviewsTitle}>Reader Reviews</div>
         <div>
           <div className={classes.avgReaderRating}>
             <AvgReaderRating rating={avgRating} />
@@ -296,7 +327,6 @@ const Product: React.FC<Props> = ({ }) => {
             />
             <Button variant="outlined" type="submit">Submit</Button>
           </div>
-          {/* {isLoggedIn ? */}
           <ReviewTextField
             multiline
             minRows={3}

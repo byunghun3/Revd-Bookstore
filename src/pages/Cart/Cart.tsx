@@ -131,7 +131,7 @@ export const Cart: FC<CartProps> = ({ }) => {
         </ItemGrid>
     })
 
-    const itemPrice = cart.reduce((total: number, el: any) => {
+    const totalPrice = cart.reduce((total: number, el: any) => {
         return total + (el.price * el.quantity)
     }, 0)
 
@@ -141,7 +141,7 @@ export const Cart: FC<CartProps> = ({ }) => {
                 <div className={classes.cartTitle}><StyledCartIcon /> Cart <StyledCartIcon /></div>
                 <div className={classes.cartItems}>{cartItems}</div>
                 <div className={classes.totalPrice}>
-                    Total: ${itemPrice.toFixed(2)}
+                    Total: ${totalPrice.toFixed(2)}
                 </div>
                 <div className={classes.checkOutLink}>
                     {isLoggedIn ?

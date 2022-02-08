@@ -40,7 +40,7 @@ export const Checkout = (props: CheckoutProps) => {
     const [city, setCity] = useState("")
     const [stateCode, setStateCode] = useState("")
     const [zipCode, setZipCode] = useState("")
-    const [order, setOrder] = useState(JSON.parse(localStorage.getItem("order") || "[]"))
+    const [orders, setOrders] = useState(JSON.parse(localStorage.getItem("orders") || "[]"))
     const [cardName, setCardName] = useState("")
     const [cardNumber, setCardNumber] = useState("")
     const [expiry, setExpiry] = useState("")
@@ -121,11 +121,12 @@ export const Checkout = (props: CheckoutProps) => {
         }
 
         if (!cardNumberRules && !expiryRules && !cvcRules) {
-            let newOrder = [...order]
+            let newOrder = [...orders]
 
             newOrder.push({
                 id: uuidv4(),
                 date: `${thisMonth}/${thisDay}/${thisFullYear}`,
+                total: totalPrice.toFixed(2),
                 address:
                 {
                     addressLineOne: addressLineOne,
@@ -154,9 +155,9 @@ export const Checkout = (props: CheckoutProps) => {
                 }
             })
 
-            setOrder(newOrder)
+            setOrders(newOrder)
 
-            localStorage.setItem("order", JSON.stringify(newOrder))
+            localStorage.setItem("orders", JSON.stringify(newOrder))
 
             navigate("/ordercomplete")
         }
