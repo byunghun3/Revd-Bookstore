@@ -5,11 +5,28 @@
     justify-content: space-between;
 }
 
-.pageContent {
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.sideNav {
+    flex: 1;
+    /* background-color: navy; */
+}
+
+.sideBarLink {
+    text-decoration: none;
+    color: black;
+}
+
+.profileContent {
+    flex: 7;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* background-color: orange; */
 }
 
 .orderHistoryTitle {

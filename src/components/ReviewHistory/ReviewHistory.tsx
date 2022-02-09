@@ -113,9 +113,13 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
         <form className={classes.readerReviews} onSubmit={(e) => handleEditReview(e, id)}>
             <ReaderReviewCard key={id} elevation={0}>
                 <ReaderRating rating={reviewRating} />
-                <div className={classes.readerReviewName}>
-                    {reviewTitle}&nbsp;
-                    {reviewAuthor}
+                <div className={classes.bookInfo}>
+                    <div className={classes.bookTitle}>
+                        {reviewTitle}
+                    </div>
+                    <div className={classes.bookAuthor}>
+                        {reviewAuthor}
+                    </div>
                 </div>
                 {isEditing ?
                     <ReviewTextField

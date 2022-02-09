@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { FormControl, Grid, TextField } from "@mui/material"
@@ -37,10 +37,14 @@ export const Suggest = (props: Props) => {
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
     const [comment, setComment] = useState("")
-    const [suggestion, setSuggestion] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
+    const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
     const books = BooksData
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const navigate = useNavigate()
+
+    useEffect(() => {
+        navigate("/suggest")
+    }, [suggestions])
 
     const handleSubmitSuggestion = () => {
         const thisDay = new Date().getDate()
@@ -48,9 +52,10 @@ export const Suggest = (props: Props) => {
         const thisFullYear = new Date().getFullYear()
 
         if (currentUser.length) {
-            let newSuggestion = [...suggestion]
+            let newSuggestion = [...suggestions]
 
             newSuggestion.push({
+                id: uuidv4(),
                 date: `${thisMonth}/${thisDay}/${thisFullYear}`,
                 user:
                 {
@@ -61,14 +66,13 @@ export const Suggest = (props: Props) => {
                 },
                 suggested:
                 {
-                    id: uuidv4(),
                     title: title,
                     author: author,
                     comment: comment
                 }
             })
 
-            setSuggestion(newSuggestion)
+            setSuggestions(newSuggestion)
 
             localStorage.setItem("suggestions", JSON.stringify(newSuggestion))
         } else {
