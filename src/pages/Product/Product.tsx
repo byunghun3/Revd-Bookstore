@@ -167,6 +167,7 @@ const Product: React.FC<Props> = ({ }) => {
         {el.user.firstName}&nbsp;
         {el.user.lastName}
       </div>
+      <div className={classes.readerReviewComments}>{el.review.comments}</div>
       <div className={classes.readerReviewDate}>{el.date}</div>
     </ReaderReviewCard>
   })

@@ -27,7 +27,7 @@ export const OrderHistory: FC<Props> = () => {
 
     const currentUserEmail = isLoggedIn ? currentUser[0].email : null
 
-    const displayHardCodedOrderHistory = customerOrders.filter((order: any) => {
+    const hardCodedOrderHistory = customerOrders.filter((order: any) => {
         return order.user.email === `${currentUserEmail}`
     }).map((order: any) => {
         return <ItemGrid item key={order.id} id={order.id}>
@@ -102,7 +102,7 @@ export const OrderHistory: FC<Props> = () => {
 
     return (
         <div className={classes.orderHistory}>
-            {displayHardCodedOrderHistory}
+            {hardCodedOrderHistory}
             {orderHistory}
         </div>
     )

@@ -55,5 +55,24 @@ export const ReaderReviewsData = [
             comments: "meh",
             rating: 3,
         }
+    },
+    {
+        id: "1d",
+        date: "3/5/2021",
+        user:
+        {
+            firstName: "Byung-Hun",
+            lastName: "Kim",
+            email: "byunghun3@gmail.com",
+            password: "byunghun3"
+        },
+        review:
+        {
+            bookId: 12,
+            title: "The Bluest Eye",
+            author: "Toni Morrison",
+            comments: "great book",
+            rating: 4,
+        }
     }
 ]

@@ -1,0 +1,49 @@
+.readerReviews {
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin: auto;
+  width: 80%;
+  border-top: solid #adadad 1px;
+  border-left: solid #adadad 1px;
+  border-right: solid #adadad 1px;
+  /* width: 100%; */
+  /* border: solid black; */
+  /* margin: auto; */
+}
+
+.readerReviewName {
+  flex: 1;
+  text-align: left;
+  margin-left: 2%;
+  font-weight: 500;
+}
+
+.readerReviewComments {
+  flex: 3;
+  text-align: left;
+  margin-left: 2%;
+}
+
+.readerReviewDate {
+  flex: 0.5;
+  text-align: right;
+  /* padding: 0 -25%; */
+  /* border: solid black; */
+}
+
+.readerReviewIcons {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 2%;
+}
+
+.editButton {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}

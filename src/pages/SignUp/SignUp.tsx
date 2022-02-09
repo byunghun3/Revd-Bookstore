@@ -147,7 +147,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
             let newUser = [...users]
 
             newUser.push({
-                id: uuidv4(),
+                // id: uuidv4(),
                 firstName: firstName,
                 lastName: lastName,
                 email: email,

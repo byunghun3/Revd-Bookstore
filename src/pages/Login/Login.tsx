@@ -1,4 +1,4 @@
-import React, { useState, useContext, FC } from "react"
+import React, { FC, useContext, useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Grid from "@mui/material/Grid"
 import InputLabel from "@mui/material/InputLabel"
@@ -12,6 +12,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
 import { LoginContext } from "../../contexts/LoginContext"
+import { UsersData } from "../../data/UsersData"
 import { styled } from "@mui/system"
 import classes from "./Login.module.css"
 import { Card } from "@mui/material"
@@ -69,7 +70,7 @@ interface LoginProps {
 
 export const Login: FC<LoginProps> = ({ }) => {
     const navigate = useNavigate()
-
+    const hardCodedUsers = UsersData
     const [email, setEmail] = useState("")
     const [emailMatchError, setEmailMatchError] = useState("")
     const [isEmailInvalid, setIsEmailInvalid] = useState(false)
@@ -79,7 +80,11 @@ export const Login: FC<LoginProps> = ({ }) => {
     const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
     const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
-    const users = JSON.parse(localStorage.getItem("users") || "[]")
+    const users = JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers))
+
+    useEffect(() => {
+        localStorage.setItem("users", JSON.stringify(hardCodedUsers))
+    }, [users])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         `set${e.currentTarget.name} = e.currentTarget.value`
