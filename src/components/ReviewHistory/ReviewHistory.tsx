@@ -1,6 +1,7 @@
 import React, { FC, useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { LoginContext } from "../../contexts/LoginContext"
-import { Card, TextField } from "@mui/material"
+import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
 import ReaderRating from "../../components/ReaderRating/ReaderRating"
@@ -58,14 +59,8 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
     const currentUserEmail = isLoggedIn ? currentUser[0].email : null
     const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
     const [editComments, setEditComments] = useState(initialComment)
-
-    const initialReviewComment = reviews.filter((review: any) => {
-        return review.user.email === `${currentUserEmail}`
-    }).filter((el: any) => {
-        return el.id
-    })
-
     const [showAlert, setShowAlert] = useState(false)
+    const navigate = useNavigate()
     const [isEditing, setIsEditing] = useState(false)
 
 
@@ -74,11 +69,9 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
         // console.log(editComments)
     }
 
-    const handleDeleteReview = (id: string) => {
-        let newReviews = reviews.filter((el: any) => el.id !== id)
-        setReviews(newReviews)
-        localStorage.setItem("reviews", JSON.stringify(newReviews))
-    }
+    // const handleDeleteReview = (id: string) => {
+    //     setShowAlert(true)
+    // }
 
     const handleEditReview = (e: React.FormEvent<HTMLFormElement>, id: string) => {
         // let review = reviews.find((el: any) => el.id === id)
@@ -107,6 +100,16 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
             // handleEdit(id, editComments)
             setIsEditing(false)
         }
+    }
+
+    const handleCloseAlert = () => {
+        setShowAlert(false)
+    }
+
+    const handleDeleteReview = (id: string) => {
+        let newReviews = reviews.filter((el: any) => el.id !== id)
+        setReviews(newReviews)
+        localStorage.setItem("reviews", JSON.stringify(newReviews))
     }
 
     return (
@@ -141,9 +144,22 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
                     <button className={classes.editButton} type="submit"><StyledEditIcon /></button>
                     <StyledRemoveIcon
                         color="warning"
-                        onClick={() => handleDeleteReview(id)}
+                        onClick={() => { setShowAlert(true) }}
                     />
                 </div>
+                <Dialog
+                    open={showAlert}
+                    onClose={handleCloseAlert}
+                >
+                    <DialogContent>
+                        <DialogContentText>
+                            Are you sure you want to delete this review?
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => handleDeleteReview(id)}>Delete</Button>
+                    </DialogActions>
+                </Dialog>
             </ReaderReviewCard>
         </form>
     )

@@ -1,6 +1,7 @@
 import React, { FC, useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { LoginContext } from "../../contexts/LoginContext"
-import { Card, TextField } from "@mui/material"
+import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
 import ReaderRating from "../../components/ReaderRating/ReaderRating"
@@ -57,16 +58,12 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ initialComment, id,
     const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
     const [editComment, setEditComment] = useState(suggestedComment)
     const [isEditing, setIsEditing] = useState(false)
+    const [showAlert, setShowAlert] = useState(false)
 
+    const navigate = useNavigate()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditComment(e.currentTarget.value)
-    }
-
-    const handleDeleteSuggestion = (id: string) => {
-        let newReviews = suggestions.filter((el: any) => el.id !== id)
-        setSuggestions(newReviews)
-        localStorage.setItem("suggestions", JSON.stringify(newReviews))
     }
 
     const handleEditSuggestion = (e: React.FormEvent<HTMLFormElement>, id: string) => {
@@ -87,8 +84,18 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ initialComment, id,
         }
     }
 
+    const handleCloseAlert = () => {
+        setShowAlert(false)
+    }
+
+    const handleDeleteSuggestion = (id: string) => {
+        let newSuggestions = suggestions.filter((el: any) => el.id !== id)
+        setSuggestions(newSuggestions)
+        localStorage.setItem("suggestions", JSON.stringify(newSuggestions))
+    }
+
     return (
-        <form className={classes.readerReviews} onSubmit={(e) => handleEditSuggestion(e, id)}>
+        <form className={classes.suggestion} onSubmit={(e) => handleEditSuggestion(e, id)}>
             <ReaderReviewCard key={id} elevation={0}>
                 <div className={classes.bookInfo}>
                     <div className={classes.bookTitle}>
@@ -118,9 +125,22 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ initialComment, id,
                     <button className={classes.editButton} type="submit"><StyledEditIcon /></button>
                     <StyledRemoveIcon
                         color="warning"
-                        onClick={() => handleDeleteSuggestion(id)}
+                        onClick={() => { setShowAlert(true) }}
                     />
                 </div>
+                <Dialog
+                    open={showAlert}
+                    onClose={handleCloseAlert}
+                >
+                    <DialogContent>
+                        <DialogContentText>
+                            Are you sure you want to delete this suggestion?
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => handleDeleteSuggestion(id)}>Delete</Button>
+                    </DialogActions>
+                </Dialog>
             </ReaderReviewCard>
         </form>
     )
