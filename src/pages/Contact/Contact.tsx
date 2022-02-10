@@ -1,11 +1,16 @@
 import React from "react"
-import "./Contact.css"
+import classes from "./Contact.module.css"
 
 function Contact() {
     return (
         <div>
-            <div className="contactPage">
-                Contact
+            <div className={classes.contactPage}>
+                <div className={classes.box}>
+                    <div className={classes.section}>Contact</div>
+                    <div className={classes.section}>Contact 2</div>
+                    <div className={classes.section}>Contact 3</div>
+                    <div className={classes.section}>Contact 4</div>
+                </div>
             </div>
         </div>
     )

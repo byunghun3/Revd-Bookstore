@@ -1,0 +1,19 @@
+.contactPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+/* .box {
+    height: 50px;
+    width: 50px;
+} */
+
+.section {
+    height: 100vh;
+    scroll-snap-align: start;
+
+}
