@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
 import { Button, Container } from "@mui/material"
 import { ReaderReviewsData } from "../../data/ReaderReviewsData"
-import { styled } from "@mui/system"
-import classes from "./Profile.module.css"
 import { OrderHistory } from "../../components/OrderHistory/OrderHistory"
 import ReviewHistory from "../../components/ReviewHistory/ReviewHistory"
 import CurrentUserInfo from "../../components/CurrentUserInfo/CurrentUserInfo"
 import SuggestionHistory from "../../components/SuggestionHistory/SuggestionHistory"
+// import PaperTexture from "../assets/images/the-bluest-eye.jpeg"
+import { styled } from "@mui/system"
+import classes from "./Profile.module.css"
 
 const ProfileContainer = styled(Container)({
     display: "flex",
@@ -103,38 +104,48 @@ export const Profile = (props: Props) => {
             {/* <ProfileContainer> */}
             <div className={classes.profileContainer}>
                 <div className={classes.sideNav}>
-                    <NavHashLink smooth className={classes.sideBarLink} to="#sectionOne">
-                        Profile
-                    </NavHashLink>
-                    <NavHashLink smooth className={classes.sideBarLink} to="#sectionOne">
-                        Order History
-                    </NavHashLink>
-                    <NavHashLink smooth className={classes.sideBarLink} to="#sectionOne">
-                        Review History
-                    </NavHashLink>
-                    <NavHashLink smooth className={classes.sideBarLink} to="#sectionOne">
-                        Suggestion History
-                    </NavHashLink>
+                    <div className={classes.sideNavGroup}>
+                        <div className={classes.sideNavTop}>Welcome, {currentUserFirstName}</div>
+                        <NavHashLink smooth className={classes.sideNavLink} to="#section-user-profile">
+                            Profile
+                        </NavHashLink>
+                        <NavHashLink smooth className={classes.sideNavLink} to="#section-order-history">
+                            Order History
+                        </NavHashLink>
+                        <NavHashLink smooth className={classes.sideNavLink} to="#section-review-history">
+                            Review History
+                        </NavHashLink>
+                        <NavHashLink smooth className={classes.sideNavLink} to="#section-suggestion-history">
+                            Suggestion History
+                        </NavHashLink>
+                    </div>
                 </div>
                 <div className={classes.profileContent}>
-                    <CurrentUserInfo
-                        currentUserFirstName={currentUserFirstName}
-                        currentUserLastName={currentUserLastName}
-                        currentUserEmail={currentUserEmail}
-                    // firstName={currentUser[0].firstName}
-                    // lastName={currentUser[0].lastName}
-                    />
-                    < Button onClick={handleLogOut}>Log Out</Button>
-                    <div className={classes.orderHistoryTitle}>Order History</div>
-                    <OrderHistory />
-                    <div className={classes.reviewHistoryTitle}>Review History</div>
-                    {hardCodedReviewHistory}
-                    {reviewHistory}
-                    <div className={classes.suggestionHistoryTitle}>Suggestion History</div>
-                    {suggestionHistory.length ?
-                        suggestionHistory :
-                        <div>No suggestions yet</div>
-                    }
+                    <div className={classes.section} id="section-user-profile">
+                        <div className={classes.profileTitle}>Profile</div>
+                        <CurrentUserInfo
+                            currentUserFirstName={currentUserFirstName}
+                            currentUserLastName={currentUserLastName}
+                            currentUserEmail={currentUserEmail}
+                        />
+                        < Button onClick={handleLogOut}>Log Out</Button>
+                    </div>
+                    <div className={classes.section} id="section-order-history">
+                        <div className={classes.orderHistoryTitle}>Order History</div>
+                        <OrderHistory />
+                    </div>
+                    <div className={classes.section} id="section-review-history">
+                        <div className={classes.reviewHistoryTitle}>Review History</div>
+                        {hardCodedReviewHistory}
+                        {reviewHistory}
+                    </div>
+                    <div className={classes.section} id="section-suggestion-history">
+                        <div className={classes.suggestionHistoryTitle}>Suggestion History</div>
+                        {suggestionHistory.length ?
+                            suggestionHistory :
+                            <div>No suggestions yet</div>
+                        }
+                    </div>
                 </div>
             </div>
             {/* </ProfileContainer> */}
