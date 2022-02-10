@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
-import { FormControl, Grid, TextField } from "@mui/material"
+import { FormControl, TextField } from "@mui/material"
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import InputLabel from "@mui/material/InputLabel"
 import OutlinedInput from "@mui/material/OutlinedInput"
-import { Button } from "@mui/material"
+import { LoginContext } from "../../contexts/LoginContext"
 import { Books } from "../../components/Books/Books"
 import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
@@ -38,6 +39,8 @@ export const Suggest = (props: Props) => {
     const [author, setAuthor] = useState("")
     const [comment, setComment] = useState("")
     const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
+    const [showAlert, setShowAlert] = useState(false)
+    const { isLoggedIn } = useContext(LoginContext)
     const books = BooksData
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const navigate = useNavigate()
@@ -45,6 +48,30 @@ export const Suggest = (props: Props) => {
     useEffect(() => {
         navigate("/suggest")
     }, [suggestions])
+
+    const handleChangeSuggestionTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (isLoggedIn) {
+            setTitle(e.target.value)
+        } else {
+            setShowAlert(true)
+        }
+    }
+
+    const handleChangeSuggestionAuthor = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (isLoggedIn) {
+            setAuthor(e.target.value)
+        } else {
+            setShowAlert(true)
+        }
+    }
+
+    const handleChangeSuggestionComment = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (isLoggedIn) {
+            setComment(e.target.value)
+        } else {
+            setShowAlert(true)
+        }
+    }
 
     const handleSubmitSuggestion = () => {
         const thisDay = new Date().getDate()
@@ -86,6 +113,14 @@ export const Suggest = (props: Props) => {
         </Link>
     })
 
+    const handleCloseAlert = () => {
+        setShowAlert(false)
+    }
+
+    const handleGoToLogin = () => {
+        navigate("/login")
+    }
+
     return (
         <div className={classes.suggestPage}>
             <div className={classes.pageContent}>
@@ -103,7 +138,7 @@ export const Suggest = (props: Props) => {
                             name="title"
                             type="text"
                             value={title}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTitle(e.target.value) }}
+                            onChange={handleChangeSuggestionTitle}
                             required
                         />
                     </TitleForm>
@@ -114,18 +149,19 @@ export const Suggest = (props: Props) => {
                             name="author"
                             type="text"
                             value={author}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setAuthor(e.target.value) }}
+                            // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setAuthor(e.target.value) }}
+                            onChange={handleChangeSuggestionAuthor}
                             required
                         />
                     </AuthorForm>
                     <CommentsTextField
                         multiline
                         minRows={3}
-                        label="Comments..."
+                        label="Comment..."
                         name="comment"
                         type="text"
                         value={comment}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setComment(e.target.value) }}
+                        onChange={handleChangeSuggestionComment}
                     />
                     <Button type="submit">
                         Submit
@@ -140,6 +176,19 @@ export const Suggest = (props: Props) => {
                     {bookList}
                 </div>
             </div>
+            <Dialog
+                open={showAlert}
+                onClose={handleCloseAlert}
+            >
+                <DialogContent>
+                    <DialogContentText>
+                        Please log in to submit your review
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleGoToLogin}>Log In</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     )
 }

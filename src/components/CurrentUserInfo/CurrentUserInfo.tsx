@@ -1,4 +1,6 @@
 import React, { FC, useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 import { LoginContext } from "../../contexts/LoginContext"
 import { UsersData } from "../../data/UsersData"
@@ -30,6 +32,8 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     const [isEditingLastName, setIsEditingLastName] = useState(false)
     const [userFirstName, setUserFirstName] = useState(currentUserFirstName)
     const [userLastName, setUserLastName] = useState(currentUserLastName)
+    const [showAlert, setShowAlert] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         localStorage.setItem("users", JSON.stringify(hardCodedUsers))
@@ -75,6 +79,16 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
             localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser))
             setIsEditingLastName(false)
         }
+    }
+
+    const handleLogOut = () => {
+        setIsLoggedIn(false)
+        localStorage.removeItem("currentUser")
+        navigate("/")
+    }
+
+    const handleCloseAlert = () => {
+        setShowAlert(false)
     }
 
     const userProfile = currentUser.map((user: any) => {
@@ -126,6 +140,20 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     return (
         <div>
             {userProfile}
+            <Button onClick={() => { setShowAlert(true) }}>Log Out</Button>
+            <Dialog
+                open={showAlert}
+                onClose={handleCloseAlert}
+            >
+                <DialogContent>
+                    <DialogContentText>
+                        Are you sure you want to log out?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleLogOut}>Log Out</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     )
 }

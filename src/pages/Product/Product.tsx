@@ -92,7 +92,7 @@ interface Props {
 const Product: React.FC<Props> = ({ }) => {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
   const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
-  const [reviewComments, setReviewComments] = useState("")
+  const [comment, setComment] = useState("")
   const [rating, setRating] = useState(0)
   const [showAlert, setShowAlert] = useState(false)
   const { isLoggedIn } = useContext(LoginContext)
@@ -102,23 +102,14 @@ const Product: React.FC<Props> = ({ }) => {
   const { id }: any = useParams()
   const navigate = useNavigate()
 
-
-  const handleSaveEdit = (id: string, updatedReview: string) => {
-    const editRev = reviews.map((el: any) => {
-      return el.id === id
-        ? { ...el, comments: updatedReview }
-        : el
-    })
-  }
-
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart))
     navigate(`/browse/${books[id - 1].id}`)
   }, [cart])
 
-  const handleReviewTextOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeReviewComment = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (isLoggedIn) {
-      setReviewComments(e.target.value)
+      setComment(e.target.value)
     } else {
       setShowAlert(true)
     }
@@ -237,7 +228,7 @@ const Product: React.FC<Props> = ({ }) => {
           bookId: books[id - 1].id,
           title: books[id - 1].title,
           author: books[id - 1].author,
-          comments: reviewComments,
+          comments: comment,
           rating: rating / 20
         }
       })
@@ -334,9 +325,9 @@ const Product: React.FC<Props> = ({ }) => {
             label="Leave a review..."
             name="reviewComments"
             type="text"
-            value={reviewComments}
+            value={comment}
             // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setReviewComments(e.target.value) }}
-            onChange={handleReviewTextOnChange}
+            onChange={handleChangeReviewComment}
             required
           />
         </form>
@@ -350,7 +341,7 @@ const Product: React.FC<Props> = ({ }) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleGoToLogin}>Login</Button>
+            <Button onClick={handleGoToLogin}>Log In</Button>
           </DialogActions>
         </Dialog>
       </ReaderReviewGrid>

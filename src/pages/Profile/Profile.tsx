@@ -37,12 +37,6 @@ export const Profile = (props: Props) => {
     const currentUserFirstName = isLoggedIn ? currentUser[0].firstName : null
     const currentUserLastName = isLoggedIn ? currentUser[0].lastName : null
 
-    const handleLogOut = () => {
-        setIsLoggedIn(false)
-        localStorage.removeItem("currentUser")
-        navigate("/")
-    }
-
     const hardCodedReviewHistory = readerReviews.filter((review: any) => {
         return review.user.email === `${currentUserEmail}`
     }).map((el: any) => {
@@ -89,16 +83,6 @@ export const Profile = (props: Props) => {
         />
     })
 
-    // const suggestionHistory = suggestions.filter((el: any) => {
-    //     return el.user.email === `${currentUserEmail}`
-    // }).map((el: any) => {
-    //     return <div key={el.id}>
-    //         {el.suggested.title}
-    //         {el.suggested.author}
-    //         {el.suggested.comment}
-    //     </div>
-    // })
-
     return (
         <div className={classes.profilePage}>
             {/* <ProfileContainer> */}
@@ -128,7 +112,6 @@ export const Profile = (props: Props) => {
                             currentUserLastName={currentUserLastName}
                             currentUserEmail={currentUserEmail}
                         />
-                        < Button onClick={handleLogOut}>Log Out</Button>
                     </div>
                     <div className={classes.section} id="section-order-history">
                         <div className={classes.orderHistoryTitle}>Order History</div>
