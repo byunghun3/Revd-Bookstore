@@ -31,10 +31,6 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     const [userFirstName, setUserFirstName] = useState(currentUserFirstName)
     const [userLastName, setUserLastName] = useState(currentUserLastName)
 
-    // const x = currentUser.find((el: any) => {
-    //     return el.email === currentUserEmail
-    // })
-
     useEffect(() => {
         localStorage.setItem("users", JSON.stringify(hardCodedUsers))
     }, [users])
@@ -82,46 +78,49 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     }
 
     const userProfile = currentUser.map((user: any) => {
-        return <div key={user.email}>
-            {isEditingFirstName ?
-                <form onSubmit={(e) => handleEditFirstName(e)}>
-                    <div>First Name:</div>
-                    <input
-                        value={userFirstName}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserFirstName(e.target.value) }}
-                    />
-                    <button className={classes.editButton} type="submit">
-                        <StyledEditIcon />
-                    </button>
-                </form> :
-                <form onSubmit={(e) => handleEditFirstName(e)}>
-                    <div>First Name:</div>
-                    <div>{userFirstName}</div>
-                    <button className={classes.editButton} type="submit">
-                        <StyledEditIcon />
-                    </button>
-                </form>
-            }
-            {isEditingLastName ?
-                <form onSubmit={(e) => handleEditLastName(e)}>
-                    <div>Last Name:</div>
-                    <input
-                        value={userLastName}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserLastName(e.target.value) }}
-                    />
-                    <button className={classes.editButton} type="submit">
-                        <StyledEditIcon />
-                    </button>
-                </form> :
-                <form onSubmit={(e) => handleEditLastName(e)}>
-                    <div>Last Name:</div>
-                    <div>{userLastName}</div>
-                    <button className={classes.editButton} type="submit">
-                        <StyledEditIcon />
-                    </button>
-                </form>
-            }
-            <div>{user.email}</div>
+        return <div className={classes.profileSection} key={user.email}>
+            <div className={classes.labels}>
+                <div className={classes.profileLabel}>First Name:</div>
+                <div className={classes.profileLabel}>Last Name:</div>
+                <div className={classes.profileLabel}>Email:</div>
+            </div>
+            <div className={classes.values}>
+                {isEditingFirstName ?
+                    <form className={classes.profileValue} onSubmit={(e) => handleEditFirstName(e)}>
+                        <input
+                            value={userFirstName}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserFirstName(e.target.value) }}
+                        />
+                        <button className={classes.editButton} type="submit">
+                            <StyledEditIcon />
+                        </button>
+                    </form> :
+                    <form className={classes.profileValue} onSubmit={(e) => handleEditFirstName(e)}>
+                        <div>{userFirstName}</div>
+                        <button className={classes.editButton} type="submit">
+                            <StyledEditIcon />
+                        </button>
+                    </form>
+                }
+                {isEditingLastName ?
+                    <form className={classes.profileValue} onSubmit={(e) => handleEditLastName(e)}>
+                        <input
+                            value={userLastName}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserLastName(e.target.value) }}
+                        />
+                        <button className={classes.editButton} type="submit">
+                            <StyledEditIcon />
+                        </button>
+                    </form> :
+                    <form className={classes.profileValue} onSubmit={(e) => handleEditLastName(e)}>
+                        <div>{userLastName}</div>
+                        <button className={classes.editButton} type="submit">
+                            <StyledEditIcon />
+                        </button>
+                    </form>
+                }
+                <div className={classes.profileValue}>{user.email}</div>
+            </div>
         </div>
     })
     return (
