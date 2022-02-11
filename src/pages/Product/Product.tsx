@@ -14,6 +14,7 @@ import { ReaderReviewsData } from "../../data/ReaderReviewsData"
 import BookRating from "../../components/BookRating/BookRating"
 import ReaderRating from "../../components/ReaderRating/ReaderRating"
 import AvgReaderRating from "../../components/AvgReaderRating/AvgReaderRating"
+import AccordionComponent from "../../components/AccordionComponent/AccordionComponent"
 import { LoginContext } from "../../contexts/LoginContext"
 
 
@@ -47,11 +48,6 @@ const BookDetailsCard = styled(Card)({
   "&:hover": {
     opacity: "0.8",
   }
-})
-
-const RevdReviewAccordion = styled(Accordion)({
-  margin: "0 0 10% 0",
-  // width: "100%"
 })
 
 const ReaderReviewGrid = styled(Grid)({
@@ -282,16 +278,10 @@ const Product: React.FC<Props> = ({ }) => {
                 </div>}
               {/* </h4> */}
             </form>
-            <RevdReviewAccordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-              >
-                Revd Review (may contain spoilers!)
-              </AccordionSummary>
-              <AccordionDetails>
-                spoiler hehe
-              </AccordionDetails>
-            </RevdReviewAccordion>
+            <AccordionComponent
+              accordionSummary="hello"
+              accordionDetails="well"
+            />
           </BookDetailsCard>
         </ItemGrid>
       </ContainerGrid>

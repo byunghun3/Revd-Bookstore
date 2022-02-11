@@ -8,7 +8,6 @@ import SuggestABookImageTwo from "../../assets/images/matthew-feeney-Nwkh-n6l25w
 import SuggestABookImageThree from "../../assets/images/pexels-ichad-windhiagiri-3989751.jpg"
 import SuggestABookImageFour from "../../assets/images/alexandra-fuller-wkgv7I2VTzM-unsplash.jpg"
 import SuggestABookImageFive from "../../assets/images/pexels-helena-lopes-711009.jpg"
-
 import { styled } from "@mui/system"
 import classes from "./About.module.css"
 
