@@ -8,6 +8,16 @@ const RevdReviewAccordion = styled(Accordion)({
     // width: "100%"
 })
 
+const StyledAccordionSummary = styled(AccordionSummary)({
+    fontWeight: "700",
+    // textAlign: "left"
+
+})
+
+const StyledAccordionDetails = styled(AccordionDetails)({
+    textAlign: "left"
+})
+
 interface AccordionProps {
     accordionSummary: string
     accordionDetails: string
@@ -17,14 +27,14 @@ const AccordionComponent: FC<AccordionProps> = ({ accordionSummary, accordionDet
     return (
         <div>
             <Accordion>
-                <AccordionSummary
+                <StyledAccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                 >
                     {accordionSummary}
-                </AccordionSummary>
-                <AccordionDetails>
+                </StyledAccordionSummary>
+                <StyledAccordionDetails>
                     {accordionDetails}
-                </AccordionDetails>
+                </StyledAccordionDetails>
             </Accordion>
             {/* <RevdReviewAccordion>
                 <AccordionSummary
