@@ -1,3 +1,12 @@
+.leftSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 40%;
+    vertical-align: bottom;
+    /* border: solid black; */
+}
+
 .logo {
     vertical-align: middle;
 }
@@ -10,8 +19,25 @@
     color: black;
 }
 
+.rightSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: -3%;
+    width: 20%;
+    /* border: solid black; */
+
+}
+
+.greeting {
+    margin-right: 5%;
+    /* border: solid black; */
+}
+
 .headerLink {
     text-decoration: none;
+    /* margin: 0 2%; */
     color: black;
 }
 

@@ -12,10 +12,12 @@ import classes from "./Header.module.css"
 const HeaderToolbar = styled(Toolbar)({
     justifyContent: "space-between",
     maxWidth: "100%"
+    // width: "100%"
 })
 
 const NavBarToolbar = styled(Toolbar)({
     maxWidth: "100%",
+    // width: "100%",
     backgroundColor: "#d7ccc8"
 })
 
@@ -40,7 +42,7 @@ function Header() {
     }, [cart])
 
     const greeting = currentUser.map((el: any) => {
-        return <div key={el.email}>Hello, {el.firstName} {el.lastName}</div>
+        return <div key={el.email}>Hello, {el.firstName}</div>
     })
 
     return (
@@ -51,14 +53,14 @@ function Header() {
                 position="sticky"
             >
                 <HeaderToolbar>
-                    <div>
+                    <div className={classes.leftSection}>
                         <img className={classes.logo} src={Logo} alt="" />
                         <Link to="/" className={classes.headerLink}>
                             <span className={classes.title}>Revd Bookstore</span>
                         </Link>
                     </div>
-                    <div>
-                        {isLoggedIn ? greeting : null}
+                    <div className={classes.rightSection}>
+                        {isLoggedIn ? <div className={classes.greeting}>{greeting}</div> : null}
                         {isLoggedIn ?
                             <Link to="/profile" className={classes.headerLink}>
                                 <StyledAccountIcon />
