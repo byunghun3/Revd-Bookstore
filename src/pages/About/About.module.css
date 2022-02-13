@@ -133,9 +133,14 @@
     height: auto;
 }
 
+.browseLink {
+    text-decoration: none;
+    /* color: navy; */
+}
+
 .imageBlock {
     display: flex;
-    height: 50vh;
+    height: 60vh;
 }
 
 .imageBlockSection {

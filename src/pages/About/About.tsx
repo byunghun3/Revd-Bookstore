@@ -1,6 +1,7 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
-import { Container } from "@mui/material"
+import { Button, Container } from "@mui/material"
 import OurStoryImage from "../../assets/images/pexels-cottonbro-3585048.jpg"
 import OurCollectionImage from "../../assets/images/eugenio-mazzone-6ywyo2qtaZ8-unsplash.jpg"
 import SuggestABookImageOne from "../../assets/images/pexels-cottonbro-4861347.jpg"
@@ -43,23 +44,31 @@ function About() {
                         <div className={classes.sectionContent}>
                             <div>Welcome to Revd Bookstore!</div>
                             <p>Revd is an online bookstore with a mission to foster a community of readers through only providing the books that we have read and reviewed personally.</p>
-
+                            <p>During the COVID-19 pandemic, two friends, Kim and Olivia, decided to bring together their passion for reading to help connect a group of people in this time of hardship and isolation. Reading can become a source of inner peace, growth, self-discovery, confidence, empathy, compassion and so much more.</p>
+                            <p>We offer reduced pricing - all our books are $4.99! - so that it can be affordable for almost everyone.</p>
                         </div>
                         <div className={classes.sectionImage}>
-                        <img className={classes.ourStoryImage} src={OurStoryImage} alt="" />
+                            <img className={classes.ourStoryImage} src={OurStoryImage} alt="" />
                         </div>
-                        </div>
+                    </div>
                     <div className={classes.sectionTwo} id="section-our-collection">
                         <img className={classes.ourCollectionImage} src={OurCollectionImage} alt="" />
                         <div className={classes.sectionContent}>
                             <div>Explore our collection!</div>
-                            <p>We have a collection of 12 books at any given time. We will rotate in a new book</p>
-                            <p>Our collection includes both fiction and nonfiction books to suit your taste. We also have books available in hard copy, Ebook, audiobook format to suit your needs. </p>
+                            <p>We have a collection of 12 books at any given time. We will rotate in a new book every month, with the oldest book in the collection rotating out each time. So each book will be available for purchase for at 1 year.</p>
+                            <p>Our collection includes both fiction and nonfiction books to suit your taste. We also have books available in hard copy, ebook, audiobook format to suit your needs. </p>
+                            <Link className={classes.browseLink} to="/browse">
+                                <Button variant="outlined">Explore our books</Button>
+                            </Link>
                         </div>
                     </div>
                     <div className={classes.sectionThree} id="section-suggest-a-book">
                         <div className={classes.sectionContent}>
-                            <p>One of our goals for Revd is to build a community of readers </p>
+                            <p>One of our goals at Revd is to build an online community where readers can discuss, review, and react together on books. </p>
+                            <p>So we encourage you to suggest us a book to review and add to our collection! We won&apos;t be able to get through every book soon enough, but our new bi-weekly book will always be pulled from the suggestions.</p>
+                            <Link className={classes.browseLink} to="/suggest">
+                                <Button variant="contained"> Suggest a book</Button>
+                            </Link>
                         </div>
                         <div className={classes.imageBlock}>
                             <div className={classes.imageBlockSection}>
@@ -76,6 +85,8 @@ function About() {
                         </div>
                     </div>
                     <div className={classes.sectionFour} id="section-attribution">
+                        <div>Attribution</div>
+
                         <div>
                             <a target="_blank" rel="noopener noreferrer" href="https://icons8.com/icon/f6WWkElFBgtA/book">Book</a> icon by <a target="_blank" rel="noopener noreferrer" href="https://icons8.com">Icons8</a>
                             Photo by <a href="https://unsplash.com/@dietteh06?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">DiEtte Henderson</a> on <a href="https://unsplash.com/s/photos/christmas-present?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
