@@ -18,6 +18,8 @@
 
 .rightSection {
     flex: 1;
+    color: white;
+    /* border: solid white; */
 }
 
 .iconLink {

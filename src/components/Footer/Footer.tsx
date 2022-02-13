@@ -10,6 +10,8 @@ import classes from "./Footer.module.css"
 
 const FooterToolbar = styled(Toolbar)({
     maxWidth: "100%",
+    // width: "100%",
+
     // justifyContent: "space-between",
     display: "flex",
     backgroundColor: "black",
@@ -99,11 +101,12 @@ export const Footer = (props: Props) => {
                         <nav className={classes.nav}>
                             <NavLink to="/about" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
                             <NavLink to="/browse" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Browse</NavLink>
+                            <NavLink to="/suggest" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Suggest</NavLink>
                             <NavLink to="/contact" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Contact</NavLink>
                         </nav>
                     </div>
                     <div className={classes.rightSection}>
-
+                        Copyright © 2022 Revd Bookstore, Inc. All rights reserved.
                     </div>
                 </FooterToolbar>
             </AppBar>
