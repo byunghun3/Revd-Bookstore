@@ -1,0 +1,52 @@
+.bookDetails {
+  margin: 10% 0;
+}
+
+.bookTitle {
+    margin: 0 5px 0 5px;
+    font-size: 15px;
+}
+
+.bookAuthor {
+    margin: 1px 0 0 0;
+    font-size: 12px;
+}
+
+.bookAuthorBy {
+    font-weight: 500;
+}
+
+
+.bookAuthorName {
+    font-weight: 800;
+    color: green;
+}
+
+.bookType {
+    margin: 1px 0 0 0;
+    font-size: 12px;
+}
+
+.bookTypeIcon {
+    vertical-align: middle;
+    color: grey;
+}
+
+.bookTypeWord {
+    vertical-align: middle;
+    color: grey;
+}
+
+.bookRating {
+    margin: 1px 0 0 0;
+}
+
+.bookPrice {
+    margin: 1px 0 0 0;
+    font-size: 12px;
+}
+
+.bookStock {
+    /* margin: 5px 0 0 -15px; */
+    color: red;
+}

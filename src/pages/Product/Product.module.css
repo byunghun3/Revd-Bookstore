@@ -12,132 +12,14 @@
     /* width: 70%; */
     /* min-width: 50%; */
     width: 60%;
-    margin: 50px 0;
+    margin: 10vh 0;
 }
 
-.bookDetails {
-  margin: 50px 0;
-}
-
-.bookTitle {
-    margin: 0 5px 0 5px;
-    font-size: 15px;
-}
-
-.bookAuthor {
-    margin: 1px 0 0 0;
-    font-size: 12px;
-}
-
-.bookAuthorBy {
-    font-weight: 500;
-}
-
-
-.bookAuthorName {
-    font-weight: 800;
-    color: green;
-}
-
-.bookType {
-    margin: 1px 0 0 0;
-    font-size: 12px;
-}
-
-.bookTypeIcon {
-    vertical-align: middle;
-    color: grey;
-}
-
-.bookTypeWord {
-    vertical-align: middle;
-    color: grey;
-}
-
-.bookRating {
-    margin: 1px 0 0 0;
-}
-
-.bookPrice {
-    margin: 1px 0 0 0;
-    font-size: 12px;
-}
-
-.bookStock {
-    /* margin: 5px 0 0 -15px; */
-    color: red;
+.accordion {
+  width: 60%;
 }
 
 .reviews {
     margin-bottom: 2%;
 }
 
-.readerReviewsTitle:before,
-.readerReviewsTitle:after {
-  content: "";
-  position: relative;
-  height: 1px;
-  width: 37%;
-  display: inline-block;
-  vertical-align: middle;
-  background-color: #000;
-}
-
-.readerReviewsTitle:before {
-  right: 0.5em;
-  margin-left: -50%;
-}
-
-.readerReviewsTitle:after {
-  left: 0.5em;
-  margin-right: -50%;
-}
-
-.readerReviews {
-  /* display: block; */
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  margin: auto;
-  width: 80%;
-  border-top: solid #adadad 1px;
-  border-left: solid #adadad 1px;
-  border-right: solid #adadad 1px;
-  /* width: 100%; */
-  /* border: solid black; */
-  /* margin: auto; */
-}
-
-.avgReaderRating {
-  margin: 2% 0 3% 0;
-}
-
-.readerReviewName {
-  flex: 1;
-  text-align: left;
-  margin-left: 2%;
-  font-weight: 500;
-}
-
-.readerReviewComments {
-  flex: 3;
-  text-align: left;
-  margin-left: 2%;
-}
-
-.readerReviewDate {
-  flex: 1;
-  text-align: right;
-}
-
-.readerReviewsForm {
-  margin-top: 5%; 
-}
-
-.submitRatingAndButton {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5%;
-  padding: 0 30%;
-}
