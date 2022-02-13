@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 40%;
-    vertical-align: bottom;
+    min-width: 40%;
+    /* vertical-align: bottom; */
     /* border: solid black; */
 }
 
@@ -12,26 +12,36 @@
 }
 
 .title {
-    vertical-align: middle;
-    margin-left: 10px;
+    margin-left: 1rem;
+    /* vertical-align: middle; */
     font-family: 'Bangers', 'Luxurious Roman';
-    font-size: 40px;
+    font-size: 4rem;
     color: black;
+    /* border: solid black; */
 }
 
 .rightSection {
+    /* position: relative; */
+    /* top: 15px; */
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: -3%;
-    width: 20%;
+    /* text-align: bottom; */
+    /* vertical-align: middle; */
+    /* margin-bottom: -3%; */
+    /* min-height: 5rem; */
+    min-height: 100%;
+    min-width: 50%;
+    font-size: 1.7rem;
     /* border: solid black; */
 
 }
 
 .greeting {
-    margin-right: 5%;
+    /* position: relative; */
+    margin-right: 1rem;
+    /* align-items: baseline; */
     /* border: solid black; */
 }
 
@@ -45,16 +55,11 @@
     vertical-align: middle;
 }
 
-.nav {
-    vertical-align: top;
-}
-
 .navLink {
-    font-size: 15px;
+    margin: 2rem;
     color: white;
+    font-size: 1.5rem;
     text-decoration: none;
-    margin: 20px;
-    vertical-align: middle;
     transition: ease 1s;
 }
 
@@ -65,8 +70,8 @@
 
 .activeNavLink {
     vertical-align: middle;
-    margin: 20px;
-    font-size: 20px;
+    margin: 2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: white;
     text-decoration: none;

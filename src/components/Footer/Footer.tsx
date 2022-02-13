@@ -22,6 +22,7 @@ const FacebookIcon = styled(Facebook)({
     borderRadius: "15%",
     background: "#3b5998",
     color: "white",
+    fontSize: "2.2rem",
     cursor: "pointer",
     "&:hover": {
         color: "#3b5998",
@@ -35,6 +36,7 @@ const InstagramIcon = styled(Instagram)({
     borderRadius: "15%",
     background: "linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)",
     color: "white",
+    fontSize: "2.2rem",
     cursor: "pointer",
     "&:hover": {
         color: "#dc2743",
@@ -49,6 +51,7 @@ const TwitterIcon = styled(Twitter)({
     borderRadius: "15%",
     background: "#00acee",
     color: "white",
+    fontSize: "2.2rem",
     cursor: "pointer",
     "&:hover": {
         color: "#00acee",
@@ -61,6 +64,7 @@ const YouTubeIcon = styled(YouTube)({
     borderRadius: "15%",
     background: "#FF0000",
     color: "white",
+    fontSize: "2.2rem",
     cursor: "pointer",
     "&:hover": {
         color: "#FF0000",
@@ -82,7 +86,6 @@ export const Footer = (props: Props) => {
             >
                 <FooterToolbar>
                     <div className={classes.leftSection}>
-                        {/* <div className={classes.socialMediaIcons}> */}
                         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className={classes.iconLink}>
                             <FacebookIcon />
                         </a>
@@ -95,18 +98,16 @@ export const Footer = (props: Props) => {
                         <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className={classes.iconLink}>
                             <YouTubeIcon />
                         </a>
-                        {/* </div> */}
                     </div>
                     <div className={classes.middleSection}>
-                        <nav className={classes.nav}>
-                            <NavLink to="/about" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
-                            <NavLink to="/browse" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Browse</NavLink>
-                            <NavLink to="/suggest" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Suggest</NavLink>
-                            <NavLink to="/contact" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Contact</NavLink>
-                        </nav>
+                        <NavLink to="/about" className={classes.navLink}>About</NavLink>
+                        <NavLink to="/browse" className={classes.navLink}>Browse</NavLink>
+                        <NavLink to="/suggest" className={classes.navLink}>Suggest</NavLink>
+                        <NavLink to="/contact" className={classes.navLink}>Contact</NavLink>
                     </div>
                     <div className={classes.rightSection}>
-                        Copyright © 2022 Revd Bookstore, Inc. All rights reserved.
+                        <div>Copyright © 2022 Revd Bookstore, Inc.</div>
+                        <div>All rights reserved.</div>
                     </div>
                 </FooterToolbar>
             </AppBar>

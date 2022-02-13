@@ -10,7 +10,9 @@ import { LoginContext } from "../../contexts/LoginContext"
 import classes from "./Header.module.css"
 
 const HeaderToolbar = styled(Toolbar)({
+    // display: "flex",
     justifyContent: "space-between",
+    alignItems: "end",
     maxWidth: "100%"
     // width: "100%"
 })
@@ -23,11 +25,15 @@ const NavBarToolbar = styled(Toolbar)({
 
 const StyledAccountIcon = styled(AccountCircleIcon)({
     verticalAlign: "middle",
+    marginRight: "0.25rem",
+    fontSize: "2.5rem",
     color: "black"
 })
 
 const StyledCartIcon = styled(ShoppingCartIcon)({
     verticalAlign: "middle",
+    marginLeft: "0.25rem",
+    fontSize: "2.5rem",
     color: "black"
 })
 
@@ -76,12 +82,10 @@ function Header() {
                     </div>
                 </HeaderToolbar>
                 <NavBarToolbar>
-                    <nav className={classes.nav}>
-                        <NavLink to="/about" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
-                        <NavLink to="/browse" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Browse</NavLink>
-                        <NavLink to="/suggest" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Suggest</NavLink>
-                        <NavLink to="/contact" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Contact</NavLink>
-                    </nav>
+                    <NavLink to="/about" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>About</NavLink>
+                    <NavLink to="/browse" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Browse</NavLink>
+                    <NavLink to="/suggest" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Suggest</NavLink>
+                    <NavLink to="/contact" className={({ isActive }) => (isActive ? classes.activeNavLink : classes.navLink)}>Contact</NavLink>
                 </NavBarToolbar>
             </AppBar>
         </div>

@@ -49,7 +49,7 @@ const SliderOneTextBox = styled(Box)({
     width: "30%",
     zIndex: "1",
     color: "red",
-    fontSize: "40px",
+    fontSize: "2rem",
     border: "solid black"
 })
 
