@@ -25,7 +25,7 @@ interface CurrentUserInfoProps {
 }
 
 const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUserFirstName, currentUserLastName }) => {
-    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
+    const { setIsLoggedIn } = useContext(LoginContext)
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
     const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers)))
     const [isEditingFirstName, setIsEditingFirstName] = useState(false)

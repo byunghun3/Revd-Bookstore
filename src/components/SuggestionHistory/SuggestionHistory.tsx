@@ -1,10 +1,7 @@
 import React, { FC, useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
-import { LoginContext } from "../../contexts/LoginContext"
 import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
-import ReaderRating from "../../components/ReaderRating/ReaderRating"
 import { styled } from "@mui/system"
 import classes from "./SuggestionHistory.module.css"
 
@@ -40,9 +37,6 @@ const StyledRemoveIcon = styled(ClearIcon)({
 })
 
 interface ReviewHistoryProps {
-    initialComment: string
-    // onChange: React.ChangeEventHandler<HTMLInputElement>
-    // handleEdit: React.MouseEventHandler<any>
     id: string
     suggestedTitle: string
     suggestedAuthor: string
@@ -50,17 +44,12 @@ interface ReviewHistoryProps {
     date: string
 }
 
-const SuggestionHistory: FC<ReviewHistoryProps> = ({ initialComment, id,
-    suggestedTitle, suggestedAuthor, suggestedComment, date }) => {
-    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
-    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
-    const currentUserEmail = isLoggedIn ? currentUser[0].email : null
+const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
+    suggestedAuthor, suggestedComment, date }) => {
     const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
     const [editComment, setEditComment] = useState(suggestedComment)
     const [isEditing, setIsEditing] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
-
-    const navigate = useNavigate()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditComment(e.currentTarget.value)
@@ -68,7 +57,7 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ initialComment, id,
 
     const handleEditSuggestion = (e: React.FormEvent<HTMLFormElement>, id: string) => {
         const reviewDetails = suggestions.map((suggestion: any) => suggestion.id === id ?
-            { ...suggestion, suggested: { ...suggestion.suggested, comment: suggestedComment } } :
+            { ...suggestion, suggested: { ...suggestion.suggested, comment: editComment } } :
             suggestion
         )
         console.log(id, reviewDetails)
@@ -110,14 +99,14 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ initialComment, id,
                         multiline
                         minRows={3}
                         label="Edit suggestion..."
-                        name="suggestedComment"
+                        name="editComment"
                         type="text"
-                        value={suggestedComment}
+                        value={editComment}
                         onChange={handleChange}
                         required
                     />
                     : <div className={classes.suggestionComment}>
-                        {suggestedComment}
+                        {editComment}
                     </div>
                 }
                 <div className={classes.suggestionDate}>{date}</div>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
 import { Button, Container } from "@mui/material"
 import { ReaderReviewsData } from "../../data/ReaderReviewsData"
+import { OrdersData } from "../../data/OrdersData"
 import { OrderHistory } from "../../components/OrderHistory/OrderHistory"
 import ReviewHistory from "../../components/ReviewHistory/ReviewHistory"
 import CurrentUserInfo from "../../components/CurrentUserInfo/CurrentUserInfo"
@@ -23,9 +24,9 @@ interface Props {
 
 export const Profile = (props: Props) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
-    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
-    const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
-    const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
+    const { isLoggedIn } = useContext(LoginContext)
+    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]")
+    const suggestions = JSON.parse(localStorage.getItem("suggestions") || "[]")
     const readerReviews = ReaderReviewsData
     const navigate = useNavigate()
     // useEffect(() => {
@@ -36,6 +37,17 @@ export const Profile = (props: Props) => {
     const currentUserEmail = isLoggedIn ? currentUser[0].email : null
     const currentUserFirstName = isLoggedIn ? currentUser[0].firstName : null
     const currentUserLastName = isLoggedIn ? currentUser[0].lastName : null
+
+    // const hardCodedOrderHistory = customerOrders.filter((order: any) => {
+    //     return order.user.email === `${currentUserEmail}`
+    // }).map((order: any) => {
+    //     return <OrderHistory
+    //         key={order.id}
+    //         id={order.id}
+    //         date={order.date}
+    //         total={order.total}
+    //     />
+    // })
 
     const hardCodedReviewHistory = readerReviews.filter((review: any) => {
         return review.user.email === `${currentUserEmail}`
@@ -49,7 +61,7 @@ export const Profile = (props: Props) => {
             reviewRating={el.review.rating}
             reviewTitle={el.review.title}
             reviewAuthor={el.review.author}
-            reviewComment={el.review.comments}
+            // reviewComment={el.review.comments}
             date={el.date}
         />
     })
@@ -64,7 +76,7 @@ export const Profile = (props: Props) => {
             reviewRating={el.review.rating}
             reviewTitle={el.review.title}
             reviewAuthor={el.review.author}
-            reviewComment={el.review.comments}
+            // reviewComment={el.review.comments}
             date={el.date}
         />
     })
@@ -74,7 +86,7 @@ export const Profile = (props: Props) => {
     }).map((suggestion: any) => {
         return <SuggestionHistory
             key={suggestion.id}
-            initialComment={suggestion.suggested.comment}
+            // initialComment={suggestion.suggested.comment}
             id={suggestion.id}
             suggestedTitle={suggestion.suggested.title}
             suggestedAuthor={suggestion.suggested.author}
@@ -115,7 +127,10 @@ export const Profile = (props: Props) => {
                     </div>
                     <div className={classes.section} id="section-order-history">
                         <div className={classes.orderHistoryTitle}>Order History</div>
-                        <OrderHistory />
+                        <OrderHistory
+                            currentUserEmail={currentUserEmail}
+                        />
+                        {/* {hardCodedOrderHistory} */}
                     </div>
                     <div className={classes.section} id="section-review-history">
                         <div className={classes.reviewHistoryTitle}>Review History</div>

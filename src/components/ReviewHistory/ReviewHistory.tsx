@@ -1,13 +1,10 @@
 import React, { FC, useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
-import { LoginContext } from "../../contexts/LoginContext"
 import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
 import ReaderRating from "../../components/ReaderRating/ReaderRating"
 import { styled } from "@mui/system"
 import classes from "./ReviewHistory.module.css"
-import EditReviewComment from "../EditReviewComment/EditReviewComment"
 
 const ReaderReviewCard = styled(Card)({
     position: "relative",
@@ -42,48 +39,31 @@ const StyledRemoveIcon = styled(ClearIcon)({
 
 interface ReviewHistoryProps {
     initialComment: string
-    // onChange: React.ChangeEventHandler<HTMLInputElement>
-    // handleEdit: React.MouseEventHandler<any>
     id: string
     reviewRating: number
     reviewTitle: string
     reviewAuthor: string
-    reviewComment: string
+    // reviewComment: string
     date: string
 }
 
 const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRating,
-    reviewTitle, reviewAuthor, reviewComment, date }) => {
-    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
-    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
-    const currentUserEmail = isLoggedIn ? currentUser[0].email : null
+    reviewTitle, reviewAuthor, date }) => {
     const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
     const [editComments, setEditComments] = useState(initialComment)
     const [showAlert, setShowAlert] = useState(false)
-    const navigate = useNavigate()
     const [isEditing, setIsEditing] = useState(false)
 
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditComments(e.currentTarget.value)
-        // console.log(editComments)
     }
 
-    // const handleDeleteReview = (id: string) => {
-    //     setShowAlert(true)
-    // }
-
     const handleEditReview = (e: React.FormEvent<HTMLFormElement>, id: string) => {
-        // let review = reviews.find((el: any) => el.id === id)
-        console.log(editComments)
         const reviewDetails = reviews.map((el: any) => el.id === id ?
             { ...el, review: { ...el.review, comments: editComments } } :
             el
         )
-        // find((el: any) => el.review)
-        // let find = reviews.filter((el: any) => el.id === id).map((el: any) => {...el.review, comments: editComments})
-        // console.log(review)
-        // console.log(find)
         console.log(id, reviewDetails)
         e.preventDefault()
 
@@ -91,13 +71,8 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
         if (!isEditing) {
             setIsEditing(true)
         } else {
-            // let newReview = { ...review, review: { ...reviewDetails, comments: editComments } }
-            // let newReview = [...reviews, review: { ...reviewDetails, comments: editComments }]
-
-            // console.log(reviewDetails)
             setReviews(reviewDetails)
             localStorage.setItem("reviews", JSON.stringify(reviewDetails))
-            // handleEdit(id, editComments)
             setIsEditing(false)
         }
     }
