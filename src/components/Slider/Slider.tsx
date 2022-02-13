@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from "react"
-import Box from "@mui/material/Box"
+import { Link } from "react-router-dom"
+import { Button, Box } from "@mui/material"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { styled } from "@mui/system"
@@ -45,15 +46,18 @@ const SliderOneTextBox = styled(Box)({
     position: "absolute",
     top: "30%",
     right: "5%",
+    width: "30%",
     zIndex: "1",
     color: "red",
-    fontSize: "40px"
+    fontSize: "40px",
+    border: "solid black"
 })
 
 const SliderTwoTextBox = styled(Box)({
     position: "absolute",
     top: "50%",
     left: "10%",
+    width: "20%",
     zIndex: "1",
     color: "red",
     fontSize: "40px"
@@ -67,7 +71,9 @@ const SliderThreeTextBox = styled(Box)({
     width: "30%",
     // border: "solid black",
     zIndex: "1",
-    display: "relative",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
     color: "red",
     // opacity: "0.1",
     fontSize: "40px",
@@ -109,23 +115,25 @@ export const Slider: FC = () => {
             <SlideContainer newSlideOrder={slideOrder}>
                 <img src={SliderImgOne} alt="" className={classes.sliderOne} />
                 <SliderOneTextBox>
-                    <div>Holiday Sale</div>
-                    <div>extended to 3/11</div>
-                    <div>30% off on select books</div>
+                    <div>Holiday Sale extended to 2/11</div>
+                    <div>20% off on select books</div>
                 </SliderOneTextBox>
             </SlideContainer>
             <SlideContainer newSlideOrder={slideOrder}>
                 <img src={SliderImgTwo} alt="" className={classes.sliderTwo} />
                 <SliderTwoTextBox>
-                    New book
+                    February&apos;s new book
                 </SliderTwoTextBox>
-                <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>hello</div>
+                <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...</div>
                 <div className={classes.triangle}></div>
             </SlideContainer>
             <SlideContainer newSlideOrder={slideOrder}>
                 <img src={SliderImgThree} alt="" className={classes.sliderThree} />
                 <SliderThreeTextBox>
                     <div className={classes.sliderThreeContent}>Recommend a book for review</div>
+                    <Link className={classes.browseLink} to="/suggest">
+                        <Button variant="contained">Suggest</Button>
+                    </Link>
                 </SliderThreeTextBox>
             </SlideContainer>
         </div>
