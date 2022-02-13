@@ -6,6 +6,9 @@ import Button from "@mui/material/Button"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"
+import HighlightOffIcon from "@mui/icons-material/HighlightOff"
+import MoodBadIcon from "@mui/icons-material/MoodBad"
 import { BooksData } from "../../data/BooksData"
 import { LoginContext } from "../../contexts/LoginContext"
 import { styled } from "@mui/system"
@@ -41,6 +44,23 @@ const RemoveButton = styled(Button)({
 
 const CheckoutButton = styled(Button)({
     // display: "flex"
+})
+
+const EmptyCartIcon = styled(ShoppingCartOutlinedIcon)({
+    position: "relative",
+    // marginTop: "15vh",
+    fontSize: "20vw"
+})
+
+const StyledEmptyIcon = styled(HighlightOffIcon)({
+    position: "absolute",
+    marginBottom: "15vh",
+    color: "red"
+})
+
+const StyledFrownIcon = styled(MoodBadIcon)({
+    // fontSize: "10vw",
+    color: "yellow"
 })
 
 interface CartProps {
@@ -137,34 +157,43 @@ export const Cart: FC<CartProps> = ({ }) => {
 
     return (
         <div className={classes.cartPage}>
-            <form>
-                <div className={classes.cartTitle}><StyledCartIcon /> Cart <StyledCartIcon /></div>
-                <div className={classes.cartItems}>{cartItems}</div>
-                <div className={classes.totalPrice}>
-                    Total: ${totalPrice.toFixed(2)}
+            {cart.length ?
+                <form>
+                    <div className={classes.cartTitle}><StyledCartIcon /> Cart <StyledCartIcon /></div>
+                    <div className={classes.cartItems}>{cartItems}</div>
+                    <div className={classes.totalPrice}>
+                        Total: ${totalPrice.toFixed(2)}
+                    </div>
+                    <div className={classes.checkOutLink}>
+                        {isLoggedIn ?
+                            <CheckoutButton
+                                variant="contained"
+                                color="primary"
+                                type="button"
+                                onClick={handleGoToCheckout}
+                            >
+                                CHECK OUT
+                            </CheckoutButton>
+                            :
+                            <CheckoutButton
+                                variant="contained"
+                                color="primary"
+                                type="button"
+                                onClick={handleGoToLogin}
+                            >
+                                CHECK OUT
+                            </CheckoutButton>
+                        }
+                    </div>
+                </form>
+                :
+                <div className={classes.emptyCart}>
+                    <StyledEmptyIcon />
+                    <EmptyCartIcon />
+                    <div>Cart is empty <StyledFrownIcon /></div>
                 </div>
-                <div className={classes.checkOutLink}>
-                    {isLoggedIn ?
-                        <CheckoutButton
-                            variant="contained"
-                            color="primary"
-                            type="button"
-                            onClick={handleGoToCheckout}
-                        >
-                            CHECK OUT
-                        </CheckoutButton>
-                        :
-                        <CheckoutButton
-                            variant="contained"
-                            color="primary"
-                            type="button"
-                            onClick={handleGoToLogin}
-                        >
-                            CHECK OUT
-                        </CheckoutButton>
-                    }
-                </div>
-            </form>
+            }
+
         </div>
     )
 }
