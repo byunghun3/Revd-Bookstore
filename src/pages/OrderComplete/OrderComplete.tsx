@@ -8,7 +8,8 @@ import { styled } from "@mui/system"
 import classes from "./OrderComplete.module.css"
 
 const BrowseButton = styled(Button)({
-    marginTop: "20px"
+    marginTop: "4rem",
+    fontSize: "1.3rem"
 })
 
 interface Props {

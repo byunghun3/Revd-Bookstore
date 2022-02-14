@@ -37,12 +37,12 @@ const StyledOutlinedInput = styled(OutlinedInput)({
 
 const SubmitButton = styled(Button)({
     margin: "2% 0",
-    fontSize: "1.5rem"
+    fontSize: "1.3rem"
 })
 
 const BrowseButton = styled(Button)({
     marginTop: "2%",
-    fontSize: "1.5rem"
+    fontSize: "1.3rem"
 })
 
 const StyledDialogContentText = styled(DialogContentText)({
@@ -50,7 +50,7 @@ const StyledDialogContentText = styled(DialogContentText)({
 })
 
 const LogInButton = styled(Button)({
-    fontSize: "1.5rem"
+    fontSize: "1.4rem"
 })
 
 interface Props {
