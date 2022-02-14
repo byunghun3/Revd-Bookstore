@@ -16,7 +16,8 @@ import classes from "./Cart.module.css"
 
 const StyledCartIcon = styled(ShoppingCartIcon)({
     verticalAlign: "middle",
-    color: "black"
+    color: "black",
+    fontSize: "1.5rem"
 })
 
 const ItemGrid = styled(Grid)({
@@ -27,40 +28,47 @@ const ItemGrid = styled(Grid)({
     margin: "0 10%",
     padding: "2% 0",
     // borderTop: "solid gray 1px",
-    borderBottom: "solid #adadad 1px"
+    borderBottom: "solid #adadad 0.1rem"
 })
 
 const DownArrow = styled(ArrowDropDownIcon)({
     // margin: "0 -7%"
+    fontSize: "2rem"
 })
 
 const UpArrow = styled(ArrowDropUpIcon)({
+    fontSize: "2rem"
     // margin: "0 -7%"
 })
 
 const RemoveButton = styled(Button)({
-    flex: "1"
+    flex: "1",
+    fontSize: "1.2rem"
 })
 
 const CheckoutButton = styled(Button)({
     // display: "flex"
+    fontSize: "1.4rem"
 })
 
 const EmptyCartIcon = styled(ShoppingCartOutlinedIcon)({
     position: "relative",
     // marginTop: "15vh",
-    fontSize: "20vw"
+    fontSize: "18rem"
 })
 
 const StyledEmptyIcon = styled(HighlightOffIcon)({
     position: "absolute",
-    marginBottom: "15vh",
-    color: "red"
+    top: "23%",
+    // marginBottom: "7rem",
+    color: "red",
+    fontSize: "3rem"
 })
 
 const StyledFrownIcon = styled(MoodBadIcon)({
-    // fontSize: "10vw",
-    color: "yellow"
+    marginLeft: "0.5rem",
+    color: "orange",
+    fontSize: "2rem"
 })
 
 interface CartProps {
@@ -190,7 +198,7 @@ export const Cart: FC<CartProps> = ({ }) => {
                 <div className={classes.emptyCart}>
                     <StyledEmptyIcon />
                     <EmptyCartIcon />
-                    <div>Cart is empty <StyledFrownIcon /></div>
+                    <div className={classes.emptyCartText}>Cart is empty <StyledFrownIcon /></div>
                 </div>
             }
 

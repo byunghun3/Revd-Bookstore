@@ -14,9 +14,9 @@
     margin: 0 10% -1% 10%;
     padding: 2% 0;
     text-align: center;
-    border-bottom: solid #adadad 1px;
+    border-bottom: solid #adadad 0.1rem;
     /* font-size: 2vw; */
-    font-size: 22px;
+    font-size: 2.2rem;
     font-weight: 700;
     /* border: solid black; */
 }
@@ -41,16 +41,18 @@
 .bookTitle {
     margin: 2% 0;
     /* font-size: 2vw; */
-    font-size: 22px;
+    font-size: 2.2rem;
     font-weight: 600;
 }
 
 .bookAuthor {
     margin: 2% 0;
+    font-size: 1.5rem;
 }
 
 .bookPrice {
     flex: 1;
+    font-size: 1.5rem;
 }
 
 .adjustQty {
@@ -64,11 +66,13 @@
 
 .bookQty {
     vertical-align: bottom;
+    font-size: 1.5rem;
     /* margin: 0 -2%; */
 }
 
 .totalPrice {
     margin: 2% 0 1% 0;
+    font-size: 1.6rem;
     font-weight: 600;
     /* border: solid black; */
 }
@@ -87,4 +91,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
+}
+
+.emptyCartText {
+    /* display: inline; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+    align-items: center;
+    margin-top: 5%;
+    font-size: 2rem;
+    /* border: solid black; */
 }
