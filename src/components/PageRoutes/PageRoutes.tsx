@@ -57,10 +57,10 @@ export const PageRoutes: FC = () => {
                 {/* <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} /> */}
                 <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}>
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/ordercomplete" element={<OrderComplete />} />
                 </Route>
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/ordercomplete" element={<OrderComplete />} />
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />
