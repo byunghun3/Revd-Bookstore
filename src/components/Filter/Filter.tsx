@@ -5,8 +5,8 @@ import classes from "./Filter.module.css"
 
 const ClearButton = styled(Button)({
     position: "relative",
-    margin: "0 5px 0 0",
-    display: "flex"
+    display: "flex",
+    marginRight: "0.5rem"
 })
 
 interface FilterProps {

@@ -26,7 +26,7 @@ const Info = styled(SearchIcon)({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    fontSize: "50px",
+    fontSize: "5rem",
     color: "rgba(0, 0, 0, 1)",
 })
 
@@ -35,7 +35,7 @@ const Cart = styled(ShoppingCartIcon)({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    fontSize: "50px",
+    fontSize: "5rem",
     color: "rgba(0, 0, 0, 1)"
 })
 
@@ -111,25 +111,25 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                         </span>}
                     <img className={classes.bookCover} src={image} alt="" />
                     {status === "new" ? <div className={classes.bookRibbon}>New!</div> : null}
-                    <h2 className={classes.bookTitle}>{title}</h2>
-                    <h4 className={classes.bookAuthor}>
+                    <div className={classes.bookTitle}>{title}</div>
+                    <div className={classes.bookAuthor}>
                         <span className={classes.bookAuthorBy}>
                             by&nbsp;
                         </span>
                         <span className={classes.bookAuthorName}>
                             {author}
                         </span>
-                    </h4>
-                    <h4 className={classes.bookType}>
+                    </div>
+                    <div className={classes.bookType}>
                         {type === "EBOOK" ? <ChromeReaderModeOutlinedIcon className={classes.bookTypeIcon} /> :
                             type === "AUDIOBOOK" ? <HeadphonesOutlinedIcon className={classes.bookTypeIcon} /> :
                                 <MenuBookOutlinedIcon className={classes.bookTypeIcon} />}&nbsp;
-                        <span className={classes.bookTypeWord}>{type}</span></h4>
-                    <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
-                    <h3 className={classes.bookPrice}>${price}</h3>
+                        <span className={classes.bookTypeWord}>{type}</span></div>
+                    <div className={classes.bookRating}><BookRating rating={rating} /></div>
+                    <div className={classes.bookPrice}>${price}</div>
                 </form>
             </BookCard>
-            <h4 className={classes.bookStock}>{stock < 4 ? <div>Only {stock} books left in stock</div> : null}</h4>
-        </div >
+            <div className={classes.bookStock}>{stock < 4 ? <div>Only {stock} books left in stock</div> : null}</div>
+        </div>
     )
 }

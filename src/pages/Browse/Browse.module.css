@@ -1,19 +1,11 @@
 .browsePage {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.modal {
-    background-color: white;
-    width: 40px;
-    height: 50px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
+    min-height: 100vh;
 }
 
 .numberOfItems {
     margin-bottom: 3%;
+    font-size: 1.4rem;
 }
