@@ -11,23 +11,46 @@ import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
 import classes from "./Suggest.module.css"
 
-const BrowseButton = styled(Button)({
-    marginTop: "20px"
-})
-
 const TitleForm = styled(FormControl)({
-    width: "30%",
-    margin: "1% 0"
+    margin: "1% 0",
+    width: "30%"
 })
 
 const AuthorForm = styled(FormControl)({
-    width: "30%",
-    margin: "1% 0"
+    margin: "1% 0",
+    width: "30%"
 })
 
-const CommentsTextField = styled(TextField)({
+const CommentTextField = styled(TextField)({
+    marginTop: "1%",
     width: "40%",
-    margin: "1% 0"
+    fontSize: "1.5rem"
+})
+
+const StyledInputLabel = styled(InputLabel)({
+    fontSize: "1.5rem"
+})
+
+const StyledOutlinedInput = styled(OutlinedInput)({
+    fontSize: "1.5rem"
+})
+
+const SubmitButton = styled(Button)({
+    margin: "2% 0",
+    fontSize: "1.5rem"
+})
+
+const BrowseButton = styled(Button)({
+    marginTop: "2%",
+    fontSize: "1.5rem"
+})
+
+const LogInButton = styled(Button)({
+    fontSize: "1.5rem"
+})
+
+const StyledDialogContentText = styled(DialogContentText)({
+    fontSize: "1.6rem"
 })
 
 interface Props {
@@ -127,13 +150,13 @@ export const Suggest = (props: Props) => {
                 <div className={classes.firstLine}>
                     Suggest a book for review!
                 </div>
-                <div>
-                    Let us know below if there&apos;s a book you want us to review and put up
+                <div className={classes.secondLine}>
+                    Let us know below if there&apos;s a book you want us to review and include in our collection.
                 </div>
                 <form className={classes.suggestForm} onSubmit={handleSubmitSuggestion}>
                     <TitleForm>
-                        <InputLabel>Title</InputLabel>
-                        <OutlinedInput
+                        <StyledInputLabel>Title</StyledInputLabel>
+                        <StyledOutlinedInput
                             label="Title"
                             name="title"
                             type="text"
@@ -143,8 +166,8 @@ export const Suggest = (props: Props) => {
                         />
                     </TitleForm>
                     <AuthorForm>
-                        <InputLabel>Author</InputLabel>
-                        <OutlinedInput
+                        <StyledInputLabel>Author</StyledInputLabel>
+                        <StyledOutlinedInput
                             label="Author"
                             name="author"
                             type="text"
@@ -154,7 +177,7 @@ export const Suggest = (props: Props) => {
                             required
                         />
                     </AuthorForm>
-                    <CommentsTextField
+                    <CommentTextField
                         multiline
                         minRows={3}
                         label="Comment..."
@@ -162,10 +185,12 @@ export const Suggest = (props: Props) => {
                         type="text"
                         value={comment}
                         onChange={handleChangeSuggestionComment}
+                        InputLabelProps={{ style: { fontSize: 15 } }}
+                        InputProps={{ style: { fontSize: 15 } }}
                     />
-                    <Button type="submit">
+                    <SubmitButton variant="contained" type="submit">
                         Submit
-                    </Button>
+                    </SubmitButton>
                 </form>
                 <Link className={classes.browseLink} to="/browse">
                     <BrowseButton>
@@ -181,12 +206,12 @@ export const Suggest = (props: Props) => {
                 onClose={handleCloseAlert}
             >
                 <DialogContent>
-                    <DialogContentText>
+                    <StyledDialogContentText>
                         Please log in to submit your review
-                    </DialogContentText>
+                    </StyledDialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleGoToLogin}>Log In</Button>
+                    <LogInButton onClick={handleGoToLogin}>Log In</LogInButton>
                 </DialogActions>
             </Dialog>
         </div>
