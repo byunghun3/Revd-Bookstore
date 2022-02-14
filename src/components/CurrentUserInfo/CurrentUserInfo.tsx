@@ -11,9 +11,23 @@ const hardCodedUsers = UsersData
 
 const StyledEditIcon = styled(EditIcon)({
     marginBottom: "3%",
+    fontSize: "1.8rem",
     "&:hover": {
         cursor: "pointer"
     }
+})
+
+const StyledButton = styled(Button)({
+    marginTop: "2%",
+    fontSize: "1.5rem"
+})
+
+const StyledDialogContentText = styled(DialogContentText)({
+    fontSize: "1.6rem"
+})
+
+const DialogButton = styled(Button)({
+    fontSize: "1.5rem"
 })
 
 interface CurrentUserInfoProps {
@@ -140,18 +154,18 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     return (
         <div>
             {userProfile}
-            <Button onClick={() => { setShowAlert(true) }}>Log Out</Button>
+            <StyledButton variant="outlined" color="error" onClick={() => { setShowAlert(true) }}>Log Out</StyledButton>
             <Dialog
                 open={showAlert}
                 onClose={handleCloseAlert}
             >
                 <DialogContent>
-                    <DialogContentText>
+                    <StyledDialogContentText>
                         Are you sure you want to log out?
-                    </DialogContentText>
+                    </StyledDialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleLogOut}>Log Out</Button>
+                    <DialogButton color="error" onClick={handleLogOut}>Log Out</DialogButton>
                 </DialogActions>
             </Dialog>
         </div>

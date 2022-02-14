@@ -5,15 +5,15 @@ import ClearIcon from "@mui/icons-material/Clear"
 import { styled } from "@mui/system"
 import classes from "./SuggestionHistory.module.css"
 
-const ReaderReviewCard = styled(Card)({
+const SuggestionCard = styled(Card)({
     position: "relative",
     overflow: "inherit",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     margin: "0",
-    padding: "2% 2%",
-    borderBottom: "solid #adadad 1px",
+    padding: "2%",
+    borderBottom: "solid #adadad 0.1rem",
     borderRadius: "0%"
 })
 
@@ -23,14 +23,16 @@ const ReviewTextField = styled(TextField)({
 })
 
 const StyledEditIcon = styled(EditIcon)({
-    marginBottom: "3%",
+    marginBottom: "0.5rem",
+    fontSize: "2rem",
     "&:hover": {
         cursor: "pointer"
     }
 })
 
 const StyledRemoveIcon = styled(ClearIcon)({
-    marginTop: "3%",
+    marginTop: "0.5rem",
+    fontSize: "2rem",
     "&:hover": {
         cursor: "pointer"
     }
@@ -85,7 +87,7 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
 
     return (
         <form className={classes.suggestion} onSubmit={(e) => handleEditSuggestion(e, id)}>
-            <ReaderReviewCard key={id} elevation={0}>
+            <SuggestionCard key={id} elevation={0}>
                 <div className={classes.bookInfo}>
                     <div className={classes.bookTitle}>
                         {suggestedTitle}
@@ -130,7 +132,7 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                         <Button onClick={() => handleDeleteSuggestion(id)}>Delete</Button>
                     </DialogActions>
                 </Dialog>
-            </ReaderReviewCard>
+            </SuggestionCard>
         </form>
     )
 }

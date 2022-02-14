@@ -23,7 +23,7 @@ const ContainerGrid = styled(Grid)({
 const ItemGrid = styled(Grid)({
   display: "block",
   marginBottom: "5vh",
-  border: "solid red"
+  // border: "solid red"
 })
 
 

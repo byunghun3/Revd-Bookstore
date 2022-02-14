@@ -6,14 +6,14 @@ import ReaderRating from "../../components/ReaderRating/ReaderRating"
 import { styled } from "@mui/system"
 import classes from "./ReviewHistory.module.css"
 
-const ReaderReviewCard = styled(Card)({
+const ReviewCard = styled(Card)({
     position: "relative",
     overflow: "inherit",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     margin: "0",
-    padding: "2% 2%",
+    padding: "2%",
     borderBottom: "solid #adadad 1px",
     borderRadius: "0%"
 })
@@ -24,14 +24,16 @@ const ReviewTextField = styled(TextField)({
 })
 
 const StyledEditIcon = styled(EditIcon)({
-    marginBottom: "3%",
+    marginBottom: "0.5rem",
+    fontSize: "2rem",
     "&:hover": {
         cursor: "pointer"
     }
 })
 
 const StyledRemoveIcon = styled(ClearIcon)({
-    marginTop: "3%",
+    marginTop: "0.5rem",
+    fontSize: "2rem",
     "&:hover": {
         cursor: "pointer"
     }
@@ -89,7 +91,7 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
 
     return (
         <form className={classes.readerReviews} onSubmit={(e) => handleEditReview(e, id)}>
-            <ReaderReviewCard key={id} elevation={0}>
+            <ReviewCard key={id} elevation={0}>
                 <ReaderRating rating={reviewRating} />
                 <div className={classes.bookInfo}>
                     <div className={classes.bookTitle}>
@@ -135,7 +137,7 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
                         <Button onClick={() => handleDeleteReview(id)}>Delete</Button>
                     </DialogActions>
                 </Dialog>
-            </ReaderReviewCard>
+            </ReviewCard>
         </form>
     )
 }

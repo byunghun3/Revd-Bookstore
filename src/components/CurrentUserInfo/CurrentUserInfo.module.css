@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  font-size: 1.5rem;
   /* border: solid black; */
 }
 
@@ -52,5 +53,8 @@
   /* border: solid black; */
   outline: none;
   background-color: transparent;
-  font-size: 10px;
+}
+
+input {
+  font-size: 1.5rem;
 }

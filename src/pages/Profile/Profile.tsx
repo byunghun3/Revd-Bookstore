@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import { LoginContext } from "../../contexts/LoginContext"
 import { useNavigate } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
-import { Button, Container } from "@mui/material"
+import { Card, Container } from "@mui/material"
 import { ReaderReviewsData } from "../../data/ReaderReviewsData"
 import { OrdersData } from "../../data/OrdersData"
 import { OrderHistory } from "../../components/OrderHistory/OrderHistory"
@@ -16,6 +16,18 @@ import classes from "./Profile.module.css"
 const ProfileContainer = styled(Container)({
     display: "flex",
     flexDirection: "row"
+})
+
+const SectionCardCol = styled(Card)({
+    // display: "flex",
+    // flexDirection: "column",
+    // alignItems: "center",
+    // margin: "1% 0",
+    margin: "4% 0",
+    padding: "5% 0",
+    minHeight: "100vh",
+    width: "100%",
+    backgroundColor: "white"
 })
 
 interface Props {
@@ -117,35 +129,43 @@ export const Profile = (props: Props) => {
                     </div>
                 </div>
                 <div className={classes.profileContent}>
-                    <div className={classes.section} id="section-user-profile">
+                    {/* <div className={classes.section} id="section-user-profile"> */}
+                    <SectionCardCol id="section-user-profile">
                         <div className={classes.profileTitle}>Profile</div>
                         <CurrentUserInfo
                             currentUserFirstName={currentUserFirstName}
                             currentUserLastName={currentUserLastName}
                             currentUserEmail={currentUserEmail}
                         />
-                    </div>
-                    <div className={classes.section} id="section-order-history">
+                    </SectionCardCol>
+                    {/* </div> */}
+                    <SectionCardCol id="section-order-history">
+                        {/* <div className={classes.section} id="section-order-history"> */}
                         <div className={classes.orderHistoryTitle}>Order History</div>
                         <OrderHistory
                             currentUserEmail={currentUserEmail}
                         />
                         {/* {hardCodedOrderHistory} */}
-                    </div>
-                    <div className={classes.section} id="section-review-history">
+                        {/* </div> */}
+                    </SectionCardCol>
+                    <SectionCardCol id="section-review-history">
+                        {/* <div className={classes.section} id="section-review-history"> */}
                         <div className={classes.reviewHistoryTitle}>Review History</div>
                         {hardCodedReviewHistory}
                         {reviewHistory}
-                    </div>
-                    <div className={classes.section} id="section-suggestion-history">
+                    </SectionCardCol>
+                    {/* </div> */}
+                    <SectionCardCol id="section-suggestion-history">
+                        {/* <div className={classes.section} id="section-suggestion-history"> */}
                         <div className={classes.suggestionHistoryTitle}>Suggestion History</div>
                         {suggestionHistory.length ?
                             suggestionHistory :
                             <div>No suggestions yet</div>
                         }
-                    </div>
+                        {/* </div> */}
+                    </SectionCardCol>
                 </div>
-            </div>
+            </div >
             {/* </ProfileContainer> */}
         </div >
     )

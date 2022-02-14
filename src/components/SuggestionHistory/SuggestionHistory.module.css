@@ -6,9 +6,9 @@
   /* align-items: center; */
   margin: auto;
   width: 80%;
-  border-top: solid #adadad 1px;
-  border-left: solid #adadad 1px;
-  border-right: solid #adadad 1px;
+  border-top: solid #adadad 0.1rem;
+  border-left: solid #adadad 0.1rem;
+  border-right: solid #adadad 0.1rem;
   /* width: 100%; */
   /* border: solid black; */
   /* margin: auto; */
@@ -23,23 +23,26 @@
 
 .bookTitle {
     margin: 2% 0;
-    font-size: 18px;
+    font-size: 1.7rem;
     font-weight: 600;
 }
 
 .bookAuthor {
     margin: 2% 0;
+  font-size: 1.4rem;
 }
 
 .suggestionComment {
   flex: 3;
   text-align: left;
   margin-left: 2%;
+  font-size: 1.5rem;
 }
 
 .suggestionDate {
   flex: 0.5;
   text-align: right;
+  font-size: 1.5rem;
   /* padding: 0 -25%; */
   /* border: solid black; */
 }

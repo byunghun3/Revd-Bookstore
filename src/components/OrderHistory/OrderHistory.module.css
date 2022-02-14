@@ -15,16 +15,18 @@
     width: 100%;
 }
 
-.orderId {
-    flex: 1;
-    margin: 0 0 0 5%;
-}
-
 .orderIdLabel {
+    font-size: 1.6rem;
     font-weight: 700;
 }
 
-.orderBookInfo{
+.orderId {
+    flex: 1;
+    margin-left: 5%;
+    font-size: 1.6rem;
+}
+
+.orderBookInfo {
     flex: 3;
     display: flex;
     flex-direction: column;
@@ -32,27 +34,34 @@
     /* border: solid orange; */
 }
 
-.bookInfo{
+.bookInfo {
     margin: 10% 0;
     /* border: solid black; */
 }
 
 .bookTitle {
     margin: 2% 0;
-    font-size: 22px;
+    font-size: 2.2rem;
     font-weight: 600;
 }
 
 .bookAuthor {
     margin: 2% 0;
+    font-size: 1.6rem;
 }
 
 .bookQtyLabel {
+    font-size: 1.4rem;
     font-weight: 500;
+}
+
+.bookQty {
+    font-size: 1.4rem;
 }
 
 .orderDetails {
     flex: 1;
+    font-size: 1.6rem;
     font-weight: 600;
 }
 

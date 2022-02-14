@@ -13,7 +13,7 @@ const ItemGrid = styled(Grid)({
     margin: "0 10%",
     padding: "2% 0",
     // borderTop: "solid gray 1px",
-    borderBottom: "solid #adadad 1px"
+    borderBottom: "solid #adadad 0.1rem"
 })
 
 interface OrderHistoryProps {
@@ -48,7 +48,7 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
                         </div>
                         <div className={classes.bookQty} key={book.title}>
                             <span className={classes.bookQtyLabel}>Qty:&nbsp;</span>
-                            {book.quantity}
+                            <span className={classes.bookQty}>{book.quantity}</span>
                         </div>
                     </div>
                 })}
@@ -85,7 +85,7 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
                         </div>
                         <div className={classes.bookQty} key={book.title}>
                             <span className={classes.bookQtyLabel}>Qty:&nbsp;</span>
-                            {book.quantity}
+                            <span className={classes.bookQty}>{book.quantity}</span>
                         </div>
                     </div>
                 })}
