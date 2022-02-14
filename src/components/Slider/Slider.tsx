@@ -26,58 +26,62 @@ const SlideContainer = styles.div<SliderProps>`
 
 const LeftArrow = styled(ArrowBackIosIcon)({
     position: "absolute",
-    left: "0",
+    zIndex: "1",
     top: "50%",
-    zIndex: "2",
-    margin: "0 10px",
+    left: "0",
+    margin: "0 1rem",
     cursor: "pointer"
 })
 
 const RightArrow = styled(ArrowForwardIosIcon)({
     position: "absolute",
-    right: "0",
+    zIndex: "1",
     top: "50%",
-    zIndex: "2",
-    margin: "0 10px",
+    right: "0",
+    margin: "0 1rem",
     cursor: "pointer"
 })
 
 const SliderOneTextBox = styled(Box)({
     position: "absolute",
+    zIndex: "1",
     top: "30%",
     right: "5%",
     width: "30%",
-    zIndex: "1",
     color: "red",
-    fontSize: "2rem",
+    fontSize: "2.5rem",
     border: "solid black"
 })
 
 const SliderTwoTextBox = styled(Box)({
     position: "absolute",
-    top: "50%",
-    left: "10%",
-    width: "20%",
     zIndex: "1",
+    top: "50%",
+    left: "8%",
+    width: "20%",
     color: "red",
-    fontSize: "40px"
+    fontSize: "2.5rem",
+    border: "solid black"
 })
 
 const SliderThreeTextBox = styled(Box)({
     position: "absolute",
-    top: "50%",
-    left: "3%",
-    height: "40%",
-    width: "30%",
-    // border: "solid black",
     zIndex: "1",
+    top: "45%",
+    left: "3%",
+    // border: "solid black",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",
-    color: "red",
-    // opacity: "0.1",
-    fontSize: "40px",
+    height: "40%",
+    width: "30%",
+    fontSize: "3.5rem",
     backdropFilter: "blur(8px)",
+})
+
+const SuggestButton = styled(Button)({
+    fontSize: "1.5rem",
+    marginBottom: "1.5rem"
 })
 
 export const Slider: FC = () => {
@@ -124,7 +128,7 @@ export const Slider: FC = () => {
                 <SliderTwoTextBox>
                     February&apos;s new book
                 </SliderTwoTextBox>
-                <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...</div>
+                <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>&ldquo;Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...&rdquo;</div>
                 <div className={classes.triangle}></div>
             </SlideContainer>
             <SlideContainer newSlideOrder={slideOrder}>
@@ -132,7 +136,7 @@ export const Slider: FC = () => {
                 <SliderThreeTextBox>
                     <div className={classes.sliderThreeContent}>Recommend a book for review</div>
                     <Link className={classes.browseLink} to="/suggest">
-                        <Button variant="contained">Suggest</Button>
+                        <SuggestButton variant="contained">Suggest</SuggestButton>
                     </Link>
                 </SliderThreeTextBox>
             </SlideContainer>
