@@ -7,12 +7,12 @@ import AccordionComponent from "../../components/AccordionComponent/AccordionCom
 
 const StyledEmailIcon = styled(EmailIcon)({
     color: "white",
-    fontSize: "3.5vw"
+    fontSize: "3.3rem"
 })
 
 const StyledHelpIcon = styled(HelpIcon)({
     color: "navy",
-    fontSize: "3.5vw"
+    fontSize: "5rem"
 })
 
 function Contact() {
@@ -21,9 +21,9 @@ function Contact() {
             <div className={classes.contactPage}>
                 <div className={classes.sectionContact}>
                     <div className={classes.contactTitle}>Contact Us</div>
-                    <div className={classes.iconBackground}><StyledEmailIcon /></div>
                     <div className={classes.contactContent}>
-                        Please send any additional questions to contact@revdbookstore.com
+                        <div className={classes.iconBackground}><StyledEmailIcon /></div>
+                        <div>Please send any additional questions to contact@revdbookstore.com</div>
                     </div>
                 </div>
                 <div className={classes.sectionFAQ}>

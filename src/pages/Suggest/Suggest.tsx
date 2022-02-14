@@ -147,10 +147,10 @@ export const Suggest = (props: Props) => {
     return (
         <div className={classes.suggestPage}>
             <div className={classes.pageContent}>
-                <div className={classes.firstLine}>
+                <div className={classes.suggestTitle}>
                     Suggest a book for review!
                 </div>
-                <div className={classes.secondLine}>
+                <div className={classes.suggestContent}>
                     Let us know below if there&apos;s a book you want us to review and include in our collection.
                 </div>
                 <form className={classes.suggestForm} onSubmit={handleSubmitSuggestion}>

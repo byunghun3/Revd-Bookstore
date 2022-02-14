@@ -9,13 +9,15 @@ const RevdReviewAccordion = styled(Accordion)({
 })
 
 const StyledAccordionSummary = styled(AccordionSummary)({
-    fontWeight: "700",
+    fontSize: "1.5rem",
+    fontWeight: "700"
     // textAlign: "left"
 
 })
 
 const StyledAccordionDetails = styled(AccordionDetails)({
-    textAlign: "left"
+    textAlign: "left",
+    fontSize: "1.5rem"
 })
 
 interface AccordionProps {
