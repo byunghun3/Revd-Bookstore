@@ -6,15 +6,18 @@ import { styled } from "@mui/system"
 import classes from "./ReaderRating.module.css"
 
 const CheckedStarIcon = styled(StarIcon)({
-    color: "#FDCC0D"
+    color: "#FDCC0D",
+    fontSize: "2rem"
 })
 
 const CheckedStarHalfIcon = styled(StarHalfIcon)({
-    color: "#FDCC0D"
+    color: "#FDCC0D",
+    fontSize: "2rem"
 })
 
 const UncheckedStarOutlineIcon = styled(StarOutlineIcon)({
-    color: "#FDCC0D"
+    color: "#FDCC0D",
+    fontSize: "2rem"
 })
 
 interface ReaderRatingProps {

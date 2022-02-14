@@ -3,13 +3,14 @@
 }
 
 .bookTitle {
-    margin: 0 5px 0 5px;
-    font-size: 15px;
+    margin: 0 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .bookAuthor {
-    margin: 1px 0 0 0;
-    font-size: 12px;
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
 }
 
 .bookAuthorBy {
@@ -18,13 +19,13 @@
 
 
 .bookAuthorName {
-    font-weight: 800;
     color: green;
+    font-weight: 800;
 }
 
 .bookType {
-    margin: 1px 0 0 0;
-    font-size: 12px;
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
 }
 
 .bookTypeIcon {
@@ -38,12 +39,13 @@
 }
 
 .bookRating {
-    margin: 1px 0 0 0;
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
 }
 
 .bookPrice {
-    margin: 1px 0 0 0;
-    font-size: 12px;
+    margin: 0.5rem 0 1rem 0;
+    font-size: 1.5rem;
 }
 
 .bookStock {

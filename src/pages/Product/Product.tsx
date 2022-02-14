@@ -22,6 +22,8 @@ const ContainerGrid = styled(Grid)({
 
 const ItemGrid = styled(Grid)({
   display: "block",
+  marginBottom: "5vh",
+  border: "solid red"
 })
 
 
@@ -202,7 +204,7 @@ const Product: React.FC<Props> = ({ }) => {
           </BookDetailsCard> */}
           <div className={classes.accordion}>
             <AccordionComponent
-              accordionSummary="hello"
+              accordionSummary="Revd Review (may contain spoilers!)"
               accordionDetails="well"
             />
           </div>

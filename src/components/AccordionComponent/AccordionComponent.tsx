@@ -3,14 +3,14 @@ import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { styled } from "@mui/system"
 
-const RevdReviewAccordion = styled(Accordion)({
-    margin: "0",
-    // width: "100%"
+const StyledAccordion = styled(Accordion)({
+    borderBottomLeftRadius: "2%",
+    borderBottomRightRadius: "2%"
 })
 
 const StyledAccordionSummary = styled(AccordionSummary)({
     fontSize: "1.5rem",
-    fontWeight: "700"
+    fontWeight: "600"
     // textAlign: "left"
 
 })
@@ -23,12 +23,15 @@ const StyledAccordionDetails = styled(AccordionDetails)({
 interface AccordionProps {
     accordionSummary: string
     accordionDetails: string
+    // square: string
 }
 
 const AccordionComponent: FC<AccordionProps> = ({ accordionSummary, accordionDetails }) => {
     return (
         <div>
-            <Accordion>
+            <StyledAccordion
+                square
+            >
                 <StyledAccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                 >
@@ -37,17 +40,7 @@ const AccordionComponent: FC<AccordionProps> = ({ accordionSummary, accordionDet
                 <StyledAccordionDetails>
                     {accordionDetails}
                 </StyledAccordionDetails>
-            </Accordion>
-            {/* <RevdReviewAccordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                >
-                    Revd Review (may contain spoilers!)
-                </AccordionSummary>
-                <AccordionDetails>
-                    spoiler hehe
-                </AccordionDetails>
-            </RevdReviewAccordion> */}
+            </StyledAccordion>
         </div>
     )
 }

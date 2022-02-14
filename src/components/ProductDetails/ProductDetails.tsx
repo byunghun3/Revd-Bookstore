@@ -9,8 +9,14 @@ import classes from "./ProductDetails.module.css"
 const BookDetailsCard = styled(Card)({
     display: "flex",
     flexDirection: "column",
+    margin: "10vh auto 0 auto",
     width: "60%",
-    marginTop: "10vh"
+    borderBottomLeftRadius: "0",
+    borderBottomRightRadius: "0"
+})
+
+const StyledButton = styled(Button)({
+    fontSize: "1.5rem"
 })
 
 interface ProductDetailsProps {
@@ -27,7 +33,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, 
     return (
         <BookDetailsCard>
             <form className={classes.bookDetails} onSubmit={onSubmit}>
-                {title}
+                <div className={classes.bookTitle}>{title}</div>
                 <div className={classes.bookAuthor}>
                     <span className={classes.bookAuthorBy}>
                         by&nbsp;
@@ -36,11 +42,12 @@ const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, 
                         {author}
                     </span>
                 </div>
-                <h4 className={classes.bookType}>
-                    <div className={classes.bookTypeWord}>{type}</div></h4>
-                <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
-                <h3 className={classes.bookPrice}>${price}</h3>
-                <Button type="submit">Add to Cart</Button>
+                <div className={classes.bookType}>
+                    <div className={classes.bookTypeWord}>{type}</div>
+                </div>
+                <div className={classes.bookRating}><BookRating rating={rating} /></div>
+                <div className={classes.bookPrice}>${price}</div>
+                <StyledButton variant="outlined" type="submit">Add to Cart</StyledButton>
                 {stock < 4 ?
                     <div className={classes.bookStock}>
                         Only {stock} books left in stock

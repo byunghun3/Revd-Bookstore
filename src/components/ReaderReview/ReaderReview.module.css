@@ -1,8 +1,12 @@
+.readerReviewsTitle {
+  font-size: 2rem;
+}
+
 .readerReviewsTitle:before,
 .readerReviewsTitle:after {
   content: "";
   position: relative;
-  height: 1px;
+  height: 0.1rem;
   width: 37%;
   display: inline-block;
   vertical-align: middle;
@@ -27,9 +31,9 @@
   /* align-items: center; */
   margin: auto;
   width: 80%;
-  border-top: solid #adadad 1px;
-  border-left: solid #adadad 1px;
-  border-right: solid #adadad 1px;
+  border-top: solid #adadad 0.1rem;
+  border-left: solid #adadad 0.1rem;
+  border-right: solid #adadad 0.1rem;
   /* width: 100%; */
   /* border: solid black; */
   /* margin: auto; */
@@ -37,12 +41,14 @@
 
 .avgReaderRating {
   margin: 2% 0 3% 0;
+  font-size: 1.5rem;
 }
 
 .readerReviewName {
   flex: 1;
   text-align: left;
   margin-left: 2%;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
@@ -50,11 +56,13 @@
   flex: 3;
   text-align: left;
   margin-left: 2%;
+  font-size: 1.5rem;
 }
 
 .readerReviewDate {
   flex: 1;
   text-align: right;
+  font-size: 1.5rem;
 }
 
 .readerReviewsForm {

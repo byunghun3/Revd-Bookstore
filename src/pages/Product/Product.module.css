@@ -16,10 +16,13 @@
 }
 
 .accordion {
-  width: 60%;
+    margin: auto;
+    width: 60%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-.reviews {
+/* .reviews {
     margin-bottom: 2%;
-}
+} */
 

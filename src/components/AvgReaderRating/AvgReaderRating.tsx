@@ -6,18 +6,18 @@ import { styled } from "@mui/system"
 import classes from "./AvgReaderRating.module.css"
 
 const CheckedStarIcon = styled(StarIcon)({
-    fontSize: "50px",
-    color: "#FDCC0D"
+    color: "#FDCC0D",
+    fontSize: "5rem"
 })
 
 const CheckedStarHalfIcon = styled(StarHalfIcon)({
-    fontSize: "50px",
-    color: "#FDCC0D"
+    color: "#FDCC0D",
+    fontSize: "5rem"
 })
 
 const UncheckedStarOutlineIcon = styled(StarOutlineIcon)({
-    fontSize: "50px",
-    color: "#FDCC0D"
+    color: "#FDCC0D",
+    fontSize: "5rem"
 })
 
 interface AvgReaderRatingProps {

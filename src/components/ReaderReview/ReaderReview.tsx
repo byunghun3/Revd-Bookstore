@@ -15,13 +15,21 @@ const ReaderReviewCard = styled(Card)({
     alignItems: "center",
     margin: "0",
     padding: "2% 2%",
-    borderBottom: "solid #adadad 1px",
+    borderBottom: "solid #adadad 0.1rem",
     borderRadius: "0%"
+})
+
+const StyledButton = styled(Button)({
+    fontSize: "1.5rem"
 })
 
 const ReviewTextField = styled(TextField)({
     width: "60%",
     margin: "1% 0"
+})
+
+const StyledDialogContentText = styled(DialogContentText)({
+    fontSize: "1.6rem"
 })
 
 interface ReaderReviewProps {
@@ -116,7 +124,7 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubm
                         fillColor="#FDCC0D"
                         emptyColor="#EEE"
                     />
-                    <Button variant="outlined" type="submit">Submit</Button>
+                    <StyledButton variant="outlined" type="submit">Submit</StyledButton>
                 </div>
                 <ReviewTextField
                     multiline
@@ -126,6 +134,8 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubm
                     type="text"
                     value={comment}
                     onChange={onChange}
+                    InputLabelProps={{ style: { fontSize: 15 } }}
+                    InputProps={{ style: { fontSize: 15 } }}
                     required
                 />
             </form>
@@ -134,12 +144,12 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubm
                 onClose={onClose}
             >
                 <DialogContent>
-                    <DialogContentText>
+                    <StyledDialogContentText>
                         Please log in to submit your review
-                    </DialogContentText>
+                    </StyledDialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={onLogIn}>Log In</Button>
+                    <StyledButton onClick={onLogIn}>Log In</StyledButton>
                 </DialogActions>
             </Dialog>
         </div >

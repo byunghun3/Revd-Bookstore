@@ -45,12 +45,12 @@ const BrowseButton = styled(Button)({
     fontSize: "1.5rem"
 })
 
-const LogInButton = styled(Button)({
-    fontSize: "1.5rem"
-})
-
 const StyledDialogContentText = styled(DialogContentText)({
     fontSize: "1.6rem"
+})
+
+const LogInButton = styled(Button)({
+    fontSize: "1.5rem"
 })
 
 interface Props {
