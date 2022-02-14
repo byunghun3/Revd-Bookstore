@@ -14,7 +14,7 @@ const ReaderReviewCard = styled(Card)({
     justifyContent: "center",
     alignItems: "center",
     margin: "0",
-    padding: "2% 2%",
+    padding: "2%",
     borderBottom: "solid #adadad 0.1rem",
     borderRadius: "0%"
 })

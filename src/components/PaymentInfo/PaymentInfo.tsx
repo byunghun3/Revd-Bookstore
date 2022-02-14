@@ -9,7 +9,7 @@ import classes from "./PaymentInfo.module.css"
 import { useHref } from "react-router-dom"
 
 const CardNumberForm = styled(FormControl)({
-    marginTop: "12px",
+    marginTop: "1.2rem",
     width: "80%"
 })
 
@@ -18,17 +18,21 @@ const CardNameForm = styled(FormControl)({
 })
 
 const ExpiryForm = styled(FormControl)({
-    margin: "0 12px",
+    margin: "0 1.2rem",
     width: "38%",
 })
 
 const CvcForm = styled(FormControl)({
-    margin: "0 12px",
+    margin: "0 1.2rem",
     width: "38%",
 })
 
-const FormInputLabel = styled(InputLabel)({
-    margin: "0",
+const StyledInputLabel = styled(InputLabel)({
+    fontSize: "1.5rem"
+})
+
+const StyledOutlinedInput = styled(OutlinedInput)({
+    fontSize: "1.5rem"
 })
 
 interface PaymentInfoProps {
@@ -72,8 +76,8 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
             </div>
             {/* <div> */}
             <CardNumberForm variant="outlined">
-                <FormInputLabel>Credit Card Number</FormInputLabel>
-                <OutlinedInput
+                <StyledInputLabel>Credit Card Number</StyledInputLabel>
+                <StyledOutlinedInput
                     label="Credit Card Number"
                     name="number"
                     type="tel"
@@ -87,8 +91,8 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
             </CardNumberForm>
             {/* </div> */}
             <CardNameForm variant="outlined">
-                <FormInputLabel>Name on Card</FormInputLabel>
-                <OutlinedInput
+                <StyledInputLabel>Name on Card</StyledInputLabel>
+                <StyledOutlinedInput
                     label="Name on Card"
                     name="name"
                     type="text"
@@ -99,8 +103,8 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                 <div className={classes.noErrorMessage}></div>
             </CardNameForm>
             <ExpiryForm variant="outlined">
-                <FormInputLabel>Expiration Date</FormInputLabel>
-                <OutlinedInput
+                <StyledInputLabel>Expiration Date</StyledInputLabel>
+                <StyledOutlinedInput
                     label="Expiration Date"
                     name="expiry"
                     type="text"
@@ -112,8 +116,8 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                 <div className={expiryErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{expiryErrorText}</div>
             </ExpiryForm>
             <CvcForm variant="outlined">
-                <FormInputLabel>CVC</FormInputLabel>
-                <OutlinedInput
+                <StyledInputLabel>CVC</StyledInputLabel>
+                <StyledOutlinedInput
                     label="CVC"
                     name="cvc"
                     type="tel"

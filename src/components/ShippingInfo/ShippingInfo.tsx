@@ -7,27 +7,31 @@ import { styled } from "@mui/system"
 import classes from "./ShippingInfo.module.css"
 
 const StreetForm = styled(FormControl)({
-    margin: "12px",
+    margin: "1.2rem",
     width: "80%",
 })
 
 const CityForm = styled(FormControl)({
-    margin: "12px",
+    margin: "1.2rem",
     width: "80%",
 })
 
 const StateCodeForm = styled(FormControl)({
-    margin: "12px",
+    margin: "1.2rem",
     width: "38%",
 })
 
 const ZipCodeForm = styled(FormControl)({
-    margin: "12px",
+    margin: "1.2rem",
     width: "38%",
 })
 
-const FormInputLabel = styled(InputLabel)({
-    margin: "0"
+const StyledInputLabel = styled(InputLabel)({
+    fontSize: "1.5rem"
+})
+
+const StyledOutlinedInput = styled(OutlinedInput)({
+    fontSize: "1.5rem"
 })
 
 interface ShippingInfoProps {
@@ -53,8 +57,8 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
             <div className={classes.shippingInfoHeader}>Shipping Address</div>
             <div className={classes.shippingInputs}>
                 <StreetForm variant="outlined">
-                    <FormInputLabel>Address Line 1</FormInputLabel>
-                    <OutlinedInput
+                    <StyledInputLabel>Address Line 1</StyledInputLabel>
+                    <StyledOutlinedInput
                         label="Address Line 1"
                         name="addressLineOne"
                         type="text"
@@ -65,8 +69,8 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                     />
                 </StreetForm>
                 <StreetForm variant="outlined">
-                    <FormInputLabel>Address Line 2 (optional)</FormInputLabel>
-                    <OutlinedInput
+                    <StyledInputLabel>Address Line 2 (optional)</StyledInputLabel>
+                    <StyledOutlinedInput
                         label="Address Line 2 (optional)"
                         name="addressLineTwo"
                         type="text"
@@ -76,8 +80,8 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                     />
                 </StreetForm>
                 <CityForm variant="outlined">
-                    <FormInputLabel>Town/City</FormInputLabel>
-                    <OutlinedInput
+                    <StyledInputLabel>Town/City</StyledInputLabel>
+                    <StyledOutlinedInput
                         label="Town/City"
                         name="city"
                         type="text"
@@ -88,8 +92,8 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                     />
                 </CityForm>
                 <StateCodeForm variant="outlined">
-                    <FormInputLabel>State Code</FormInputLabel>
-                    <OutlinedInput
+                    <StyledInputLabel>State Code</StyledInputLabel>
+                    <StyledOutlinedInput
                         label="State Code"
                         name="stateCode"
                         type="text"
@@ -101,8 +105,8 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                 </StateCodeForm>
                 {/* <SelectUSState className={classes.selectState} /> */}
                 <ZipCodeForm variant="outlined">
-                    <FormInputLabel>Zip/Postal</FormInputLabel>
-                    <OutlinedInput
+                    <StyledInputLabel>Zip/Postal</StyledInputLabel>
+                    <StyledOutlinedInput
                         label="Zip/Postal"
                         name="zipCode"
                         type="text"

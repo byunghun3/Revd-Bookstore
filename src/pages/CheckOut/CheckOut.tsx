@@ -12,7 +12,7 @@ import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
 const ReviewCard = styled(Card)({
     position: "relative",
     minWidth: "40vw",
-    margin: "5% 5% 5% 5%"
+    margin: "5%"
 })
 
 const CheckoutCard = styled(Card)({
@@ -26,7 +26,13 @@ const CartButton = styled(Button)({
     position: "absolute",
     top: "50%",
     right: "0",
+    fontSize: "1.3rem",
     transform: "translate(-50%, -50%)"
+})
+
+const CheckOutButton = styled(Button)({
+    marginBottom: "1.5rem",
+    fontSize: "1.4rem"
 })
 
 interface CheckoutProps {
@@ -226,11 +232,9 @@ export const Checkout = (props: CheckoutProps) => {
                         tax={taxPrice.toFixed(2)}
                         total={totalPrice.toFixed(2)}
                     />
-                    <Button type="submit">
-                        {/* <Link to="/ordercomplete"> */}
+                    <CheckOutButton variant="contained" type="submit">
                         Confirm and Pay
-                        {/* </Link> */}
-                    </Button>
+                    </CheckOutButton>
                 </CheckoutCard>
             </form>
         </div>

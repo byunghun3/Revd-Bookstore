@@ -4,11 +4,11 @@
 }
 
 .shippingInfoHeader {
-    margin-left: 5%;
     margin-bottom: 15px;
+    margin-left: 5%;
     /* border: solid black; */
     text-align: left;
-    font-size: 30px;
+    font-size: 3rem;
     font-weight: 600;
 }
 
