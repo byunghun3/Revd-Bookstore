@@ -49,6 +49,7 @@
 }
 
 .bookStock {
-    /* margin: 5px 0 0 -15px; */
+    margin-top: 1rem;
     color: red;
+    font-size: 1.3rem;
 }

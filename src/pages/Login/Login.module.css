@@ -6,8 +6,22 @@
     min-height: 100vh;
 }
 
+.loginContent {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .link {
     text-decoration: none;
+}
+
+.noUserExists {
+    color: red;
+    font-size: 1.3rem;
 }
 
 .passwordErrorMessage {
@@ -22,18 +36,24 @@
     color: red;
     text-align: left;
     font-size: 1.6rem;
+    border: solid blue;
 }
 
 .passwordNoErrorMessage {
     margin-top: -2rem;
     margin-left: 15%;
     margin-bottom: 3.7rem;
+    border: solid black;
 }
 
 .signUpContent {
-    margin-bottom: 5%;    
+    margin: 2% 0;    
 }
 
 .signUpText {
     font-size: 1.4rem;
 }
+
+/* .ww {
+    border: solid black;
+} */
