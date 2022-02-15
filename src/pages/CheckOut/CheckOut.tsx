@@ -91,7 +91,6 @@ export const Checkout = (props: CheckoutProps) => {
     }
 
     const handleSaveOrder = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
         const thisDay = new Date().getDate()
         const thisFullYear = new Date().getFullYear()
         const thisMonth = new Date().getMonth() + 1
@@ -124,6 +123,12 @@ export const Checkout = (props: CheckoutProps) => {
             setCvcErrorText("Please enter a valid CVC")
         } else {
             setIsCvcInvalid(false)
+        }
+
+        if (cart.length < 1) {
+            e.preventDefault()
+            alert("Your cart is empty")
+            navigate("/browse")
         }
 
         if (!cardNumberRules && !expiryRules && !cvcRules) {

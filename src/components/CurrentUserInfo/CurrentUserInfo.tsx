@@ -27,7 +27,7 @@ const StyledDialogContentText = styled(DialogContentText)({
 })
 
 const DialogButton = styled(Button)({
-    fontSize: "1.5rem"
+    fontSize: "1.3rem"
 })
 
 interface CurrentUserInfoProps {

@@ -18,49 +18,62 @@ import classes from "./Login.module.css"
 import { Card } from "@mui/material"
 
 const FormGrid = styled(Grid)({
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    minHeight: "100%"
 })
 
 const LoginCard = styled(Card)({
-    justifyContent: "center",
-    alignItems: "center",
     display: "flex",
     flexDirection: "column",
-    height: "70vh",
-    width: "30vw",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "5% 0 10% 0",
+    // padding: "1% 0",
+    minHeight: "55vh",
+    width: "40rem"
+    // width: "30%"
+})
 
+const StyledAccountCircleIcon = styled(AccountCircleIcon)({
+    marginTop: "5%",
+    fontSize: "3rem"
 })
 
 const UsernameForm = styled(FormControl)({
-    margin: "20px",
-    width: "80%",
-
+    margin: "2% 0",
+    width: "60%"
 })
 
 const PasswordForm = styled(FormControl)({
-    margin: "20px",
-    width: "80%",
-
+    marginTop: "2%",
+    width: "60%"
 })
 
-const FormInputLabel = styled(InputLabel)({
-    margin: "0"
+const StyledInputLabel = styled(InputLabel)({
+    fontSize: "1.5rem"
+})
+
+const StyledOutlinedInput = styled(OutlinedInput)({
+    fontSize: "1.5rem"
 })
 
 const ForgotPWButton = styled(Button)({
-    textDecoration: "none"
+    textDecoration: "none",
+    fontSize: "1.3rem"
 })
 
 const LogInButton = styled(Button)({
-    width: "80%"
+    margin: "1% 0",
+    width: "60%",
+    fontSize: "1.3rem"
 })
 
 const SignUpButton = styled(Button)({
-    textDecoration: "none"
+    textDecoration: "none",
+    fontSize: "1.3rem"
 })
 
 interface LoginProps {
@@ -150,14 +163,15 @@ export const Login: FC<LoginProps> = ({ }) => {
 
     return (
         <div className={classes.loginPage}>
-            <FormGrid>
+            {/* <FormGrid> */}
+            <Grid item sm={12} md={6} lg={4}>
                 <LoginCard>
-                    <AccountCircleIcon />
+                    <StyledAccountCircleIcon />
                     <form onSubmit={handleSubmit}>
                         <div className={emailMatchError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{emailMatchError}</div>
                         <UsernameForm variant="outlined">
-                            <FormInputLabel>Email</FormInputLabel>
-                            <OutlinedInput
+                            <StyledInputLabel>Email</StyledInputLabel>
+                            <StyledOutlinedInput
                                 label="Email"
                                 name="Email"
                                 value={email}
@@ -166,8 +180,8 @@ export const Login: FC<LoginProps> = ({ }) => {
                                 required />
                         </UsernameForm>
                         <PasswordForm>
-                            <InputLabel>Password</InputLabel>
-                            <OutlinedInput
+                            <StyledInputLabel>Password</StyledInputLabel>
+                            <StyledOutlinedInput
                                 label="Password"
                                 name="Password"
                                 type={showPassword ? "text" : "password"}
@@ -177,6 +191,7 @@ export const Login: FC<LoginProps> = ({ }) => {
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
+                                        // size="large"
                                         onClick={handleClickShowPassword}
                                         // onMouseDown={handleMouseDownPassword}
                                         edge="end"
@@ -188,30 +203,31 @@ export const Login: FC<LoginProps> = ({ }) => {
                             <div className={passwordError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{passwordError}</div>
                         </PasswordForm>
                         <div>
-                            <span>
-                                <Checkbox />
-                                <span>Remember me</span>
-                            </span>
+                            {/* <span>
+                            <Checkbox />
+                            <span>Remember me</span>
+                        </span> */}
                             <Link className={classes.link} to="/forgotpassword">
                                 <ForgotPWButton type="button">
                                     Forgot password?
                                 </ForgotPWButton>
                             </Link>
                         </div>
-                        <LogInButton type="submit" color="primary" variant="contained">
+                        <LogInButton color="primary" variant="contained" type="submit">
                             Log in
                         </LogInButton>
-                        <div>
-                            <span>Don&apos;t have account?</span>
+                        <div className={classes.signUpContent}>
+                            <span className={classes.signUpText}>Don&apos;t have account?</span>
                             <Link className={classes.link} to="/signup">
-                                <Button type="button">
+                                <SignUpButton type="button">
                                     Sign up
-                                </Button>
+                                </SignUpButton>
                             </Link>
                         </div>
                     </form>
                 </LoginCard>
-            </FormGrid>
+            </Grid>
+            {/* </FormGrid> */}
             {/* <div>ehllo</div> */}
         </div >
     )

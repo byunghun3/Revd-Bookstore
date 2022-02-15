@@ -50,7 +50,7 @@ const StyledDialogContentText = styled(DialogContentText)({
 })
 
 const LogInButton = styled(Button)({
-    fontSize: "1.4rem"
+    fontSize: "1.3rem"
 })
 
 interface Props {

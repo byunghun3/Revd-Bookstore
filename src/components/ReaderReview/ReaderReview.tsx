@@ -20,7 +20,7 @@ const ReaderReviewCard = styled(Card)({
 })
 
 const StyledButton = styled(Button)({
-    fontSize: "1.5rem"
+    fontSize: "1.3rem"
 })
 
 const ReviewTextField = styled(TextField)({

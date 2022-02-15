@@ -1,8 +1,9 @@
 .loginPage {
-    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .link {
@@ -11,20 +12,28 @@
 
 .passwordErrorMessage {
     position: relative;
-    width: 70%;
     display: flex;
     justify-content: flex-start;
-    text-align: left;
     flex-wrap: wrap;
     margin-top: -20px;
+    margin-bottom: 1.9rem;
     margin-left: 12%;
-    margin-bottom: 19px;
-    font-size: 16px;
+    width: 70%;
     color: red;
+    text-align: left;
+    font-size: 1.6rem;
 }
 
 .passwordNoErrorMessage {
-    margin-top: -20px;
+    margin-top: -2rem;
     margin-left: 15%;
-    margin-bottom: 37px;
+    margin-bottom: 3.7rem;
+}
+
+.signUpContent {
+    margin-bottom: 5%;    
+}
+
+.signUpText {
+    font-size: 1.4rem;
 }
