@@ -1,10 +1,11 @@
 import React from "react"
-import "./Error.css"
+import PageNotFound from "../../assets/images/page-not-found.jpeg"
+import classes from "./Error.module.css"
 
 function Error() {
     return (
-        <div className="error">
-            Page Not Found
+        <div className={classes.errorPage}>
+            <img src={PageNotFound} alt="" />
         </div>
     )
 }
