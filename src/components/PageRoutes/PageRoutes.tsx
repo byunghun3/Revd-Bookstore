@@ -35,12 +35,22 @@ export const PageRoutes: FC = () => {
     return (
         // <LoginProvider>
         <div>
-            {location.pathname === "/login" ||
+            {/* {location.pathname === "/login" ||
                 location.pathname === "/cart" ||
                 location.pathname === "/signup" ||
                 location.pathname === "/forgotpassword" ||
                 location.pathname === "/checkout" ?
-                <HeaderTwo /> : <Header />}
+                location.pathname === "*" ?
+            <HeaderTwo /> : <Header />} */}
+            {location.pathname === "/" ||
+                location.pathname === "/about" ||
+                location.pathname === "/browse" ||
+                location.pathname === "/browse/:id" ||
+                location.pathname === "/suggest" ||
+                location.pathname === "/contact" ||
+                location.pathname === "/profile" ||
+                location.pathname === "/ordercomplete" ?
+                <Header /> : <HeaderTwo />}
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />
