@@ -10,6 +10,7 @@ import { Books } from "../../components/Books/Books"
 import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
 import classes from "./Suggest.module.css"
+import DialogComponent from "../../components/DialogComponent/DialogComponent"
 
 const TitleForm = styled(FormControl)({
     margin: "1% 0",
@@ -45,14 +46,6 @@ const BrowseButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-const StyledDialogContentText = styled(DialogContentText)({
-    fontSize: "1.6rem"
-})
-
-const LogInButton = styled(Button)({
-    fontSize: "1.3rem"
-})
-
 interface Props {
 
 }
@@ -62,7 +55,7 @@ export const Suggest = (props: Props) => {
     const [author, setAuthor] = useState("")
     const [comment, setComment] = useState("")
     const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
-    const [showAlert, setShowAlert] = useState(false)
+    const [showDialog, setShowDialog] = useState(false)
     const { isLoggedIn } = useContext(LoginContext)
     const books = BooksData
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
@@ -76,7 +69,7 @@ export const Suggest = (props: Props) => {
         if (isLoggedIn) {
             setTitle(e.target.value)
         } else {
-            setShowAlert(true)
+            setShowDialog(true)
         }
     }
 
@@ -84,7 +77,7 @@ export const Suggest = (props: Props) => {
         if (isLoggedIn) {
             setAuthor(e.target.value)
         } else {
-            setShowAlert(true)
+            setShowDialog(true)
         }
     }
 
@@ -92,7 +85,7 @@ export const Suggest = (props: Props) => {
         if (isLoggedIn) {
             setComment(e.target.value)
         } else {
-            setShowAlert(true)
+            setShowDialog(true)
         }
     }
 
@@ -136,8 +129,8 @@ export const Suggest = (props: Props) => {
         </Link>
     })
 
-    const handleCloseAlert = () => {
-        setShowAlert(false)
+    const handleCloseDialog = () => {
+        setShowDialog(false)
     }
 
     const handleGoToLogin = () => {
@@ -201,7 +194,14 @@ export const Suggest = (props: Props) => {
                     {bookList}
                 </div>
             </div>
-            <Dialog
+            <DialogComponent
+                open={showDialog}
+                onClose={handleCloseDialog}
+                onClick={handleGoToLogin}
+                ContentText="Please log in to submit your suggestion"
+                ButtonText="Log In"
+            />
+            {/* <Dialog
                 open={showAlert}
                 onClose={handleCloseAlert}
             >
@@ -213,7 +213,7 @@ export const Suggest = (props: Props) => {
                 <DialogActions>
                     <LogInButton onClick={handleGoToLogin}>Log In</LogInButton>
                 </DialogActions>
-            </Dialog>
+            </Dialog> */}
         </div>
     )
 }

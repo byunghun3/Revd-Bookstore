@@ -48,7 +48,7 @@ const Product: React.FC<Props> = ({ }) => {
   const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
   const [comment, setComment] = useState("")
   const [rating, setRating] = useState(0)
-  const [showAlert, setShowAlert] = useState(false)
+  const [showDialog, setShowDialog] = useState(false)
   const { isLoggedIn } = useContext(LoginContext)
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
   const books = BooksData
@@ -64,7 +64,7 @@ const Product: React.FC<Props> = ({ }) => {
     if (isLoggedIn) {
       setComment(e.target.value)
     } else {
-      setShowAlert(true)
+      setShowDialog(true)
     }
   }
 
@@ -109,7 +109,7 @@ const Product: React.FC<Props> = ({ }) => {
       setRating(rate)
     } else {
       setRating(0)
-      setShowAlert(true)
+      setShowDialog(true)
     }
   }
 
@@ -136,7 +136,7 @@ const Product: React.FC<Props> = ({ }) => {
           bookId: books[id - 1].id,
           title: books[id - 1].title,
           author: books[id - 1].author,
-          comments: comment,
+          comment: comment,
           rating: rating / 20
         }
       })
@@ -146,12 +146,12 @@ const Product: React.FC<Props> = ({ }) => {
       localStorage.setItem("reviews", JSON.stringify(newReview))
     } else {
       e.preventDefault()
-      setShowAlert(true)
+      setShowDialog(true)
     }
   }
 
-  const handleCloseAlert = () => {
-    setShowAlert(false)
+  const handleCloseDialog = () => {
+    setShowDialog(false)
   }
 
   const handleGoToLogin = () => {
@@ -215,12 +215,12 @@ const Product: React.FC<Props> = ({ }) => {
           id={books[id - 1].id}
           rating={rating}
           comment={comment}
-          open={showAlert}
+          open={showDialog}
           onSubmit={handleSubmitReview}
           // onRate={() => handleRating(rating)}
           onRate={handleRating}
           onChange={handleChangeReviewComment}
-          onClose={handleCloseAlert}
+          onClose={handleCloseDialog}
           onLogIn={handleGoToLogin}
         />
         {/* <div className={classes.readerReviewsTitle}>Reader Reviews</div>

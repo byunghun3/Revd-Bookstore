@@ -1,10 +1,12 @@
-import React, { FC, useState, useContext } from "react"
+import React, { FC, useEffect, useState, useContext } from "react"
 import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
 import ReaderRating from "../../components/ReaderRating/ReaderRating"
 import { styled } from "@mui/system"
 import classes from "./ReviewHistory.module.css"
+import DialogComponent from "../DialogComponent/DialogComponent"
+import { useNavigate } from "react-router-dom"
 
 const ReviewCard = styled(Card)({
     position: "relative",
@@ -39,6 +41,14 @@ const StyledRemoveIcon = styled(ClearIcon)({
     }
 })
 
+const StyledDialogContentText = styled(DialogContentText)({
+    fontSize: "1.6rem"
+})
+
+const StyledButton = styled(Button)({
+    fontSize: "1.3rem"
+})
+
 interface ReviewHistoryProps {
     initialComment: string
     id: string
@@ -53,9 +63,9 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
     reviewTitle, reviewAuthor, date }) => {
     const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
     const [editComments, setEditComments] = useState(initialComment)
-    const [showAlert, setShowAlert] = useState(false)
+    const [showDialog, setShowDialog] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
-
+    const navigate = useNavigate()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditComments(e.currentTarget.value)
@@ -79,14 +89,16 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
         }
     }
 
-    const handleCloseAlert = () => {
-        setShowAlert(false)
+    const handleCloseDialog = () => {
+        setShowDialog(false)
     }
 
     const handleDeleteReview = (id: string) => {
         let newReviews = reviews.filter((el: any) => el.id !== id)
         setReviews(newReviews)
         localStorage.setItem("reviews", JSON.stringify(newReviews))
+        setShowDialog(false)
+        window.location.reload()
     }
 
     return (
@@ -110,6 +122,8 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
                         type="text"
                         value={editComments}
                         onChange={handleChange}
+                        InputLabelProps={{ style: { fontSize: 15 } }}
+                        InputProps={{ style: { fontSize: 15 } }}
                         required
                     />
                     : <div className={classes.readerReviewComments}>
@@ -121,24 +135,34 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
                     <button className={classes.editButton} type="submit"><StyledEditIcon /></button>
                     <StyledRemoveIcon
                         color="warning"
-                        onClick={() => { setShowAlert(true) }}
+                        onClick={() => { setShowDialog(true) }}
                     />
                 </div>
+                {/* <DialogComponent
+                    open={showDialog}
+                    onClose={handleCloseDialog}
+                    onClick={handleDeleteReview}
+                    ContentText="Are you sure you want to delete this review?"
+                    ButtonText="Delete"
+                /> */}
                 <Dialog
-                    open={showAlert}
-                    onClose={handleCloseAlert}
+                    open={showDialog}
+                    onClose={handleCloseDialog}
                 >
                     <DialogContent>
-                        <DialogContentText>
+                        <StyledDialogContentText>
                             Are you sure you want to delete this review?
-                        </DialogContentText>
+                        </StyledDialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => handleDeleteReview(id)}>Delete</Button>
+                        {/* <form onSubmit={() => handleDeleteReview(id)}> */}
+                        {/* <StyledButton type="submit">Delete</StyledButton> */}
+                        <StyledButton onClick={() => handleDeleteReview(id)}>Delete</StyledButton>
+                        {/* </form> */}
                     </DialogActions>
                 </Dialog>
             </ReviewCard>
-        </form>
+        </form >
     )
 }
 

@@ -4,6 +4,7 @@ import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
 import { styled } from "@mui/system"
 import classes from "./SuggestionHistory.module.css"
+import DialogComponent from "../DialogComponent/DialogComponent"
 
 const SuggestionCard = styled(Card)({
     position: "relative",
@@ -38,6 +39,14 @@ const StyledRemoveIcon = styled(ClearIcon)({
     }
 })
 
+const StyledDialogContentText = styled(DialogContentText)({
+    fontSize: "1.6rem"
+})
+
+const StyledButton = styled(Button)({
+    fontSize: "1.3rem"
+})
+
 interface ReviewHistoryProps {
     id: string
     suggestedTitle: string
@@ -51,7 +60,7 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
     const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
     const [editComment, setEditComment] = useState(suggestedComment)
     const [isEditing, setIsEditing] = useState(false)
-    const [showAlert, setShowAlert] = useState(false)
+    const [showDialog, setShowDialog] = useState(false)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditComment(e.currentTarget.value)
@@ -75,14 +84,16 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
         }
     }
 
-    const handleCloseAlert = () => {
-        setShowAlert(false)
+    const handleCloseDialog = () => {
+        setShowDialog(false)
     }
 
     const handleDeleteSuggestion = (id: string) => {
         let newSuggestions = suggestions.filter((el: any) => el.id !== id)
         setSuggestions(newSuggestions)
         localStorage.setItem("suggestions", JSON.stringify(newSuggestions))
+        setShowDialog(false)
+        window.location.reload()
     }
 
     return (
@@ -105,6 +116,8 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                         type="text"
                         value={editComment}
                         onChange={handleChange}
+                        InputLabelProps={{ style: { fontSize: 15 } }}
+                        InputProps={{ style: { fontSize: 15 } }}
                         required
                     />
                     : <div className={classes.suggestionComment}>
@@ -116,20 +129,27 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                     <button className={classes.editButton} type="submit"><StyledEditIcon /></button>
                     <StyledRemoveIcon
                         color="warning"
-                        onClick={() => { setShowAlert(true) }}
+                        onClick={() => { setShowDialog(true) }}
                     />
                 </div>
+                {/* <DialogComponent
+                    open={showDialog}
+                    onClose={handleCloseDialog}
+                    onClick={() => handleDeleteSuggestion(id)}
+                    ContentText="Are you sure you want to delete this suggestion?"
+                    ButtonText="Delete"
+                /> */}
                 <Dialog
-                    open={showAlert}
-                    onClose={handleCloseAlert}
+                    open={showDialog}
+                    onClose={handleCloseDialog}
                 >
                     <DialogContent>
-                        <DialogContentText>
+                        <StyledDialogContentText>
                             Are you sure you want to delete this suggestion?
-                        </DialogContentText>
+                        </StyledDialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => handleDeleteSuggestion(id)}>Delete</Button>
+                        <StyledButton onClick={() => handleDeleteSuggestion(id)}>Delete</StyledButton>
                     </DialogActions>
                 </Dialog>
             </SuggestionCard>

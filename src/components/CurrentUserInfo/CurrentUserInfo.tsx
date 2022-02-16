@@ -6,6 +6,7 @@ import { LoginContext } from "../../contexts/LoginContext"
 import { UsersData } from "../../data/UsersData"
 import { styled } from "@mui/system"
 import classes from "./CurrentUserInfo.module.css"
+import DialogComponent from "../DialogComponent/DialogComponent"
 
 const hardCodedUsers = UsersData
 
@@ -46,7 +47,7 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     const [isEditingLastName, setIsEditingLastName] = useState(false)
     const [userFirstName, setUserFirstName] = useState(currentUserFirstName)
     const [userLastName, setUserLastName] = useState(currentUserLastName)
-    const [showAlert, setShowAlert] = useState(false)
+    const [showDialog, setShowDialog] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -71,6 +72,7 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
             localStorage.setItem("users", JSON.stringify(updatedUser))
             localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser))
             setIsEditingFirstName(false)
+            window.location.reload()
         }
     }
 
@@ -101,8 +103,8 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
         navigate("/")
     }
 
-    const handleCloseAlert = () => {
-        setShowAlert(false)
+    const handleCloseDialog = () => {
+        setShowDialog(false)
     }
 
     const userProfile = currentUser.map((user: any) => {
@@ -154,8 +156,15 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     return (
         <div>
             {userProfile}
-            <StyledButton variant="outlined" color="error" onClick={() => { setShowAlert(true) }}>Log Out</StyledButton>
-            <Dialog
+            <StyledButton variant="outlined" color="error" onClick={() => { setShowDialog(true) }}>Log Out</StyledButton>
+            <DialogComponent
+                open={showDialog}
+                onClose={handleCloseDialog}
+                onClick={handleLogOut}
+                ContentText="Are you sure you want to log out?"
+                ButtonText="Log Out"
+            />
+            {/* <Dialog
                 open={showAlert}
                 onClose={handleCloseAlert}
             >
@@ -167,7 +176,7 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
                 <DialogActions>
                     <DialogButton color="error" onClick={handleLogOut}>Log Out</DialogButton>
                 </DialogActions>
-            </Dialog>
+            </Dialog> */}
         </div>
     )
 }

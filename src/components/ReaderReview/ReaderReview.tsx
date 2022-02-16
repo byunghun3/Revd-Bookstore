@@ -6,6 +6,7 @@ import AvgReaderRating from "../../components/AvgReaderRating/AvgReaderRating"
 import { ReaderReviewsData } from "../../data/ReaderReviewsData"
 import { styled } from "@mui/system"
 import classes from "./ReaderReview.module.css"
+import DialogComponent from "../DialogComponent/DialogComponent"
 
 const ReaderReviewCard = styled(Card)({
     position: "relative",
@@ -26,10 +27,6 @@ const StyledButton = styled(Button)({
 const ReviewTextField = styled(TextField)({
     width: "60%",
     margin: "1% 0"
-})
-
-const StyledDialogContentText = styled(DialogContentText)({
-    fontSize: "1.6rem"
 })
 
 interface ReaderReviewProps {
@@ -78,7 +75,7 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubm
                 {el.user.firstName}&nbsp;
                 {el.user.lastName}
             </div>
-            <div className={classes.readerReviewComments}>{el.review.comments}</div>
+            <div className={classes.readerReviewComments}>{el.review.comment}</div>
             <div className={classes.readerReviewDate}>{el.date}</div>
         </ReaderReviewCard>
     })
@@ -92,7 +89,7 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubm
                 {el.user.firstName}&nbsp;
                 {el.user.lastName}
             </div>
-            <div className={classes.readerReviewComments}>{el.review.comments}</div>
+            <div className={classes.readerReviewComments}>{el.review.comment}</div>
             <div className={classes.readerReviewDate}>{el.date}</div>
         </ReaderReviewCard>
     })
@@ -139,7 +136,14 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubm
                     required
                 />
             </form>
-            <Dialog
+            <DialogComponent 
+                open={open}
+                onClose={onClose}
+                onClick={onLogIn}
+                ContentText="Please log in to submit your review"
+                ButtonText="Log In"
+            />
+            {/* <Dialog
                 open={open}
                 onClose={onClose}
             >
@@ -151,7 +155,7 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubm
                 <DialogActions>
                     <StyledButton onClick={onLogIn}>Log In</StyledButton>
                 </DialogActions>
-            </Dialog>
+            </Dialog> */}
         </div >
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useEffect, useContext } from "react"
 import { LoginContext } from "../../contexts/LoginContext"
 import { useNavigate } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
@@ -66,7 +66,7 @@ export const Profile = (props: Props) => {
     }).map((el: any) => {
         return <ReviewHistory
             key={el.id}
-            initialComment={el.review.comments}
+            initialComment={el.review.comment}
             // handleEdit={() => updateReview(el.id, )}
             // onChange
             id={el.id}
@@ -83,7 +83,7 @@ export const Profile = (props: Props) => {
     }).map((el: any) => {
         return <ReviewHistory
             key={el.id}
-            initialComment={el.review.comments}
+            initialComment={el.review.comment}
             id={el.id}
             reviewRating={el.review.rating}
             reviewTitle={el.review.title}
