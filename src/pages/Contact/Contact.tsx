@@ -23,7 +23,11 @@ function Contact() {
                     <div className={classes.contactTitle}>Contact Us</div>
                     <div className={classes.contactContent}>
                         <div className={classes.iconBackground}><StyledEmailIcon /></div>
-                        <div>Please send any additional questions to contact@revdbookstore.com</div>
+                        <div>Please send any additional questions to</div>
+                        <div>Email: contact@revdbookstore.com </div>
+                        <div>Phone: 1 (800) 843-2665</div>
+                        <div>Hours: Monday - Friday, 8 am to 6 pm ET</div>
+                        <div>Saturday & Sunday, 9 am to 6 pm ET</div>
                     </div>
                 </div>
                 <div className={classes.sectionFAQ}>
