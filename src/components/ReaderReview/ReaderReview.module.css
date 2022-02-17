@@ -8,19 +8,16 @@
 
 .readerReviewComment {
   flex: 3;
-  text-align: left;
-  margin-left: 2%;
-  height: 6.6rem;
   display: -webkit-box !important;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  margin-left: 2%;
+  height: 6.6rem;
   overflow: hidden;
-  /* text-overflow: ellipsis; */
-  /* white-space: normal; */
   white-space: pre-line;
+  text-align: left;
   font-size: 1.75rem;
   transition: "ease 0.3s";
-
 }
 
 .readerReviewComment:hover {
@@ -30,11 +27,11 @@
 
 .readerReviewCommentExpanded {
   flex: 3;
-  text-align: left;
   margin-left: 2%;
   white-space: pre-line;
-  font-size: 1.5rem;
-  transition: "ease 0.2s";
+  text-align: left;
+  font-size: 1.75rem;
+  transition: "ease 0.3s";
 }
 
 .readerReviewCommentExpanded:hover {

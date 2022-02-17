@@ -34,9 +34,35 @@
 
 .suggestionComment {
   flex: 3;
-  text-align: left;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   margin-left: 2%;
-  font-size: 1.5rem;
+  height: 6.6rem;
+  overflow: hidden;
+  white-space: pre-line;
+  text-align: left;
+  font-size: 1.75rem;
+  transition: "ease 0.3s";
+}
+
+.suggestionComment:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.suggestionCommentExpanded {
+  flex: 3;
+  margin-left: 2%;
+  white-space: pre-line;
+  text-align: left;
+  font-size: 1.75rem;
+  transition: "ease 0.3s";
+}
+
+.suggestionCommentExpanded:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 .suggestionDate {

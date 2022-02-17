@@ -58,17 +58,22 @@ interface ReviewHistoryProps {
 const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
     suggestedAuthor, suggestedComment, date }) => {
     const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
-    const [editComment, setEditComment] = useState(suggestedComment)
+    const [comment, setComment] = useState(suggestedComment)
     const [isEditing, setIsEditing] = useState(false)
     const [showDialog, setShowDialog] = useState(false)
+    const [isExpanded, setIsExpanded] = useState(false)
+
+    const handleExpand = () => {
+        setIsExpanded(!isExpanded)
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEditComment(e.currentTarget.value)
+        setComment(e.currentTarget.value)
     }
 
     const handleEditSuggestion = (e: React.FormEvent<HTMLFormElement>, id: string) => {
         const reviewDetails = suggestions.map((suggestion: any) => suggestion.id === id ?
-            { ...suggestion, suggested: { ...suggestion.suggested, comment: editComment } } :
+            { ...suggestion, suggested: { ...suggestion.suggested, comment: comment } } :
             suggestion
         )
         console.log(id, reviewDetails)
@@ -112,16 +117,16 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                         multiline
                         minRows={3}
                         label="Edit suggestion..."
-                        name="editComment"
+                        name="comment"
                         type="text"
-                        value={editComment}
+                        value={comment}
                         onChange={handleChange}
                         InputLabelProps={{ style: { fontSize: 15 } }}
                         InputProps={{ style: { fontSize: 15 } }}
                         required
                     />
-                    : <div className={classes.suggestionComment}>
-                        {editComment}
+                    : <div className={`${isExpanded ? classes.suggestionCommentExpanded : classes.suggestionComment}`} onClick={handleExpand}>
+                        {comment}
                     </div>
                 }
                 <div className={classes.suggestionDate}>{date}</div>
