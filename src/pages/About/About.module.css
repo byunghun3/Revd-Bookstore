@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
+    /* font-family: 'Luxurious Roman', 'Satisfy' */
+    font-family: 'Cantarell'
 }
 
 .aboutContainer {
@@ -25,7 +27,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    margin: 3% 0 150vh 0;
+    margin: 3% 0;
     width: 11.8%;
     /* background-image: url("../../assets/images/paper-texture.jpg"); */
     background-color: white;

@@ -80,15 +80,16 @@ export const Login: FC<LoginProps> = ({ }) => {
     const navigate = useNavigate()
     const hardCodedUsers = UsersData
     const [email, setEmail] = useState("")
-    const [isUserInvalid, setUserInvalid] = useState(false)
+    const [isUserInvalid, setIsUserInvalid] = useState(false)
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
     const { setIsLoggedIn } = useContext(LoginContext)
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
     const users = JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers))
 
+
     useEffect(() => {
-        localStorage.setItem("users", JSON.stringify(hardCodedUsers))
+        localStorage.setItem("users", JSON.stringify(users))
     }, [users])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +105,8 @@ export const Login: FC<LoginProps> = ({ }) => {
 
     console.log(email)
 
-    const handleLogIn = (e: React.FormEvent<HTMLFormElement>) => {
+    // const handleLogIn = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogIn = () => {
         const userExists = users.filter((el: any) => {
             return email === el.email
         }).find((el: any) => {
@@ -112,18 +114,18 @@ export const Login: FC<LoginProps> = ({ }) => {
         })
 
         if (userExists) {
-            let newCurrentUser = [...currentUser]
+            let newCurrentUser = []
 
-            const currentUserFirstName = users.filter((el: any) => {
-                return email === el.email
-            }).map((el: any) => {
-                return el.firstName
+            const currentUserFirstName = users.filter((user: any) => {
+                return email === user.email
+            }).map((user: any) => {
+                return user.firstName
             })
 
-            const currentUserLastName = users.filter((el: any) => {
-                return email === el.email
-            }).map((el: any) => {
-                return el.lastName
+            const currentUserLastName = users.filter((user: any) => {
+                return email === user.email
+            }).map((user: any) => {
+                return user.lastName
             })
 
             newCurrentUser.push({
@@ -136,13 +138,14 @@ export const Login: FC<LoginProps> = ({ }) => {
             setCurrentUser(newCurrentUser)
 
             localStorage.setItem("currentUser", JSON.stringify(newCurrentUser))
+            // localStorage.setItem("users", JSON.stringify(users))
 
             navigate(-1)
 
             setIsLoggedIn(true)
         } else {
-            e.preventDefault()
-            setUserInvalid(true)
+            // e.preventDefault()
+            setIsUserInvalid(true)
         }
     }
 
@@ -150,7 +153,8 @@ export const Login: FC<LoginProps> = ({ }) => {
         <div className={classes.loginPage}>
             <LoginCard>
                 <StyledAccountCircleIcon />
-                <form className={classes.loginContent} onSubmit={handleLogIn}>
+                <div className={classes.loginContent}>
+                    {/* <form className={classes.loginContent} onSubmit={(e) => handleLogIn(e)}> */}
                     {isUserInvalid && <div className={classes.noUserExists}>Incorrect email or password</div>}
                     {/* <div className={userMatchError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{userMatchError}</div> */}
                     <UsernameForm variant="outlined">
@@ -173,6 +177,7 @@ export const Login: FC<LoginProps> = ({ }) => {
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value) }}
                             endAdornment={<InputAdornment position="end">
                                 <IconButton
+                                    type="button"
                                     aria-label="toggle password visibility"
                                     // size="large"
                                     onClick={handleClickShowPassword}
@@ -191,23 +196,25 @@ export const Login: FC<LoginProps> = ({ }) => {
                         </span> */}
                     <div>
                         <Link className={classes.link} to="/forgotpassword">
-                            <ForgotPWButton type="button">
+                            <ForgotPWButton>
                                 Forgot password?
                             </ForgotPWButton>
                         </Link>
                     </div>
-                    <LogInButton color="primary" variant="contained" type="submit">
-                        Log in
-                    </LogInButton>
+                    <form onSubmit={handleLogIn}>
+                        <LogInButton color="primary" variant="contained" type="submit">
+                            Log in
+                        </LogInButton>
+                    </form>
                     <div className={classes.signUpContent}>
                         <span className={classes.signUpText}>Don&apos;t have account?</span>
                         <Link className={classes.link} to="/signup">
-                            <SignUpButton type="button">
+                            <SignUpButton>
                                 Sign up
                             </SignUpButton>
                         </Link>
                     </div>
-                </form>
+                </div>
             </LoginCard>
         </div >
     )

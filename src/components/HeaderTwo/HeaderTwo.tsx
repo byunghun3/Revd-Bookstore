@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
@@ -16,6 +16,11 @@ interface HeaderTwoProps {
 }
 
 export const HeaderTwo = (props: HeaderTwoProps) => {
+    // const users = JSON.parse(localStorage.getItem("users") || "[]")
+
+    // useEffect(() => {
+    //     localStorage.setItem("users", JSON.stringify(users))
+    // }, [users])
     return (
         <div>
             <AppBar

@@ -12,6 +12,7 @@ import Button from "@mui/material/Button"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
+import { UsersData } from "../../data/UsersData"
 import { styled } from "@mui/system"
 import classes from "./SignUp.module.css"
 import { Card, TextField } from "@mui/material"
@@ -65,6 +66,7 @@ interface SignUpProps {
 
 export const SignUp: FC<SignUpProps> = ({ }) => {
     const navigate = useNavigate()
+    const hardCodedUsers = UsersData
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -79,7 +81,9 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
     // const [passwordMatchError, setPasswordMatchError] = useState("Passwords don't match")
     const [passwordMatchError, setPasswordMatchError] = useState("")
-    const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || "[]"))
+    const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers)))
+    // const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || "[]"))
+
 
     useEffect(() => {
         localStorage.setItem("users", JSON.stringify(users))
@@ -158,7 +162,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
 
             localStorage.setItem("users", JSON.stringify(newUser))
 
-            navigate(-2)
+            navigate("/login")
         }
     }
 

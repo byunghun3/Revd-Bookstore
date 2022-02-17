@@ -21,6 +21,7 @@ const NavBarToolbar = styled(Toolbar)({
     maxWidth: "100%",
     // width: "100%",
     backgroundColor: "#d7ccc8"
+    // backgroundColor: "#01579b"
 })
 
 const StyledAccountIcon = styled(AccountCircleIcon)({
@@ -41,10 +42,12 @@ function Header() {
     const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
     // const [isLoggedIn, setIsLoggedIn] = useState(false)
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
+    // const users = JSON.parse(localStorage.getItem("users") || "[]")
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
+        // localStorage.setItem("users", JSON.stringify(users))
     }, [cart])
 
     const greeting = currentUser.map((el: any) => {

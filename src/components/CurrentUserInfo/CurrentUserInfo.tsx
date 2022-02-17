@@ -51,7 +51,7 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     const navigate = useNavigate()
 
     useEffect(() => {
-        localStorage.setItem("users", JSON.stringify(hardCodedUsers))
+        localStorage.setItem("users", JSON.stringify(users))
     }, [users])
 
     const handleEditFirstName = (e: React.FormEvent<HTMLFormElement>) => {
