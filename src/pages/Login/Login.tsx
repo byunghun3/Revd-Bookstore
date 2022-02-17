@@ -35,15 +35,15 @@ const StyledAccountCircleIcon = styled(AccountCircleIcon)({
     fontSize: "3rem"
 })
 
-const UsernameForm = styled(FormControl)({
+const EmailForm = styled(FormControl)({
     margin: "1% 0 3% 0",
-    width: "60%"
+    width: "80%"
 })
 
 const PasswordForm = styled(FormControl)({
     margin: "3% 0",
     // marginTop: "2%",
-    width: "60%"
+    width: "80%"
 })
 
 const StyledInputLabel = styled(InputLabel)({
@@ -154,18 +154,18 @@ export const Login: FC<LoginProps> = ({ }) => {
                 <StyledAccountCircleIcon />
                 {/* <div className={classes.loginContent}> */}
                 <form className={classes.loginContent} onSubmit={(e) => handleLogIn(e)}>
-                    {isUserInvalid && <div className={classes.noUserExists}>Incorrect email or password</div>}
+                    {isUserInvalid && <div className={classes.errorMessage}>Incorrect email or password</div>}
                     {/* <div className={userMatchError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{userMatchError}</div> */}
-                    <UsernameForm variant="outlined">
+                    <EmailForm variant="outlined">
                         <StyledInputLabel>Email</StyledInputLabel>
                         <StyledOutlinedInput
                             label="Email"
-                            name="Email"
+                            name="email"
                             value={email}
                             // error={isEmailInvalid}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
                             required />
-                    </UsernameForm>
+                    </EmailForm>
                     <PasswordForm>
                         <StyledInputLabel>Password</StyledInputLabel>
                         <StyledOutlinedInput

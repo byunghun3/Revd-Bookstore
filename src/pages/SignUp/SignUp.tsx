@@ -17,45 +17,44 @@ import { styled } from "@mui/system"
 import classes from "./SignUp.module.css"
 import { Card, TextField } from "@mui/material"
 
-const FormGrid = styled(Grid)({
-    justifyContent: "center",
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column"
-})
-
 const LoginCard = styled(Card)({
-    position: "relative",
-    justifyContent: "center",
-    alignItems: "center",
+    // position: "relative",
     display: "flex",
     flexDirection: "column",
-    height: "75%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "5% 0 10% 0",
+    minHeight: "55vh",
     width: "40vw",
-    margin: "50px"
+})
 
+const StyledAccountCircleIcon = styled(AccountCircleIcon)({
+    flex: "1",
+    margin: "5% 0",
+    fontSize: "3rem"
 })
 
 const NameForm = styled(FormControl)({
-    margin: "20px",
-    width: "40%",
-
+    margin: "3% 2%",
+    width: "40%"
 })
 
 const StyledForm = styled(FormControl)({
-    margin: "20px",
-    width: "80%",
-
+    margin: "3% 0",
+    width: "80%"
 })
 
+const StyledInputLabel = styled(InputLabel)({
+    fontSize: "1.5rem"
+})
 
-
-const FormInputLabel = styled(InputLabel)({
-    margin: "0"
+const StyledOutlinedInput = styled(OutlinedInput)({
+    fontSize: "1.5rem"
 })
 
 const SignUpButton = styled(Button)({
-    marginBottom: "20px"
+    margin: "5% 0",
+    fontSize: "1.3rem"
 })
 
 // const userLocalStorage = JSON.parse(localStorage.getItem("user") || "[]")
@@ -168,13 +167,14 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
 
     return (
         <div className={classes.signUpPage}>
-            <FormGrid>
-                <LoginCard>
-                    <AccountCircleIcon />
-                    <form onSubmit={handleSubmit}>
+            {/* <FormGrid> */}
+            <LoginCard>
+                <StyledAccountCircleIcon />
+                <form className={classes.signUpContent} onSubmit={handleSubmit}>
+                    <div>
                         <NameForm variant="outlined">
-                            <FormInputLabel>First Name</FormInputLabel>
-                            <OutlinedInput
+                            <StyledInputLabel>First Name</StyledInputLabel>
+                            <StyledOutlinedInput
                                 label="First Name"
                                 name="firstName"
                                 type="text"
@@ -184,8 +184,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                             />
                         </NameForm>
                         <NameForm variant="outlined">
-                            <FormInputLabel>Last Name</FormInputLabel>
-                            <OutlinedInput
+                            <StyledInputLabel>Last Name</StyledInputLabel>
+                            <StyledOutlinedInput
                                 label="Last Name"
                                 name="lastName"
                                 type="text"
@@ -194,75 +194,77 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 required
                             />
                         </NameForm>
-                        <StyledForm variant="outlined">
-                            <FormInputLabel>Email</FormInputLabel>
-                            <OutlinedInput
-                                label="Email"
-                                name="email"
-                                type="text"
-                                value={email}
-                                error={isEmailInvalid}
-                                onChange={handleValidateEmail}
-                                required
-                            />
-                            <div className={emailInputError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{emailInputError}</div>
-                        </StyledForm>
-                        <StyledForm>
-                            <InputLabel>Password</InputLabel>
-                            <OutlinedInput
-                                label="Password"
-                                name="password"
-                                type={showPassword ? "text" : "password"}
-                                value={password}
-                                onChange={handlePasswordLength}
-                                // helperText={password.length < 8 ? "Password should be at least 8 characters" : (password.length > 16 ? "Password should not exceed 16 characters" : null)}
-                                // error={password.length < 8 || password.length > 16}
-                                error={isPasswordInvalid}
-                                endAdornment={<InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        type="button"
-                                        onClick={handleClickShowPassword}
-                                        // onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                    >
-                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>}
-                                required
-                            />
-                        </StyledForm>
-                        <div className={passwordLengthError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{passwordLengthError}</div>
-                        <StyledForm>
-                            <InputLabel>Confirm Password</InputLabel>
-                            <OutlinedInput
-                                label="Confirm Password"
-                                name="confirmPassword"
-                                type={showPassword ? "text" : "password"}
-                                value={confirmPassword}
-                                onChange={handleConfirmPassword}
-                                error={isPasswordInvalid}
-                                endAdornment={<InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        type="button"
-                                        onClick={handleClickShowPassword}
-                                        // onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                    >
-                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>}
-                                required
-                            />
-                        </StyledForm>
-                        <div className={passwordMatchError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{passwordMatchError}</div>
-
-                        <SignUpButton type="submit" color="primary" variant="contained">Sign Up</SignUpButton>
-                    </form>
-                </LoginCard>
-            </FormGrid>
-            <div></div>
+                    </div>
+                    <StyledForm variant="outlined">
+                        <StyledInputLabel>Email</StyledInputLabel>
+                        <StyledOutlinedInput
+                            label="Email"
+                            name="email"
+                            type="text"
+                            value={email}
+                            error={isEmailInvalid}
+                            onChange={handleValidateEmail}
+                            required
+                        />
+                        {isEmailInvalid && <div className={classes.errorMessage}>{emailInputError}</div>
+                        }
+                    </StyledForm>
+                    <StyledForm>
+                        <StyledInputLabel>Password</StyledInputLabel>
+                        <StyledOutlinedInput
+                            label="Password"
+                            name="password"
+                            type={showPassword ? "text" : "password"}
+                            value={password}
+                            onChange={handlePasswordLength}
+                            // helperText={password.length < 8 ? "Password should be at least 8 characters" : (password.length > 16 ? "Password should not exceed 16 characters" : null)}
+                            // error={password.length < 8 || password.length > 16}
+                            error={isPasswordInvalid}
+                            endAdornment={<InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    type="button"
+                                    onClick={handleClickShowPassword}
+                                    // onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>}
+                            required
+                        />
+                        {isPasswordInvalid && <div className={classes.errorMessage}>{passwordLengthError}</div>
+                        }
+                    </StyledForm>
+                    <StyledForm>
+                        <StyledInputLabel>Confirm Password</StyledInputLabel>
+                        <StyledOutlinedInput
+                            label="Confirm Password"
+                            name="confirmPassword"
+                            type={showPassword ? "text" : "password"}
+                            value={confirmPassword}
+                            onChange={handleConfirmPassword}
+                            error={isPasswordInvalid}
+                            endAdornment={<InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    type="button"
+                                    onClick={handleClickShowPassword}
+                                    // onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>}
+                            required
+                        />
+                        {isPasswordInvalid && <div className={classes.errorMessage}>{passwordMatchError}</div>
+                        }
+                    </StyledForm>
+                    <SignUpButton color="primary" variant="contained" type="submit">Sign Up</SignUpButton>
+                </form>
+            </LoginCard>
+            {/* </FormGrid> */}
         </div >
     )
 }

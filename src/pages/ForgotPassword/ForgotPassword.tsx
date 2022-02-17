@@ -27,9 +27,9 @@ const ForgotPWCard = styled(Card)({
 
 })
 
-const UsernameForm = styled(FormControl)({
+const EmailForm = styled(FormControl)({
     margin: "2% 0",
-    width: "60%",
+    width: "80%",
     // border: "solid black"
 
 })
@@ -101,16 +101,16 @@ export const ForgotPassword: FC<LoginProps> = ({ }) => {
                         <div>
                             <div className={classes.forgotPW}>Forgot your password?</div>
                             <div className={classes.enterEmail}>Please enter your email address</div>
-                            <UsernameForm variant="outlined">
+                            <EmailForm variant="outlined">
                                 <StyledInputLabel>Email</StyledInputLabel>
                                 <StyledOutlinedInput
                                     label="Email"
-                                    name="Email"
+                                    name="email"
                                     value={email}
                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
                                     required />
-                                {emailError && <div className={classes.noEmailError}>The email you entered does not exist</div>}
-                            </UsernameForm>
+                                {emailError && <div className={classes.errorMessage}>The email you entered does not exist</div>}
+                            </EmailForm>
                             <SendLinkButton type="submit" color="primary" variant="contained">
                                 Send reset link
                             </SendLinkButton>

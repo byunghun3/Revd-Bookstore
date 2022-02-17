@@ -19,12 +19,12 @@
     text-decoration: none;
 }
 
-.noUserExists {
+.errorMessage {
     color: red;
     font-size: 1.3rem;
 }
 
-.passwordErrorMessage {
+/* .passwordErrorMessage {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -37,14 +37,14 @@
     text-align: left;
     font-size: 1.6rem;
     border: solid blue;
-}
+} */
 
-.passwordNoErrorMessage {
+/* .passwordNoErrorMessage {
     margin-top: -2rem;
     margin-left: 15%;
     margin-bottom: 3.7rem;
     border: solid black;
-}
+} */
 
 .signUpContent {
     margin: 2% 0;    
