@@ -40,7 +40,7 @@ interface CheckoutProps {
 }
 
 export const Checkout = (props: CheckoutProps) => {
-    const [numItems, setNumItems] = useState("items")
+    const [itemsText, setItemsText] = useState("items")
     const [addressLineOne, setAddressLineOne] = useState("")
     const [addressLineTwo, setAddressLineTwo] = useState("")
     const [city, setCity] = useState("")
@@ -68,9 +68,13 @@ export const Checkout = (props: CheckoutProps) => {
 
     useEffect(() => {
         if (cart.length === 1) {
-            setNumItems("item")
-        } else { numItems }
+            setItemsText("item")
+        } else { itemsText }
     }, [cart])
+
+    const numOfItems = cart.reduce((total: number, item: any) => {
+        return total + item.quantity
+    }, 0)
 
     const itemPrice = cart.reduce((total: number, el: any) => {
         return total + (el.price * el.quantity)
@@ -177,7 +181,7 @@ export const Checkout = (props: CheckoutProps) => {
         <div className={classes.checkoutPage}>
             <div className={classes.checkoutHeader}>
                 <div className={classes.checkoutHeaderText}>
-                    Checkout - {cart.length} {numItems}
+                    Checkout - {numOfItems} {itemsText}
                 </div>
                 <Link className={classes.buttonLink} to="/cart">
                     <CartButton type="button">
