@@ -32,11 +32,35 @@
     font-size: 1.4rem;
 }
 
-.readerReviewComments {
+.readerReviewComment {
   flex: 3;
   text-align: left;
   margin-left: 2%;
+  height: 6.6rem;
+  overflow: hidden;
+  white-space: pre-line;
   font-size: 1.5rem;
+  transition: "ease 0.3s";
+}
+
+.readerReviewComment:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.readerReviewCommentExpanded {
+  flex: 3;
+  text-align: left;
+  margin-left: 2%;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+  font-size: 1.5rem;
+  transition: "ease 0.2s";
+}
+
+.readerReviewCommentExpanded:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 .readerReviewDate {

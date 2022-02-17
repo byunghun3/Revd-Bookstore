@@ -65,7 +65,12 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
     const [editComments, setEditComments] = useState(initialComment)
     const [showDialog, setShowDialog] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
+    const [isExpanded, setIsExpanded] = useState(false)
     const navigate = useNavigate()
+
+    const handleExpand = () => {
+        setIsExpanded(!isExpanded)
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditComments(e.currentTarget.value)
@@ -73,7 +78,7 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
 
     const handleEditReview = (e: React.FormEvent<HTMLFormElement>, id: string) => {
         const reviewDetails = reviews.map((el: any) => el.id === id ?
-            { ...el, review: { ...el.review, comments: editComments } } :
+            { ...el, review: { ...el.review, comment: editComments } } :
             el
         )
         console.log(id, reviewDetails)
@@ -126,9 +131,8 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
                         InputProps={{ style: { fontSize: 15 } }}
                         required
                     />
-                    : <div className={classes.readerReviewComments}>
-                        {editComments}
-                    </div>
+                    :
+                    <div className={`${isExpanded ? classes.readerReviewCommentExpanded : classes.readerReviewComment}`} onClick={handleExpand}>{editComments}</div>
                 }
                 <div className={classes.readerReviewDate}>{date}</div>
                 <div className={classes.readerReviewIcons}>

@@ -14,7 +14,7 @@ export const ReaderReviewsData = [
             bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
-            comments: "I found it interesting",
+            comment: "As Matthew himself declares, there are liars and then there are bullshitters; the liar tries to hide his misrepresentations \n\n\n while the bullshitter will readily and openly admit he is not telling the truth. I have the strong impression that Matthew is a champion level bullshitter as I’m not sure how many of these stories and anecdotes I fully believe, but I liked the way he told the tall tales and this book is entertaining. I like to find out about an author to better understand their perspective.Turns out I am about a month older than McConaughey, we were both raised in the south(him in Texas, me in Tennessee) and we both liked watching the Incredible Hulk in the 70s starring Lou Ferrigno.Our high school experiences were similar, hell, my best friend in HS could have been Matthew. This is just MM telling us about his childhood, growing up, acting, life lessons, what makes him tick.The idea about “greenlights” is moments in his life that have helped him to move forward, as opposed to yellow or red lights that provide caution or slow you down.There also “NOTES TO SELF!” and Bumper stickers.All told with wit, humor and Wooderson charm.",
             rating: 4,
         }
     },
@@ -52,7 +52,7 @@ export const ReaderReviewsData = [
             bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
-            comments: "meh",
+            comment: "meh",
             rating: 3,
         }
     },
@@ -71,7 +71,7 @@ export const ReaderReviewsData = [
             bookId: 12,
             title: "The Bluest Eye",
             author: "Toni Morrison",
-            comments: "great book",
+            comment: "great book",
             rating: 4,
         }
     }

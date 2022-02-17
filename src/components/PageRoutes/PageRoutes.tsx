@@ -35,14 +35,14 @@ export const PageRoutes: FC = () => {
     return (
         // <LoginProvider>
         <div>
-            {/* {location.pathname === "/login" ||
+            {location.pathname === "/login" ||
                 location.pathname === "/cart" ||
                 location.pathname === "/signup" ||
                 location.pathname === "/forgotpassword" ||
                 location.pathname === "/checkout" ?
-                location.pathname === "*" ?
-            <HeaderTwo /> : <Header />} */}
-            {location.pathname === "/" ||
+                // location.pathname === "*" ?
+                <HeaderTwo /> : <Header />}
+            {/* {location.pathname === "/" ||
                 location.pathname === "/about" ||
                 location.pathname === "/browse" ||
                 location.pathname === "/browse/:id" ||
@@ -50,7 +50,7 @@ export const PageRoutes: FC = () => {
                 location.pathname === "/contact" ||
                 location.pathname === "/profile" ||
                 location.pathname === "/ordercomplete" ?
-                <Header /> : <HeaderTwo />}
+                <Header /> : <HeaderTwo />} */}
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />

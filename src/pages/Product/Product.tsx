@@ -12,7 +12,7 @@ import { ReaderReviewsData } from "../../data/ReaderReviewsData"
 import { LoginContext } from "../../contexts/LoginContext"
 import ProductDetails from "../../components/ProductDetails/ProductDetails"
 import AccordionComponent from "../../components/AccordionComponent/AccordionComponent"
-import ReaderReview from "../../components/ReaderReview/ReaderReview"
+import ProductReviews from "../../components/ProductReviews/ProductReviews"
 
 
 const ContainerGrid = styled(Grid)({
@@ -211,7 +211,7 @@ const Product: React.FC<Props> = ({ }) => {
         </ItemGrid>
       </ContainerGrid>
       <ReaderReviewGrid>
-        <ReaderReview
+        <ProductReviews
           id={books[id - 1].id}
           rating={rating}
           comment={comment}
