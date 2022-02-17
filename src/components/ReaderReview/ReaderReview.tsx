@@ -1,12 +1,8 @@
-import React, { FC } from "react"
-import { Rating } from "react-simple-star-rating"
-import { Button, Card, TextField, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
+import React, { FC, useState } from "react"
+import { Button, Card, TextField } from "@mui/material"
 import ReaderRating from "../../components/ReaderRating/ReaderRating"
-import AvgReaderRating from "../../components/AvgReaderRating/AvgReaderRating"
-import { ReaderReviewsData } from "../../data/ReaderReviewsData"
 import { styled } from "@mui/system"
 import classes from "./ReaderReview.module.css"
-import DialogComponent from "../DialogComponent/DialogComponent"
 
 const ReaderReviewCard = styled(Card)({
     position: "relative",
@@ -33,130 +29,29 @@ interface ReaderReviewProps {
     id: number
     rating: number
     comment: string
-    open: boolean
-    onSubmit: React.FormEventHandler<HTMLFormElement>
-    // onRate: React.MouseEventHandler<any>
-    onRate: any
-    onChange: React.ChangeEventHandler<HTMLInputElement>
-    onClose: any
-    onLogIn: React.MouseEventHandler<HTMLButtonElement>
+    firstName: string
+    lastName: string
+    date: string
+    // onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
-const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubmit, onRate, onChange, onClose, onLogIn }) => {
-    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]")
-    const readerReviews = ReaderReviewsData
+const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, lastName, date }) => {
+    const [isExpanded, setIsExpanded] = useState(false)
 
-    const hardCodedRatings = readerReviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).reduce((total: number, el: any) => {
-        return total + el.review.rating
-    }, 0)
-
-    const numOfHardCodedRatings = readerReviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).length
-
-    const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).length
-
-    const avgRating = reviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).reduce((total: number, el: any) => {
-        return total + el.review.rating
-    }, (hardCodedRatings)) / numOfTotalRatings
-
-    const displayHardCodedReaderReviews = readerReviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).map((el: any) => {
-        return <ReaderReviewCard key={el.id} elevation={0}>
-            <ReaderRating rating={el.review.rating} />
-            <div className={classes.readerReviewName}>
-                {el.user.firstName}&nbsp;
-                {el.user.lastName}
-            </div>
-            <div className={classes.readerReviewComments}>{el.review.comment}</div>
-            <div className={classes.readerReviewDate}>{el.date}</div>
-        </ReaderReviewCard>
-    })
-
-    const displayReaderReviews = reviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).map((el: any) => {
-        return <ReaderReviewCard key={el.id} elevation={0}>
-            <ReaderRating rating={el.review.rating} />
-            <div className={classes.readerReviewName}>
-                {el.user.firstName}&nbsp;
-                {el.user.lastName}
-            </div>
-            <div className={classes.readerReviewComments}>{el.review.comment}</div>
-            <div className={classes.readerReviewDate}>{el.date}</div>
-        </ReaderReviewCard>
-    })
-
-    const handleStarRating = (rating: number) => {
-        onRate(rating)
+    const handleExpand = () => {
+        setIsExpanded(!isExpanded)
     }
 
     return (
-        <div>
-            <div className={classes.readerReviewsTitle}>Reader Reviews</div>
-            <div>
-                <div className={classes.avgReaderRating}>
-                    <AvgReaderRating rating={avgRating} />
-                    {avgRating ? avgRating.toFixed(1) : null}&nbsp;
-                    ({numOfTotalRatings} reviews)
-                </div>
-                <div className={classes.readerReviews}>
-                    {displayHardCodedReaderReviews}
-                    {displayReaderReviews}
-                </div>
+        <ReaderReviewCard key={id} elevation={0}>
+            <ReaderRating rating={rating} />
+            <div className={classes.readerReviewName}>
+                {firstName}&nbsp;
+                {lastName}
             </div>
-            <form className={classes.readerReviewsForm} onSubmit={onSubmit}>
-                <div className={classes.submitRatingAndButton}>
-                    <Rating
-                        onClick={handleStarRating}
-                        ratingValue={rating}
-                        allowHalfIcon
-                        fillColor="#FDCC0D"
-                        emptyColor="#EEE"
-                    />
-                    <StyledButton variant="outlined" type="submit">Submit</StyledButton>
-                </div>
-                <ReviewTextField
-                    multiline
-                    minRows={3}
-                    label="Leave a review..."
-                    name="reviewComments"
-                    type="text"
-                    value={comment}
-                    onChange={onChange}
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    InputProps={{ style: { fontSize: 15 } }}
-                    required
-                />
-            </form>
-            <DialogComponent 
-                open={open}
-                onClose={onClose}
-                onClick={onLogIn}
-                ContentText="Please log in to submit your review"
-                ButtonText="Log In"
-            />
-            {/* <Dialog
-                open={open}
-                onClose={onClose}
-            >
-                <DialogContent>
-                    <StyledDialogContentText>
-                        Please log in to submit your review
-                    </StyledDialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <StyledButton onClick={onLogIn}>Log In</StyledButton>
-                </DialogActions>
-            </Dialog> */}
-        </div >
+            <div className={`${isExpanded ? classes.readerReviewCommentExpanded : classes.readerReviewComment}`} onClick={handleExpand}>{comment}</div>
+            <div className={classes.readerReviewDate}>{date}</div>
+        </ReaderReviewCard >
     )
 }
 

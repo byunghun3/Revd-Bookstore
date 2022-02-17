@@ -1,49 +1,3 @@
-.readerReviewsTitle {
-  font-size: 2rem;
-}
-
-.readerReviewsTitle:before,
-.readerReviewsTitle:after {
-  content: "";
-  position: relative;
-  height: 0.1rem;
-  width: 37%;
-  display: inline-block;
-  vertical-align: middle;
-  background-color: #000;
-}
-
-.readerReviewsTitle:before {
-  right: 0.5em;
-  margin-left: -50%;
-}
-
-.readerReviewsTitle:after {
-  left: 0.5em;
-  margin-right: -50%;
-}
-
-.readerReviews {
-  /* display: block; */
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  margin: auto;
-  width: 80%;
-  border-top: solid #adadad 0.1rem;
-  border-left: solid #adadad 0.1rem;
-  border-right: solid #adadad 0.1rem;
-  /* width: 100%; */
-  /* border: solid black; */
-  /* margin: auto; */
-}
-
-.avgReaderRating {
-  margin: 2% 0 3% 0;
-  font-size: 1.5rem;
-}
-
 .readerReviewName {
   flex: 1;
   text-align: left;
@@ -52,26 +6,38 @@
   font-weight: 500;
 }
 
-.readerReviewComments {
+.readerReviewComment {
   flex: 3;
   text-align: left;
   margin-left: 2%;
+  height: 6.6rem;
+  overflow: hidden;
+  white-space: pre-line;
   font-size: 1.5rem;
+  transition: "ease 0.3s";
+}
+
+.readerReviewComment:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.readerReviewCommentExpanded {
+  flex: 3;
+  text-align: left;
+  margin-left: 2%;
+  white-space: pre-line;
+  font-size: 1.5rem;
+  transition: "ease 0.2s";
+}
+
+.readerReviewCommentExpanded:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 .readerReviewDate {
   flex: 1;
   text-align: right;
   font-size: 1.5rem;
-}
-
-.readerReviewsForm {
-  margin-top: 5%; 
-}
-
-.submitRatingAndButton {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5%;
-  padding: 0 30%;
 }
