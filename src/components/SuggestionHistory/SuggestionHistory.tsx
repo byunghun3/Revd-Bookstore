@@ -149,7 +149,7 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                         </StyledDialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <StyledButton onClick={() => handleDeleteSuggestion(id)}>Delete</StyledButton>
+                        <StyledButton type="button" onClick={() => handleDeleteSuggestion(id)}>Delete</StyledButton>
                     </DialogActions>
                 </Dialog>
             </SuggestionCard>

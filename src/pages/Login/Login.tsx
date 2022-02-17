@@ -105,8 +105,9 @@ export const Login: FC<LoginProps> = ({ }) => {
 
     console.log(email)
 
-    // const handleLogIn = (e: React.FormEvent<HTMLFormElement>) => {
-    const handleLogIn = () => {
+    const handleLogIn = (e: React.FormEvent<HTMLFormElement>) => {
+        // const handleLogIn = () => {
+        e.preventDefault()
         const userExists = users.filter((el: any) => {
             return email === el.email
         }).find((el: any) => {
@@ -138,13 +139,11 @@ export const Login: FC<LoginProps> = ({ }) => {
             setCurrentUser(newCurrentUser)
 
             localStorage.setItem("currentUser", JSON.stringify(newCurrentUser))
-            // localStorage.setItem("users", JSON.stringify(users))
 
-            navigate(-1)
+            // navigate(-1)
 
             setIsLoggedIn(true)
         } else {
-            // e.preventDefault()
             setIsUserInvalid(true)
         }
     }
@@ -153,8 +152,8 @@ export const Login: FC<LoginProps> = ({ }) => {
         <div className={classes.loginPage}>
             <LoginCard>
                 <StyledAccountCircleIcon />
-                <div className={classes.loginContent}>
-                    {/* <form className={classes.loginContent} onSubmit={(e) => handleLogIn(e)}> */}
+                {/* <div className={classes.loginContent}> */}
+                <form className={classes.loginContent} onSubmit={(e) => handleLogIn(e)}>
                     {isUserInvalid && <div className={classes.noUserExists}>Incorrect email or password</div>}
                     {/* <div className={userMatchError !== "" ? classes.passwordErrorMessage : classes.passwordNoErrorMessage}>{userMatchError}</div> */}
                     <UsernameForm variant="outlined">
@@ -177,9 +176,9 @@ export const Login: FC<LoginProps> = ({ }) => {
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value) }}
                             endAdornment={<InputAdornment position="end">
                                 <IconButton
-                                    type="button"
                                     aria-label="toggle password visibility"
                                     // size="large"
+                                    type="button"
                                     onClick={handleClickShowPassword}
                                     // onMouseDown={handleMouseDownPassword}
                                     edge="end"
@@ -196,25 +195,26 @@ export const Login: FC<LoginProps> = ({ }) => {
                         </span> */}
                     <div>
                         <Link className={classes.link} to="/forgotpassword">
-                            <ForgotPWButton>
+                            <ForgotPWButton type="button">
                                 Forgot password?
                             </ForgotPWButton>
                         </Link>
                     </div>
-                    <form onSubmit={handleLogIn}>
-                        <LogInButton color="primary" variant="contained" type="submit">
-                            Log in
-                        </LogInButton>
-                    </form>
+                    {/* <form onSubmit={handleLogIn}> */}
+                    <LogInButton color="primary" variant="contained" type="submit">
+                        Log in
+                    </LogInButton>
+                    {/* </form> */}
                     <div className={classes.signUpContent}>
                         <span className={classes.signUpText}>Don&apos;t have account?</span>
                         <Link className={classes.link} to="/signup">
-                            <SignUpButton>
+                            <SignUpButton type="button">
                                 Sign up
                             </SignUpButton>
                         </Link>
                     </div>
-                </div>
+                    {/* </div> */}
+                </form>
             </LoginCard>
         </div >
     )

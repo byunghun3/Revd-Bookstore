@@ -48,7 +48,7 @@ export const OrderComplete = (props: Props) => {
                     You will receive a confirmation email shortly.
                 </div>
                 <Link className={classes.browseLink} to="/browse">
-                    <BrowseButton>
+                    <BrowseButton type="button">
                         Explore more books
                     </BrowseButton>
                 </Link>

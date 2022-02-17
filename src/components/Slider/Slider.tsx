@@ -136,7 +136,7 @@ export const Slider: FC = () => {
                 <SliderThreeTextBox>
                     <div className={classes.sliderThreeContent}>Recommend a book for review</div>
                     <Link className={classes.browseLink} to="/suggest">
-                        <SuggestButton variant="contained">Suggest</SuggestButton>
+                        <SuggestButton variant="contained" type="button">Suggest</SuggestButton>
                     </Link>
                 </SliderThreeTextBox>
             </SlideContainer>

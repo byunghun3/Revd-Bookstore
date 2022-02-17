@@ -186,7 +186,7 @@ export const Suggest = (props: Props) => {
                     </SubmitButton>
                 </form>
                 <Link className={classes.browseLink} to="/browse">
-                    <BrowseButton>
+                    <BrowseButton type="button">
                         Explore more books
                     </BrowseButton>
                 </Link>

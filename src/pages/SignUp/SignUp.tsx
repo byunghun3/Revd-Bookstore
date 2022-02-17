@@ -221,6 +221,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
+                                        type="button"
                                         onClick={handleClickShowPassword}
                                         // onMouseDown={handleMouseDownPassword}
                                         edge="end"
@@ -244,6 +245,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                                 endAdornment={<InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
+                                        type="button"
                                         onClick={handleClickShowPassword}
                                         // onMouseDown={handleMouseDownPassword}
                                         edge="end"

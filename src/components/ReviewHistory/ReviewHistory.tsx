@@ -77,12 +77,12 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
     }
 
     const handleEditReview = (e: React.FormEvent<HTMLFormElement>, id: string) => {
+        e.preventDefault()
         const reviewDetails = reviews.map((el: any) => el.id === id ?
             { ...el, review: { ...el.review, comment: editComments } } :
             el
         )
         console.log(id, reviewDetails)
-        e.preventDefault()
 
 
         if (!isEditing) {
@@ -161,7 +161,7 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
                     <DialogActions>
                         {/* <form onSubmit={() => handleDeleteReview(id)}> */}
                         {/* <StyledButton type="submit">Delete</StyledButton> */}
-                        <StyledButton onClick={() => handleDeleteReview(id)}>Delete</StyledButton>
+                        <StyledButton type="button" onClick={() => handleDeleteReview(id)}>Delete</StyledButton>
                         {/* </form> */}
                     </DialogActions>
                 </Dialog>

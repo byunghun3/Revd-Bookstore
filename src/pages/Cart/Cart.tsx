@@ -152,6 +152,7 @@ export const Cart: FC<CartProps> = ({ }) => {
             <RemoveButton
                 // variant="contained"
                 color="error"
+                type="button"
                 onClick={() => handleRemoveFromCart(book.id)}
             >
                 Remove

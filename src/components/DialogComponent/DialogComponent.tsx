@@ -36,7 +36,7 @@ const DialogComponent: FC<DialogComponentProps> = ({ open, onClose, onClick, Con
                 </StyledDialogContentText>
             </DialogContent>
             <DialogActions>
-                <StyledButton onClick={onClick}>{ButtonText}</StyledButton>
+                <StyledButton type="button" onClick={onClick}>{ButtonText}</StyledButton>
             </DialogActions>
         </Dialog>
     )

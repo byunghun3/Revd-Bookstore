@@ -83,7 +83,7 @@ function About() {
                             <p>We have a collection of 12 books at any given time. We will rotate in a new book every month, with the oldest book in the collection rotating out each month as well. So each book will be available for purchase for at 1 year.</p>
                             <p>Our collection includes both fiction and nonfiction books to suit your taste. We also have books available in hard copy, ebook, audiobook format to suit your needs. </p>
                             <Link className={classes.link} to="/browse">
-                                <StyledButton variant="outlined">Explore our books</StyledButton>
+                                <StyledButton type="button" variant="outlined">Explore our books</StyledButton>
                             </Link>
                         </div>
                         {/* </div> */}
@@ -95,7 +95,7 @@ function About() {
                             <p>One of our goals at Revd is to build an online community where readers can discuss, review, and react together on books. </p>
                             <p>So we encourage you to suggest us a book to review and add to our collection! We won&apos;t be able to get through every book soon enough, but our new monthly book will always be pulled from the suggestions.</p>
                             <Link className={classes.link} to="/suggest">
-                                <StyledButton variant="contained">Suggest</StyledButton>
+                                <StyledButton type="button" variant="contained">Suggest</StyledButton>
                             </Link>
                         </div>
                         <div className={classes.imageBlock}>

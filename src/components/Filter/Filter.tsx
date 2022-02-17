@@ -29,7 +29,7 @@ export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearBu
                     <MenuItem value="Fiction">Fiction</MenuItem>
             </Select>
             </FormControl > */}
-            {showClearButton && <ClearButton onClick={onClick}>Clear Filter</ClearButton>}
+            {showClearButton && <ClearButton type="button" onClick={onClick}>Clear Filter</ClearButton>}
             <select className={classes.select} name="filter" value={filter} onChange={onChange}>
                 <option value="" disabled>Filter</option>
                 <option value="EBOOK">Ebook</option>
