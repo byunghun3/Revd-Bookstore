@@ -198,8 +198,8 @@ export const Suggest = (props: Props) => {
                 open={showDialog}
                 onClose={handleCloseDialog}
                 onClick={handleGoToLogin}
-                ContentText="Please log in to submit your suggestion"
-                ButtonText="Log In"
+                contentText="Please log in to submit your suggestion"
+                buttonText="Log In"
             />
             {/* <Dialog
                 open={showAlert}

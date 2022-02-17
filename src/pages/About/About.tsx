@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
 import { Card, Button } from "@mui/material"
@@ -11,6 +11,7 @@ import SuggestABookImageFour from "../../assets/images/alexandra-fuller-wkgv7I2V
 import SuggestABookImageFive from "../../assets/images/pexels-helena-lopes-711009.jpg"
 import { styled } from "@mui/system"
 import classes from "./About.module.css"
+import DialogComponent from "../../components/DialogComponent/DialogComponent"
 
 const SectionCardRow = styled(Card)({
     display: "flex",
@@ -39,6 +40,12 @@ const StyledButton = styled(Button)({
 })
 
 function About() {
+    const [showDialog, setShowDialog] = useState(false)
+
+    const handleCloseDialog = () => {
+        setShowDialog(false)
+    }
+
     return (
         <div className={classes.aboutPage}>
             <div className={classes.aboutContainer}>
@@ -115,24 +122,32 @@ function About() {
                     {/* </div> */}
                     {/* <div className={classes.sectionFour} id="section-attribution"> */}
                     <SectionCardCol id="section-attribution">
-                        <div className={classes.sectionContent}>
-                            <div className={classes.sectionTitle}>Attribution</div>
-                            <ul className={classes.sectionContent}>
-                                <li><a target="_blank" rel="noopener noreferrer" href="https://icons8.com/icon/f6WWkElFBgtA/book">Book</a> icon by <a target="_blank" rel="noopener noreferrer" href="https://icons8.com">Icons8</a></li>
-                                <li>Photo by <a href="https://unsplash.com/@dietteh06?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">DiEtte Henderson</a> on <a href="https://unsplash.com/s/photos/christmas-present?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
-                                <li>Photo by <a href="https://unsplash.com/@lexoge?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexei Maridashvili</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
-                                <li>Photo by <a href="https://unsplash.com/@eugi1492?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Eugenio Mazzone</a> on <a href="https://unsplash.com/s/photos/bookstore?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
-                                <li>Photo by <a href="https://unsplash.com/@matt__feeney?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">matthew Feeney</a> on <a href="https://unsplash.com/s/photos/public-library?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
-                                <li>Photo by <a href="https://unsplash.com/@alexandrajf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexandra Fuller</a> on <a href="https://unsplash.com/s/photos/reading-together?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
-                                <li>Photo by cottonbro from Pexels</li>
-                                <li>&ldquo;Books Transparent&rdquo; by transparentpng.com is licensed under CC BY 4.0</li>
-                                <li>Photo by Helena Lopes from Pexels</li>
-                                <li>Photo by Ichad Windhiagiri from Pexels</li>
-                                <li>Photo by cottonbro from Pexels</li>
-                                <li>Greenlights slider https://professionalhairdresser.co.uk/news/book-club-greenlights-by-matthew-mcconaughey/</li>
-                            </ul>
+                        <div className={classes.sectionContentAttribution}>
+                            <div className={classes.sectionTitleAttribution} onClick={() => { setShowDialog(true) }}>See Attributions</div>
+                            <p>Credits for free images used in this website</p>
                         </div>
-                        {/* </div> */}
+                        <DialogComponent
+                            open={showDialog}
+                            onClose={handleCloseDialog}
+                            onClick={() => { setShowDialog(false) }}
+                            contentText={
+                                <ul className={classes.sectionContent}>
+                                    <li><a className={classes.attributionLink} target="_blank" rel="noopener noreferrer" href="https://icons8.com/icon/f6WWkElFBgtA/book">Book</a> icon by <a className={classes.attributionLink} target="_blank" rel="noopener noreferrer" href="https://icons8.com">Icons8</a></li>
+                                    <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@dietteh06?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">DiEtte Henderson</a> on <a className={classes.attributionLink} href="https://unsplash.com/s/photos/christmas-present?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                                    <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@lexoge?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexei Maridashvili</a> on <a className={classes.attributionLink} href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                                    <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@eugi1492?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Eugenio Mazzone</a> on <a className={classes.attributionLink} href="https://unsplash.com/s/photos/bookstore?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                                    <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@matt__feeney?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">matthew Feeney</a> on <a className={classes.attributionLink} href="https://unsplash.com/s/photos/public-library?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                                    <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@alexandrajf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexandra Fuller</a> on <a className={classes.attributionLink} href="https://unsplash.com/s/photos/reading-together?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                                    <li>Photo by cottonbro from Pexels</li>
+                                    <li>&ldquo;Books Transparent&rdquo; by transparentpng.com is licensed under CC BY 4.0</li>
+                                    <li>Photo by Helena Lopes from Pexels</li>
+                                    <li>Photo by Ichad Windhiagiri from Pexels</li>
+                                    <li>Photo by cottonbro from Pexels</li>
+                                    <li>Greenlights slider https://professionalhairdresser.co.uk/news/book-club-greenlights-by-matthew-mcconaughey/</li>
+                                </ul>
+                            }
+                            buttonText="Close"
+                        />
                     </SectionCardCol>
                 </div>
             </div>
