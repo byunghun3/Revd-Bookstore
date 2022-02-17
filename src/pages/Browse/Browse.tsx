@@ -28,9 +28,13 @@ export const Browse: FC<BrowseProps> = () => {
     const books = BooksData
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setFilterValue(e.currentTarget.value)
-        setShowBookList(false)
-        setShowClearButton(true)
+        if (e.currentTarget.value === "All") {
+            setShowBookList(true)
+        } else {
+            setFilterValue(e.currentTarget.value)
+            setShowBookList(false)
+            setShowClearButton(true)
+        }
     }
 
     const handleClearFilter = (e: React.MouseEvent<HTMLButtonElement>) => {

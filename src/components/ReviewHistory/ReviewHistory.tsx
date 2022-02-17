@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState, useContext } from "react"
+import { Link } from "react-router-dom"
 import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
@@ -51,6 +52,7 @@ const StyledButton = styled(Button)({
 
 interface ReviewHistoryProps {
     initialComment: string
+    bookId: number
     id: string
     reviewRating: number
     reviewTitle: string
@@ -59,7 +61,7 @@ interface ReviewHistoryProps {
     date: string
 }
 
-const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRating,
+const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, id, reviewRating,
     reviewTitle, reviewAuthor, date }) => {
     const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
     const [editComments, setEditComments] = useState(initialComment)
@@ -111,9 +113,11 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, id, reviewRatin
             <ReviewCard key={id} elevation={0}>
                 <ReaderRating rating={reviewRating} />
                 <div className={classes.bookInfo}>
-                    <div className={classes.bookTitle}>
-                        {reviewTitle}
-                    </div>
+                    <Link className={classes.link} to={`/browse/${bookId}`}>
+                        <div className={classes.bookTitle}>
+                            {reviewTitle}
+                        </div>
+                    </Link>
                     <div className={classes.bookAuthor}>
                         {reviewAuthor}
                     </div>

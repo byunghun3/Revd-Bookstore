@@ -69,6 +69,7 @@ export const Profile = (props: Props) => {
             initialComment={el.review.comment}
             // handleEdit={() => updateReview(el.id, )}
             // onChange
+            bookId={el.review.bookId}
             id={el.id}
             reviewRating={el.review.rating}
             reviewTitle={el.review.title}
@@ -84,6 +85,7 @@ export const Profile = (props: Props) => {
         return <ReviewHistory
             key={el.id}
             initialComment={el.review.comment}
+            bookId={el.review.bookId}
             id={el.id}
             reviewRating={el.review.rating}
             reviewTitle={el.review.title}

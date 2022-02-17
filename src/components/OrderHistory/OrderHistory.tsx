@@ -1,5 +1,5 @@
 import React, { FC, useContext } from "react"
-import { LoginContext } from "../../contexts/LoginContext"
+import { Link } from "react-router-dom"
 import Grid from "@mui/material/Grid"
 import { OrdersData } from "../../data/OrdersData"
 import { styled } from "@mui/system"
@@ -30,7 +30,9 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
         return <ItemGrid item key={order.id} id={order.id}>
             <div className={classes.orderImage}>
                 {order.details.map((book: any) => {
-                    return <img className={classes.bookCover} key={book.image} src={book.image} alt="" />
+                    return <Link key={book.id} to={`/browse/${book.id}`}>
+                        <img className={classes.bookCover} src={book.image} alt="" />
+                    </Link>
                 })}
             </div>
             <div className={classes.orderId}>
@@ -67,7 +69,9 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
         return <ItemGrid item key={order.id} id={order.id}>
             <div className={classes.orderImage}>
                 {order.details.map((book: any) => {
-                    return <img className={classes.bookCover} key={book.image} src={book.image} alt="" />
+                    return <Link key={book.id} to={`/browse/${book.id}`}>
+                        <img className={classes.bookCover} src={book.image} alt="" />
+                    </Link>
                 })}
             </div>
             <div className={classes.orderId}>

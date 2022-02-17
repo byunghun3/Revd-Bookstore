@@ -19,19 +19,10 @@ interface FilterProps {
 export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearButton }) => {
     return (
         <div className={classes.filter}>
-            {/* <FormControl>
-                <InputLabel>Filter</InputLabel>
-                <Select value={filter} onChange={onChange}>
-                    <MenuItem value="EBOOK">Ebook</MenuItem>
-                    <MenuItem value="AUDIOBOOK">Audiobook</MenuItem>
-                    <MenuItem value="HARD COPY">Hard copy</MenuItem>
-                    <MenuItem value="Nonfiction">Nonfiction</MenuItem>
-                    <MenuItem value="Fiction">Fiction</MenuItem>
-            </Select>
-            </FormControl > */}
-            {showClearButton && <ClearButton type="button" onClick={onClick}>Clear Filter</ClearButton>}
+            {/* {showClearButton && <ClearButton type="button" onClick={onClick}>Clear Filter</ClearButton>} */}
             <select className={classes.select} name="filter" value={filter} onChange={onChange}>
                 <option value="" disabled>Filter</option>
+                <option value="All">All</option>
                 <option value="EBOOK">Ebook</option>
                 <option value="AUDIOBOOK">Audiobook</option>
                 <option value="HARD COPY">Hard copy</option>
