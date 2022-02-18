@@ -13,15 +13,33 @@ const HeaderToolbar = styled(Toolbar)({
     // display: "flex",
     justifyContent: "space-between",
     alignItems: "end",
-    maxWidth: "100%"
+    maxWidth: "100%",
+    // backgroundColor: "#d7ccc8",
+    // backgroundColor: "#01579b",
+    // backgroundColor: "#4db6ac",
+    // backgroundColor: "#66bb6a",
+    // backgroundColor: "#80cbc4",
     // width: "100%"
 })
 
 const NavBarToolbar = styled(Toolbar)({
     maxWidth: "100%",
     // width: "100%",
-    backgroundColor: "#d7ccc8"
+    // backgroundColor: "#d7ccc8"
     // backgroundColor: "#01579b"
+    // backgroundColor: "#4db6ac"
+    // backgroundColor: "#66bb6a"
+    // backgroundColor: "#80cbc4",
+    // backgroundColor: "#607d8b",
+    // backgroundColor: "#795548",
+    // backgroundColor: "#e57373",
+    // backgroundColor: "#1565c0",
+    // backgroundColor: "#0d47a1",
+    // backgroundColor: "#1a237e",
+    // backgroundColor: "#3f51b5",
+    // backgroundColor: "#311b92",
+    // backgroundColor: "#58B19F",
+    backgroundColor: "#487eb0",
 })
 
 const StyledAccountIcon = styled(AccountCircleIcon)({
@@ -29,6 +47,7 @@ const StyledAccountIcon = styled(AccountCircleIcon)({
     marginRight: "0.25rem",
     fontSize: "2.5rem",
     color: "black"
+    // color: "white"
 })
 
 const StyledCartIcon = styled(ShoppingCartIcon)({
@@ -36,6 +55,7 @@ const StyledCartIcon = styled(ShoppingCartIcon)({
     marginLeft: "0.25rem",
     fontSize: "2.5rem",
     color: "black"
+    // color: "white"
 })
 
 function Header() {
@@ -63,7 +83,7 @@ function Header() {
             >
                 <HeaderToolbar>
                     <div className={classes.leftSection}>
-                        <img className={classes.logo} src={Logo} alt="" />
+                        {/* <img className={classes.logo} src={Logo} alt="" /> */}
                         <Link to="/" className={classes.headerLink}>
                             <span className={classes.title}>Revd Bookstore</span>
                         </Link>
