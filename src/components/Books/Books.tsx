@@ -48,11 +48,12 @@ type BooksProps = {
     type: string
     price: number
     stock: number
+    sale: number
     status: string
     // onSubmit: any
 }
 
-export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, status }) => {
+export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, sale, status }) => {
     const [showDetails, setShowDetails] = useState(false)
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
 
@@ -126,7 +127,8 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                                 <MenuBookOutlinedIcon className={classes.bookTypeIcon} />}&nbsp;
                         <span className={classes.bookTypeWord}>{type}</span></div>
                     <div className={classes.bookRating}><BookRating rating={rating} /></div>
-                    <div className={classes.bookPrice}>${price}</div>
+                    <div className={`${sale > 0 ? classes.bookPriceStrike : classes.bookPrice}`}>${price}</div>
+                    {sale > 0 ? <div className={classes.bookPrice}>${(price - (price * sale)).toFixed(2)}</div> : null}
                 </form>
             </BookCard>
             <div className={classes.bookStock}>{stock < 4 ? <div>Only {stock} books left in stock</div> : null}</div>

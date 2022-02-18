@@ -56,6 +56,7 @@ export const Browse: FC<BrowseProps> = () => {
                     type={book.type}
                     price={book.price}
                     stock={book.stock}
+                    sale={book.sale}
                     status={book.status}
                 />
             </Grid>
@@ -73,6 +74,7 @@ export const Browse: FC<BrowseProps> = () => {
                     type={book.type}
                     price={book.price}
                     stock={book.stock}
+                    sale={book.sale}
                     status={book.status}
                 />
             </Grid>
@@ -95,6 +97,7 @@ export const Browse: FC<BrowseProps> = () => {
                 type={book.type}
                 price={book.price}
                 stock={book.stock}
+                sale={book.sale}
                 status={book.status}
             />
         </Grid>

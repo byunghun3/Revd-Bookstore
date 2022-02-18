@@ -22,6 +22,7 @@ export const BooksData = [
         rating: 3,
         price: 4.99,
         stock: Infinity,
+        sale: 0,
         status: "new"
     },
     {
@@ -34,6 +35,7 @@ export const BooksData = [
         rating: 4.5,
         price: 4.99,
         stock: 3,
+        sale: 0,
         status: "old"
     },
     {
@@ -46,6 +48,7 @@ export const BooksData = [
         rating: 4,
         price: 4.99,
         stock: Infinity,
+        sale: 0,
         status: "old"
     },
     {
@@ -58,6 +61,7 @@ export const BooksData = [
         rating: 3.5,
         price: 4.99,
         stock: Infinity,
+        sale: 0,
         status: "old"
     },
     {
@@ -70,6 +74,7 @@ export const BooksData = [
         rating: 4.5,
         price: 4.99,
         stock: Infinity,
+        sale: 0,
         status: "old"
     },
     {
@@ -82,6 +87,7 @@ export const BooksData = [
         rating: 4.5,
         price: 4.99,
         stock: 100,
+        sale: 0,
         status: "old"
     },
     {
@@ -94,6 +100,7 @@ export const BooksData = [
         rating: 4,
         price: 4.99,
         stock: Infinity,
+        sale: 0,
         status: "old"
     },
     {
@@ -106,6 +113,7 @@ export const BooksData = [
         rating: 4.5,
         price: 4.99,
         stock: Infinity,
+        sale: 0,
         status: "old"
     },
     {
@@ -118,6 +126,7 @@ export const BooksData = [
         rating: 2.5,
         price: 4.99,
         stock: Infinity,
+        sale: 0,
         status: "old"
     },
     {
@@ -130,6 +139,7 @@ export const BooksData = [
         rating: 3.5,
         price: 4.99,
         stock: Infinity,
+        sale: 0,
         status: "old"
     },
     {
@@ -142,6 +152,7 @@ export const BooksData = [
         rating: 4.5,
         price: 4.99,
         stock: 100,
+        sale: 0.2,
         status: "old"
     },
     {
@@ -154,6 +165,7 @@ export const BooksData = [
         rating: 4,
         price: 4.99,
         stock: Infinity,
+        sale: 0.2,
         status: "old"
     }
 ]

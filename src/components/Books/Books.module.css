@@ -60,7 +60,14 @@
 }
 
 .bookPrice {
+    margin: 0.1rem 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.bookPriceStrike {
     margin: 0.1rem 0;
+    color: red;
+    text-decoration: line-through;
     font-size: 1.2rem;
 }
 
