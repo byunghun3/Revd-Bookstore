@@ -32,8 +32,15 @@
     /* background-image: url("../../assets/images/paper-texture.jpg"); */
     background-color: white;
     /* border: solid black; */
+}
 
-
+@media (max-width: 900px){
+    .sideNav {
+        display: none;
+    }
+    .sideNavGroup {
+        display: none;
+    }
 }
 
 .sideNavTop {
