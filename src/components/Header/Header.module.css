@@ -5,8 +5,8 @@
     justify-content: flex-start;
     align-items: center;
     /* min-width: 40%; */
-    min-width: 50%;
-    margin-bottom: 0.5rem;
+    /* min-width: 50%; */
+    /* margin-bottom: 0.5rem; */
     /* vertical-align: bottom; */
     /* border: solid black; */
 }
@@ -44,11 +44,10 @@
     /* vertical-align: middle; */
     /* margin-bottom: -3%; */
     /* min-height: 5rem; */
-    min-height: 100%;
-    min-width: 50%;
+    /* min-height: 100%; */
+    /* min-width: 50%; */
     font-size: 1.7rem;
     /* border: solid black; */
-
 }
 
 .greeting {
@@ -65,7 +64,7 @@
 .navLink {
     margin: 2rem;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     text-decoration: none;
     transition: ease 1s;
 }
@@ -77,8 +76,8 @@
 
 .activeNavLink {
     vertical-align: middle;
-    margin: 2rem;
-    font-size: 2rem;
+    margin: 0 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: white;
     text-decoration: none;
@@ -87,4 +86,18 @@
 
 .activeNavLink:hover {
     cursor: pointer;
+}
+
+.expandedNavLink {
+    margin: 2rem;
+    color: white;
+    font-size: 1.7rem;
+    text-decoration: none;
+    transition: ease 3s;
+}
+
+@media (max-width: 500px) {
+    .navLink {
+        display: none;
+    }
 }
