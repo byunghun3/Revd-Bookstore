@@ -69,30 +69,15 @@ const NavBar = styled(Toolbar)({
 const ExpandedNavBar = styled(Toolbar)({
     minHeight: "7rem",
     maxWidth: "100%",
-    // "@media (max-width: 500px)": {
-    // position: "relative",
-    // display: "flex"
-    // justifyContent: "flex-end",
-    //     alignItems: "center",
-    // },
-    // border: "solid black",
-    // width: "100%",
-    // backgroundColor: "#d7ccc8"
-    // backgroundColor: "#01579b"
-    // backgroundColor: "#4db6ac"
-    // backgroundColor: "#66bb6a"
-    // backgroundColor: "#80cbc4",
-    // backgroundColor: "#607d8b",
-    // backgroundColor: "#795548",
-    // backgroundColor: "#e57373",
-    // backgroundColor: "#1565c0",
-    // backgroundColor: "#0d47a1",
-    // backgroundColor: "#1a237e",
-    // backgroundColor: "#3f51b5",
-    // backgroundColor: "#311b92",
-    // backgroundColor: "#58B19F",
-    // backgroundColor: "#487eb0",
     backgroundColor: "black",
+    color: "white",
+    fontSize: "1.7rem",
+    transition: "ease 0.3s",
+    "&:hover": {
+        backgroundColor: "white",
+        color: "black",
+        cursor: "pointer"
+    }
 })
 
 const StyledMenuIcon = styled(MenuIcon)({
@@ -169,10 +154,18 @@ function Header() {
                     <StyledMenuIcon onClick={handleExpandMenu} />
                 </NavBar>
                 {isExpanded && <div>
-                    <ExpandedNavBar><NavLink to="/about" className={classes.expandedNavLink} onClick={handleExpandMenu}>About</NavLink></ExpandedNavBar>
-                    <ExpandedNavBar><NavLink to="/browse" className={classes.expandedNavLink} onClick={handleExpandMenu}>Browse</NavLink></ExpandedNavBar>
-                    <ExpandedNavBar><NavLink to="/suggest" className={classes.expandedNavLink} onClick={handleExpandMenu}>Suggest</NavLink></ExpandedNavBar>
-                    <ExpandedNavBar><NavLink to="/contact" className={classes.expandedNavLink} onClick={handleExpandMenu}>Contact</NavLink></ExpandedNavBar>
+                    <NavLink to="/about" className={classes.expandedNavLink} onClick={handleExpandMenu}>
+                        <ExpandedNavBar>About</ExpandedNavBar>
+                    </NavLink>
+                    <NavLink to="/browse" className={classes.expandedNavLink} onClick={handleExpandMenu}>
+                        <ExpandedNavBar>Browse</ExpandedNavBar>
+                    </NavLink>
+                    <NavLink to="/suggest" className={classes.expandedNavLink} onClick={handleExpandMenu}>
+                        <ExpandedNavBar>Suggest</ExpandedNavBar>
+                    </NavLink>
+                    <NavLink to="/contact" className={classes.expandedNavLink} onClick={handleExpandMenu}>
+                        <ExpandedNavBar>Contact</ExpandedNavBar>
+                    </NavLink>
                 </div>
                 }
             </AppBar>

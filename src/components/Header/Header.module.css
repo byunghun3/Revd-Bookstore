@@ -89,14 +89,17 @@
 }
 
 .expandedNavLink {
-    margin: 2rem;
-    color: white;
-    font-size: 1.7rem;
+    /* margin: 2rem; */
+    /* color: white; */
+    /* font-size: 1.7rem; */
     text-decoration: none;
-    transition: ease 3s;
+    /* transition: ease 3s; */
 }
 
 @media (max-width: 500px) {
+    .greeting {
+        display: none;
+    }
     .navLink {
         display: none;
     }
