@@ -8,33 +8,6 @@ import { styled } from "@mui/system"
 import classes from "./PaymentInfo.module.css"
 import { useHref } from "react-router-dom"
 
-const CardNumberForm = styled(FormControl)({
-    marginTop: "1.2rem",
-    width: "80%"
-})
-
-const CardNameForm = styled(FormControl)({
-    width: "80%"
-})
-
-const ExpiryForm = styled(FormControl)({
-    margin: "0 1.2rem",
-    width: "38%",
-})
-
-const CvcForm = styled(FormControl)({
-    margin: "0 1.2rem",
-    width: "38%",
-})
-
-const StyledInputLabel = styled(InputLabel)({
-    fontSize: "1.5rem"
-})
-
-const StyledOutlinedInput = styled(OutlinedInput)({
-    fontSize: "1.5rem"
-})
-
 interface PaymentInfoProps {
     cardName: string
     cardNumber: string
@@ -53,6 +26,34 @@ interface PaymentInfoProps {
     expiryErrorText: string
     cvcErrorText: string
 }
+
+const CardNumberForm = styled(FormControl)({
+    margin: "1.2rem",
+    width: "80%"
+})
+
+const CardNameForm = styled(FormControl)({
+    margin: "1.2rem",
+    width: "80%"
+})
+
+const ExpiryForm = styled(FormControl)({
+    margin: "1.2rem",
+    width: "38%",
+})
+
+const CvcForm = styled(FormControl)({
+    margin: "1.2rem",
+    width: "38%",
+})
+
+const StyledInputLabel = styled(InputLabel)({
+    fontSize: "1.5rem"
+})
+
+const StyledOutlinedInput = styled(OutlinedInput)({
+    fontSize: "1.5rem"
+})
 
 export const PaymentInfo: FC<PaymentInfoProps> = ({
     cardName, cardNumber, expiry, cvc, focus, onFocus,
@@ -87,7 +88,9 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     onFocus={onFocus}
                     error={cardNumberError}
                     required />
-                <div className={cardNumberErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{cardNumberErrorText}</div>
+                {cardNumberError &&
+                    <div className={classes.errorMessage}>{cardNumberErrorText}</div>
+                }
             </CardNumberForm>
             {/* </div> */}
             <CardNameForm variant="outlined">
@@ -100,7 +103,6 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     onChange={onChangeName}
                     onFocus={onFocus}
                     required />
-                <div className={classes.noErrorMessage}></div>
             </CardNameForm>
             <ExpiryForm variant="outlined">
                 <StyledInputLabel>Expiration Date</StyledInputLabel>
@@ -113,7 +115,9 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     onFocus={onFocus}
                     error={expiryError}
                     required />
-                <div className={expiryErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{expiryErrorText}</div>
+                {expiryError &&
+                    <div className={classes.errorMessage}>{expiryErrorText}</div>
+                }
             </ExpiryForm>
             <CvcForm variant="outlined">
                 <StyledInputLabel>CVC</StyledInputLabel>
@@ -126,7 +130,9 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     onFocus={onFocus}
                     error={cvcError}
                     required />
-                <div className={cvcErrorText !== "" ? classes.errorMessage : classes.noErrorMessage}>{cvcErrorText}</div>
+                {cvcError &&
+                    <div className={classes.errorMessage}>{cvcErrorText}</div>
+                }
             </CvcForm>
             {/* </div> */}
         </div>

@@ -15,18 +15,6 @@
 }
 
 .errorMessage {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 1.9rem;
-    margin-left: 2%;
-    width: 100%;
     color: red;
-    font-size: 1.6rem;
-}
-
-.noErrorMessage {
-    /* margin-top: -20px; */
-    margin-left: 15%;
-    margin-bottom: 37px;
+    font-size: 1.3rem;
 }

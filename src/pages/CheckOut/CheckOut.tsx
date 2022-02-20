@@ -9,25 +9,30 @@ import { styled } from "@mui/system"
 import classes from "./Checkout.module.css"
 import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
 
-const ReviewCard = styled(Card)({
+const InfoCard = styled(Card)({
     position: "relative",
-    minWidth: "40vw",
-    margin: "5%"
+    width: "60vw",
+    margin: "5%",
+    "@media (max-width: 499px)": {
+        minWidth: "28rem"
+    }
+
 })
 
 const CheckoutCard = styled(Card)({
     position: "relative",
     height: "75%",
-    minWidth: "30vw",
-    margin: "5% 5% 5% 0"
+    width: "40vw",
+    margin: "5% 5% 5% 0",
+    "@media (max-width: 499px)": {
+        margin: "3rem 0 5rem 0",
+        // marginBottom: "5rem",
+        width: "25rem"
+    }
 })
 
 const CartButton = styled(Button)({
-    position: "absolute",
-    top: "50%",
-    right: "0",
-    fontSize: "1.3rem",
-    transform: "translate(-50%, -50%)"
+    fontSize: "1.3rem"
 })
 
 const CheckOutButton = styled(Button)({
@@ -190,7 +195,7 @@ export const Checkout = (props: CheckoutProps) => {
                 </Link>
             </div>
             <form className={classes.checkoutForm} onSubmit={handleSaveOrder}>
-                <ReviewCard>
+                <InfoCard>
                     <section className={classes.shippingInfoSection}>
                         <ShippingInfo
                             addressLineOne={addressLineOne}
@@ -233,7 +238,7 @@ export const Checkout = (props: CheckoutProps) => {
                             cvcErrorText={cvcErrorText}
                         />
                     </section>
-                </ReviewCard>
+                </InfoCard>
                 <CheckoutCard>
                     <OrderSummary
                         item={itemPrice.toFixed(2)}

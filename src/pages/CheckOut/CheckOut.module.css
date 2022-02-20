@@ -1,21 +1,24 @@
 .checkoutPage {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
 .checkoutHeader {
     position: relative;
-    width: 100%;
     align-items: center;
+    /* height: 2rem; */
+    width: 100%;
     font-size: 1.6rem;
+    /* border: solid black; */
 }
 
 .checkoutForm {
     display: flex;
     flex-direction: row;
+    /* width: 100%; */
 }
 
 .shippingInfoSection {
@@ -27,5 +30,30 @@
 }
 
 .buttonLink {
+    float: right;
+    margin: -2.5rem 3rem 0 0;
     text-decoration: none;
+    /* border: solid black; */
+}
+
+@media (max-width: 620px) {
+    .checkoutForm {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (max-width: 499px) {
+    .checkoutHeader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+        font-size: 1.6rem;
+    }
+    .buttonLink {
+        float: none;
+        margin: 2rem 0 0 0;
+    }
 }

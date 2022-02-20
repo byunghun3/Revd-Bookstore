@@ -210,7 +210,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                             onChange={handleValidateEmail}
                             required
                         />
-                        {isEmailInvalid && <div className={classes.errorMessage}>{emailInputError}</div>
+                        {isEmailInvalid && 
+                        <div className={classes.errorMessage}>{emailInputError}</div>
                         }
                     </StyledForm>
                     <StyledForm>
@@ -237,7 +238,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                             </InputAdornment>}
                             required
                         />
-                        {isPasswordInvalid && <div className={classes.errorMessage}>{passwordLengthError}</div>
+                        {isPasswordInvalid && 
+                        <div className={classes.errorMessage}>{passwordLengthError}</div>
                         }
                     </StyledForm>
                     <StyledForm>
@@ -262,7 +264,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                             </InputAdornment>}
                             required
                         />
-                        {isPasswordInvalid && <div className={classes.errorMessage}>{passwordMatchError}</div>
+                        {isPasswordInvalid && 
+                        <div className={classes.errorMessage}>{passwordMatchError}</div>
                         }
                     </StyledForm>
                     <SignUpButton color="primary" variant="contained" type="submit">Sign Up</SignUpButton>
