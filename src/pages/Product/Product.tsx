@@ -94,7 +94,7 @@ const Product: React.FC<Props> = ({ }) => {
         author: books[id - 1].author,
         image: books[id - 1].image,
         type: books[id - 1].type,
-        price: books[id - 1].price,
+        price: books[id - 1].sale > 0 ? (books[id - 1].price - (books[id - 1].price * books[id - 1].sale)).toFixed(2) : books[id - 1].price,
         stock: books[id - 1].stock,
         quantity: 1
       })
@@ -171,6 +171,7 @@ const Product: React.FC<Props> = ({ }) => {
             type={books[id - 1].type}
             rating={books[id - 1].rating}
             price={books[id - 1].price}
+            sale={books[id - 1].sale}
             stock={books[id - 1].stock}
             onSubmit={handleAddToCart}
           />

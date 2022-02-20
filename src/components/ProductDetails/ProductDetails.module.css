@@ -48,6 +48,13 @@
     font-size: 1.5rem;
 }
 
+.bookPriceStrike {
+    margin: 0.1rem 0;
+    color: red;
+    text-decoration: line-through;
+    font-size: 1.2rem;
+}
+
 .bookStock {
     margin-top: 1rem;
     color: red;

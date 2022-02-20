@@ -55,7 +55,6 @@ const RemoveButton = styled(Button)({
 })
 
 const CheckoutButton = styled(Button)({
-    // display: "flex"
     fontSize: "1.4rem",
     "@media (max-width: 499px)": {
         marginBottom: "10%",
@@ -178,7 +177,7 @@ export const Cart: FC<CartProps> = ({ }) => {
     return (
         <div className={classes.cartPage}>
             {cart.length ?
-                <form>
+                <form className={classes.cartContent}>
                     <div className={classes.cartTitle}><StyledCartIcon /> Cart <StyledCartIcon /></div>
                     <div className={classes.cartItems}>{cartItems}</div>
                     <div className={classes.totalPrice}>

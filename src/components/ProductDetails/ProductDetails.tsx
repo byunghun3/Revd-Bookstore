@@ -25,11 +25,12 @@ interface ProductDetailsProps {
     rating: number
     type: string
     price: number
+    sale: number
     stock: number
     onSubmit: React.FormEventHandler<HTMLFormElement>
 }
 
-const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, price, stock, onSubmit }) => {
+const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, price, sale, stock, onSubmit }) => {
     return (
         <BookDetailsCard>
             <form className={classes.bookDetails} onSubmit={onSubmit}>
@@ -46,7 +47,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, 
                     <div className={classes.bookTypeWord}>{type}</div>
                 </div>
                 <div className={classes.bookRating}><BookRating rating={rating} /></div>
-                <div className={classes.bookPrice}>${price}</div>
+                <div className={`${sale > 0 ? classes.bookPriceStrike : classes.bookPrice}`}>${price}</div>
+                {sale > 0 ? <div className={classes.bookPrice}>${(price - (price * sale)).toFixed(2)}</div> : null}
                 <StyledButton variant="outlined" type="submit">Add to Cart</StyledButton>
                 {stock < 4 ?
                     <div className={classes.bookStock}>

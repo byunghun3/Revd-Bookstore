@@ -85,7 +85,7 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                 author: author,
                 image: image,
                 type: type,
-                price: price,
+                price: sale > 0 ? (price - (price * sale)).toFixed(2) : price,
                 stock: stock,
                 quantity: 1
             })
