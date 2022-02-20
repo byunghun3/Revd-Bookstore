@@ -1,6 +1,6 @@
 import React, { FC, useContext, useEffect } from "react"
 import { Route, Routes, useLocation, Navigate } from "react-router-dom"
-import HomePage from "../../pages/HomePage/HomePage"
+import { HomePage } from "../../pages/HomePage/HomePage"
 import About from "../../pages/About/About"
 import { Browse } from "../../pages/Browse/Browse"
 import { Suggest } from "../../pages/Suggest/Suggest"

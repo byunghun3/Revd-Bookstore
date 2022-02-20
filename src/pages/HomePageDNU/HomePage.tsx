@@ -6,8 +6,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { styled } from "@mui/system"
 import styles from "styled-components"
 import SliderImgOne from "../../assets/images/diette-henderson-egmEb0HgtgU-unsplash.jpg"
-import SliderImgTwo from "../../assets/images/greenlights-slider1.jpg"
-import SliderImgThree from "../../assets/images/alexei-maridashvili-gqk2hoqGAL0-unsplash1.jpg"
+import SliderImgTwo from "../../assets/images/greenlights-slider.jpeg"
+import SliderImgThree from "../../assets/images/alexei-maridashvili-gqk2hoqGAL0-unsplash.jpg"
 import classes from "./HomePage.module.css"
 
 
@@ -18,16 +18,12 @@ interface SliderProps {
 const SlideContainer = styles.div<SliderProps>`
     position: relative;
     display: flex;
-    height: 100%;
+    justifyContent: flex-end;
     maxWidth: 100%;
     transform: translateX(${(props) => props.newSlideOrder * -100}vw);
     transition: ease 1.0s;
 `
-// position: relative;
-// display: flex;
 // minHeight: 100vh;
-// justifyContent: flex - end;
-// maxWidth: 100 %;
 
 
 const LeftArrow = styled(ArrowBackIosIcon)({
@@ -181,13 +177,13 @@ const SliderThreeTextBox = styled(Box)({
 
 const SuggestButton = styled(Button)({
     marginBottom: "1.5rem",
-    fontSize: "2rem",
-    "@media (max-width: 550px)": {
-        fontSize: "1.5rem"
-    }
+    fontSize: "1.5rem",
+    // "@media (max-width: 550px)": {
+    //     fontSize: "1rem"
+    // }
 })
 
-export const HomePage: FC = () => {
+export const Slider: FC = () => {
     const [slideOrder, setSlideOrder] = useState(0)
 
     const handleClick = (e: React.MouseEvent<any>) => {
@@ -216,39 +212,39 @@ export const HomePage: FC = () => {
     // })
 
     return (
-        <div className={classes.homePage}>
+        <div className={classes.container}>
             <LeftArrow id="left" onClick={handleClick} />
             <RightArrow id="right" onClick={handleClick} />
             <SlideContainer newSlideOrder={slideOrder}>
-                <img src={SliderImgOne} alt="" className={classes.sliderOne} />
-                {/* <div className={classes.imageOne}> */}
-                <SliderOneTextBox>
-                    <div>Holiday Sale extended to 2/11</div>
-                    <div>20% off on select books</div>
-                </SliderOneTextBox>
-                {/* </div> */}
+                {/* <img src={SliderImgOne} alt="" className={classes.sliderOne} /> */}
+                <div className={classes.imageOne}>
+                    <SliderOneTextBox>
+                        <div>Holiday Sale extended to 2/11</div>
+                        <div>20% off on select books</div>
+                    </SliderOneTextBox>
+                </div>
             </SlideContainer>
             <SlideContainer newSlideOrder={slideOrder}>
-                <img src={SliderImgTwo} alt="" className={classes.sliderTwo} />
-                {/* <div className={classes.imageTwo}> */}
-                <SliderTwoTextBox>
-                    February&apos;s new book
-                </SliderTwoTextBox>
-                <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>&ldquo;Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...&rdquo;</div>
-                <div className={classes.triangle}></div>
-                {/* </div> */}
+                {/* <img src={SliderImgTwo} alt="" className={classes.sliderTwo} /> */}
+                <div className={classes.imageTwo}>
+                    <SliderTwoTextBox>
+                        February&apos;s new book
+                    </SliderTwoTextBox>
+                    <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>&ldquo;Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...&rdquo;</div>
+                    <div className={classes.triangle}></div>
+                </div>
                 {/* <BookButton variant="contained" type="button">See More</BookButton> */}
             </SlideContainer>
             <SlideContainer newSlideOrder={slideOrder}>
-                <img src={SliderImgThree} alt="" className={classes.sliderThree} />
-                {/* <div className={classes.imageThree}> */}
-                <SliderThreeTextBox>
-                    <div className={classes.sliderThreeContent}>Recommend a book for review</div>
-                    <Link className={classes.browseLink} to="/suggest">
-                        <SuggestButton variant="contained" type="button">Suggest</SuggestButton>
-                    </Link>
-                </SliderThreeTextBox>
-                {/* </div> */}
+                {/* <img src={SliderImgThree} alt="" className={classes.sliderThree} /> */}
+                <div className={classes.imageThree}>
+                    <SliderThreeTextBox>
+                        <div className={classes.sliderThreeContent}>Recommend a book for review</div>
+                        <Link className={classes.browseLink} to="/suggest">
+                            <SuggestButton variant="contained" type="button">Suggest</SuggestButton>
+                        </Link>
+                    </SliderThreeTextBox>
+                </div>
             </SlideContainer>
         </div>
     )

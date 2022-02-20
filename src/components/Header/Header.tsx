@@ -15,12 +15,15 @@ const HeaderToolbar = styled(Toolbar)({
     justifyContent: "center",
     alignItems: "end",
     maxWidth: "100%",
+    // yellow
     // backgroundColor: "#d7ccc8",
-    // backgroundColor: "#01579b",
+    // teal
     // backgroundColor: "#4db6ac",
-    // backgroundColor: "#66bb6a",
+    // turquoise
     // backgroundColor: "#80cbc4",
     // width: "100%"
+    // light blue
+    // backgroundColor: "#487eb0",
 })
 
 const StyledAccountIcon = styled(AccountCircleIcon)({
@@ -50,21 +53,17 @@ const NavBar = styled(Toolbar)({
     // },
     // border: "solid black",
     // width: "100%",
-    // backgroundColor: "#d7ccc8"
-    // backgroundColor: "#01579b"
-    // backgroundColor: "#4db6ac"
-    // backgroundColor: "#66bb6a"
-    // backgroundColor: "#80cbc4",
-    // backgroundColor: "#607d8b",
+    // brown
     // backgroundColor: "#795548",
-    // backgroundColor: "#e57373",
-    // backgroundColor: "#1565c0",
-    // backgroundColor: "#0d47a1",
-    // backgroundColor: "#1a237e",
-    // backgroundColor: "#3f51b5",
-    // backgroundColor: "#311b92",
+    // backgroundColor: "#8a5745",
+    // light green
     // backgroundColor: "#58B19F",
-    backgroundColor: "#487eb0",
+    // blue gray
+    // backgroundColor: "#607d8b",
+    // backgroundColor: "#7793a1",
+    // backgroundColor: "#83a3b5",
+    backgroundColor: "#6993ab",
+
 })
 
 const ExpandedNavBar = styled(Toolbar)({

@@ -1,9 +1,9 @@
-.homePage {
+.container {
+    /* position: relative; */
     display: flex;
-    width: 100%;
+    /* overflow: hidden; */
     min-height: 100vh;
-    position: relative;
-    overflow: hidden;
+    width: 100%;
 }
 
 /* @media (max-width: 450px) {
@@ -22,10 +22,6 @@
 .imageOne {
     /* height: 100vh; */
     /* width: 100vw; */
-    width: 100vw;
-    height: 200vh;
-    display: flex;
-    align-items: center;
     background-image: url("../../assets/images/diette-henderson-egmEb0HgtgU-unsplash.jpg");
     background-position: center;
     /* background-repeat: no-repeat; */
@@ -33,27 +29,22 @@
     background-size: cover;
     /* height: 100vh; */
     /* min-height: 100%; */
-    width: 100vw;
+    /* width: 100vw; */
     /* max-width: 100%; */
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     /* object-fit: cover; */
     /* object-position: 70%; */
 }
 
 .imageTwo {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
     background-image: url("../../assets/images/greenlights-slider.jpeg");
     background-position: center;
-    /* background-repeat: no-repeat; */
-    /* background-size: 100% 100%; */
-    background-size: cover;
-    /* min-height: 100vh; */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 100vh;
     width: 100vw;
-    /* max-width: 100%; */
-    /* overflow-x: hidden; */
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .imageThree {
@@ -118,7 +109,8 @@
 } */
 
 .sliderTwo {
-    min-height: 100vh;
+    /* margin-top: 5vh; */
+    /* min-height: 160vh; */
     position: relative;
     width: 100vw;
     object-fit: cover;
@@ -206,8 +198,7 @@
 
 .sliderThree {
     /* object-position: 60%; */
-    /* margin-top: -5%; */
-    min-height: 100vh;
+    margin-top: -5%;
     width: 100vw;
     object-fit: cover;
     /* height: 130%; */
