@@ -28,7 +28,15 @@ const ItemGrid = styled(Grid)({
     margin: "0 10%",
     padding: "2% 0",
     // borderTop: "solid gray 1px",
-    borderBottom: "solid #adadad 0.1rem"
+    borderBottom: "solid #adadad 0.1rem",
+    "@media (max-width: 499px)": {
+        margin: "10% 10%",
+        // display: "block",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        minHeight: "40vh"
+    }
 })
 
 const DownArrow = styled(ArrowDropDownIcon)({
@@ -48,7 +56,10 @@ const RemoveButton = styled(Button)({
 
 const CheckoutButton = styled(Button)({
     // display: "flex"
-    fontSize: "1.4rem"
+    fontSize: "1.4rem",
+    "@media (max-width: 499px)": {
+        marginBottom: "10%",
+    }
 })
 
 const EmptyCartIcon = styled(ShoppingCartOutlinedIcon)({
