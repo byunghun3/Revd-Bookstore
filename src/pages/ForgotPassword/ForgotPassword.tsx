@@ -10,12 +10,6 @@ import { styled } from "@mui/system"
 import classes from "./ForgotPassword.module.css"
 import { Card } from "@mui/material"
 
-const StyledAccountCircleIcon = styled(AccountCircleIcon)({
-    flex: "1",
-    marginTop: "5%",
-    fontSize: "3rem"
-})
-
 const ForgotPWCard = styled(Card)({
     display: "flex",
     flexDirection: "column",
@@ -23,8 +17,18 @@ const ForgotPWCard = styled(Card)({
     alignItems: "center",
     margin: "5% 0 10% 0",
     minHeight: "55vh",
-    width: "40rem"
+    width: "40rem",
+    "@media (max-width: 499px)": {
+        minHeight: "45vh",
+        width: "30rem"
+    }
 
+})
+
+const StyledAccountCircleIcon = styled(AccountCircleIcon)({
+    flex: "1",
+    marginTop: "5%",
+    fontSize: "3rem"
 })
 
 const EmailForm = styled(FormControl)({
@@ -96,54 +100,54 @@ export const ForgotPassword: FC<LoginProps> = ({ }) => {
             {/* {showForgotPassword && */}
             <ForgotPWCard>
                 <StyledAccountCircleIcon />
-                <form className={classes.forgotPasswordContent} onSubmit={handleSubmit}>
-                    {showForgotPassword &&
+                {showForgotPassword &&
+                    <form className={classes.forgotPasswordContent} onSubmit={handleSubmit}>
+                        {/* <div> */}
+                        <div className={classes.forgotPW}>Forgot your password?</div>
+                        <div className={classes.enterEmail}>Please enter your email address</div>
+                        <EmailForm variant="outlined">
+                            <StyledInputLabel>Email</StyledInputLabel>
+                            <StyledOutlinedInput
+                                label="Email"
+                                name="email"
+                                value={email}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
+                                required />
+                            {emailError && <div className={classes.errorMessage}>The email you entered does not exist</div>}
+                        </EmailForm>
+                        <SendLinkButton type="submit" color="primary" variant="contained">
+                            Send reset link
+                        </SendLinkButton>
                         <div>
-                            <div className={classes.forgotPW}>Forgot your password?</div>
-                            <div className={classes.enterEmail}>Please enter your email address</div>
-                            <EmailForm variant="outlined">
-                                <StyledInputLabel>Email</StyledInputLabel>
-                                <StyledOutlinedInput
-                                    label="Email"
-                                    name="email"
-                                    value={email}
-                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
-                                    required />
-                                {emailError && <div className={classes.errorMessage}>The email you entered does not exist</div>}
-                            </EmailForm>
-                            <SendLinkButton type="submit" color="primary" variant="contained">
-                                Send reset link
-                            </SendLinkButton>
-                            <div>
-                                <Link className={classes.link} to="/login">
-                                    <BackToLoginButton type="button">
-                                        Back to Login
-                                    </BackToLoginButton>
-                                </Link>
-                            </div>
-                            <div className={classes.signUpContent}>
-                                <span className={classes.signUpText}>Don&apos;t have account?</span>
-                                <Link className={classes.link} to="/signup">
-                                    <SignUpButton type="button">
-                                        Sign up
-                                    </SignUpButton>
-                                </Link>
-                            </div>
+                            <Link className={classes.link} to="/login">
+                                <BackToLoginButton type="button">
+                                    Back to Login
+                                </BackToLoginButton>
+                            </Link>
                         </div>
-                    }
-                    {resetLinkSent &&
-                        <div className={classes.linkSentContent}>
-                            <div className={classes.linkSent}>Password reset link has been sent to {email}!</div>
-                            <div>
-                                <Link className={classes.link} to="/login">
-                                    <BackToLoginButton type="button">
-                                        Back to login
-                                    </BackToLoginButton>
-                                </Link>
-                            </div>
+                        <div className={classes.signUpContent}>
+                            <span className={classes.signUpText}>Don&apos;t have account?</span>
+                            <Link className={classes.link} to="/signup">
+                                <SignUpButton type="button">
+                                    Sign up
+                                </SignUpButton>
+                            </Link>
                         </div>
-                    }
-                </form>
+                        {/* </div> */}
+                    </form>
+                }
+                {resetLinkSent &&
+                    <div className={classes.linkSentContent}>
+                        <div className={classes.linkSent}>Password reset link has been sent to {email}!</div>
+                        <div>
+                            <Link className={classes.link} to="/login">
+                                <BackToLoginButton type="button">
+                                    Back to login
+                                </BackToLoginButton>
+                            </Link>
+                        </div>
+                    </div>
+                }
             </ForgotPWCard>
             {/* } */}
             {/* {resetLinkSent &&

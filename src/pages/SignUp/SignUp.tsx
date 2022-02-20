@@ -17,7 +17,7 @@ import { styled } from "@mui/system"
 import classes from "./SignUp.module.css"
 import { Card, TextField } from "@mui/material"
 
-const LoginCard = styled(Card)({
+const SignUpCard = styled(Card)({
     // position: "relative",
     display: "flex",
     flexDirection: "column",
@@ -25,7 +25,11 @@ const LoginCard = styled(Card)({
     alignItems: "center",
     margin: "5% 0 10% 0",
     minHeight: "55vh",
-    width: "40vw",
+    width: "40rem",
+    "@media (max-width: 499px)": {
+        minHeight: "45vh",
+        width: "30rem"
+    }
 })
 
 const StyledAccountCircleIcon = styled(AccountCircleIcon)({
@@ -168,7 +172,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
     return (
         <div className={classes.signUpPage}>
             {/* <FormGrid> */}
-            <LoginCard>
+            <SignUpCard>
                 <StyledAccountCircleIcon />
                 <form className={classes.signUpContent} onSubmit={handleSubmit}>
                     <div>
@@ -263,7 +267,7 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                     </StyledForm>
                     <SignUpButton color="primary" variant="contained" type="submit">Sign Up</SignUpButton>
                 </form>
-            </LoginCard>
+            </SignUpCard>
             {/* </FormGrid> */}
         </div >
     )

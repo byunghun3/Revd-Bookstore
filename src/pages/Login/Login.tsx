@@ -25,8 +25,12 @@ const LoginCard = styled(Card)({
     margin: "5% 0 10% 0",
     // padding: "1% 0",
     minHeight: "55vh",
-    width: "40rem"
+    width: "40rem",
     // width: "30%"
+    "@media (max-width: 499px)": {
+        minHeight: "45vh",
+        width: "30rem"
+    }
 })
 
 const StyledAccountCircleIcon = styled(AccountCircleIcon)({
