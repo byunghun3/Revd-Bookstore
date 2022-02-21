@@ -13,7 +13,13 @@ const ReaderReviewCard = styled(Card)({
     margin: "0",
     padding: "2%",
     borderBottom: "solid #adadad 0.1rem",
-    borderRadius: "0%"
+    borderRadius: "0%",
+    "@media (max-width: 499px)": {
+        flexDirection: "column",
+        justifyContent: "space-between",
+        // height: "25vh"
+        // height: "200px"
+    }
 })
 
 const StyledButton = styled(Button)({
@@ -37,9 +43,11 @@ interface ReaderReviewProps {
 
 const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, lastName, date }) => {
     const [isExpanded, setIsExpanded] = useState(false)
+    const [showEllipsis, setShowEllipsis] = useState(false)
 
-    const handleExpand = () => {
+    const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
         setIsExpanded(!isExpanded)
+        console.log(e.currentTarget.clientHeight, e.currentTarget.scrollHeight)
     }
 
     return (
@@ -49,7 +57,7 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, l
                 {firstName}&nbsp;
                 {lastName}
             </div>
-            <div className={`${isExpanded ? classes.readerReviewCommentExpanded : classes.readerReviewComment}`} onClick={handleExpand}>{comment}</div>
+            <div className={`${isExpanded ? classes.readerReviewCommentExpanded : classes.readerReviewComment}`} onClick={(e) => handleExpand(e)}>{comment}</div>
             <div className={classes.readerReviewDate}>{date}</div>
         </ReaderReviewCard >
     )

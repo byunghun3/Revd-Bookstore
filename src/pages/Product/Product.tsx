@@ -18,6 +18,9 @@ import ProductReviews from "../../components/ProductReviews/ProductReviews"
 const ContainerGrid = styled(Grid)({
   display: "flex",
   justifyContent: "center",
+  // margin: "0",
+  // maxWidth: "100%",
+  // border: "solid black"
 })
 
 const ItemGrid = styled(Grid)({
@@ -34,7 +37,7 @@ const ReaderReviewGrid = styled(Grid)({
   justifyContent: "space-between",
   alignItems: "center",
   marginBottom: "5%",
-  width: "100%",
+  maxWidth: "100%",
   // border: "solid black"
 })
 

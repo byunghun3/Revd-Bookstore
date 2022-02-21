@@ -26,8 +26,11 @@ const StyledButton = styled(Button)({
 })
 
 const ReviewTextField = styled(TextField)({
+    margin: "1% 0",
     width: "60%",
-    margin: "1% 0"
+    "@media (max-width: 499px)": {
+        width: "100%"
+    }
 })
 
 interface ReaderReviewProps {
@@ -123,9 +126,9 @@ const ProductReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSub
     }
 
     return (
-        <div>
+        <div className={classes.productReviews}>
             <div className={classes.readerReviewsTitle}>Reader Reviews</div>
-            <div>
+            <div className={classes.displayedReviews}>
                 <div className={classes.avgReaderRating}>
                     <AvgReaderRating rating={avgRating} />
                     {avgRating ? avgRating.toFixed(1) : null}&nbsp;
@@ -159,14 +162,15 @@ const ProductReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSub
                     InputProps={{ style: { fontSize: 15 } }}
                     required
                 />
+                <DialogComponent
+                    open={open}
+                    onClose={onClose}
+                    onClick={onLogIn}
+                    contentText="Please log in to submit your review"
+                    buttonText="Log In"
+                />
             </form>
-            <DialogComponent
-                open={open}
-                onClose={onClose}
-                onClick={onLogIn}
-                contentText="Please log in to submit your review"
-                buttonText="Log In"
-            />
+
             {/* <Dialog
                 open={open}
                 onClose={onClose}

@@ -12,7 +12,11 @@ const BookDetailsCard = styled(Card)({
     margin: "10vh auto 0 auto",
     width: "60%",
     borderBottomLeftRadius: "0",
-    borderBottomRightRadius: "0"
+    borderBottomRightRadius: "0",
+    "@media (max-width: 499px)": {
+        margin: "0 auto",
+        width: "80%"
+    }
 })
 
 const StyledButton = styled(Button)({
