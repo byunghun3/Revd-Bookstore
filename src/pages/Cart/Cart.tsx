@@ -142,7 +142,9 @@ export const Cart: FC<CartProps> = ({ }) => {
 
     const cartItems = cart.map((book: any) => {
         return <ItemGrid item key={book.id} id={book.id}>
-            <img className={classes.bookCover} src={book.image} alt="" />
+            <Link to={`/browse/${book.id}`}>
+                <img className={classes.bookCover} src={book.image} alt="" />
+            </Link>
             <div className={classes.bookInfo}>
                 <div className={classes.bookTitle}>{book.title}</div>
                 <div className={classes.bookAuthor}>{book.author}</div>
