@@ -18,7 +18,11 @@ const ReviewCard = styled(Card)({
     margin: "0",
     padding: "2%",
     borderBottom: "solid #adadad 1px",
-    borderRadius: "0%"
+    borderRadius: "0%",
+    "@media (max-width: 499px)": {
+        flexDirection: "column",
+        justifyContent: "space-between"
+    }
 })
 
 const ReviewTextField = styled(TextField)({
@@ -31,6 +35,10 @@ const StyledEditIcon = styled(EditIcon)({
     fontSize: "2rem",
     "&:hover": {
         cursor: "pointer"
+    },
+    "@media (max-width: 499px)": {
+        marginRight: "1rem",
+        marginBottom: "0"
     }
 })
 
@@ -39,6 +47,10 @@ const StyledRemoveIcon = styled(ClearIcon)({
     fontSize: "2rem",
     "&:hover": {
         cursor: "pointer"
+    },
+    "@media (max-width: 499px)": {
+        marginTop: "0",
+        marginLeft: "1rem"
     }
 })
 

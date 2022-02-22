@@ -86,3 +86,24 @@
   outline: none;
   background-color: transparent;
 }
+
+@media (max-width: 499px) {
+  .suggestionComment {
+    align-self: flex-start;
+    margin: 5% 0 0 1%;
+  }
+  .suggestionCommentExpanded {
+    align-self: flex-start;
+    margin: 5% 0 0 1%;
+  }
+  .suggestionIcons {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5%;
+    margin-left: 0;
+    /* border: solid black; */
+  }
+  .editButton {
+    margin-left: -5%;
+  }
+}

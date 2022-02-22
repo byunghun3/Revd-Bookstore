@@ -1,11 +1,44 @@
 .profileSection {
   display: flex;
+  /* flex-direction: column; */
   flex-direction: row;
   justify-content: center;
   width: 100%;
   font-size: 1.5rem;
   /* border: solid black; */
 }
+
+/* .firstName {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: solid black;
+}
+
+.firstNameLabel {
+  margin-right: 0.5%;
+}
+
+.firstNameValue {
+  margin-left: 0.5%;
+}
+
+.lastName {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: solid black;
+}
+
+.lastNameLabel {
+  margin-right: 0.5%;
+}
+
+.lastNameValue {
+  margin-left: 0.5%;
+} */
 
 .labels {
   flex: 1;
@@ -31,6 +64,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  word-break: break-word;
   margin-left: 0.5%;
   /* border: solid black; */
 }
@@ -57,4 +91,21 @@
 
 input {
   font-size: 1.5rem;
+}
+
+@media (max-width: 499px) {
+  .labels {
+    margin-right: 2%;
+  }
+  .values {
+    margin-left: 2%;
+  }
+  .profileLabel {
+    margin: 30% 0;
+  }
+  .profileValue {
+    margin: 15% 0;
+    width: 95%;
+    /* border: solid black; */
+  }
 }

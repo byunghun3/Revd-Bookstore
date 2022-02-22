@@ -13,7 +13,11 @@ const ItemGrid = styled(Grid)({
     margin: "0 10%",
     padding: "2% 0",
     // borderTop: "solid gray 1px",
-    borderBottom: "solid #adadad 0.1rem"
+    borderBottom: "solid #adadad 0.1rem",
+    "@media (max-width: 499px)": {
+        flexDirection: "column",
+        justifyContent: "space-between"
+    }
 })
 
 interface OrderHistoryProps {
