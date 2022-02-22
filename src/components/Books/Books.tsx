@@ -54,7 +54,7 @@ type BooksProps = {
 }
 
 export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, sale, status }) => {
-    const [showDetails, setShowDetails] = useState(true)
+    const [showDetails, setShowDetails] = useState(false)
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
 
     useEffect(() => {

@@ -20,18 +20,26 @@ const SectionCardRow = styled(Card)({
     padding: "5% 0",
     minHeight: "100vh",
     width: "100%",
-    backgroundColor: "white"
+    backgroundColor: "white",
+    "@media (max-width: 699px)": {
+        flexDirection: "column",
+        minHeight: "75vh",
+    }
 })
 
 const SectionCardCol = styled(Card)({
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
     margin: "1% 0",
     padding: "5% 0",
     minHeight: "100vh",
     width: "100%",
-    backgroundColor: "white"
+    backgroundColor: "white",
+    "@media (max-width: 699px)": {
+        minHeight: "75vh",
+    }
 })
 
 const StyledButton = styled(Button)({
@@ -75,17 +83,17 @@ function About() {
                             <p>During the COVID-19 pandemic, two friends, Kim and Olivia, decided to bring together their passion for reading to help connect a group of people in this time of hardship and isolation. Reading can become a source of inner peace, growth, self-discovery, confidence, empathy, compassion and so much more.</p>
                             <p>We offer reduced pricing - all our books start at $4.99! - so that it can be affordable for almost everyone.</p>
                         </div>
-                        <div className={classes.sectionImage}>
+                        <div className={classes.sectionImageOurStory}>
                             <img className={classes.ourStoryImage} src={OurStoryImage} alt="" />
                         </div>
                     </SectionCardRow>
                     {/* </div> */}
                     {/* <div className={classes.sectionTwo} id="section-our-collection"> */}
                     <SectionCardCol id="section-our-collection">
-                        <div className={classes.sectionImage}>
+                        <div className={classes.sectionImageCollection}>
                             <img className={classes.ourCollectionImage} src={OurCollectionImage} alt="" />
                         </div>
-                        <div className={classes.sectionContent}>
+                        <div className={classes.sectionContentCollection}>
                             <div className={classes.sectionTitle}>Explore our collection!</div>
                             <p>We have a collection of 12 books at any given time. We will rotate in a new book every month, with the oldest book in the collection rotating out each month as well. So each book will be available for purchase for at 1 year.</p>
                             <p>Our collection includes both fiction and nonfiction books to suit your taste. We also have books available in hard copy, ebook, audiobook format to suit your needs. </p>
@@ -97,7 +105,7 @@ function About() {
                     </SectionCardCol>
                     {/* <div className={classes.sectionThree} id="section-suggest-a-book"> */}
                     <SectionCardCol id="section-suggest-a-book">
-                        <div className={classes.sectionContent}>
+                        <div className={classes.sectionContentSuggest}>
                             <div className={classes.sectionTitle}>Suggest a book!</div>
                             <p>One of our goals at Revd is to build an online community where readers can discuss, review, and react together on books. </p>
                             <p>So we encourage you to suggest us a book to review and add to our collection! We won&apos;t be able to get through every book soon enough, but our new monthly book will always be pulled from the suggestions.</p>
@@ -105,14 +113,14 @@ function About() {
                                 <StyledButton type="button" variant="contained">Suggest</StyledButton>
                             </Link>
                         </div>
-                        <div className={classes.imageBlock}>
+                        <div className={classes.sectionImageSuggest}>
                             <div className={classes.imageBlockSection}>
                                 <img className={classes.suggestABookImage} src={SuggestABookImageOne} alt="" />
                                 <img className={classes.suggestABookImage} src={SuggestABookImageTwo} alt="" />
                             </div>
-                            <div className={classes.imageBlockSection}>
+                            {/* <div className={classes.imageBlockSection}>
                                 <img className={classes.suggestABookImageCenter} src={SuggestABookImageThree} alt="" />
-                            </div>
+                            </div> */}
                             <div className={classes.imageBlockSection}>
                                 <img className={classes.suggestABookImage} src={SuggestABookImageFour} alt="" />
                                 <img className={classes.suggestABookImage} src={SuggestABookImageFive} alt="" />
