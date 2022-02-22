@@ -5,3 +5,9 @@
     align-items: center;
     min-height: 100vh;
 }
+
+@media (max-width: 499px) {
+    .errorImage {
+        width: 100%;
+    }
+}

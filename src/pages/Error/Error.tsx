@@ -5,7 +5,7 @@ import classes from "./Error.module.css"
 function Error() {
     return (
         <div className={classes.errorPage}>
-            <img src={PageNotFound} alt="" />
+            <img className={classes.errorImage} src={PageNotFound} alt="" />
         </div>
     )
 }
