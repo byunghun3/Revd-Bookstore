@@ -14,18 +14,27 @@ import DialogComponent from "../../components/DialogComponent/DialogComponent"
 
 const TitleForm = styled(FormControl)({
     margin: "1% 0",
-    width: "30%"
+    width: "30%",
+    "@media (max-width: 499px)": {
+        width: "50%"
+    }
 })
 
 const AuthorForm = styled(FormControl)({
     margin: "1% 0",
-    width: "30%"
+    width: "30%",
+    "@media (max-width: 499px)": {
+        width: "50%"
+    }
 })
 
 const CommentTextField = styled(TextField)({
     marginTop: "1%",
     width: "40%",
-    fontSize: "1.5rem"
+    fontSize: "1.5rem",
+    "@media (max-width: 499px)": {
+        width: "70%"
+    }
 })
 
 const StyledInputLabel = styled(InputLabel)({

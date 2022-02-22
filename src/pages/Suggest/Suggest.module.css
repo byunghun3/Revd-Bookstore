@@ -47,16 +47,17 @@
     width: 10vw;
 }
 
-@media (max-width: 500px) {
-    .bookCover {
-    margin-bottom: -0.3rem;
-    width: 50vw;
-    }
-}
-
 .bookList {
     justify-content: center;
     align-items: center;
-    margin-top: 1rem 0 3rem 0;
+    margin: 1rem 0 3rem 0;
     width: 40%;
+    /* border: solid black; */
+}
+
+@media (max-width: 499px) {
+    .bookCover {
+        margin-bottom: -0.3rem;
+        width: 40vw;
+    }
 }
