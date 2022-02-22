@@ -2,7 +2,7 @@ import React, { FC, useState } from "react"
 import { Link } from "react-router-dom"
 import { Container } from "@mui/material"
 import { Grid } from "@mui/material"
-import { Button } from "@mui/material"
+import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
 import { Filter } from "../../components/Filter/Filter"
 import { Books } from "../../components/Books/Books"
 import { BooksData } from "../../data/BooksData"
@@ -27,11 +27,16 @@ export const Browse: FC<BrowseProps> = () => {
     const [showClearButton, setShowClearButton] = useState(false)
     const books = BooksData
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        if (e.currentTarget.value === "All") {
+    // const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleChange = (e: SelectChangeEvent) => {
+        // const handleChange = (e: SelectChangeEvent<{ value: unknown }>) => {
+        // if (e.currentTarget.value === "All") {
+        if (e.target.value as string === "All") {
+            setFilterValue(e.target.value as string)
             setShowBookList(true)
         } else {
-            setFilterValue(e.currentTarget.value)
+            // setFilterValue(e.currentTarget.value)
+            setFilterValue(e.target.value as string)
             setShowBookList(false)
             setShowClearButton(true)
         }
@@ -105,8 +110,27 @@ export const Browse: FC<BrowseProps> = () => {
 
     return (
         <div className={classes.browsePage}>
+            <Filter
+                filter={filterValue}
+                onChange={handleChange}
+                onClick={handleClearFilter}
+                showClearButton={showClearButton}
+            />
+            {/* <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={filterValue}
+                    label="Age"
+                    onChange={handleChange}
+                >
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+            </FormControl> */}
             <Container>
-                <Filter filter={filterValue} onChange={handleChange} onClick={handleClearFilter} showClearButton={showClearButton} />
                 {/* <button>placeholder</button> */}
                 {/* <select name="sort"
                 value={props.sort} onChange={props.sortBooks}
