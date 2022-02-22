@@ -36,7 +36,14 @@
 .bookList {
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
+    margin: 1rem 0 3rem 0;
     width: 40%;
+}
+
+@media (max-width: 499px) {
+    .bookCover {
+        margin-bottom: -0.3rem;
+        width: 40vw;
+    }
 }
 
