@@ -54,7 +54,7 @@ type BooksProps = {
 }
 
 export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, sale, status }) => {
-    const [showDetails, setShowDetails] = useState(false)
+    const [showDetails, setShowDetails] = useState(true)
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
 
     useEffect(() => {
@@ -101,12 +101,12 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                 <form onSubmit={handleAddToCart}>
                     {showDetails &&
                         <span className={classes.bookAction}>
-                            <div className={classes.iconBackground}>
+                            <div className={classes.infoIconBackground}>
                                 <Link to={`/browse/${id}`}>
                                     <Info />
                                 </Link>
                             </div>
-                            <button className={classes.iconBackground} type="submit">
+                            <button className={classes.cartIconBackground} type="submit">
                                 <Cart />
                             </button>
                         </span>}

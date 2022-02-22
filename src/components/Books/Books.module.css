@@ -34,7 +34,6 @@
     font-weight: 500;
 }
 
-
 .bookAuthorName {
     color: #007338;
     font-weight: 800;
@@ -47,12 +46,12 @@
 
 .bookTypeIcon {
     vertical-align: middle;
-    color: grey;
+    color: #606e77;
 }
 
 .bookTypeWord {
     vertical-align: middle;
-    color: grey;
+    color: #606e77;
 }
 
 .bookRating {
@@ -86,12 +85,12 @@
     transform: translate(-50%, -50%);
 }
 
-.iconBackground {
+.infoIconBackground {
     position: relative;
     margin: 2rem;
-    height: 30%; 
+    height: 9em; 
     /* height: 7.5rem;  */
-    width: 30%;
+    width: 9em;
     /* width: 7.5rem; */
     border: none;
     background-color: rgba(255, 255, 255, 0.7);
@@ -99,7 +98,40 @@
     transition: ease 0.3s;
 }
 
-.iconBackground:hover {
+.infoIconBackground:hover {
     cursor: pointer;
     transform: scale(1.25);
+}
+
+.cartIconBackground {
+    position: relative;
+    margin: 2rem;
+    height: 6.75em; 
+    /* height: 7.5rem;  */
+    width: 6.75em;
+    /* width: 7.5rem; */
+    border: none;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transition: ease 0.3s;
+}
+
+.cartIconBackground:hover {
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+@media (max-width: 359px) {
+    .bookAction {
+        top: 35%; 
+        flex-direction: column;
+    }
+    .infoIconBackground {
+        height: 7rem; 
+        width: 7rem;
+    }
+    .cartIconBackground {
+        height: 5.25em; 
+        width: 5.25em;
+    }
 }
