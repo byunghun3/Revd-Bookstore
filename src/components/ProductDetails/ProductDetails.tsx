@@ -53,7 +53,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, 
                 <div className={classes.bookRating}><BookRating rating={rating} /></div>
                 <div className={`${sale > 0 ? classes.bookPriceStrike : classes.bookPrice}`}>${price}</div>
                 {sale > 0 ? <div className={classes.bookPrice}>${(price - (price * sale)).toFixed(2)}</div> : null}
-                <StyledButton variant="outlined" type="submit">Add to Cart</StyledButton>
+                <StyledButton variant="contained" type="submit">Add to Cart</StyledButton>
                 {stock < 4 ?
                     <div className={classes.bookStock}>
                         Only {stock} books left in stock

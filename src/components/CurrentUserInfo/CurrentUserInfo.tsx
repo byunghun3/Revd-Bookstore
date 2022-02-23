@@ -206,7 +206,14 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
     return (
         <div>
             {userProfile}
-            <StyledButton variant="outlined" color="error" type="button" onClick={() => { setShowDialog(true) }}>Log Out</StyledButton>
+            <StyledButton
+                variant="outlined"
+                color="error"
+                type="button"
+                onClick={() => { setShowDialog(true) }}
+            >
+                Log Out
+            </StyledButton>
             <DialogComponent
                 open={showDialog}
                 onClose={handleCloseDialog}

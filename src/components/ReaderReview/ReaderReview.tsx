@@ -43,7 +43,6 @@ interface ReaderReviewProps {
 
 const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, lastName, date }) => {
     const [isExpanded, setIsExpanded] = useState(false)
-    const [showEllipsis, setShowEllipsis] = useState(false)
 
     const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
         setIsExpanded(!isExpanded)
