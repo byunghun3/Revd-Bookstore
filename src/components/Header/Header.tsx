@@ -15,6 +15,7 @@ const HeaderToolbar = styled(Toolbar)({
     justifyContent: "center",
     alignItems: "end",
     maxWidth: "100%",
+    // backgroundColor: "#ebeef0"
     // yellow
     // backgroundColor: "#d7ccc8",
     // teal
