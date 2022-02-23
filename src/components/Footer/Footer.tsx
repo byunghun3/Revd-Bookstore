@@ -117,7 +117,6 @@ export const Footer = (props: Props) => {
                         <DialogComponent
                             open={showDialog}
                             onClose={handleCloseDialog}
-                            onClick={() => { setShowDialog(false) }}
                             contentText={
                                 <div>
                                     <h1>Terms and Conditions</h1>
@@ -224,6 +223,8 @@ export const Footer = (props: Props) => {
                                     <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
                                 </div>
                             }
+                            color="error"
+                            onClick={() => { setShowDialog(false) }}
                             buttonText="Close"
                         />
                     </div>

@@ -13,12 +13,13 @@ const StyledButton = styled(Button)({
 interface DialogComponentProps {
     open: boolean
     onClose: any
-    onClick?: any
     contentText: string | React.ReactNode
+    color: "inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning" | undefined
+    onClick?: any
     buttonText?: string
 }
 
-const DialogComponent: FC<DialogComponentProps> = ({ open, onClose, onClick, contentText, buttonText }) => {
+const DialogComponent: FC<DialogComponentProps> = ({ open, onClose, contentText, color, onClick, buttonText }) => {
     // const [showAlert, setShowAlert] = useState(false)
 
     // const handleCloseAlert = () => {
@@ -36,7 +37,7 @@ const DialogComponent: FC<DialogComponentProps> = ({ open, onClose, onClick, con
                 </StyledDialogContentText>
             </DialogContent>
             <DialogActions>
-                <StyledButton type="button" onClick={onClick}>{buttonText}</StyledButton>
+                <StyledButton color={color} type="button" onClick={onClick}>{buttonText}</StyledButton>
             </DialogActions>
         </Dialog>
     )

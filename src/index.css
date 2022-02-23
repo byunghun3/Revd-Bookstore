@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Luxurious+Roman&family=PT+Serif&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Luxurious+Roman&family=PT+Serif&family=Satisfy&display=swap');
 
 html {
   /* overflow-x: hidden; */
@@ -7,7 +7,7 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Bangers', 'Segoe UI', 'Roboto', 'Bangers', 
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Roboto', 
     'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans' sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

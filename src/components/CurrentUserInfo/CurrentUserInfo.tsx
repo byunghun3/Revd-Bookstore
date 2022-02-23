@@ -210,8 +210,9 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
             <DialogComponent
                 open={showDialog}
                 onClose={handleCloseDialog}
-                onClick={handleLogOut}
                 contentText="Are you sure you want to log out?"
+                color="error"
+                onClick={handleLogOut}
                 buttonText="Log Out"
             />
             {/* <Dialog

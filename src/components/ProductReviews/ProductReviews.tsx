@@ -165,8 +165,9 @@ const ProductReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSub
                 <DialogComponent
                     open={open}
                     onClose={onClose}
-                    onClick={onLogIn}
                     contentText="Please log in to submit your review"
+                    color="primary"
+                    onClick={onLogIn}
                     buttonText="Log In"
                 />
             </form>

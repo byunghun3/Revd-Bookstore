@@ -110,7 +110,7 @@ function About() {
                             <p>One of our goals at Revd is to build an online community where readers can discuss, review, and react together on books. </p>
                             <p>So we encourage you to suggest us a book to review and add to our collection! We won&apos;t be able to get through every book soon enough, but our new monthly book will always be pulled from the suggestions.</p>
                             <Link className={classes.link} to="/suggest">
-                                <StyledButton type="button" variant="contained">Suggest</StyledButton>
+                                <StyledButton type="button" variant="outlined">Suggest</StyledButton>
                             </Link>
                         </div>
                         <div className={classes.sectionImageSuggest}>
@@ -137,7 +137,6 @@ function About() {
                         <DialogComponent
                             open={showDialog}
                             onClose={handleCloseDialog}
-                            onClick={() => { setShowDialog(false) }}
                             contentText={
                                 <ul className={classes.sectionContent}>
                                     <li><a className={classes.attributionLink} target="_blank" rel="noopener noreferrer" href="https://icons8.com/icon/f6WWkElFBgtA/book">Book</a> icon by <a className={classes.attributionLink} target="_blank" rel="noopener noreferrer" href="https://icons8.com">Icons8</a></li>
@@ -152,10 +151,12 @@ function About() {
                                     <li>Photo by Ichad Windhiagiri from Pexels</li>
                                     <li>Photo by cottonbro from Pexels</li>
                                     <li>Greenlights slider https://professionalhairdresser.co.uk/news/book-club-greenlights-by-matthew-mcconaughey/</li>
-                                    <li><a href="https://icons8.com/icon/f6WWkElFBgtA/book">Book</a> icon by <a href="https://icons8.com">Icons8</a></li>
-                                    <li><a href="https://icons8.com/icon/80765/new">New</a> icon by <a href="https://icons8.com">Icons8</a></li>
+                                    <li><a className={classes.attributionLink} href="https://icons8.com/icon/f6WWkElFBgtA/book">Book</a> icon by <a href="https://icons8.com">Icons8</a></li>
+                                    <li><a className={classes.attributionLink} href="https://icons8.com/icon/80765/new">New</a> icon by <a href="https://icons8.com">Icons8</a></li>
                                 </ul>
                             }
+                            color="error"
+                            onClick={() => { setShowDialog(false) }}
                             buttonText="Close"
                         />
                     </SectionCardCol>
