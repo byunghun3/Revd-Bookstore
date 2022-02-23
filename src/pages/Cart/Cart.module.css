@@ -31,10 +31,13 @@
     align-items: center;
 }
 
-.bookCover {
+.bookImage {
     flex: 1;
     margin: 0 2%;
-    width: 15%;
+}
+
+.bookCover {
+    width: 100%;
 }
 
 .bookInfo{

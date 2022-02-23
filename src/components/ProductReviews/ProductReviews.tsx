@@ -114,7 +114,7 @@ const ProductReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSub
                         fillColor="#FDCC0D"
                         emptyColor="#EEE"
                     />
-                    <StyledButton variant="contained" type="submit">Submit</StyledButton>
+                    <StyledButton variant="outlined" type="submit">Submit</StyledButton>
                 </div>
                 <ReviewTextField
                     multiline
