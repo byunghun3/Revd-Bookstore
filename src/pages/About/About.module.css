@@ -27,23 +27,27 @@
     flex-direction: column;
     margin: 3% 0;
     width: 11.8%;
-    border: solid hsl(216, 60%, 35%) 0.1rem;
+    border: solid #0d3d85 0.1rem;
     border-radius: 1rem;
     background-color: white;
 }
 
 .sideNavTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 3%;
+    height: 5rem;
     border-top-right-radius: 0.8rem;
     border-top-left-radius: 0.8rem;
-    background-color: #244f8f;
+    background-color: #0d3d85;
     color: white;
     font-size: 2.5rem;
 }
 
 .sideNavLink {
     padding: 5% 0;
-    border-top: solid #244f8f 0.1rem;
+    border-top: solid #0d3d85 0.1rem;
     color: black;
     font-size: 1.6rem;
     text-decoration: none;
@@ -63,14 +67,14 @@
 }
 
 .sectionTitle {
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 .sectionContentOurStory {
     flex: 1;
     margin-top: 7%; 
     padding: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     /* border: solid black 1px; */
 }
 
@@ -92,7 +96,7 @@
 .sectionContentCollection {
     flex: 1;
     padding: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     /* border: solid black 1px;    */
 }
 
@@ -113,7 +117,7 @@
 .sectionContentSuggest {
     flex: 1;
     padding: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
 }
 
 .sectionImageSuggest {
@@ -167,7 +171,7 @@
     /* display: flex; */
     margin-top: -40%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
 }
 
 .sectionTitleAttribution {

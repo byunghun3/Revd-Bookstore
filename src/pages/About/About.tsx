@@ -14,7 +14,7 @@ import { styled } from "@mui/system"
 import classes from "./About.module.css"
 import DialogComponent from "../../components/DialogComponent/DialogComponent"
 
-const SectionCardRow = styled(Card)({
+const OurStorySection = styled(Card)({
     display: "flex",
     flexDirection: "row",
     margin: "1% 0",
@@ -28,7 +28,7 @@ const SectionCardRow = styled(Card)({
     }
 })
 
-const SectionCardCol = styled(Card)({
+const ColumnSection = styled(Card)({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -43,7 +43,7 @@ const SectionCardCol = styled(Card)({
     }
 })
 
-const AttributionsSection = styled(Card)({
+const AttributionSection = styled(Card)({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -94,20 +94,20 @@ function About() {
                 </div>
                 <div className={classes.aboutContent}>
                     {/* <div className={classes.sectionOne} id="section-our-story"> */}
-                    <SectionCardRow id="section-our-story">
+                    <OurStorySection id="section-our-story">
                         <div className={classes.sectionContentOurStory}>
                             <div className={classes.sectionTitle}>Welcome to Revd Bookstore!</div>
                             <p>Revd is an online bookstore with a mission to foster a community of readers through only providing the books that we have read and reviewed personally.</p>
                             <p>During the COVID-19 pandemic, two friends, Kim and Olivia, decided to bring together their passion for reading to help connect a group of people in this time of hardship and isolation. Reading can become a source of inner peace, growth, self-discovery, confidence, empathy, compassion and so much more.</p>
-                            <p>We offer reduced pricing - all our books start at $4.99! - so that it can be affordable for almost everyone.</p>
+                            <p>We offer books at affordable prices - all our books start at $4.99! Be sure to look out for sales.</p>
                         </div>
                         <div className={classes.sectionImageOurStory}>
                             <img className={classes.ourStoryImage} src={OurStoryImage} alt="" />
                         </div>
-                    </SectionCardRow>
+                    </OurStorySection>
                     {/* </div> */}
                     {/* <div className={classes.sectionTwo} id="section-our-collection"> */}
-                    <SectionCardCol id="section-our-collection">
+                    <ColumnSection id="section-our-collection">
                         <div className={classes.sectionImageCollection}>
                             <img className={classes.ourCollectionImage} src={OurCollectionImage} alt="" />
                         </div>
@@ -120,13 +120,13 @@ function About() {
                             </Link>
                         </div>
                         {/* </div> */}
-                    </SectionCardCol>
+                    </ColumnSection>
                     {/* <div className={classes.sectionThree} id="section-suggest-a-book"> */}
-                    <SectionCardCol id="section-suggest-a-book">
+                    <ColumnSection id="section-suggest-a-book">
                         <div className={classes.sectionContentSuggest}>
                             <div className={classes.sectionTitle}>Suggest a book!</div>
                             <p>One of our goals at Revd is to build an online community where readers can discuss, review, and react together on books. </p>
-                            <p>So we encourage you to suggest us a book to review and add to our collection! We won&apos;t be able to get through every book soon enough, but our new monthly book will always be pulled from the suggestions.</p>
+                            <p>So we encourage you to suggest to us a book for us to review and add to our collection! We won&apos;t be able to get through every book soon enough, but our new monthly book will always be pulled from the suggestions.</p>
                             <Link className={classes.link} to="/suggest">
                                 <StyledButton type="button" variant="outlined">Suggest</StyledButton>
                             </Link>
@@ -144,10 +144,10 @@ function About() {
                                 <img className={classes.suggestABookImage} src={SuggestABookImageFive} alt="" />
                             </div>
                         </div>
-                    </SectionCardCol>
+                    </ColumnSection>
                     {/* </div> */}
                     {/* <div className={classes.sectionFour} id="section-attribution"> */}
-                    <AttributionsSection id="section-attribution">
+                    <AttributionSection id="section-attribution">
                         <div className={classes.sectionContentAttribution}>
                             <div className={classes.sectionTitleAttribution} onClick={() => { setShowDialog(true) }}>See Contributors</div>
                             <p>Thank you to everyone who has helped make this website more beautiful!</p>
@@ -179,7 +179,7 @@ function About() {
                             onClick={() => { setShowDialog(false) }}
                             buttonText="Close"
                         />
-                    </AttributionsSection>
+                    </AttributionSection>
                 </div>
             </div>
         </div>
