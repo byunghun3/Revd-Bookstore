@@ -45,6 +45,34 @@ const RightArrow = styled(ArrowForwardIosIcon)({
     cursor: "pointer"
 })
 
+const BrowseButton = styled(Button)({
+    marginTop: "5%",
+    borderColor: "black",
+    color: "black",
+    fontSize: "1.3rem",
+    "&:hover": {
+        color: "#1976d2"
+    },
+    "@media (max-width: 630px)": {
+        marginTop: "0",
+        fontSize: "1rem"
+    }
+})
+
+const GreenlightsButton = styled(Button)({
+    marginTop: "5%",
+    borderColor: "firebrick",
+    color: "firebrick",
+    fontSize: "1.7rem",
+    "&:hover": {
+        borderColor: "white",
+        color: "white"
+    },
+    "@media (max-width: 630px)": {
+        marginTop: "0"
+    }
+})
+
 const SuggestButton = styled(Button)({
     marginBottom: "1.5rem",
     color: "white",
@@ -89,8 +117,14 @@ export const HomePage: FC = () => {
             <SlideContainer newSlideOrder={slideOrder}>
                 <img src={SliderImgOne} alt="" className={classes.sliderOne} />
                 <div className={classes.sliderOneText}>
-                    <div className={classes.firstLine}>Holiday Sale extended to 2/11</div>
+                    <div className={classes.firstLine}>
+                        <div className={classes.holidaySale}>Holiday Sale</div>
+                        <div className={classes.saleDate}>extended to 2/11</div>
+                    </div>
                     <div className={classes.secondLine}>20% off on select books</div>
+                    <Link className={classes.link} to="/browse">
+                        <BrowseButton type="button" variant="outlined">Explore our books</BrowseButton>
+                    </Link>
                 </div>
             </SlideContainer>
             <SlideContainer newSlideOrder={slideOrder}>
@@ -98,15 +132,22 @@ export const HomePage: FC = () => {
                 <img className={classes.newIcon} src={NewIcon} alt="" />
                 <div className={classes.sliderTwoText}>
                     February&apos;s new book
+                    <Link className={classes.link} to="/browse/1">
+                        <GreenlightsButton type="button" variant="outlined">View more</GreenlightsButton>
+                    </Link>
                 </div>
-                <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>&ldquo;Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...&rdquo;</div>
+                {/* <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>&ldquo;Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...&rdquo;</div> */}
+                <div className={classes.sliderTwoQuote}>
+                    <div className={classes.quoteText}>&ldquo;Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...&rdquo;</div>
+                    <div className={classes.quoteBy}>- Matthew McConaughey</div>
+                </div>
                 <div className={classes.triangle}></div>
             </SlideContainer>
             <SlideContainer newSlideOrder={slideOrder}>
                 <img src={SliderImgThree} alt="" className={classes.sliderThree} />
                 <div className={classes.sliderThreeText}>
                     Recommend a book for review
-                    <Link className={classes.browseLink} to="/suggest">
+                    <Link className={classes.link} to="/suggest">
                         <SuggestButton variant="contained" type="button">Suggest</SuggestButton>
                     </Link>
                 </div>

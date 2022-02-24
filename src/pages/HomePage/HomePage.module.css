@@ -72,19 +72,33 @@
     z-index: 1;
     top: 25%;
     right: 5%;
-    width: 30rem;
+    /* right: 12%; */
+    width: 50rem;
+    /* width: 30rem; */
     font-family: 'Bebas Neue';
     /* border: solid black; */
 }
 
 .firstLine {
     color: red;
-    font-size: 5rem;
+    font-size: 8rem;
 }
+
+/* .holidaySale {
+      text-shadow:
+    -0.4rem -0.4rem 0 #000,
+     0   -0.4rem 0 #000,
+     0.4rem -0.4rem 0 #000,
+     0.4rem  0   0 #000,
+     0.4rem  0.4rem 0 #000,
+     0    0.4rem 0 #000,
+    -0.4rem  0.4rem 0 #000,
+    -0.4rem  0   0 #000;
+} */
 
 .secondLine {
     color: black;
-    font-size: 3rem;
+    font-size: 5rem;
 }
 
 .sliderTwo {
@@ -102,6 +116,7 @@
     left: 15%;
     transform: translate(-50%, -50%);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -110,9 +125,36 @@
     border-radius: 3rem;
     background-color: transparent;
     /* background-color: lightyellow; */
+    color: firebrick;
+    font-family: 'PT Serif';
+    font-size: 6rem;
+}
+
+.sliderTwoQuote {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+	width: 30rem;
     color: white;
     font-family: 'PT Serif';
-    font-size: 4.5rem;
+}
+
+.quoteText {
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 2.5rem;
+}
+
+.quoteBy {
+    margin-top: 2rem;
+    width: 100%;
+    text-align: right;
+    font-size: 1.5rem;
 }
 
 .newIcon {
@@ -171,8 +213,8 @@
 .sliderThreeText {
     position: absolute;
     z-index: 1;
-    bottom: -25%;
-    left: 50%;
+    bottom: 20%;
+    left: 40%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
@@ -193,7 +235,7 @@
     color: white;
 }
 
-.browseLink {
+.link {
     text-decoration: none;
     /* color: navy; */
 }
@@ -202,6 +244,10 @@
     .chatBubble {
         right: 12%;
     }
+    /* .sliderOneText {
+        top: 25%;
+        right: 5%;
+    } */
 }
 
 @media (max-width: 960px) {
@@ -214,11 +260,20 @@
         right: 7%;
         width: 15rem;
     }
+    .firstLine {
+        font-size: 5rem;
+    }
+    .secondLine {
+        font-size: 3rem;
+    }
     .imageTwo {
         background-size: cover;
     /* background-position: 5%; */
     }
     .sliderTwoText {
+        display: none;
+    }
+    .sliderTwoQuote {
         display: none;
     }
     .newIcon {
@@ -232,14 +287,18 @@
     .chatBubble {
         display: none;
     }
-    .imageThree {
+    /* .imageThree {
         background-size: cover;
-    }
+    } */
 }
 
 @media (max-width: 800px) {
     .sliderThree {
         object-position: 70%;
+    }
+    .sliderThreeText {
+        bottom: -18%;
+        left: 50%;
     }
 }
 
@@ -259,12 +318,6 @@
 }
 
 @media (max-width: 550px) {
-    .sliderOneText {
-        top: 2%;
-        right: 5%;
-        width: 20rem;
-        font-size: 1.5rem;
-    }
     .newIcon {
         top: 27%;
         left: 35%;
@@ -275,11 +328,11 @@
     }
 }
 
-@media (max-width: 450px) {
+/* @media (max-width: 450px) {
     .imageTwo {
         background-position: 54%;
     }
     .imageThree {
         background-position: 65%;
     }
-}
+} */
