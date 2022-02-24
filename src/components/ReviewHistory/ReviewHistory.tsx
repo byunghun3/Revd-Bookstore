@@ -82,8 +82,12 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, id, rev
     const [isExpanded, setIsExpanded] = useState(false)
     const navigate = useNavigate()
 
-    const handleExpand = () => {
-        setIsExpanded(!isExpanded)
+    const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (e.currentTarget.scrollHeight > e.currentTarget.clientHeight) {
+            setIsExpanded(true)
+        } else if (isExpanded) {
+            setIsExpanded(false)
+        }
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -148,7 +152,7 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, id, rev
                         required
                     />
                     :
-                    <div className={`${isExpanded ? classes.readerReviewCommentExpanded : classes.readerReviewComment}`} onClick={handleExpand}>{editComments}</div>
+                    <div className={`${isExpanded ? classes.readerReviewCommentExpanded : classes.readerReviewComment}`} onClick={(e) => handleExpand(e)}>{editComments}</div>
                 }
                 <div className={classes.readerReviewDate}>{date}</div>
                 <div className={classes.readerReviewIcons}>

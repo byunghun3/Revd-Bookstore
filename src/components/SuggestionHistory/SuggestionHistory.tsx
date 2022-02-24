@@ -75,8 +75,12 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
     const [showDialog, setShowDialog] = useState(false)
     const [isExpanded, setIsExpanded] = useState(false)
 
-    const handleExpand = () => {
-        setIsExpanded(!isExpanded)
+    const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (e.currentTarget.scrollHeight > e.currentTarget.clientHeight) {
+            setIsExpanded(true)
+        } else if (isExpanded) {
+            setIsExpanded(false)
+        }
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -137,7 +141,7 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                         InputProps={{ style: { fontSize: 15 } }}
                         required
                     />
-                    : <div className={`${isExpanded ? classes.suggestionCommentExpanded : classes.suggestionComment}`} onClick={handleExpand}>
+                    : <div className={`${isExpanded ? classes.suggestionCommentExpanded : classes.suggestionComment}`} onClick={(e) => handleExpand(e)}>
                         {comment}
                     </div>
                 }

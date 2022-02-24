@@ -45,8 +45,11 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, l
     const [isExpanded, setIsExpanded] = useState(false)
 
     const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
-        setIsExpanded(!isExpanded)
-        console.log(e.currentTarget.clientHeight, e.currentTarget.scrollHeight)
+        if (e.currentTarget.scrollHeight > e.currentTarget.clientHeight) {
+            setIsExpanded(true)
+        } else if (isExpanded) {
+            setIsExpanded(false)
+        }
     }
 
     return (
