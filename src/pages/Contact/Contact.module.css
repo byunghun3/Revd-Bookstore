@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     min-height: 100vh;
 }
 
@@ -9,77 +10,76 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    margin: 4% 0 2rem 0;
+    margin: 4% 0;
     min-height: 50vh;
     /* border: solid black; */
 }
 
 .contactTitle {
-    /* margin: 2% 0; */
-    margin-bottom: 2%;
     font-size: 3rem;
 }
 
-.contactContent {
-    /* flex: 1; */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4rem;
-    padding: 4rem;
-    min-height: 10rem;
-    /* min-height: 20vh; */
-    width: 35rem;
-    /* min-width: 30%; */
-    background-color: rgb(236, 250, 255);
-    border: solid black;
-    font-size: 1.5rem;
-}
-
 .iconBackground {
-    position: absolute;
-    top: -35%;
-    /* left: 50%; */
-    /* flex: 1; */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: 5%; */
+    margin: 1% 0;
     height: 5rem; 
     width: 5rem;
-    /* height: 10vh;  */
-    /* margin: 0 0 -2.5% 0; */
-    /* margin: -35% 0 0 0; */
     border: none;
-    /* background-color: rgba(153, 151, 151, 0.616); */
-    background-color: navy;
-    /* border: solid black; */
+    background-color: #0d3d85;
     border-radius: 50%;
     transition: ease 0.3s;
+}
+
+.firstLine {
+    font-size: 1.7rem;
+}
+
+.contactLine {
+    width: 100%;
+    text-align: left;
+    /* border: solid black; */
+}
+
+.hoursLine {
+    margin-top: -1.5rem;
+}
+
+.contactLabels {
+    font-weight: 700;
 }
 
 .sectionFAQ {
     flex: 1;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    margin: 2rem 0 4% 0;
+    margin: 4% 0;
     min-height: 50vh;
     /* border: solid black; */
 }
 
 .faqTitle {
-    margin-bottom: 2%;
     font-size: 3rem;
 }
 
 .faqContent {
-    flex: 1;
-    /* margin-bottom: 5%; */
     width: 60%;
+}
+
+@media (max-width: 499px) {
+    .sectionContact {
+        width: 80%;
+    }
+    .contactLine {
+        margin: 4% 0;
+    }
+    .faqContent {
+        width: 80%;
+    }
+    .hoursLine {
+        margin-top: 0;
+    }
 }

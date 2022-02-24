@@ -1,4 +1,5 @@
 import React from "react"
+import { Card } from "@mui/material"
 import EmailIcon from "@mui/icons-material/Email"
 import HelpIcon from "@mui/icons-material/Help"
 import { styled } from "@mui/system"
@@ -10,8 +11,29 @@ const StyledEmailIcon = styled(EmailIcon)({
     fontSize: "3.3rem"
 })
 
+const ContactContent = styled(Card)({
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    padding: "4rem",
+    minHeight: "35vh",
+    width: "35rem",
+    backgroundColor: "white",
+    textAlign: "left",
+    fontSize: "1.5rem",
+    "@media (max-width: 499px)": {
+        minHeight: "25vh",
+        width: "80%"
+    },
+    "@media (max-width: 320px)": {
+        wordBreak: "break-word",
+    }
+})
+
 const StyledHelpIcon = styled(HelpIcon)({
-    color: "navy",
+    margin: "1% 0",
+    color: "#0d3d85",
     fontSize: "5rem"
 })
 
@@ -21,19 +43,25 @@ function Contact() {
             <div className={classes.contactPage}>
                 <div className={classes.sectionContact}>
                     <div className={classes.contactTitle}>Contact Us</div>
-                    <div className={classes.contactContent}>
-                        <div className={classes.iconBackground}><StyledEmailIcon /></div>
-                        <div>Please send any additional questions to</div>
-                        <div>Email: contact@revdbookstore.com </div>
-                        <div>Phone: 1 (800) 843-2665</div>
-                        <div>Hours: Monday - Friday, 8 am to 6 pm ET</div>
-                        <div>Saturday & Sunday, 9 am to 6 pm ET</div>
-                    </div>
+                    <div className={classes.iconBackground}><StyledEmailIcon /></div>
+                    <ContactContent>
+                        <div className={classes.firstLine}>Please send any additional questions to</div>
+                        <div className={classes.contactLine}>
+                            <span className={classes.contactLabels}>Email:</span>&nbsp;support@revdbookstore.com
+                        </div>
+                        <div className={classes.contactLine}>
+                            <span className={classes.contactLabels}>Phone:</span>&nbsp;1 (800) 843-2665
+                        </div>
+                        <div className={classes.contactLine}>
+                            <span className={classes.contactLabels}>Hours:</span>&nbsp;Monday - Friday, 8 am to 6 pm ET
+                        </div>
+                        <div className={classes.hoursLine}>Saturday & Sunday, 9 am to 6 pm ET</div>
+                    </ContactContent>
                 </div>
                 <div className={classes.sectionFAQ}>
                     <div className={classes.faqTitle}>FAQ</div>
+                    <StyledHelpIcon />
                     <div className={classes.faqContent}>
-                        <StyledHelpIcon />
                         <AccordionComponent
                             accordionSummary="How much does shipping cost?"
                             accordionDetails="We offer a flat shipping rate of $7.50 for orders containing hard copy book. Shipping fee will be waived for orders over $50 containing hard copy book. No shipping cost applies for orders not containing any hard copy book "
