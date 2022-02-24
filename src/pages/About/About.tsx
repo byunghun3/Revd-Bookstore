@@ -9,6 +9,7 @@ import SuggestABookImageTwo from "../../assets/images/matthew-feeney-Nwkh-n6l25w
 import SuggestABookImageThree from "../../assets/images/pexels-ichad-windhiagiri-3989751.jpg"
 import SuggestABookImageFour from "../../assets/images/alexandra-fuller-wkgv7I2VTzM-unsplash.jpg"
 import SuggestABookImageFive from "../../assets/images/pexels-helena-lopes-711009.jpg"
+import AttributionsImage from "../../assets/images/alex-lvrs-2zDw14yCYqk-unsplash.jpg"
 import { styled } from "@mui/system"
 import classes from "./About.module.css"
 import DialogComponent from "../../components/DialogComponent/DialogComponent"
@@ -37,6 +38,23 @@ const SectionCardCol = styled(Card)({
     minHeight: "100vh",
     width: "100%",
     backgroundColor: "white",
+    "@media (max-width: 699px)": {
+        minHeight: "75vh",
+    }
+})
+
+const AttributionsSection = styled(Card)({
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "1% 0",
+    padding: "5% 0",
+    minHeight: "100vh",
+    width: "100%",
+    backgroundImage: `url(${AttributionsImage})`,
+    backgroundPosition: "50% 70%",
+    backgroundSize: "cover",
     "@media (max-width: 699px)": {
         minHeight: "75vh",
     }
@@ -129,10 +147,10 @@ function About() {
                     </SectionCardCol>
                     {/* </div> */}
                     {/* <div className={classes.sectionFour} id="section-attribution"> */}
-                    <SectionCardCol id="section-attribution">
+                    <AttributionsSection id="section-attribution">
                         <div className={classes.sectionContentAttribution}>
-                            <div className={classes.sectionTitleAttribution} onClick={() => { setShowDialog(true) }}>See Attributions</div>
-                            <p>Credits for free images used in this website</p>
+                            <div className={classes.sectionTitleAttribution} onClick={() => { setShowDialog(true) }}>See Contributors</div>
+                            <p>Thank you to everyone who has helped make this website more beautiful!</p>
                         </div>
                         <DialogComponent
                             open={showDialog}
@@ -145,21 +163,23 @@ function About() {
                                     <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@eugi1492?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Eugenio Mazzone</a> on <a className={classes.attributionLink} href="https://unsplash.com/s/photos/bookstore?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
                                     <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@matt__feeney?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">matthew Feeney</a> on <a className={classes.attributionLink} href="https://unsplash.com/s/photos/public-library?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
                                     <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@alexandrajf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexandra Fuller</a> on <a className={classes.attributionLink} href="https://unsplash.com/s/photos/reading-together?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+                                    <li>Photo by <a className={classes.attributionLink} href="https://unsplash.com/@alexlvrs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alex Lvrs</a> on <a className={classes.attributionLink} href="https://unsplash.com/s/photos/white-background?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
                                     <li>Photo by cottonbro from Pexels</li>
                                     <li>&ldquo;Books Transparent&rdquo; by transparentpng.com is licensed under CC BY 4.0</li>
                                     <li>Photo by Helena Lopes from Pexels</li>
                                     <li>Photo by Ichad Windhiagiri from Pexels</li>
                                     <li>Photo by cottonbro from Pexels</li>
                                     <li>Greenlights slider https://professionalhairdresser.co.uk/news/book-club-greenlights-by-matthew-mcconaughey/</li>
-                                    <li><a className={classes.attributionLink} href="https://icons8.com/icon/f6WWkElFBgtA/book">Book</a> icon by <a href="https://icons8.com">Icons8</a></li>
-                                    <li><a className={classes.attributionLink} href="https://icons8.com/icon/80765/new">New</a> icon by <a href="https://icons8.com">Icons8</a></li>
+                                    <li><a className={classes.attributionLink} href="https://icons8.com/icon/f6WWkElFBgtA/book">Book</a> icon by <a className={classes.attributionLink} href="https://icons8.com">Icons8</a></li>
+                                    <li><a className={classes.attributionLink} href="https://icons8.com/icon/80765/new">New</a> icon by <a className={classes.attributionLink} href="https://icons8.com">Icons8</a></li>
+
                                 </ul>
                             }
                             color="error"
                             onClick={() => { setShowDialog(false) }}
                             buttonText="Close"
                         />
-                    </SectionCardCol>
+                    </AttributionsSection>
                 </div>
             </div>
         </div>

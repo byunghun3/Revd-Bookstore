@@ -163,17 +163,17 @@
     width: 20vw;
 }
 
-.sectionTitleAttribution {
-    font-family: 'PT Serif';
-    font-size: 2.5rem;
-    cursor: pointer;
-}
-
 .sectionContentAttribution {
-    /* flex: 1; */
-    /* border: solid black; */
+    /* display: flex; */
+    margin-top: -40%;
     text-align: center;
     font-size: 1.5rem;
+}
+
+.sectionTitleAttribution {
+    font-family: 'PT Serif';
+    font-size: 3.5rem;
+    cursor: pointer;
 }
 
 .attributionLink:visited {
