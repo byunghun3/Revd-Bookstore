@@ -8,6 +8,9 @@
 
 .cartContent {
     padding: 2% 0 5% 0;
+    min-width: 80%;
+    /* border: solid black; */
+
 }
 
 .cartTitle {
@@ -112,6 +115,11 @@
     margin-top: 5%;
     font-size: 2rem;
     /* border: solid black; */
+}
+
+.link {
+    margin: 3rem 0;
+    text-decoration: none;
 }
 
 @media (max-width: 499px) {

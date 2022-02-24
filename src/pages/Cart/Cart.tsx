@@ -8,6 +8,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"
 import HighlightOffIcon from "@mui/icons-material/HighlightOff"
+import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import MoodBadIcon from "@mui/icons-material/MoodBad"
 import { BooksData } from "../../data/BooksData"
 import { LoginContext } from "../../contexts/LoginContext"
@@ -69,16 +70,21 @@ const EmptyCartIcon = styled(ShoppingCartOutlinedIcon)({
 
 const StyledEmptyIcon = styled(HighlightOffIcon)({
     position: "absolute",
-    top: "23%",
-    // marginBottom: "7rem",
+    // top: "23%",
+    top: "16%",
     color: "red",
     fontSize: "3rem"
 })
 
-const StyledFrownIcon = styled(MoodBadIcon)({
+const StyledSmileIcon = styled(InsertEmoticonIcon)({
     marginLeft: "0.5rem",
-    color: "orange",
+    color: "black",
     fontSize: "2rem"
+})
+
+const BrowseButton = styled(Button)({
+    // marginRight: "5%",
+    fontSize: "1.3rem"
 })
 
 interface CartProps {
@@ -209,9 +215,13 @@ export const Cart: FC<CartProps> = ({ }) => {
                 </form>
                 :
                 <div className={classes.emptyCart}>
-                    <StyledEmptyIcon />
+                    {/* <StyledEmptyIcon /> */}
                     <EmptyCartIcon />
-                    <div className={classes.emptyCartText}>Cart is empty <StyledFrownIcon /></div>
+                    <div className={classes.emptyCartText}>Woah, the cart is empty!</div>
+                    <div className={classes.emptyCartText}>It seems like you forgot to pick a book <StyledSmileIcon /> </div>
+                    <Link className={classes.link} to="/browse">
+                        <BrowseButton type="button" variant="outlined">Explore our books</BrowseButton>
+                    </Link>
                 </div>
             }
 
