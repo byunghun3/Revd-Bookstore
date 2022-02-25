@@ -65,6 +65,7 @@ export const Suggest = (props: Props) => {
     const [comment, setComment] = useState("")
     const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
     const [showDialog, setShowDialog] = useState(false)
+    const [showSuccessDialog, setShowSuccessDialog] = useState(false)
     const { isLoggedIn } = useContext(LoginContext)
     const books = BooksData
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
@@ -127,6 +128,8 @@ export const Suggest = (props: Props) => {
             setSuggestions(newSuggestion)
 
             localStorage.setItem("suggestions", JSON.stringify(newSuggestion))
+
+            setShowSuccessDialog(true)
         } else {
             navigate("/login")
         }
@@ -140,6 +143,7 @@ export const Suggest = (props: Props) => {
 
     const handleCloseDialog = () => {
         setShowDialog(false)
+        setShowSuccessDialog(false)
     }
 
     const handleGoToLogin = () => {
@@ -210,6 +214,14 @@ export const Suggest = (props: Props) => {
                 color="primary"
                 onClick={handleGoToLogin}
                 buttonText="Log In"
+            />
+            <DialogComponent
+                open={showSuccessDialog}
+                onClose={handleCloseDialog}
+                contentText="Your suggestion has been submitted!"
+                color="error"
+                onClick={null}
+                buttonText={undefined}
             />
             {/* <Dialog
                 open={showAlert}
