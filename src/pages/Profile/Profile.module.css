@@ -108,6 +108,10 @@
     font-weight: 700;
 }
 
+.noEntry {
+    font-size: 1.8rem;
+}
+
 @media (max-width: 999px) {
     .sideNav {
         display: none;

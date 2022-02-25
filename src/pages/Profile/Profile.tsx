@@ -38,6 +38,7 @@ interface Props {
 export const Profile = (props: Props) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const { isLoggedIn } = useContext(LoginContext)
+    const orders = JSON.parse(localStorage.getItem("orders") || "[]")
     const reviews = JSON.parse(localStorage.getItem("reviews") || "[]")
     const suggestions = JSON.parse(localStorage.getItem("suggestions") || "[]")
     const readerReviews = ReaderReviewsData
@@ -61,6 +62,10 @@ export const Profile = (props: Props) => {
     //         total={order.total}
     //     />
     // })
+
+    const orderExists = orders.find((order: any) => {
+        return order.user.email === `${currentUserEmail}`
+    })
 
     const hardCodedReviewHistory = readerReviews.filter((review: any) => {
         return review.user.email === `${currentUserEmail}`
@@ -145,17 +150,28 @@ export const Profile = (props: Props) => {
                     <SectionCardCol id="section-order-history">
                         {/* <div className={classes.section} id="section-order-history"> */}
                         <div className={classes.orderHistoryTitle}>Order History</div>
-                        <OrderHistory
-                            currentUserEmail={currentUserEmail}
-                        />
+                        {currentUserEmail === "byunghun3@gmail.com" ?
+                            <OrderHistory
+                                currentUserEmail={currentUserEmail}
+                            /> : (
+                                orderExists ?
+                                    <OrderHistory
+                                        currentUserEmail={currentUserEmail}
+                                    /> :
+                                    <div className={classes.noEntry}>No orders yet</div>
+                            )
+                        }
                         {/* {hardCodedOrderHistory} */}
                         {/* </div> */}
                     </SectionCardCol>
                     <SectionCardCol id="section-review-history">
                         {/* <div className={classes.section} id="section-review-history"> */}
                         <div className={classes.reviewHistoryTitle}>Review History</div>
-                        {hardCodedReviewHistory}
-                        {reviewHistory}
+                        {hardCodedReviewHistory.length || reviewHistory.length ?
+                            <div>{hardCodedReviewHistory}
+                                {reviewHistory}</div> :
+                            <div className={classes.noEntry}>No reviews yet</div>
+                        }
                     </SectionCardCol>
                     {/* </div> */}
                     <SectionCardCol id="section-suggestion-history">
@@ -163,7 +179,7 @@ export const Profile = (props: Props) => {
                         <div className={classes.suggestionHistoryTitle}>Suggestion History</div>
                         {suggestionHistory.length ?
                             suggestionHistory :
-                            <div>No suggestions yet</div>
+                            <div className={classes.noEntry}>No suggestions yet</div>
                         }
                         {/* </div> */}
                     </SectionCardCol>
