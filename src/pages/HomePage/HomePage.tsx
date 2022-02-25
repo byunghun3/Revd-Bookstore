@@ -61,12 +61,14 @@ const BrowseButton = styled(Button)({
 
 const GreenlightsButton = styled(Button)({
     marginTop: "5%",
-    borderColor: "firebrick",
-    color: "firebrick",
+    border: "solid white 0.3rem",
+    color: "white",
+    fontFamily: "PT Serif",
     fontSize: "1.7rem",
+    fontWeight: "700",
     "&:hover": {
-        borderColor: "white",
-        color: "white"
+        border: "solid firebrick 0.3rem",
+        color: "firebrick"
     },
     "@media (max-width: 630px)": {
         marginTop: "0"
