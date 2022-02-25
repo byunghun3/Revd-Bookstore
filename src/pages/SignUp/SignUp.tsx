@@ -35,7 +35,7 @@ const SignUpCard = styled(Card)({
 const StyledAccountCircleIcon = styled(AccountCircleIcon)({
     flex: "1",
     margin: "5% 0",
-    fontSize: "3rem"
+    fontSize: "3.5rem"
 })
 
 const NameForm = styled(FormControl)({

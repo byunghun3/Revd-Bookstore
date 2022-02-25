@@ -28,7 +28,7 @@ const ForgotPWCard = styled(Card)({
 const StyledAccountCircleIcon = styled(AccountCircleIcon)({
     flex: "1",
     marginTop: "5%",
-    fontSize: "3rem"
+    fontSize: "3.5rem"
 })
 
 const EmailForm = styled(FormControl)({
