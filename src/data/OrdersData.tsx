@@ -6,7 +6,7 @@ import InColdBlood from "../assets/images/in-cold-blood.jpeg"
 export const OrdersData = [
     {
         id: uuidv4(),
-        date: "2/20/2021",
+        date: "9/5/2021",
         total: 9.98,
         address:
         {
@@ -33,15 +33,15 @@ export const OrdersData = [
         details:
             [
                 {
-                    id: 5,
-                    title: "Lord of the Flies",
-                    author: "William Golding",
-                    image: LordOfFlies,
-                    type: "EBOOK",
-                    genre: "Fiction",
+                    id: 6,
+                    title: "In Cold Blood",
+                    author: "Truman Capote",
+                    image: InColdBlood,
+                    type: "HARD COPY",
+                    genre: "Nonfiction",
                     rating: 4.5,
                     price: 4.99,
-                    stock: Infinity,
+                    stock: 100,
                     status: "old",
                     quantity: 1
                 },
@@ -62,7 +62,7 @@ export const OrdersData = [
     },
     {
         id: uuidv4(),
-        date: "10/15/2021",
+        date: "11/15/2021",
         total: 5.36,
         address:
         {
@@ -88,15 +88,15 @@ export const OrdersData = [
         },
         details:
             [{
-                id: 6,
-                title: "In Cold Blood",
-                author: "Truman Capote",
-                image: InColdBlood,
-                type: "HARD COPY",
-                genre: "Nonfiction",
+                id: 5,
+                title: "Lord of the Flies",
+                author: "William Golding",
+                image: LordOfFlies,
+                type: "EBOOK",
+                genre: "Fiction",
                 rating: 4.5,
                 price: 4.99,
-                stock: 100,
+                stock: Infinity,
                 status: "old",
                 quantity: 1
             }]

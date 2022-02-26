@@ -12,7 +12,7 @@ const StyledButton = styled(Button)({
 
 interface DialogComponentProps {
     open: boolean
-    onClose: any
+    onClose?: any
     contentText: string | React.ReactNode
     color: "inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning" | undefined
     onClick?: any

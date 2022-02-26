@@ -36,6 +36,26 @@
     /* border: solid black; */
 }
 
+.processing {
+    /* position: absolute;
+    z-index: 3;
+    top: 40%;
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
 @media (max-width: 620px) {
     .checkoutForm {
         flex-direction: column;

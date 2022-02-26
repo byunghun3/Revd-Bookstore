@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
-import { Card } from "@mui/material"
-import { Button } from "@mui/material"
+import { Oval } from "react-loader-spinner"
+import { Card, Button } from "@mui/material"
 import { PaymentInfo } from "../../components/PaymentInfo/PaymentInfo"
 import { ShippingInfo } from "../../components/ShippingInfo/ShippingInfo"
+import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
+import DialogComponent from "../../components/DialogComponent/DialogComponent"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import { styled } from "@mui/system"
 import classes from "./Checkout.module.css"
-import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
 
 const InfoCard = styled(Card)({
     position: "relative",
@@ -63,6 +65,7 @@ export const Checkout = (props: CheckoutProps) => {
     const [cardNumberErrorText, setCardNumberErrorText] = useState("")
     const [expiryErrorText, setExpiryErrorText] = useState("")
     const [cvcErrorText, setCvcErrorText] = useState("")
+    const [isProcessing, setIsProcessing] = useState(false)
     // const [cardNumberErrorText, setCardNumberErrorText] = useState("Please enter a valid card number")
     // const [expiryErrorText, setExpiryErrorText] = useState("Please enter a valid date")
     // const [cvcErrorText, setCvcErrorText] = useState("Please enter a valid CVC")
@@ -71,15 +74,17 @@ export const Checkout = (props: CheckoutProps) => {
     const navigate = useNavigate()
 
 
-    useEffect(() => {
-        if (cart.length === 1) {
-            setItemsText("item")
-        } else { itemsText }
-    }, [cart])
+
 
     const numOfItems = cart.reduce((total: number, item: any) => {
         return total + item.quantity
     }, 0)
+
+    useEffect(() => {
+        if (numOfItems === 1) {
+            setItemsText("item")
+        } else { itemsText }
+    }, [cart])
 
     const itemPrice = cart.reduce((total: number, el: any) => {
         return total + (el.price * el.quantity)
@@ -99,7 +104,13 @@ export const Checkout = (props: CheckoutProps) => {
         `set${e.currentTarget.name}(e.currentTarget.value)`
     }
 
+    const handleProcessOrder = () => {
+        setIsProcessing(true)
+    }
+
     const handleSaveOrder = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
         const thisDay = new Date().getDate()
         const thisFullYear = new Date().getFullYear()
         const thisMonth = new Date().getMonth() + 1
@@ -111,7 +122,6 @@ export const Checkout = (props: CheckoutProps) => {
         const cvcRules = cvc.length < 3 || cvc.length > 4
 
         if (cardNumberRules) {
-            e.preventDefault()
             setIsCardInvalid(true)
             setCardNumberErrorText("Please enter a valid card number")
         } else {
@@ -119,7 +129,6 @@ export const Checkout = (props: CheckoutProps) => {
         }
 
         if (expiryRules) {
-            e.preventDefault()
             setIsExpiryInvalid(true)
             setExpiryErrorText("Please enter a valid date")
         } else {
@@ -127,7 +136,6 @@ export const Checkout = (props: CheckoutProps) => {
         }
 
         if (cvcRules) {
-            e.preventDefault()
             setIsCvcInvalid(true)
             setCvcErrorText("Please enter a valid CVC")
         } else {
@@ -135,55 +143,75 @@ export const Checkout = (props: CheckoutProps) => {
         }
 
         if (cart.length < 1) {
-            e.preventDefault()
             alert("Your cart is empty")
             navigate("/browse")
         }
 
         if (!cardNumberRules && !expiryRules && !cvcRules) {
-            let newOrder = [...orders]
+            setIsProcessing(true)
 
-            newOrder.push({
-                id: uuidv4(),
-                date: `${thisMonth}/${thisDay}/${thisFullYear}`,
-                total: totalPrice.toFixed(2),
-                address:
-                {
-                    addressLineOne: addressLineOne,
-                    addressLineTwo: addressLineTwo,
-                    city: city,
-                    state: capitalizeStateCode(stateCode),
-                    zipCode: zipCode
-                },
-                payment:
-                {
-                    name: cardName,
-                    number: cardNumber,
-                    expiry: expiry,
-                    cvc: cvc
-                },
-                user:
-                {
-                    firstName: currentUser[0].firstName,
-                    lastName: currentUser[0].lastName,
-                    email: currentUser[0].email,
-                    password: currentUser[0].password
-                },
-                details: [...cart]
-            })
+            setTimeout(
+                () => {
+                    let newOrder = [...orders]
 
-            setOrders(newOrder)
+                    newOrder.push({
+                        id: uuidv4(),
+                        date: `${thisMonth}/${thisDay}/${thisFullYear}`,
+                        total: totalPrice.toFixed(2),
+                        address:
+                        {
+                            addressLineOne: addressLineOne,
+                            addressLineTwo: addressLineTwo,
+                            city: city,
+                            state: capitalizeStateCode(stateCode),
+                            zipCode: zipCode
+                        },
+                        payment:
+                        {
+                            name: cardName,
+                            number: cardNumber,
+                            expiry: expiry,
+                            cvc: cvc
+                        },
+                        user:
+                        {
+                            firstName: currentUser[0].firstName,
+                            lastName: currentUser[0].lastName,
+                            email: currentUser[0].email,
+                            password: currentUser[0].password
+                        },
+                        details: [...cart]
+                    })
 
-            localStorage.setItem("orders", JSON.stringify(newOrder))
+                    setOrders(newOrder)
 
-            localStorage.setItem("cart", JSON.stringify([]))
+                    localStorage.setItem("orders", JSON.stringify(newOrder))
 
-            navigate("/ordercomplete")
+                    localStorage.setItem("cart", JSON.stringify([]))
+
+                    setIsProcessing(false)
+
+                    navigate("/ordercomplete")
+                }, 4000)
         }
     }
 
     return (
         <div className={classes.checkoutPage}>
+            {/* {isProcessing && */}
+
+            {/* <div className={classes.processing}>
+                <Oval
+                    color="#6993ab"
+                    height={80}
+                    width={80}
+                />
+                <div className={classes.processingText}>
+                    <p>Please wait</p>
+                    <p>Your order is processing...</p>
+                </div>
+            </div> */}
+            {/* } */}
             <div className={classes.checkoutHeader}>
                 <div className={classes.checkoutHeaderText}>
                     Checkout - {numOfItems} {itemsText}
@@ -251,6 +279,25 @@ export const Checkout = (props: CheckoutProps) => {
                     </CheckOutButton>
                 </CheckoutCard>
             </form>
+            <DialogComponent
+                open={isProcessing}
+                onClose={null}
+                contentText={
+                    // <div>
+                    <div className={classes.processing}>
+                        <Oval
+                            color="#6993ab"
+                            height={120}
+                            width={120}
+                        />
+                        <p>Please wait</p>
+                        <p>Your order is processing...</p>
+                    </div>
+                }
+                color="error"
+                onClick={null}
+                buttonText={undefined}
+            />
         </div>
     )
 }
