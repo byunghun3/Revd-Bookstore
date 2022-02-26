@@ -209,7 +209,7 @@ const Product: React.FC<Props> = ({ }) => {
           <div className={classes.accordion}>
             <AccordionComponent
               accordionSummary="Revd Review (may contain spoilers!)"
-              accordionDetails="well"
+              accordionDetails={books[id - 1].review}
             />
           </div>
         </ItemGrid>

@@ -23,7 +23,8 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0,
-        status: "new"
+        status: "new",
+        review: "this was a great book"
     },
     {
         id: 2,
@@ -36,7 +37,8 @@ export const BooksData = [
         price: 4.99,
         stock: 3,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 3,
@@ -49,7 +51,8 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 4,
@@ -62,7 +65,8 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 5,
@@ -75,7 +79,8 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 6,
@@ -88,7 +93,8 @@ export const BooksData = [
         price: 4.99,
         stock: 100,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 7,
@@ -101,11 +107,12 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 8,
-        title: "Born a Crime: Stories from a South African Childhood ",
+        title: "Born a Crime: Stories from a South African Childhood",
         author: "Trevor Noah",
         image: BornACrime,
         type: "EBOOK",
@@ -114,7 +121,8 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 9,
@@ -127,7 +135,8 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 10,
@@ -140,7 +149,8 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 11,
@@ -153,7 +163,8 @@ export const BooksData = [
         price: 4.99,
         stock: 100,
         sale: 0.2,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     },
     {
         id: 12,
@@ -166,6 +177,7 @@ export const BooksData = [
         price: 4.99,
         stock: Infinity,
         sale: 0.2,
-        status: "old"
+        status: "old",
+        review: "this was a great book"
     }
 ]
