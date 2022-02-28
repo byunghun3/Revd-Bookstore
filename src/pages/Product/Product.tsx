@@ -63,15 +63,15 @@ export const Product: FC = () => {
 
 
 
-  const maxStock = books.find((el: any) => {
-    return el.id === books[id - 1].id
+  const maxStock = books.find((book: any) => {
+    return book.id === books[id - 1].id
   })?.stock
 
   const handleAddToCart = () => {
     let newCart = [...cart]
 
-    let duplicateInCart = newCart.find((el: any) => {
-      return el.id === books[id - 1].id
+    let duplicateInCart = newCart.find((book: any) => {
+      return book.id === books[id - 1].id
     })
 
     console.log(newCart, duplicateInCart)

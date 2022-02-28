@@ -68,8 +68,8 @@ export const ForgotPassword: FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const emailExists = users.find((el: any) => {
-            return email === el.email
+        const emailExists = users.find((user: any) => {
+            return email === user.email
         })
 
         if (emailExists) {

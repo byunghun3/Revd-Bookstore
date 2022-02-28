@@ -14,7 +14,6 @@ interface ProductReviewsProps {
     comment: string
     open: boolean
     onSubmit: React.FormEventHandler<HTMLFormElement>
-    // onRate: React.MouseEventHandler<any>
     onRate: any
     onChange: React.ChangeEventHandler<HTMLInputElement>
     onClose: React.MouseEventHandler<any>
@@ -37,52 +36,51 @@ export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, o
     const reviews = JSON.parse(localStorage.getItem("reviews") || "[]")
     const readerReviews = ReaderReviewsData
 
-    const hardCodedRatings = readerReviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).reduce((total: number, el: any) => {
-        return total + el.review.rating
+    const hardCodedRatings = readerReviews.filter((review: any) => {
+        return review.review.bookId === id
+    }).reduce((total: number, review: any) => {
+        return total + review.review.rating
     }, 0)
 
-    const numOfHardCodedRatings = readerReviews.filter((el: any) => {
-        return el.review.bookId === id
+    const numOfHardCodedRatings = readerReviews.filter((review: any) => {
+        return review.review.bookId === id
     }).length
 
-    const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((el: any) => {
-        return el.review.bookId === id
+    const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((review: any) => {
+        return review.review.bookId === id
     }).length
 
-    const avgRating = reviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).reduce((total: number, el: any) => {
-        return total + el.review.rating
+    const avgRating = reviews.filter((review: any) => {
+        return review.review.bookId === id
+    }).reduce((total: number, review: any) => {
+        return total + review.review.rating
     }, (hardCodedRatings)) / numOfTotalRatings
 
-    const displayHardCodedReaderReviews = readerReviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).map((el: any) => {
+    const displayHardCodedReaderReviews = readerReviews.filter((review: any) => {
+        return review.review.bookId === id
+    }).map((review: any) => {
         return <ReaderReview
-            key={el.id}
-            id={el.id}
-            rating={el.review.rating}
-            comment={el.review.comment}
-            firstName={el.user.firstName}
-            lastName={el.user.lastName}
-            date={el.date}
-        // onClick={handleExpand}
+            key={review.id}
+            id={review.id}
+            rating={review.review.rating}
+            comment={review.review.comment}
+            firstName={review.user.firstName}
+            lastName={review.user.lastName}
+            date={review.date}
         />
     })
 
-    const displayReaderReviews = reviews.filter((el: any) => {
-        return el.review.bookId === id
-    }).map((el: any) => {
+    const displayReaderReviews = reviews.filter((review: any) => {
+        return review.review.bookId === id
+    }).map((review: any) => {
         return <ReaderReview
-            key={el.id}
-            id={el.id}
-            rating={el.review.rating}
-            comment={el.review.comment}
-            firstName={el.user.firstName}
-            lastName={el.user.lastName}
-            date={el.date}
+            key={review.id}
+            id={review.id}
+            rating={review.review.rating}
+            comment={review.review.comment}
+            firstName={review.user.firstName}
+            lastName={review.user.lastName}
+            date={review.date}
         />
     })
 
@@ -136,20 +134,6 @@ export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, o
                     buttonText="Log In"
                 />
             </form>
-
-            {/* <Dialog
-                open={open}
-                onClose={onClose}
-            >
-                <DialogContent>
-                    <StyledDialogContentText>
-                        Please log in to submit your review
-                    </StyledDialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <StyledButton onClick={onLogIn}>Log In</StyledButton>
-                </DialogActions>
-            </Dialog> */}
         </div >
     )
 }

@@ -108,8 +108,8 @@ export const Header = () => {
         // localStorage.setItem("users", JSON.stringify(users))
     }, [cart])
 
-    const greeting = currentUser.map((el: any) => {
-        return <div key={el.email}>Hello, {el.firstName}</div>
+    const greeting = currentUser.map((user: any) => {
+        return <div key={user.email}>Hello, {user.firstName}</div>
     })
 
     const handleExpandMenu = () => {

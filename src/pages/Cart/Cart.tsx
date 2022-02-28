@@ -1,6 +1,5 @@
 import React, { useState, useContext, FC } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { v4 as uuidv4 } from "uuid"
 import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
@@ -9,7 +8,6 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"
 import HighlightOffIcon from "@mui/icons-material/HighlightOff"
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
-import MoodBadIcon from "@mui/icons-material/MoodBad"
 import { BooksData } from "../../data/BooksData"
 import { LoginContext } from "../../contexts/LoginContext"
 import { styled } from "@mui/system"
@@ -28,11 +26,9 @@ const ItemGrid = styled(Grid)({
     alignItems: "center",
     margin: "0 10%",
     padding: "2% 0",
-    // borderTop: "solid gray 1px",
     borderBottom: "solid #adadad 0.1rem",
     "@media (max-width: 499px)": {
-        margin: "10% 10%",
-        // display: "block",
+        margin: "10%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -41,13 +37,11 @@ const ItemGrid = styled(Grid)({
 })
 
 const DownArrow = styled(ArrowDropDownIcon)({
-    // margin: "0 -7%"
     fontSize: "2rem"
 })
 
 const UpArrow = styled(ArrowDropUpIcon)({
     fontSize: "2rem"
-    // margin: "0 -7%"
 })
 
 const RemoveButton = styled(Button)({
@@ -64,13 +58,11 @@ const CheckoutButton = styled(Button)({
 
 const EmptyCartIcon = styled(ShoppingCartOutlinedIcon)({
     position: "relative",
-    // marginTop: "15vh",
     fontSize: "18rem"
 })
 
 const StyledEmptyIcon = styled(HighlightOffIcon)({
     position: "absolute",
-    // top: "23%",
     top: "16%",
     color: "red",
     fontSize: "3rem"
@@ -83,7 +75,6 @@ const StyledSmileIcon = styled(InsertEmoticonIcon)({
 })
 
 const BrowseButton = styled(Button)({
-    // marginRight: "5%",
     fontSize: "1.3rem"
 })
 
@@ -92,23 +83,20 @@ export const Cart: FC = () => {
     const { isLoggedIn } = useContext(LoginContext)
     const books = BooksData
     const navigate = useNavigate()
-    // useEffect(() => {
-    //     localStorage.setItem("cart", JSON.stringify(cart))
-    // }, [cart])
 
     const handleRemoveFromCart = (id: number) => {
-        let newCart = cart.filter((el: any) => el.id !== id)
+        let newCart = cart.filter((item: any) => item.id !== id)
         setCart(newCart)
         localStorage.setItem("cart", JSON.stringify(newCart))
     }
 
     const handleIncrementQty = (id: number) => {
-        let item = cart.find((el: any) => {
-            return el.id === id
+        let item = cart.find((item: any) => {
+            return item.id === id
         })
 
-        const maxStock = books.find((el: any) => {
-            return el.id === id
+        const maxStock = books.find((item: any) => {
+            return item.id === id
         })?.stock
 
         console.log(maxStock)
@@ -122,8 +110,8 @@ export const Cart: FC = () => {
     }
 
     const handleDecrementQty = (id: number) => {
-        let item = cart.find((el: any) => {
-            return el.id === id
+        let item = cart.find((item: any) => {
+            return item.id === id
         })
 
         if (item.quantity > 1) {
@@ -174,8 +162,8 @@ export const Cart: FC = () => {
         </ItemGrid>
     })
 
-    const totalPrice = cart.reduce((total: number, el: any) => {
-        return total + (el.price * el.quantity)
+    const totalPrice = cart.reduce((total: number, item: any) => {
+        return total + (item.price * item.quantity)
     }, 0)
 
     return (
@@ -211,7 +199,6 @@ export const Cart: FC = () => {
                 </form>
                 :
                 <div className={classes.emptyCart}>
-                    {/* <StyledEmptyIcon /> */}
                     <EmptyCartIcon />
                     <div className={classes.emptyCartText}>Woah, the cart is empty!</div>
                     <div className={classes.emptyCartText}>It seems like you forgot to pick a book <StyledSmileIcon /> </div>

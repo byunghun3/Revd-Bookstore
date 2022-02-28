@@ -61,7 +61,6 @@ const AttributionSection = styled(Card)({
 })
 
 const StyledButton = styled(Button)({
-    // marginRight: "5%",
     fontSize: "1.3rem"
 })
 
@@ -93,7 +92,6 @@ export const About: FC = () => {
                     </div>
                 </div>
                 <div className={classes.aboutContent}>
-                    {/* <div className={classes.sectionOne} id="section-our-story"> */}
                     <OurStorySection id="section-our-story">
                         <div className={classes.sectionContentOurStory}>
                             <div className={classes.sectionTitle}>Welcome to Revd Bookstore!</div>
@@ -119,9 +117,7 @@ export const About: FC = () => {
                                 <StyledButton type="button" variant="outlined">Explore our books</StyledButton>
                             </Link>
                         </div>
-                        {/* </div> */}
                     </ColumnSection>
-                    {/* <div className={classes.sectionThree} id="section-suggest-a-book"> */}
                     <ColumnSection id="section-suggest-a-book">
                         <div className={classes.sectionContentSuggest}>
                             <div className={classes.sectionTitle}>Suggest a book!</div>
@@ -136,17 +132,12 @@ export const About: FC = () => {
                                 <img className={classes.suggestABookImage} src={SuggestABookImageOne} alt="" />
                                 <img className={classes.suggestABookImage} src={SuggestABookImageTwo} alt="" />
                             </div>
-                            {/* <div className={classes.imageBlockSection}>
-                                <img className={classes.suggestABookImageCenter} src={SuggestABookImageThree} alt="" />
-                            </div> */}
                             <div className={classes.imageBlockSection}>
                                 <img className={classes.suggestABookImage} src={SuggestABookImageFour} alt="" />
                                 <img className={classes.suggestABookImage} src={SuggestABookImageFive} alt="" />
                             </div>
                         </div>
                     </ColumnSection>
-                    {/* </div> */}
-                    {/* <div className={classes.sectionFour} id="section-attribution"> */}
                     <AttributionSection id="section-attribution">
                         <div className={classes.sectionContentAttribution}>
                             <div className={classes.sectionTitleAttribution} onClick={() => { setShowDialog(true) }}>See Contributors</div>

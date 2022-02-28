@@ -92,9 +92,9 @@ export const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, 
 
     const handleEditReview = (e: React.FormEvent<HTMLFormElement>, id: string) => {
         e.preventDefault()
-        const reviewDetails = reviews.map((el: any) => el.id === id ?
-            { ...el, review: { ...el.review, comment: editComments } } :
-            el
+        const reviewDetails = reviews.map((review: any) => review.id === id ?
+            { ...review, review: { ...review.review, comment: editComments } } :
+            review
         )
         console.log(id, reviewDetails)
 
@@ -113,7 +113,7 @@ export const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, 
     }
 
     const handleDeleteReview = (id: string) => {
-        let newReviews = reviews.filter((el: any) => el.id !== id)
+        let newReviews = reviews.filter((review: any) => review.id !== id)
         setReviews(newReviews)
         localStorage.setItem("reviews", JSON.stringify(newReviews))
         setShowDialog(false)

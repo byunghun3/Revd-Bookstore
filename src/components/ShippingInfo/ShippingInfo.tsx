@@ -1,5 +1,4 @@
-import React, { FC, useState } from "react"
-import SelectUSState from "react-select-us-states"
+import React, { FC } from "react"
 import { InputLabel, FormControl, OutlinedInput } from "@mui/material"
 import { styled } from "@mui/system"
 import classes from "./ShippingInfo.module.css"

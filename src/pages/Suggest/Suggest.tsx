@@ -217,7 +217,7 @@ export const Suggest = (props: Props) => {
                 onClose={handleCloseDialog}
                 contentText="Your suggestion has been submitted!"
                 color="error"
-                onClick={null}
+                onClick={undefined}
                 buttonText={undefined}
             />
             {/* <Dialog

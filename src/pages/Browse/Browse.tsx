@@ -12,8 +12,6 @@ import classes from "./Browse.module.css"
 
 const ContainerGrid = styled(Grid)({
     padding: "7rem 5rem",
-    // marginTop: "10px",
-    // zIndex: -1,
     justifyContent: "left"
 })
 
@@ -23,15 +21,11 @@ export const Browse: FC = () => {
     const [showClearButton, setShowClearButton] = useState(false)
     const books = BooksData
 
-    // const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const handleChange = (e: SelectChangeEvent) => {
-        // const handleChange = (e: SelectChangeEvent<{ value: unknown }>) => {
-        // if (e.currentTarget.value === "All") {
         if (e.target.value as string === "All") {
             setFilterValue(e.target.value as string)
             setShowBookList(true)
         } else {
-            // setFilterValue(e.currentTarget.value)
             setFilterValue(e.target.value as string)
             setShowBookList(false)
             setShowClearButton(true)
@@ -44,8 +38,8 @@ export const Browse: FC = () => {
         setShowClearButton(false)
     }
 
-    const typeFilter = books.filter(el =>
-        el.type === filterValue)
+    const typeFilter = books.filter(book =>
+        book.type === filterValue)
         .map(book =>
             <Grid key={book.id} item sm={8} md={5} lg={4}>
                 <Books
@@ -63,8 +57,8 @@ export const Browse: FC = () => {
             </Grid>
         )
 
-    const genreFilter = books.filter(el =>
-        el.genre === filterValue).map(book => {
+    const genreFilter = books.filter(book =>
+        book.genre === filterValue).map(book => {
             return <Grid key={book.id} item sm={8} md={5} lg={4}>
                 <Books
                     id={book.id}
@@ -81,11 +75,11 @@ export const Browse: FC = () => {
             </Grid>
         })
 
-    const typeFilterLength = books.filter(el =>
-        el.type === filterValue).length
+    const typeFilterLength = books.filter(book =>
+        book.type === filterValue).length
 
-    const genreFilterLength = books.filter(el =>
-        el.genre === filterValue).length
+    const genreFilterLength = books.filter(book =>
+        book.genre === filterValue).length
 
     const bookList = books.map(book => {
         return <Grid key={book.id} item sm={8} md={5} lg={4}>

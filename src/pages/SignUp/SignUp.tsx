@@ -134,8 +134,8 @@ export const SignUp: FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const userExists = users.find((el: any) => {
-            return el.email === email
+        const userExists = users.find((user: any) => {
+            return user.email === email
         })
 
         if (userExists) {

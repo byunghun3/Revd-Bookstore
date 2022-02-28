@@ -100,10 +100,10 @@ export const Login: FC = () => {
     const handleLogIn = (e: React.FormEvent<HTMLFormElement>) => {
         // const handleLogIn = () => {
         e.preventDefault()
-        const userExists = users.filter((el: any) => {
-            return email === el.email
-        }).find((el: any) => {
-            return password === el.password
+        const userExists = users.filter((user: any) => {
+            return email === user.email
+        }).find((user: any) => {
+            return password === user.password
         })
 
         if (userExists) {

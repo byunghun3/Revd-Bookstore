@@ -58,35 +58,31 @@ export const Profile: FC = () => {
 
     const hardCodedReviewHistory = readerReviews.filter((review: any) => {
         return review.user.email === `${currentUserEmail}`
-    }).map((el: any) => {
+    }).map((review: any) => {
         return <ReviewHistory
-            key={el.id}
-            initialComment={el.review.comment}
-            // handleEdit={() => updateReview(el.id, )}
-            // onChange
-            bookId={el.review.bookId}
-            id={el.id}
-            reviewRating={el.review.rating}
-            reviewTitle={el.review.title}
-            reviewAuthor={el.review.author}
-            // reviewComment={el.review.comments}
-            date={el.date}
+            key={review.id}
+            initialComment={review.review.comment}
+            bookId={review.review.bookId}
+            id={review.id}
+            reviewRating={review.review.rating}
+            reviewTitle={review.review.title}
+            reviewAuthor={review.review.author}
+            date={review.date}
         />
     })
 
     const reviewHistory = reviews.filter((review: any) => {
         return review.user.email === `${currentUserEmail}`
-    }).map((el: any) => {
+    }).map((review: any) => {
         return <ReviewHistory
-            key={el.id}
-            initialComment={el.review.comment}
-            bookId={el.review.bookId}
-            id={el.id}
-            reviewRating={el.review.rating}
-            reviewTitle={el.review.title}
-            reviewAuthor={el.review.author}
-            // reviewComment={el.review.comments}
-            date={el.date}
+            key={review.id}
+            initialComment={review.review.comment}
+            bookId={review.review.bookId}
+            id={review.id}
+            reviewRating={review.review.rating}
+            reviewTitle={review.review.title}
+            reviewAuthor={review.review.author}
+            date={review.date}
         />
     })
 
@@ -95,7 +91,6 @@ export const Profile: FC = () => {
     }).map((suggestion: any) => {
         return <SuggestionHistory
             key={suggestion.id}
-            // initialComment={suggestion.suggested.comment}
             id={suggestion.id}
             suggestedTitle={suggestion.suggested.title}
             suggestedAuthor={suggestion.suggested.author}

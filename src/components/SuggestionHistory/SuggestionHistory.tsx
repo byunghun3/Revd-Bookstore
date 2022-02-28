@@ -109,7 +109,7 @@ export const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
     }
 
     const handleDeleteSuggestion = (id: string) => {
-        let newSuggestions = suggestions.filter((el: any) => el.id !== id)
+        let newSuggestions = suggestions.filter((suggestion: any) => suggestion.id !== id)
         setSuggestions(newSuggestions)
         localStorage.setItem("suggestions", JSON.stringify(newSuggestions))
         setShowDialog(false)
@@ -152,13 +152,6 @@ export const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                         onClick={() => { setShowDialog(true) }}
                     />
                 </div>
-                {/* <DialogComponent
-                    open={showDialog}
-                    onClose={handleCloseDialog}
-                    onClick={() => handleDeleteSuggestion(id)}
-                    ContentText="Are you sure you want to delete this suggestion?"
-                    ButtonText="Delete"
-                /> */}
                 <Dialog
                     open={showDialog}
                     onClose={handleCloseDialog}

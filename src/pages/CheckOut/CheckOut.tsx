@@ -18,7 +18,6 @@ const InfoCard = styled(Card)({
     "@media (max-width: 499px)": {
         minWidth: "28rem"
     }
-
 })
 
 const CheckoutCard = styled(Card)({
@@ -28,7 +27,6 @@ const CheckoutCard = styled(Card)({
     margin: "5% 5% 5% 0",
     "@media (max-width: 499px)": {
         margin: "3rem 0 5rem 0",
-        // marginBottom: "5rem",
         width: "25rem"
     }
 })
@@ -69,9 +67,6 @@ export const Checkout: FC = () => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const navigate = useNavigate()
 
-
-
-
     const numOfItems = cart.reduce((total: number, item: any) => {
         return total + item.quantity
     }, 0)
@@ -82,11 +77,11 @@ export const Checkout: FC = () => {
         } else { itemsText }
     }, [cart])
 
-    const itemPrice = cart.reduce((total: number, el: any) => {
-        return total + (el.price * el.quantity)
+    const itemPrice = cart.reduce((total: number, item: any) => {
+        return total + (item.price * item.quantity)
     }, 0)
 
-    const shippingPrice = (cart.find((el: any) => { return el.type === "HARD COPY" }) ? 7.50 : 0)
+    const shippingPrice = (cart.find((item: any) => { return item.type === "HARD COPY" }) ? 7.50 : 0)
 
     const taxPrice = (0.06625 * (itemPrice + shippingPrice))
 
@@ -194,20 +189,6 @@ export const Checkout: FC = () => {
 
     return (
         <div className={classes.checkoutPage}>
-            {/* {isProcessing && */}
-
-            {/* <div className={classes.processing}>
-                <Oval
-                    color="#6993ab"
-                    height={80}
-                    width={80}
-                />
-                <div className={classes.processingText}>
-                    <p>Please wait</p>
-                    <p>Your order is processing...</p>
-                </div>
-            </div> */}
-            {/* } */}
             <div className={classes.checkoutHeader}>
                 <div className={classes.checkoutHeaderText}>
                     Checkout - {numOfItems} {itemsText}
@@ -232,10 +213,6 @@ export const Checkout: FC = () => {
                             onChangeCity={(e: React.ChangeEvent<HTMLInputElement>) => { setCity(e.target.value) }}
                             onChangeStateCode={(e: React.ChangeEvent<HTMLInputElement>) => { setStateCode(e.target.value) }}
                             onChangeZipCode={(e: React.ChangeEvent<HTMLInputElement>) => { setZipCode(e.target.value) }}
-                        // onChangeStreetAddress={handleChange}
-                        // onChangeCity={handleChange}
-                        // onChangeStateCode={handleChange}
-                        // onChangeZipCode={handleChange}
                         />
                     </section>
                     <section className={classes.paymentInfoSection}>
@@ -247,13 +224,9 @@ export const Checkout: FC = () => {
                             focus={focus}
                             onFocus={(e: React.FocusEvent<HTMLInputElement>) => { setFocus(e.target.name) }}
                             onChangeName={(e: React.ChangeEvent<HTMLInputElement>) => { setCardName(e.target.value) }}
-                            // onChangeNumber={handleChangeCardNumber}
                             onChangeExpiry={(e: React.ChangeEvent<HTMLInputElement>) => { setExpiry(e.target.value) }}
                             onChangeCvc={(e: React.ChangeEvent<HTMLInputElement>) => { setCvc(e.target.value) }}
-                            // onChangeName={(e: React.ChangeEvent<HTMLInputElement>) => { setCardName(e.target.value) }}
                             onChangeNumber={(e: React.ChangeEvent<HTMLInputElement>) => { setCardNumber(e.target.value) }}
-                            // onChangeExpiry={(e: React.ChangeEvent<HTMLInputElement>) => { setExpiry(e.target.value) }}
-                            // onChangeCvc={(e: React.ChangeEvent<HTMLInputElement>) => { setCvc(e.target.value) }}
                             cardNumberError={isCardInvalid}
                             expiryError={isExpiryInvalid}
                             cvcError={isCvcInvalid}
@@ -277,7 +250,7 @@ export const Checkout: FC = () => {
             </form>
             <DialogComponent
                 open={isProcessing}
-                onClose={null}
+                onClose={undefined}
                 contentText={
                     // <div>
                     <div className={classes.processing}>
@@ -291,7 +264,7 @@ export const Checkout: FC = () => {
                     </div>
                 }
                 color="error"
-                onClick={null}
+                onClick={undefined}
                 buttonText={undefined}
             />
         </div>

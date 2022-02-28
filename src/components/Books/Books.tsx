@@ -71,8 +71,8 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
     const handleAddToCart = () => {
         let newCart = [...cart]
 
-        let duplicateInCart = newCart.find((el: any) => {
-            return el.id === id
+        let duplicateInCart = newCart.find((item: any) => {
+            return item.id === id
         })
 
         if (duplicateInCart) {

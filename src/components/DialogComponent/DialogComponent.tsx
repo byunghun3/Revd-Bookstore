@@ -20,12 +20,6 @@ const StyledButton = styled(Button)({
 })
 
 export const DialogComponent: FC<DialogComponentProps> = ({ open, onClose, contentText, color, onClick, buttonText }) => {
-    // const [showAlert, setShowAlert] = useState(false)
-
-    // const handleCloseAlert = () => {
-    // setShowAlert(false)
-    // }
-
     return (
         <Dialog
             open={open}
