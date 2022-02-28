@@ -17,7 +17,7 @@ interface ProductReviewsProps {
     // onRate: React.MouseEventHandler<any>
     onRate: any
     onChange: React.ChangeEventHandler<HTMLInputElement>
-    onClose: any
+    onClose: React.MouseEventHandler<any>
     onLogIn: React.MouseEventHandler<HTMLButtonElement>
 }
 

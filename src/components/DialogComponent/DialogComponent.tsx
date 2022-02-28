@@ -4,10 +4,10 @@ import { styled } from "@mui/system"
 
 interface DialogComponentProps {
     open: boolean
-    onClose?: any
+    onClose?: React.MouseEventHandler<any>
     contentText: string | React.ReactNode
     color: "inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning" | undefined
-    onClick?: any
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
     buttonText?: string
 }
 
