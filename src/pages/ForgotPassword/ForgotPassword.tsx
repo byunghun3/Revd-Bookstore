@@ -1,14 +1,9 @@
 import React, { useState, FC } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import Grid from "@mui/material/Grid"
-import InputLabel from "@mui/material/InputLabel"
-import FormControl from "@mui/material/FormControl"
-import OutlinedInput from "@mui/material/OutlinedInput"
-import Button from "@mui/material/Button"
+import { Link } from "react-router-dom"
+import { InputLabel, FormControl, OutlinedInput, Button, Card } from "@mui/material"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import { styled } from "@mui/system"
 import classes from "./ForgotPassword.module.css"
-import { Card } from "@mui/material"
 
 const ForgotPWCard = styled(Card)({
     display: "flex",
@@ -22,7 +17,6 @@ const ForgotPWCard = styled(Card)({
         minHeight: "45vh",
         width: "30rem"
     }
-
 })
 
 const StyledAccountCircleIcon = styled(AccountCircleIcon)({
@@ -64,13 +58,7 @@ const SignUpButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-interface LoginProps {
-    // showPassword: boolean
-}
-
-export const ForgotPassword: FC<LoginProps> = ({ }) => {
-    const navigate = useNavigate()
-
+export const ForgotPassword: FC = () => {
     const [email, setEmail] = useState("")
     const [showForgotPassword, setShowForgotPassword] = useState(true)
     const [resetLinkSent, setResetLinkSent] = useState(false)
@@ -166,4 +154,3 @@ export const ForgotPassword: FC<LoginProps> = ({ }) => {
         </div >
     )
 }
-

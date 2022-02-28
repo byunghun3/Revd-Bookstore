@@ -1,8 +1,12 @@
-import React from "react"
+import React, { FC } from "react"
 import StarIcon from "@mui/icons-material/Star"
 import StarHalfIcon from "@mui/icons-material/StarHalf"
 import StarOutlineIcon from "@mui/icons-material/StarOutline"
 import { styled } from "@mui/system"
+
+interface BookRatingProps {
+    rating: number
+}
 
 const CheckedStarIcon = styled(StarIcon)({
     color: "#FDCC0D",
@@ -19,11 +23,7 @@ const UncheckedStarOutlineIcon = styled(StarOutlineIcon)({
     fontSize: "2rem"
 })
 
-type BookRatingProps = {
-    rating: number
-}
-
-function BookRating(props: BookRatingProps) {
+export const BookRating: FC<BookRatingProps> = ({ rating }) => {
     const renderStars = (rating: number) => {
         switch (rating) {
             case 0.5:
@@ -53,9 +53,7 @@ function BookRating(props: BookRatingProps) {
 
     return (
         <div>
-            {renderStars(props.rating)}
+            {renderStars(rating)}
         </div>
     )
 }
-
-export default BookRating

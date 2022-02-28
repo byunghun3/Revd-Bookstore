@@ -1,10 +1,21 @@
 import React, { FC, useState } from "react"
 import SelectUSState from "react-select-us-states"
-import InputLabel from "@mui/material/InputLabel"
-import FormControl from "@mui/material/FormControl"
-import OutlinedInput from "@mui/material/OutlinedInput"
+import { InputLabel, FormControl, OutlinedInput } from "@mui/material"
 import { styled } from "@mui/system"
 import classes from "./ShippingInfo.module.css"
+
+interface ShippingInfoProps {
+    addressLineOne: string
+    addressLineTwo: string
+    city: string
+    stateCode: string
+    zipCode: string
+    onChangeAddressLineOne: React.ChangeEventHandler<HTMLInputElement>
+    onChangeAddressLineTwo: React.ChangeEventHandler<HTMLInputElement>
+    onChangeCity: React.ChangeEventHandler<HTMLInputElement>
+    onChangeStateCode: React.ChangeEventHandler<HTMLInputElement>
+    onChangeZipCode: React.ChangeEventHandler<HTMLInputElement>
+}
 
 const StreetForm = styled(FormControl)({
     margin: "1.2rem",
@@ -33,19 +44,6 @@ const StyledInputLabel = styled(InputLabel)({
 const StyledOutlinedInput = styled(OutlinedInput)({
     fontSize: "1.5rem"
 })
-
-interface ShippingInfoProps {
-    addressLineOne: string
-    addressLineTwo: string
-    city: string
-    stateCode: string
-    zipCode: string
-    onChangeAddressLineOne: React.ChangeEventHandler<HTMLInputElement>
-    onChangeAddressLineTwo: React.ChangeEventHandler<HTMLInputElement>
-    onChangeCity: React.ChangeEventHandler<HTMLInputElement>
-    onChangeStateCode: React.ChangeEventHandler<HTMLInputElement>
-    onChangeZipCode: React.ChangeEventHandler<HTMLInputElement>
-}
 
 export const ShippingInfo: FC<ShippingInfoProps> = ({
     addressLineOne, addressLineTwo, city, stateCode, zipCode,

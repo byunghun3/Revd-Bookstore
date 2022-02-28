@@ -1,14 +1,14 @@
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useState } from "react"
 import { Link } from "react-router-dom"
-import { Button, Box } from "@mui/material"
+import { Button } from "@mui/material"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
-import { styled } from "@mui/system"
-import styles from "styled-components"
 import SliderImgOne from "../../assets/images/diette-henderson-egmEb0HgtgU-unsplash.jpg"
 import SliderImgTwo from "../../assets/images/greenlights-slider1.jpg"
 import SliderImgThree from "../../assets/images/alexei-maridashvili-gqk2hoqGAL0-unsplash1.jpg"
 import NewIcon from "../../assets/icons/icons8-new-96.png"
+import { styled } from "@mui/system"
+import styles from "styled-components"
 import classes from "./HomePage.module.css"
 
 

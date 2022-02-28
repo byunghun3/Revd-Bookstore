@@ -1,13 +1,21 @@
-import React, { FC, useEffect, useState, useContext } from "react"
+import React, { FC, useState } from "react"
 import { Link } from "react-router-dom"
 import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
-import ReaderRating from "../../components/ReaderRating/ReaderRating"
+import { ReaderRating } from "../../components/ReaderRating/ReaderRating"
 import { styled } from "@mui/system"
 import classes from "./ReviewHistory.module.css"
-import DialogComponent from "../DialogComponent/DialogComponent"
-import { useNavigate } from "react-router-dom"
+
+interface ReviewHistoryProps {
+    initialComment: string
+    bookId: number
+    id: string
+    reviewRating: number
+    reviewTitle: string
+    reviewAuthor: string
+    date: string
+}
 
 const ReviewCard = styled(Card)({
     position: "relative",
@@ -62,25 +70,13 @@ const StyledButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-interface ReviewHistoryProps {
-    initialComment: string
-    bookId: number
-    id: string
-    reviewRating: number
-    reviewTitle: string
-    reviewAuthor: string
-    // reviewComment: string
-    date: string
-}
-
-const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, id, reviewRating,
+export const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, id, reviewRating,
     reviewTitle, reviewAuthor, date }) => {
     const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
     const [editComments, setEditComments] = useState(initialComment)
     const [showDialog, setShowDialog] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
     const [isExpanded, setIsExpanded] = useState(false)
-    const navigate = useNavigate()
 
     const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.currentTarget.scrollHeight > e.currentTarget.clientHeight) {
@@ -189,8 +185,3 @@ const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, id, rev
         </form >
     )
 }
-
-export default ReviewHistory
-
-
-

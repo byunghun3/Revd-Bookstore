@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from "react"
+import React, { FC, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { Card } from "@mui/material"
@@ -7,9 +7,22 @@ import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined"
 import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined"
 import SearchIcon from "@mui/icons-material/Search"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import { BookRating } from "../BookRating/BookRating"
 import { styled } from "@mui/system"
-import BookRating from "../BookRating/BookRating"
 import classes from "./Books.module.css"
+
+interface BooksProps {
+    id: number
+    title: string
+    author: string
+    image: any
+    rating: number
+    type: string
+    price: number
+    stock: number
+    sale: number
+    status: string
+}
 
 const BookCard = styled(Card)({
     position: "relative",
@@ -21,37 +34,23 @@ const BookCard = styled(Card)({
     }
 })
 
-const Info = styled(SearchIcon)({
+const InfoIcon = styled(SearchIcon)({
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    fontSize: "5rem",
     color: "rgba(0, 0, 0, 1)",
+    fontSize: "5rem"
 })
 
-const Cart = styled(ShoppingCartIcon)({
+const CartIcon = styled(ShoppingCartIcon)({
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    fontSize: "5rem",
-    color: "rgba(0, 0, 0, 1)"
+    color: "rgba(0, 0, 0, 1)",
+    fontSize: "5rem"
 })
-
-type BooksProps = {
-    id: number
-    title: string
-    author: string
-    image: any
-    rating: number
-    type: string
-    price: number
-    stock: number
-    sale: number
-    status: string
-    // onSubmit: any
-}
 
 export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, price, stock, sale, status }) => {
     const [showDetails, setShowDetails] = useState(false)
@@ -103,11 +102,11 @@ export const Books: FC<BooksProps> = ({ id, title, author, image, rating, type, 
                         <span className={classes.bookAction}>
                             <div className={classes.infoIconBackground}>
                                 <Link to={`/browse/${id}`}>
-                                    <Info />
+                                    <InfoIcon />
                                 </Link>
                             </div>
                             <button className={classes.cartIconBackground} type="submit">
-                                <Cart />
+                                <CartIcon />
                             </button>
                         </span>}
                     <img className={classes.bookCover} src={image} alt="" />

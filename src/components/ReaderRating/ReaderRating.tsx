@@ -1,9 +1,13 @@
-import React from "react"
+import React, { FC } from "react"
 import StarIcon from "@mui/icons-material/Star"
 import StarHalfIcon from "@mui/icons-material/StarHalf"
 import StarOutlineIcon from "@mui/icons-material/StarOutline"
 import { styled } from "@mui/system"
 import classes from "./ReaderRating.module.css"
+
+interface ReaderRatingProps {
+    rating: number
+}
 
 const CheckedStarIcon = styled(StarIcon)({
     color: "#FDCC0D",
@@ -20,11 +24,7 @@ const UncheckedStarOutlineIcon = styled(StarOutlineIcon)({
     fontSize: "2rem"
 })
 
-interface ReaderRatingProps {
-    rating: number
-}
-
-function ReaderRating(props: ReaderRatingProps) {
+export const ReaderRating: FC<ReaderRatingProps> = ({ rating }) => {
     const renderStars = (rating: number) => {
         switch (rating) {
             case 0.5:
@@ -54,9 +54,7 @@ function ReaderRating(props: ReaderRatingProps) {
 
     return (
         <div className={classes.readerReviewRating}>
-            {renderStars(props.rating)}
+            {renderStars(rating)}
         </div>
     )
 }
-
-export default ReaderRating

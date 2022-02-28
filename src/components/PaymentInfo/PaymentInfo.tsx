@@ -1,12 +1,9 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import Cards from "react-credit-cards"
-import InputLabel from "@mui/material/InputLabel"
-import FormControl from "@mui/material/FormControl"
-import OutlinedInput from "@mui/material/OutlinedInput"
+import { InputLabel, FormControl, OutlinedInput } from "@mui/material"
 import "react-credit-cards/es/styles-compiled.css"
 import { styled } from "@mui/system"
 import classes from "./PaymentInfo.module.css"
-import { useHref } from "react-router-dom"
 
 interface PaymentInfoProps {
     cardName: string
@@ -61,8 +58,6 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
     cardNumberError, expiryError, cvcError, cardNumberErrorText,
     expiryErrorText, cvcErrorText
 }) => {
-
-
     return (
         <div className={classes.paymentInfo}>
             <div className={classes.paymentInfoHeader}>Payment Info</div>

@@ -61,13 +61,7 @@ const SignUpButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-// const userLocalStorage = JSON.parse(localStorage.getItem("user") || "[]")
-
-interface SignUpProps {
-    // showPassword: boolean
-}
-
-export const SignUp: FC<SignUpProps> = ({ }) => {
+export const SignUp: FC = () => {
     const navigate = useNavigate()
     const hardCodedUsers = UsersData
 
@@ -210,8 +204,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                             onChange={handleValidateEmail}
                             required
                         />
-                        {isEmailInvalid && 
-                        <div className={classes.errorMessage}>{emailInputError}</div>
+                        {isEmailInvalid &&
+                            <div className={classes.errorMessage}>{emailInputError}</div>
                         }
                     </StyledForm>
                     <StyledForm>
@@ -238,8 +232,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                             </InputAdornment>}
                             required
                         />
-                        {isPasswordInvalid && 
-                        <div className={classes.errorMessage}>{passwordLengthError}</div>
+                        {isPasswordInvalid &&
+                            <div className={classes.errorMessage}>{passwordLengthError}</div>
                         }
                     </StyledForm>
                     <StyledForm>
@@ -264,8 +258,8 @@ export const SignUp: FC<SignUpProps> = ({ }) => {
                             </InputAdornment>}
                             required
                         />
-                        {isPasswordInvalid && 
-                        <div className={classes.errorMessage}>{passwordMatchError}</div>
+                        {isPasswordInvalid &&
+                            <div className={classes.errorMessage}>{passwordMatchError}</div>
                         }
                     </StyledForm>
                     <SignUpButton color="primary" variant="contained" type="submit">Sign Up</SignUpButton>

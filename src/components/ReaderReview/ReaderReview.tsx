@@ -1,8 +1,18 @@
 import React, { FC, useState } from "react"
 import { Button, Card, TextField } from "@mui/material"
-import ReaderRating from "../../components/ReaderRating/ReaderRating"
+import { ReaderRating } from "../../components/ReaderRating/ReaderRating"
 import { styled } from "@mui/system"
 import classes from "./ReaderReview.module.css"
+
+interface ReaderReviewProps {
+    id: number
+    rating: number
+    comment: string
+    firstName: string
+    lastName: string
+    date: string
+    // onClick: React.MouseEventHandler<HTMLDivElement>
+}
 
 const ReaderReviewCard = styled(Card)({
     position: "relative",
@@ -31,17 +41,7 @@ const ReviewTextField = styled(TextField)({
     margin: "1% 0"
 })
 
-interface ReaderReviewProps {
-    id: number
-    rating: number
-    comment: string
-    firstName: string
-    lastName: string
-    date: string
-    // onClick: React.MouseEventHandler<HTMLDivElement>
-}
-
-const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, lastName, date }) => {
+export const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, lastName, date }) => {
     const [isExpanded, setIsExpanded] = useState(false)
 
     const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -64,5 +64,3 @@ const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, l
         </ReaderReviewCard >
     )
 }
-
-export default ReaderReview

@@ -2,15 +2,12 @@ import React, { useEffect, useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { FormControl, TextField } from "@mui/material"
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
-import InputLabel from "@mui/material/InputLabel"
-import OutlinedInput from "@mui/material/OutlinedInput"
+import { Button, InputLabel, OutlinedInput } from "@mui/material"
 import { LoginContext } from "../../contexts/LoginContext"
-import { Books } from "../../components/Books/Books"
 import { BooksData } from "../../data/BooksData"
+import { DialogComponent } from "../../components/DialogComponent/DialogComponent"
 import { styled } from "@mui/system"
 import classes from "./Suggest.module.css"
-import DialogComponent from "../../components/DialogComponent/DialogComponent"
 
 const TitleForm = styled(FormControl)({
     margin: "1% 0",

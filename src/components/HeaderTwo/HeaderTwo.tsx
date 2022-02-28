@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { FC, useEffect } from "react"
 import { Link } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
@@ -11,11 +11,8 @@ const HeaderToolbar = styled(Toolbar)({
     maxWidth: "100%"
 })
 
-interface HeaderTwoProps {
 
-}
-
-export const HeaderTwo = (props: HeaderTwoProps) => {
+export const HeaderTwo: FC = () => {
     // const users = JSON.parse(localStorage.getItem("users") || "[]")
 
     // useEffect(() => {

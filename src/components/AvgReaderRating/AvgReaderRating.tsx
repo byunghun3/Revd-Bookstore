@@ -1,9 +1,12 @@
-import React from "react"
+import React, { FC } from "react"
 import StarIcon from "@mui/icons-material/Star"
 import StarHalfIcon from "@mui/icons-material/StarHalf"
 import StarOutlineIcon from "@mui/icons-material/StarOutline"
 import { styled } from "@mui/system"
-import classes from "./AvgReaderRating.module.css"
+
+interface AvgReaderRatingProps {
+    rating: number
+}
 
 const CheckedStarIcon = styled(StarIcon)({
     color: "#FDCC0D",
@@ -20,11 +23,7 @@ const UncheckedStarOutlineIcon = styled(StarOutlineIcon)({
     fontSize: "5rem"
 })
 
-interface AvgReaderRatingProps {
-    rating: number
-}
-
-function AvgReaderRating(props: AvgReaderRatingProps) {
+export const AvgReaderRating: FC<AvgReaderRatingProps> = ({ rating }) => {
     const renderStars = (rating: number) => {
         switch (true) {
             case (rating < 0.75):
@@ -54,9 +53,7 @@ function AvgReaderRating(props: AvgReaderRatingProps) {
 
     return (
         <div>
-            {renderStars(props.rating)}
+            {renderStars(rating)}
         </div>
     )
 }
-
-export default AvgReaderRating

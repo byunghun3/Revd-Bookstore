@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 import { Link } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
 import { Card, Button } from "@mui/material"
+import { DialogComponent } from "../../components/DialogComponent/DialogComponent"
 import OurStoryImage from "../../assets/images/pexels-cottonbro-3585048.jpg"
 import OurCollectionImage from "../../assets/images/eugenio-mazzone-6ywyo2qtaZ8-unsplash.jpg"
 import SuggestABookImageOne from "../../assets/images/pexels-cottonbro-4861347.jpg"
@@ -12,7 +13,6 @@ import SuggestABookImageFive from "../../assets/images/pexels-helena-lopes-71100
 import AttributionsImage from "../../assets/images/alex-lvrs-2zDw14yCYqk-unsplash.jpg"
 import { styled } from "@mui/system"
 import classes from "./About.module.css"
-import DialogComponent from "../../components/DialogComponent/DialogComponent"
 
 const OurStorySection = styled(Card)({
     display: "flex",
@@ -65,7 +65,7 @@ const StyledButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-function About() {
+export const About: FC = () => {
     const [showDialog, setShowDialog] = useState(false)
 
     const handleCloseDialog = () => {
@@ -185,5 +185,3 @@ function About() {
         </div>
     )
 }
-
-export default About

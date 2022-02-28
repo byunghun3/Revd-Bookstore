@@ -1,15 +1,14 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import { Rating } from "react-simple-star-rating"
-import { Button, Card, TextField, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
-import ReaderRating from "../ReaderRating/ReaderRating"
-import AvgReaderRating from "../AvgReaderRating/AvgReaderRating"
+import { Button, TextField } from "@mui/material"
+import { AvgReaderRating } from "../AvgReaderRating/AvgReaderRating"
 import { ReaderReviewsData } from "../../data/ReaderReviewsData"
+import { DialogComponent } from "../DialogComponent/DialogComponent"
+import { ReaderReview } from "../ReaderReview/ReaderReview"
 import { styled } from "@mui/system"
 import classes from "./ProductReviews.module.css"
-import DialogComponent from "../DialogComponent/DialogComponent"
-import ReaderReview from "../ReaderReview/ReaderReview"
 
-interface ReaderReviewProps {
+interface ProductReviewsProps {
     id: number
     rating: number
     comment: string
@@ -34,7 +33,7 @@ const ReviewTextField = styled(TextField)({
     }
 })
 
-const ProductReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSubmit, onRate, onChange, onClose, onLogIn }) => {
+export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, open, onSubmit, onRate, onChange, onClose, onLogIn }) => {
     const reviews = JSON.parse(localStorage.getItem("reviews") || "[]")
     const readerReviews = ReaderReviewsData
 
@@ -154,5 +153,3 @@ const ProductReview: FC<ReaderReviewProps> = ({ id, rating, comment, open, onSub
         </div >
     )
 }
-
-export default ProductReview

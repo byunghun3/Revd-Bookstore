@@ -1,10 +1,20 @@
 import React, { FC } from "react"
-import { Button, Card, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material"
-import AccordionComponent from "../../components/AccordionComponent/AccordionComponent"
-import BookRating from "../../components/BookRating/BookRating"
+import { Button, Card } from "@mui/material"
+import { AccordionComponent } from "../../components/AccordionComponent/AccordionComponent"
+import { BookRating } from "../../components/BookRating/BookRating"
 import { styled } from "@mui/system"
 import classes from "./ProductDetails.module.css"
+
+interface ProductDetailsProps {
+    title: string
+    author: string
+    rating: number
+    type: string
+    price: number
+    sale: number
+    stock: number
+    onSubmit: React.FormEventHandler<HTMLFormElement>
+}
 
 const BookDetailsCard = styled(Card)({
     display: "flex",
@@ -23,18 +33,7 @@ const StyledButton = styled(Button)({
     fontSize: "1.5rem"
 })
 
-interface ProductDetailsProps {
-    title: string
-    author: string
-    rating: number
-    type: string
-    price: number
-    sale: number
-    stock: number
-    onSubmit: React.FormEventHandler<HTMLFormElement>
-}
-
-const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, price, sale, stock, onSubmit }) => {
+export const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, price, sale, stock, onSubmit }) => {
     return (
         <BookDetailsCard>
             <form className={classes.bookDetails} onSubmit={onSubmit}>
@@ -64,5 +63,3 @@ const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, 
         </BookDetailsCard>
     )
 }
-
-export default ProductDetails

@@ -3,6 +3,12 @@ import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { styled } from "@mui/system"
 
+interface AccordionProps {
+    accordionSummary: string
+    accordionDetails: string
+    // square: string
+}
+
 const StyledAccordion = styled(Accordion)({
     borderBottomLeftRadius: "2%",
     borderBottomRightRadius: "2%"
@@ -20,13 +26,7 @@ const StyledAccordionDetails = styled(AccordionDetails)({
     fontSize: "1.5rem"
 })
 
-interface AccordionProps {
-    accordionSummary: string
-    accordionDetails: string
-    // square: string
-}
-
-const AccordionComponent: FC<AccordionProps> = ({ accordionSummary, accordionDetails }) => {
+export const AccordionComponent: FC<AccordionProps> = ({ accordionSummary, accordionDetails }) => {
     return (
         <div>
             <StyledAccordion
@@ -44,5 +44,3 @@ const AccordionComponent: FC<AccordionProps> = ({ accordionSummary, accordionDet
         </div>
     )
 }
-
-export default AccordionComponent

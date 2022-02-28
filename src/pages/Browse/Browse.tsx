@@ -17,11 +17,7 @@ const ContainerGrid = styled(Grid)({
     justifyContent: "left"
 })
 
-interface BrowseProps {
-
-}
-
-export const Browse: FC<BrowseProps> = () => {
+export const Browse: FC = () => {
     const [filterValue, setFilterValue] = useState("")
     const [showBookList, setShowBookList] = useState(true)
     const [showClearButton, setShowClearButton] = useState(false)

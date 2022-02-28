@@ -4,7 +4,14 @@ import EditIcon from "@mui/icons-material/Edit"
 import ClearIcon from "@mui/icons-material/Clear"
 import { styled } from "@mui/system"
 import classes from "./SuggestionHistory.module.css"
-import DialogComponent from "../DialogComponent/DialogComponent"
+
+interface ReviewHistoryProps {
+    id: string
+    suggestedTitle: string
+    suggestedAuthor: string
+    suggestedComment: string
+    date: string
+}
 
 const SuggestionCard = styled(Card)({
     position: "relative",
@@ -59,15 +66,7 @@ const StyledButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-interface ReviewHistoryProps {
-    id: string
-    suggestedTitle: string
-    suggestedAuthor: string
-    suggestedComment: string
-    date: string
-}
-
-const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
+export const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
     suggestedAuthor, suggestedComment, date }) => {
     const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
     const [comment, setComment] = useState(suggestedComment)
@@ -177,8 +176,3 @@ const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
         </form>
     )
 }
-
-export default SuggestionHistory
-
-
-

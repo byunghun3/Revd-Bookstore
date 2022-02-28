@@ -1,19 +1,13 @@
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 import { NavLink } from "react-router-dom"
-import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
+import { AppBar, Toolbar } from "@mui/material"
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material"
-import DialogComponent from "../../components/DialogComponent/DialogComponent"
+import { DialogComponent } from "../../components/DialogComponent/DialogComponent"
 import { styled } from "@mui/system"
 import classes from "./Footer.module.css"
 
-
-
 const FooterToolbar = styled(Toolbar)({
     maxWidth: "100%",
-    // width: "100%",
-
-    // justifyContent: "space-between",
     display: "flex",
     backgroundColor: "black",
 })
@@ -76,11 +70,7 @@ const YouTubeIcon = styled(YouTube)({
     }
 })
 
-interface Props {
-
-}
-
-export const Footer = (props: Props) => {
+export const Footer: FC = () => {
     const [showDialog, setShowDialog] = useState(false)
 
     const handleCloseDialog = () => {

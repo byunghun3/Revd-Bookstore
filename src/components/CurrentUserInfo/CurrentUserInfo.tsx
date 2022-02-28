@@ -4,9 +4,15 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from 
 import EditIcon from "@mui/icons-material/Edit"
 import { LoginContext } from "../../contexts/LoginContext"
 import { UsersData } from "../../data/UsersData"
+import { DialogComponent } from "../DialogComponent/DialogComponent"
 import { styled } from "@mui/system"
 import classes from "./CurrentUserInfo.module.css"
-import DialogComponent from "../DialogComponent/DialogComponent"
+
+interface CurrentUserInfoProps {
+    currentUserFirstName: string
+    currentUserLastName: string
+    currentUserEmail: string
+}
 
 const hardCodedUsers = UsersData
 
@@ -31,15 +37,7 @@ const DialogButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-interface CurrentUserInfoProps {
-    currentUserFirstName: string
-    currentUserLastName: string
-    currentUserEmail: string
-    // firstName: string
-    // lastName: string
-}
-
-const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUserFirstName, currentUserLastName }) => {
+export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUserFirstName, currentUserLastName }) => {
     const { setIsLoggedIn } = useContext(LoginContext)
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
     const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers)))
@@ -238,5 +236,3 @@ const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUs
         </div>
     )
 }
-
-export default CurrentUserInfo

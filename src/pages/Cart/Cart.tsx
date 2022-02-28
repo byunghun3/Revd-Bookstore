@@ -87,11 +87,7 @@ const BrowseButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-interface CartProps {
-
-}
-
-export const Cart: FC<CartProps> = ({ }) => {
+export const Cart: FC = () => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
     const { isLoggedIn } = useContext(LoginContext)
     const books = BooksData

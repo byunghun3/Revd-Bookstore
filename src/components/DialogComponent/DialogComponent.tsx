@@ -2,14 +2,6 @@ import React, { FC, useState } from "react"
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import { styled } from "@mui/system"
 
-const StyledDialogContentText = styled(DialogContentText)({
-    fontSize: "1.6rem"
-})
-
-const StyledButton = styled(Button)({
-    fontSize: "1.3rem"
-})
-
 interface DialogComponentProps {
     open: boolean
     onClose?: any
@@ -19,7 +11,15 @@ interface DialogComponentProps {
     buttonText?: string
 }
 
-const DialogComponent: FC<DialogComponentProps> = ({ open, onClose, contentText, color, onClick, buttonText }) => {
+const StyledDialogContentText = styled(DialogContentText)({
+    fontSize: "1.6rem"
+})
+
+const StyledButton = styled(Button)({
+    fontSize: "1.3rem"
+})
+
+export const DialogComponent: FC<DialogComponentProps> = ({ open, onClose, contentText, color, onClick, buttonText }) => {
     // const [showAlert, setShowAlert] = useState(false)
 
     // const handleCloseAlert = () => {
@@ -42,5 +42,3 @@ const DialogComponent: FC<DialogComponentProps> = ({ open, onClose, contentText,
         </Dialog>
     )
 }
-
-export default DialogComponent

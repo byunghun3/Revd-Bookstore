@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { FC, useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { Oval } from "react-loader-spinner"
@@ -6,7 +6,7 @@ import { Card, Button } from "@mui/material"
 import { PaymentInfo } from "../../components/PaymentInfo/PaymentInfo"
 import { ShippingInfo } from "../../components/ShippingInfo/ShippingInfo"
 import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
-import DialogComponent from "../../components/DialogComponent/DialogComponent"
+import { DialogComponent } from "../../components/DialogComponent/DialogComponent"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import { styled } from "@mui/system"
 import classes from "./Checkout.module.css"
@@ -42,11 +42,7 @@ const CheckOutButton = styled(Button)({
     fontSize: "1.4rem"
 })
 
-interface CheckoutProps {
-
-}
-
-export const Checkout = (props: CheckoutProps) => {
+export const Checkout: FC = () => {
     const [itemsText, setItemsText] = useState("items")
     const [addressLineOne, setAddressLineOne] = useState("")
     const [addressLineTwo, setAddressLineTwo] = useState("")

@@ -1,19 +1,14 @@
-import React, { useState, useEffect, useContext } from "react"
-import { Link, useParams, useNavigate } from "react-router-dom"
+import React, { FC, useState, useEffect, useContext } from "react"
+import { useParams, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
-import { Button, Card, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
 import { Grid } from "@mui/material"
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material"
-import { TextField } from "@mui/material"
+import { BooksData } from "../../data/BooksData"
+import { LoginContext } from "../../contexts/LoginContext"
+import { ProductDetails } from "../../components/ProductDetails/ProductDetails"
+import { AccordionComponent } from "../../components/AccordionComponent/AccordionComponent"
+import { ProductReviews } from "../../components/ProductReviews/ProductReviews"
 import { styled } from "@mui/system"
 import classes from "./Product.module.css"
-import { BooksData } from "../../data/BooksData"
-import { ReaderReviewsData } from "../../data/ReaderReviewsData"
-import { LoginContext } from "../../contexts/LoginContext"
-import ProductDetails from "../../components/ProductDetails/ProductDetails"
-import AccordionComponent from "../../components/AccordionComponent/AccordionComponent"
-import ProductReviews from "../../components/ProductReviews/ProductReviews"
-
 
 const ContainerGrid = styled(Grid)({
   display: "flex",
@@ -41,12 +36,7 @@ const ReaderReviewGrid = styled(Grid)({
   // border: "solid black"
 })
 
-
-interface Props {
-
-}
-
-const Product: React.FC<Props> = ({ }) => {
+export const Product: FC = () => {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
   const [reviews, setReviews] = useState(JSON.parse(localStorage.getItem("reviews") || "[]"))
   const [comment, setComment] = useState("")
@@ -279,5 +269,3 @@ const Product: React.FC<Props> = ({ }) => {
     </div>
   )
 }
-
-export default Product

@@ -1,13 +1,6 @@
 import React, { FC, useContext, useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import Grid from "@mui/material/Grid"
-import InputLabel from "@mui/material/InputLabel"
-import FormControl from "@mui/material/FormControl"
-import OutlinedInput from "@mui/material/OutlinedInput"
-import InputAdornment from "@mui/material/InputAdornment"
-import IconButton from "@mui/material/IconButton"
-import Checkbox from "@mui/material/Checkbox"
-import Button from "@mui/material/Button"
+import { Grid, InputLabel, FormControl, OutlinedInput, InputAdornment, IconButton, Checkbox, Button } from "@mui/material"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
@@ -75,12 +68,7 @@ const SignUpButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-interface LoginProps {
-    // showPassword: boolean
-    // isLoggedIn: boolean
-}
-
-export const Login: FC<LoginProps> = ({ }) => {
+export const Login: FC = () => {
     const navigate = useNavigate()
     const hardCodedUsers = UsersData
     const [email, setEmail] = useState("")

@@ -1,9 +1,13 @@
 import React, { FC, useContext } from "react"
 import { Link } from "react-router-dom"
-import Grid from "@mui/material/Grid"
+import { Grid } from "@mui/material"
 import { OrdersData } from "../../data/OrdersData"
 import { styled } from "@mui/system"
 import classes from "./OrderHistory.module.css"
+
+interface OrderHistoryProps {
+    currentUserEmail: string
+}
 
 const ItemGrid = styled(Grid)({
     flex: "1",
@@ -19,10 +23,6 @@ const ItemGrid = styled(Grid)({
         justifyContent: "space-between"
     }
 })
-
-interface OrderHistoryProps {
-    currentUserEmail: string
-}
 
 export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
     const orders = JSON.parse(localStorage.getItem("orders") || "[]")
@@ -157,8 +157,3 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
         </div>
     )
 }
-
-
-
-
-

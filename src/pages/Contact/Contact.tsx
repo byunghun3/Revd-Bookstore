@@ -1,10 +1,10 @@
-import React from "react"
+import React, { FC } from "react"
 import { Card } from "@mui/material"
 import EmailIcon from "@mui/icons-material/Email"
 import HelpIcon from "@mui/icons-material/Help"
+import { AccordionComponent } from "../../components/AccordionComponent/AccordionComponent"
 import { styled } from "@mui/system"
 import classes from "./Contact.module.css"
-import AccordionComponent from "../../components/AccordionComponent/AccordionComponent"
 
 const StyledEmailIcon = styled(EmailIcon)({
     color: "white",
@@ -37,7 +37,7 @@ const StyledHelpIcon = styled(HelpIcon)({
     fontSize: "5rem"
 })
 
-function Contact() {
+export const Contact: FC = () => {
     return (
         <div>
             <div className={classes.contactPage}>
@@ -88,5 +88,3 @@ function Contact() {
         </div>
     )
 }
-
-export default Contact

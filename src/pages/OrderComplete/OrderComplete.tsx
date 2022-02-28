@@ -1,8 +1,6 @@
-import React from "react"
+import React, { FC } from "react"
 import { Link } from "react-router-dom"
-import { Grid } from "@mui/material"
 import { Button } from "@mui/material"
-import { Books } from "../../components/Books/Books"
 import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
 import classes from "./OrderComplete.module.css"
@@ -12,11 +10,7 @@ const BrowseButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-interface Props {
-
-}
-
-export const OrderComplete = (props: Props) => {
+export const OrderComplete: FC = () => {
     const books = BooksData
 
     const bookList = books.map(book => {

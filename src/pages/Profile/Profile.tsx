@@ -1,22 +1,15 @@
-import React, { useEffect, useContext } from "react"
+import React, { FC, useContext } from "react"
 import { LoginContext } from "../../contexts/LoginContext"
 import { useNavigate } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
 import { Card, Container } from "@mui/material"
 import { ReaderReviewsData } from "../../data/ReaderReviewsData"
-import { OrdersData } from "../../data/OrdersData"
 import { OrderHistory } from "../../components/OrderHistory/OrderHistory"
-import ReviewHistory from "../../components/ReviewHistory/ReviewHistory"
-import CurrentUserInfo from "../../components/CurrentUserInfo/CurrentUserInfo"
-import SuggestionHistory from "../../components/SuggestionHistory/SuggestionHistory"
-// import PaperTexture from "../assets/images/the-bluest-eye.jpeg"
+import { ReviewHistory } from "../../components/ReviewHistory/ReviewHistory"
+import { CurrentUserInfo } from "../../components/CurrentUserInfo/CurrentUserInfo"
+import { SuggestionHistory } from "../../components/SuggestionHistory/SuggestionHistory"
 import { styled } from "@mui/system"
 import classes from "./Profile.module.css"
-
-const ProfileContainer = styled(Container)({
-    display: "flex",
-    flexDirection: "row"
-})
 
 const SectionCardCol = styled(Card)({
     // display: "flex",
@@ -31,11 +24,7 @@ const SectionCardCol = styled(Card)({
     backgroundColor: "white"
 })
 
-interface Props {
-
-}
-
-export const Profile = (props: Props) => {
+export const Profile: FC = () => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const { isLoggedIn } = useContext(LoginContext)
     const orders = JSON.parse(localStorage.getItem("orders") || "[]")
@@ -189,4 +178,3 @@ export const Profile = (props: Props) => {
         </div >
     )
 }
-
