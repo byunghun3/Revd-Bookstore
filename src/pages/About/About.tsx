@@ -121,7 +121,7 @@ export const About: FC = () => {
                     <ColumnSection id="section-suggest-a-book">
                         <div className={classes.sectionContentSuggest}>
                             <div className={classes.sectionTitle}>Suggest a book!</div>
-                            <p>One of our goals at Revd is to build an online community where readers can discuss, review, and react together on books. </p>
+                            <p>One of our goals at Revd is to build an online community where readers can discuss, review, and react together on books.</p>
                             <p>So we encourage you to suggest a book for us to review and add to our collection! We won&apos;t be able to get through every book soon enough, but our new monthly book will always be pulled from the suggestions.</p>
                             <Link className={classes.link} to="/suggest">
                                 <StyledButton type="button" variant="outlined">Suggest</StyledButton>

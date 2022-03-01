@@ -70,8 +70,27 @@
     font-size: 3rem;
 }
 
+p {
+    display: flex;
+    /* justify-content: start; */
+    align-items: start;
+    /* color: purple; */
+    /* text-align: left; */
+    /* border: solid black; */
+}
+
+.sectionContentOurStory > p,
+.sectionContentCollection > p, 
+.sectionContentSuggest > p {
+    display: flex;
+    align-items: start;
+}
+
 .sectionContentOurStory {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     margin-top: 7%; 
     padding: 2rem;
     font-size: 1.7rem;
@@ -95,6 +114,9 @@
 
 .sectionContentCollection {
     flex: 1;
+    /* display: flex;
+    flex-direction: column;
+    align-items: start; */
     padding: 2rem;
     font-size: 1.7rem;
     /* border: solid black 1px;    */
