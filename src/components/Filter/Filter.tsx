@@ -17,9 +17,6 @@ const StyledFilter = styled(FormControl)({
 })
 
 const StyledInputLabel = styled(InputLabel)({
-    justifyContent: "center",
-    alignItems: "center",
-    verticalAlign: "middle",
     fontSize: "1.5rem"
 })
 
@@ -37,6 +34,8 @@ export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearBu
                     label="Filter"
                     onChange={onChange}
                     sx={{
+                        textAlign: "left",
+                        width: "100%",
                         fontSize: "1.5rem"
                     }}
                 >
