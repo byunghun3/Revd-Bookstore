@@ -33,7 +33,7 @@ export const ReaderReviewsData = [
             bookId: 1,
             title: "Greenlights",
             author: "Matthew McConaughey",
-            comments: "A rambling book with great stories but flawed execution.\n\nThe good parts are very good--he is a gifted storyteller and this is one of the rare Hollywood memoirs that has a lot of great personal stories in it. Most of them occur before he becomes famous, but halfway through the book something changes. He goes from an average guy to a movie star, and that's when the book (and possibly his personal character) starts to fall apart.\n\nIf you're looking for insights into his movies you won't find any here.He just lists most of them, more interested in his life experiences.",
+            comment: "A rambling book with great stories but flawed execution.\n\nThe good parts are very good--he is a gifted storyteller and this is one of the rare Hollywood memoirs that has a lot of great personal stories in it. Most of them occur before he becomes famous, but halfway through the book something changes. He goes from an average guy to a movie star, and that's when the book (and possibly his personal character) starts to fall apart.\n\nIf you're looking for insights into his movies you won't find any here. He just lists most of them, more interested in his life experiences.",
             rating: 2.5
         }
     },
@@ -147,7 +147,7 @@ export const ReaderReviewsData = [
             bookId: 7,
             title: "The Sirens of Titan",
             author: "Kurt Vonnegut",
-            comments: "The Sirens of Titan is the 5th novel I’ve read by Kurt Vonnegut so you can say I am a fan. While it does not compare with Slaughterhouse-five and the Cat’s Cradle it was still good and I enjoyed returning to the humour the absurdity that I love.",
+            comment: "The Sirens of Titan is the 5th novel I’ve read by Kurt Vonnegut so you can say I am a fan. While it does not compare with Slaughterhouse-five and the Cat’s Cradle it was still good and I enjoyed returning to the humour the absurdity that I love.",
             rating: 4
         }
     },
@@ -261,7 +261,7 @@ export const ReaderReviewsData = [
             bookId: 10,
             title: "Harry Potter and the Order of Phoenix",
             author: "J. K. Rowling",
-            comments: "I wasn't a big fan of Harry in this book. I understand that he went through a whole lot after the events of Goblet of Fire but he was moody and a jerk to everyone around him 98% of the time and although I can empathize with him, it became too over the top for me and I got tired of it real fast. He just kept snapping and going off on all the wrong people and it got really annoying. On top of that, I know this was intentional, but I just couldn't keep reading about Umbridge.",
+            comment: "I wasn't a big fan of Harry in this book. I understand that he went through a whole lot after the events of Goblet of Fire but he was moody and a jerk to everyone around him 98% of the time and although I can empathize with him, it became too over the top for me and I got tired of it real fast. He just kept snapping and going off on all the wrong people and it got really annoying. On top of that, I know this was intentional, but I just couldn't keep reading about Umbridge.",
             rating: 3.5
         }
     },
