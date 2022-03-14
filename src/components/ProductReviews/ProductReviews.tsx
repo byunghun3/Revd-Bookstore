@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useState, useEffect } from "react"
 import { Rating } from "react-simple-star-rating"
 import { Button, TextField } from "@mui/material"
 import { AvgReaderRating } from "../AvgReaderRating/AvgReaderRating"
@@ -34,7 +34,14 @@ const ReviewTextField = styled(TextField)({
 
 export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, open, onSubmit, onRate, onChange, onClose, onLogIn }) => {
     const reviews = JSON.parse(localStorage.getItem("reviews") || "[]")
+    const [reviewsText, setReviewsText] = useState("reviews")
     const readerReviews = ReaderReviewsData
+
+    useEffect(() => {
+        if (numOfTotalRatings === 1) {
+            setReviewsText("review")
+        } else { reviewsText }
+    })
 
     const hardCodedRatings = readerReviews.filter((review: any) => {
         return review.review.bookId === id
@@ -95,7 +102,7 @@ export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, o
                 <div className={classes.avgReaderRating}>
                     <AvgReaderRating rating={avgRating} />
                     {avgRating ? avgRating.toFixed(1) : null}&nbsp;
-                    ({numOfTotalRatings} reviews)
+                    ({numOfTotalRatings} {reviewsText})
                 </div>
                 <div className={classes.readerReviews}>
                     {displayHardCodedReaderReviews}
