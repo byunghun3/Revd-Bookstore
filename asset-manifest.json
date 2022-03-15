@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/revd-bookstore/static/css/main.3768dbfb.css",
+    "main.js": "/revd-bookstore/static/js/main.ce3254d5.js",
+    "static/js/787.40a69612.chunk.js": "/revd-bookstore/static/js/787.40a69612.chunk.js",
+    "static/media/pexels-helena-lopes-711009.jpg": "/revd-bookstore/static/media/pexels-helena-lopes-711009.7115f490d2b7c30c9d7b.jpg",
+    "static/media/eugenio-mazzone-6ywyo2qtaZ8-unsplash.jpg": "/revd-bookstore/static/media/eugenio-mazzone-6ywyo2qtaZ8-unsplash.0d64371566263102bb1c.jpg",
+    "static/media/matthew-feeney-Nwkh-n6l25w-unsplash.jpg": "/revd-bookstore/static/media/matthew-feeney-Nwkh-n6l25w-unsplash.d35eb9f6d8702c1e5271.jpg",
+    "static/media/pexels-cottonbro-3585048.jpg": "/revd-bookstore/static/media/pexels-cottonbro-3585048.4857707dfe79f8a8f1b5.jpg",
+    "static/media/alexei-maridashvili-gqk2hoqGAL0-unsplash1.jpg": "/revd-bookstore/static/media/alexei-maridashvili-gqk2hoqGAL0-unsplash1.569d48ec22d97bad9db3.jpg",
+    "static/media/alexandra-fuller-wkgv7I2VTzM-unsplash.jpg": "/revd-bookstore/static/media/alexandra-fuller-wkgv7I2VTzM-unsplash.f98f07fba2d89179e4ee.jpg",
+    "static/media/pexels-cottonbro-4861347.jpg": "/revd-bookstore/static/media/pexels-cottonbro-4861347.36920e6a78bac665a977.jpg",
+    "static/media/alexei-maridashvili-gqk2hoqGAL0-unsplash.jpg": "/revd-bookstore/static/media/alexei-maridashvili-gqk2hoqGAL0-unsplash.809afc5724368e961cbc.jpg",
+    "static/media/greenlights-slider1.jpg": "/revd-bookstore/static/media/greenlights-slider1.e874437e7c1eb5159edc.jpg",
+    "static/media/diette-henderson-egmEb0HgtgU-unsplash.jpg": "/revd-bookstore/static/media/diette-henderson-egmEb0HgtgU-unsplash.7afd6c21ad575f1310a1.jpg",
+    "static/media/lord-of-the-flies.jpeg": "/revd-bookstore/static/media/lord-of-the-flies.bcf878a84ba4df6a982e.jpeg",
+    "static/media/greenlights-slider.jpeg": "/revd-bookstore/static/media/greenlights-slider.c9e2d8a153d13db8e3b4.jpeg",
+    "static/media/alex-lvrs-2zDw14yCYqk-unsplash.jpg": "/revd-bookstore/static/media/alex-lvrs-2zDw14yCYqk-unsplash.4eba96d2ad97bcdccc65.jpg",
+    "static/media/harry-potter-and-the-order-of-phoenix.jpeg": "/revd-bookstore/static/media/harry-potter-and-the-order-of-phoenix.775bf0066ba7ed432292.jpeg",
+    "static/media/hamnet.jpeg": "/revd-bookstore/static/media/hamnet.3bfaa49624a2c40b5f11.jpeg",
+    "static/media/born-a-crime.jpeg": "/revd-bookstore/static/media/born-a-crime.fec6198e94638983199d.jpeg",
+    "static/media/hidden-valley-road.jpeg": "/revd-bookstore/static/media/hidden-valley-road.175cdec9d263f86a8f0a.jpeg",
+    "static/media/the-namesake.jpeg": "/revd-bookstore/static/media/the-namesake.2651b7551338267a61a3.jpeg",
+    "static/media/greenlights.jpeg": "/revd-bookstore/static/media/greenlights.719a758385661c4e3f53.jpeg",
+    "static/media/the-bluest-eye.jpeg": "/revd-bookstore/static/media/the-bluest-eye.a03a264ac489609e40da.jpeg",
+    "static/media/the-sound-and-the-fury.jpeg": "/revd-bookstore/static/media/the-sound-and-the-fury.ecb847a49c1eca1e65e0.jpeg",
+    "static/media/perfume.jpeg": "/revd-bookstore/static/media/perfume.bb4c218f974b3ffb4b06.jpeg",
+    "static/media/the-sirens-of-titan.jpeg": "/revd-bookstore/static/media/the-sirens-of-titan.3a22bcdccba5e2898d07.jpeg",
+    "static/media/in-cold-blood.jpeg": "/revd-bookstore/static/media/in-cold-blood.3ed12e3dc00881059bff.jpeg",
+    "static/media/page-not-found.jpeg": "/revd-bookstore/static/media/page-not-found.0ecd81b15adf2f391990.jpeg",
+    "index.html": "/revd-bookstore/index.html",
+    "main.3768dbfb.css.map": "/revd-bookstore/static/css/main.3768dbfb.css.map",
+    "main.ce3254d5.js.map": "/revd-bookstore/static/js/main.ce3254d5.js.map",
+    "787.40a69612.chunk.js.map": "/revd-bookstore/static/js/787.40a69612.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3768dbfb.css",
+    "static/js/main.ce3254d5.js"
+  ]
+}
