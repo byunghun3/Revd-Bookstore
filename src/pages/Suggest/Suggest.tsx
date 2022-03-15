@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { FC, useEffect, useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { FormControl, TextField } from "@mui/material"
@@ -52,11 +52,7 @@ const BrowseButton = styled(Button)({
     fontSize: "1.3rem"
 })
 
-interface Props {
-
-}
-
-export const Suggest = (props: Props) => {
+export const Suggest: FC = () => {
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
     const [comment, setComment] = useState("")
@@ -175,7 +171,6 @@ export const Suggest = (props: Props) => {
                             name="author"
                             type="text"
                             value={author}
-                            // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setAuthor(e.target.value) }}
                             onChange={handleChangeSuggestionAuthor}
                             required
                         />
@@ -220,19 +215,6 @@ export const Suggest = (props: Props) => {
                 onClick={undefined}
                 buttonText={undefined}
             />
-            {/* <Dialog
-                open={showAlert}
-                onClose={handleCloseAlert}
-            >
-                <DialogContent>
-                    <StyledDialogContentText>
-                        Please log in to submit your review
-                    </StyledDialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <LogInButton onClick={handleGoToLogin}>Log In</LogInButton>
-                </DialogActions>
-            </Dialog> */}
         </div>
     )
 }

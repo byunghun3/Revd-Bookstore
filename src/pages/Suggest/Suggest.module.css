@@ -14,7 +14,6 @@
 }
 
 .suggestTitle {
-    /* margin: 1% 0; */
     font-size: 3rem;
 }
 
@@ -24,7 +23,6 @@
 }
 
 .suggestForm {
-    /* border: solid black; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,7 +50,6 @@
     align-items: center;
     margin: 1rem 0 3rem 0;
     width: 40%;
-    /* border: solid black; */
 }
 
 @media (max-width: 499px) {

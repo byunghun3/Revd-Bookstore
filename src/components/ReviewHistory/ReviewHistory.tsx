@@ -158,13 +158,6 @@ export const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, 
                         onClick={() => { setShowDialog(true) }}
                     />
                 </div>
-                {/* <DialogComponent
-                    open={showDialog}
-                    onClose={handleCloseDialog}
-                    onClick={handleDeleteReview}
-                    ContentText="Are you sure you want to delete this review?"
-                    ButtonText="Delete"
-                /> */}
                 <Dialog
                     open={showDialog}
                     onClose={handleCloseDialog}
@@ -175,10 +168,7 @@ export const ReviewHistory: FC<ReviewHistoryProps> = ({ initialComment, bookId, 
                         </StyledDialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        {/* <form onSubmit={() => handleDeleteReview(id)}> */}
-                        {/* <StyledButton type="submit">Delete</StyledButton> */}
                         <StyledButton type="button" onClick={() => handleDeleteReview(id)}>Delete</StyledButton>
-                        {/* </form> */}
                     </DialogActions>
                 </Dialog>
             </ReviewCard>

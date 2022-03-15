@@ -13,7 +13,6 @@
     align-items: center;
     margin: 4% 0;
     min-height: 50vh;
-    /* border: solid black; */
 }
 
 .contactTitle {
@@ -40,7 +39,6 @@
 .contactLine {
     width: 100%;
     text-align: left;
-    /* border: solid black; */
 }
 
 .hoursLine {
@@ -58,7 +56,6 @@
     align-items: center;
     margin: 4% 0;
     min-height: 50vh;
-    /* border: solid black; */
 }
 
 .faqTitle {

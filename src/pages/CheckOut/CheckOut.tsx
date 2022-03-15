@@ -60,9 +60,6 @@ export const Checkout: FC = () => {
     const [expiryErrorText, setExpiryErrorText] = useState("")
     const [cvcErrorText, setCvcErrorText] = useState("")
     const [isProcessing, setIsProcessing] = useState(false)
-    // const [cardNumberErrorText, setCardNumberErrorText] = useState("Please enter a valid card number")
-    // const [expiryErrorText, setExpiryErrorText] = useState("Please enter a valid date")
-    // const [cvcErrorText, setCvcErrorText] = useState("Please enter a valid CVC")
     const cart = JSON.parse(localStorage.getItem("cart") || "[]")
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
     const navigate = useNavigate()
@@ -89,14 +86,6 @@ export const Checkout: FC = () => {
 
     const capitalizeStateCode = (code: string) => {
         return code.toUpperCase()
-    }
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        `set${e.currentTarget.name}(e.currentTarget.value)`
-    }
-
-    const handleProcessOrder = () => {
-        setIsProcessing(true)
     }
 
     const handleSaveOrder = (e: React.FormEvent<HTMLFormElement>) => {
@@ -252,7 +241,6 @@ export const Checkout: FC = () => {
                 open={isProcessing}
                 onClose={undefined}
                 contentText={
-                    // <div>
                     <div className={classes.processing}>
                         <Oval
                             color="#6993ab"

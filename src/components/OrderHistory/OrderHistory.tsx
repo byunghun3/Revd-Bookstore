@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react"
+import React, { FC } from "react"
 import { Link } from "react-router-dom"
 import { Grid } from "@mui/material"
 import { OrdersData } from "../../data/OrdersData"
@@ -16,7 +16,6 @@ const ItemGrid = styled(Grid)({
     alignItems: "center",
     margin: "0 10%",
     padding: "2% 0",
-    // borderTop: "solid gray 1px",
     borderBottom: "solid #adadad 0.1rem",
     "@media (max-width: 499px)": {
         flexDirection: "column",
@@ -66,7 +65,6 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
         </ItemGrid >
     })
 
-
     const orderHistory = orders.filter((order: any) => {
         return order.user.email === `${currentUserEmail}`
     }).map((order: any) => {
@@ -105,53 +103,8 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
         </ItemGrid >
     })
 
-    // const orderBookImage = orders.filter((order: any) => {
-    //     return order.user.email === `${currentUserEmail}`
-    // }).map((order: any) => {
-    //     return order.details.map((book: any) => {
-    //         return <img className={classes.bookCover} key={book.image} src={book.image} alt="" />
-    //     })
-    // })
-
-    // const orderBookInfo = orders.filter((order: any) => {
-    //     return order.user.email === `${currentUserEmail}`
-    // }).map((order: any) => {
-    //     return order.details.map((book: any) => {
-    //         return <div className={classes.bookInfo} key={book.title}>
-    //             <div className={classes.bookTitle}>
-    //                 {book.title}
-    //             </div>
-    //             <div className={classes.bookAuthor}>
-    //                 {book.author}
-    //             </div>
-    //             <div className={classes.bookQty} key={book.title}>
-    //                 <span className={classes.bookQtyLabel}>Qty:&nbsp;</span>
-    //                 {book.quantity}
-    //             </div>
-    //         </div>
-    //     })
-    // })
-
-    // console.log(orderBookImage, orderBookInfo)
-
     return (
         <div className={classes.orderHistory}>
-            {/* <ItemGrid item key={id} id={id}>
-                <div className={classes.orderImage}>
-                    {orderBookImage}
-                </div>
-                <div className={classes.orderId}>
-                    <div className={classes.orderIdLabel}>Order ID:</div>
-                    {id}
-                </div>
-                <div className={classes.orderBookInfo}>
-                    {orderBookInfo}
-                </div>
-                <div className={classes.orderDetails}>
-                    <div className={classes.orderDate}>{date}</div>
-                    <div className={classes.orderTotal}>${total}</div>
-                </div>
-            </ItemGrid > */}
             {hardCodedOrderHistory}
             {orderHistory}
         </div>

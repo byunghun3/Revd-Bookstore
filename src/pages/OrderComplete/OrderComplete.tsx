@@ -17,19 +17,6 @@ export const OrderComplete: FC = () => {
         return <Link key={book.id} to={`/browse/${book.id}`}>
             <img className={classes.bookCover} src={book.image} alt="" />
         </Link>
-        // <Grid key={book.id} item sm={2} md={2} lg={2}>
-        {/* <Books
-                id={book.id}
-                title={book.title}
-                author={book.author}
-                image={book.image}
-            rating={book.rating}
-            type={book.type}
-            price={book.price}
-            stock={book.stock}
-            status={book.status}
-            /> */}
-        // </Grid>
     })
 
     return (

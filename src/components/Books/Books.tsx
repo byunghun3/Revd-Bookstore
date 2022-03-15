@@ -26,7 +26,6 @@ interface BooksProps {
 
 const BookCard = styled(Card)({
     position: "relative",
-    // overflow: "inherit",
     minWidth: "5vw",
     transition: "ease 0.3s",
     "&:hover": {

@@ -70,7 +70,6 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     number={cardNumber}
                 />
             </div>
-            {/* <div> */}
             <CardNumberForm variant="outlined">
                 <StyledInputLabel>Credit Card Number</StyledInputLabel>
                 <StyledOutlinedInput
@@ -79,7 +78,6 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     type="tel"
                     value={cardNumber}
                     onChange={onChangeNumber}
-                    // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setNumber(e.target.value) }}
                     onFocus={onFocus}
                     error={cardNumberError}
                     required />
@@ -87,7 +85,6 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     <div className={classes.errorMessage}>{cardNumberErrorText}</div>
                 }
             </CardNumberForm>
-            {/* </div> */}
             <CardNameForm variant="outlined">
                 <StyledInputLabel>Name on Card</StyledInputLabel>
                 <StyledOutlinedInput
@@ -129,7 +126,6 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                     <div className={classes.errorMessage}>{cvcErrorText}</div>
                 }
             </CvcForm>
-            {/* </div> */}
         </div>
     )
 }

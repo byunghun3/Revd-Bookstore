@@ -61,7 +61,6 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                         type="text"
                         value={addressLineOne}
                         onChange={onChangeAddressLineOne}
-                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setStreetAddress(e.target.value) }}
                         required
                     />
                 </StreetForm>
@@ -73,7 +72,6 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                         type="text"
                         value={addressLineTwo}
                         onChange={onChangeAddressLineTwo}
-                    // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setStreetAddress(e.target.value) }}
                     />
                 </StreetForm>
                 <CityForm variant="outlined">
@@ -84,7 +82,6 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                         type="text"
                         value={city}
                         onChange={onChangeCity}
-                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCity(e.target.value) }}
                         required
                     />
                 </CityForm>
@@ -96,11 +93,9 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                         type="text"
                         value={stateCode}
                         onChange={onChangeStateCode}
-                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setStateCode(e.target.value) }}
                         required
                     />
                 </StateCodeForm>
-                {/* <SelectUSState className={classes.selectState} /> */}
                 <ZipCodeForm variant="outlined">
                     <StyledInputLabel>Zip/Postal</StyledInputLabel>
                     <StyledOutlinedInput
@@ -109,7 +104,6 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                         type="text"
                         value={zipCode}
                         onChange={onChangeZipCode}
-                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setZipCode(e.target.value) }}
                         required
                     />
                 </ZipCodeForm>

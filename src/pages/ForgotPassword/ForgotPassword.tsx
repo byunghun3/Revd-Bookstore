@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react"
+import React, { FC, useState } from "react"
 import { Link } from "react-router-dom"
 import { InputLabel, FormControl, OutlinedInput, Button, Card } from "@mui/material"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
@@ -27,9 +27,7 @@ const StyledAccountCircleIcon = styled(AccountCircleIcon)({
 
 const EmailForm = styled(FormControl)({
     margin: "2% 0",
-    width: "80%",
-    // border: "solid black"
-
+    width: "80%"
 })
 
 const StyledInputLabel = styled(InputLabel)({
@@ -42,7 +40,6 @@ const StyledOutlinedInput = styled(OutlinedInput)({
 
 const BackToLoginButton = styled(Button)({
     margin: "2% 0",
-    // width: "41%",
     textDecoration: "none",
     fontSize: "1.3rem"
 })
@@ -73,7 +70,6 @@ export const ForgotPassword: FC = () => {
         })
 
         if (emailExists) {
-            // alert(`Reset link has been sent to ${email}!`)
             setShowForgotPassword(false)
             setEmailError(false)
             setResetLinkSent(true)
@@ -85,12 +81,10 @@ export const ForgotPassword: FC = () => {
 
     return (
         <div className={classes.forgotPasswordPage}>
-            {/* {showForgotPassword && */}
             <ForgotPWCard>
                 <StyledAccountCircleIcon />
                 {showForgotPassword &&
                     <form className={classes.forgotPasswordContent} onSubmit={handleSubmit}>
-                        {/* <div> */}
                         <div className={classes.forgotPW}>Forgot your password?</div>
                         <div className={classes.enterEmail}>Please enter your email address</div>
                         <EmailForm variant="outlined">
@@ -121,7 +115,6 @@ export const ForgotPassword: FC = () => {
                                 </SignUpButton>
                             </Link>
                         </div>
-                        {/* </div> */}
                     </form>
                 }
                 {resetLinkSent &&
@@ -137,20 +130,6 @@ export const ForgotPassword: FC = () => {
                     </div>
                 }
             </ForgotPWCard>
-            {/* } */}
-            {/* {resetLinkSent &&
-                <ForgotPWCard>
-                    <StyledAccountCircleIcon />
-                    <div className={classes.linkSent}>Password reset link has been sent to {email}!</div>
-                    <div>
-                        <Link className={classes.link} to="/login">
-                            <BackToLoginButton type="button">
-                                Back to login
-                            </BackToLoginButton>
-                        </Link>
-                    </div>
-                </ForgotPWCard>
-            } */}
         </div >
     )
 }

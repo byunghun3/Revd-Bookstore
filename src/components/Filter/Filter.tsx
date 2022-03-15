@@ -5,7 +5,6 @@ import classes from "./Filter.module.css"
 
 interface FilterProps {
     filter: string
-    // onChange: React.ChangeEventHandler<HTMLSelectElement>
     onChange: (e: SelectChangeEvent<string>, child: React.ReactNode) => void
     onClick: React.MouseEventHandler<HTMLButtonElement>
     showClearButton: boolean
@@ -47,17 +46,6 @@ export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearBu
                     <StyledMenuItem value="Fiction">Fiction</StyledMenuItem>
                 </Select>
             </StyledFilter>
-            {/* {showClearButton && <ClearButton type="button" onClick={onClick}>Clear Filter</ClearButton>} */}
-            {/* <select className={classes.select} name="filter" value={filter} onChange={onChange}>
-                <option value="" disabled>Filter</option>
-                <option value="All">All</option>
-                <option value="EBOOK">Ebook</option>
-                <option value="AUDIOBOOK">Audiobook</option>
-                <option value="HARD COPY">Hard copy</option>
-                <option value="Nonfiction">Nonfiction</option>
-                <option value="Fiction">Fiction</option>
-            </select> */}
-
         </div >
     )
 }

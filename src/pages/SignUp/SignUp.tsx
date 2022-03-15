@@ -1,24 +1,14 @@
-import React, { useState, useEffect, FC } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { v4 as uuidv4 } from "uuid"
-import Grid from "@mui/material/Grid"
-import InputLabel from "@mui/material/InputLabel"
-import FormControl from "@mui/material/FormControl"
-import OutlinedInput from "@mui/material/OutlinedInput"
-import InputAdornment from "@mui/material/InputAdornment"
-import IconButton from "@mui/material/IconButton"
-import Checkbox from "@mui/material/Checkbox"
-import Button from "@mui/material/Button"
+import React, { FC, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { Card, InputLabel, FormControl, OutlinedInput, InputAdornment, IconButton, Button } from "@mui/material"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
 import { UsersData } from "../../data/UsersData"
 import { styled } from "@mui/system"
 import classes from "./SignUp.module.css"
-import { Card, TextField } from "@mui/material"
 
 const SignUpCard = styled(Card)({
-    // position: "relative",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -64,22 +54,18 @@ const SignUpButton = styled(Button)({
 export const SignUp: FC = () => {
     const navigate = useNavigate()
     const hardCodedUsers = UsersData
-
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
-    // const [passwordLengthError, setPasswordLengthError] = useState("Password should not exceed 16 characters")
     const [emailInputError, setEmailInputError] = useState("")
     const [passwordLengthError, setPasswordLengthError] = useState("")
     const [isEmailInvalid, setIsEmailInvalid] = useState(false)
     const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
-    // const [passwordMatchError, setPasswordMatchError] = useState("Passwords don't match")
     const [passwordMatchError, setPasswordMatchError] = useState("")
     const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers)))
-    // const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || "[]"))
 
 
     useEffect(() => {
@@ -128,9 +114,6 @@ export const SignUp: FC = () => {
         setPassword(e.target.value)
     }
 
-    /^.{8,}$/
-    // /^ (?=.* [a - z])(?=.* [0 - 9])$ /
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
@@ -148,7 +131,6 @@ export const SignUp: FC = () => {
             let newUser = [...users]
 
             newUser.push({
-                // id: uuidv4(),
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
@@ -165,7 +147,6 @@ export const SignUp: FC = () => {
 
     return (
         <div className={classes.signUpPage}>
-            {/* <FormGrid> */}
             <SignUpCard>
                 <StyledAccountCircleIcon />
                 <form className={classes.signUpContent} onSubmit={handleSubmit}>
@@ -216,15 +197,12 @@ export const SignUp: FC = () => {
                             type={showPassword ? "text" : "password"}
                             value={password}
                             onChange={handlePasswordLength}
-                            // helperText={password.length < 8 ? "Password should be at least 8 characters" : (password.length > 16 ? "Password should not exceed 16 characters" : null)}
-                            // error={password.length < 8 || password.length > 16}
                             error={isPasswordInvalid}
                             endAdornment={<InputAdornment position="end">
                                 <IconButton
                                     aria-label="toggle password visibility"
                                     type="button"
                                     onClick={handleClickShowPassword}
-                                    // onMouseDown={handleMouseDownPassword}
                                     edge="end"
                                 >
                                     {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -250,7 +228,6 @@ export const SignUp: FC = () => {
                                     aria-label="toggle password visibility"
                                     type="button"
                                     onClick={handleClickShowPassword}
-                                    // onMouseDown={handleMouseDownPassword}
                                     edge="end"
                                 >
                                     {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -265,8 +242,6 @@ export const SignUp: FC = () => {
                     <SignUpButton color="primary" variant="contained" type="submit">Sign Up</SignUpButton>
                 </form>
             </SignUpCard>
-            {/* </FormGrid> */}
         </div >
     )
 }
-

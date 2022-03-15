@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect } from "react"
-import { Route, Routes, useLocation, Navigate } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import { HomePage } from "../../pages/HomePage/HomePage"
 import { About } from "../../pages/About/About"
 import { Browse } from "../../pages/Browse/Browse"
@@ -18,7 +18,7 @@ import { Product } from "../../pages/Product/Product"
 import { Header } from "../Header/Header"
 import { HeaderTwo } from "../HeaderTwo/HeaderTwo"
 import { Footer } from "../Footer/Footer"
-import { LoginContext, LoginProvider } from "../../contexts/LoginContext"
+import { LoginContext } from "../../contexts/LoginContext"
 import { UnprotectedRoute } from "../UnprotectedRoute/UnprotectedRoute"
 
 export const PageRoutes: FC = () => {
@@ -33,24 +33,13 @@ export const PageRoutes: FC = () => {
     }, [currentUser])
 
     return (
-        // <LoginProvider>
         <div>
             {location.pathname === "/login" ||
                 location.pathname === "/cart" ||
                 location.pathname === "/signup" ||
                 location.pathname === "/forgotpassword" ||
                 location.pathname === "/checkout" ?
-                // location.pathname === "*" ?
                 <HeaderTwo /> : <Header />}
-            {/* {location.pathname === "/" ||
-                location.pathname === "/about" ||
-                location.pathname === "/browse" ||
-                location.pathname === "/browse/:id" ||
-                location.pathname === "/suggest" ||
-                location.pathname === "/contact" ||
-                location.pathname === "/profile" ||
-                location.pathname === "/ordercomplete" ?
-                <Header /> : <HeaderTwo />} */}
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />
@@ -63,8 +52,6 @@ export const PageRoutes: FC = () => {
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
                 </Route>
-                {/* <Route path="/login" element={isLoggedIn ? <Navigate to="/profile" /> : <Login />} /> */}
-                {/* <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} /> */}
                 <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}>
                     <Route path="/profile" element={<Profile />} />
                 </Route>
@@ -74,8 +61,6 @@ export const PageRoutes: FC = () => {
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />
-            {/* <button onClick={() => { setIsLoggedIn(true) }}></button> */}
         </div>
-        // </LoginProvider >
     )
 }

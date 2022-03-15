@@ -4,57 +4,30 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    /* min-width: 40%; */
-    /* min-width: 50%; */
-    /* margin-bottom: 0.5rem; */
-    /* vertical-align: bottom; */
-    /* border: solid black; */
 }
-
-/* .logo {
-    vertical-align: middle;
-} */
 
 .headerLink {
     text-decoration: none;
-    /* margin: 0 2%; */
     color: black;
-    /* color: white; */
 }
 
 .title {
-    /* vertical-align: middle; */
     font-family: 'Bangers', 'Luxurious Roman';
     font-size: 5rem;
-    /* width: 100%; */
     color: black;
-    /* color: white; */
-    /* border: solid black; */
 }
 
 .rightSection {
-    /* position: relative; */
-    /* top: 15px; */
     flex: 1;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    /* text-align: bottom; */
-    /* vertical-align: middle; */
-    /* margin-bottom: -3%; */
-    /* min-height: 5rem; */
-    /* min-height: 100%; */
-    /* min-width: 50%; */
     font-size: 1.7rem;
-    /* border: solid black; */
 }
 
 .greeting {
-    /* position: relative; */
     margin-right: 1rem;
-    /* align-items: baseline; */
-    /* border: solid black; */
 }
 
 .cartLength {
@@ -89,11 +62,7 @@
 }
 
 .expandedNavLink {
-    /* margin: 2rem; */
-    /* color: white; */
-    /* font-size: 1.7rem; */
     text-decoration: none;
-    /* transition: ease 3s; */
 }
 
 @media (max-width: 500px) {

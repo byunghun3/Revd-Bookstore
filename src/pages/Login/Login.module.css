@@ -24,28 +24,6 @@
     font-size: 1.3rem;
 }
 
-/* .passwordErrorMessage {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin-top: -20px;
-    margin-bottom: 1.9rem;
-    margin-left: 12%;
-    width: 70%;
-    color: red;
-    text-align: left;
-    font-size: 1.6rem;
-    border: solid blue;
-} */
-
-/* .passwordNoErrorMessage {
-    margin-top: -2rem;
-    margin-left: 15%;
-    margin-bottom: 3.7rem;
-    border: solid black;
-} */
-
 .signUpContent {
     margin: 2% 0;    
 }
@@ -53,7 +31,3 @@
 .signUpText {
     font-size: 1.4rem;
 }
-
-/* .ww {
-    border: solid black;
-} */

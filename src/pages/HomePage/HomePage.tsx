@@ -11,7 +11,6 @@ import { styled } from "@mui/system"
 import styles from "styled-components"
 import classes from "./HomePage.module.css"
 
-
 interface SliderProps {
     newSlideOrder: number
 }
@@ -97,21 +96,6 @@ export const HomePage: FC = () => {
         }
     }
 
-
-    // const handleAutoSlide = () => {
-    //     if (slideOrder < 2) {
-    //         setSlideOrder(slideOrder + 1)
-    //     } else {
-    //         setSlideOrder(slideOrder - 2)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     setInterval(
-    //         handleAutoSlide, 10000
-    //     )
-    // })
-
     return (
         <div className={classes.homePage}>
             <LeftArrow id="left" onClick={handleClick} />
@@ -138,7 +122,6 @@ export const HomePage: FC = () => {
                         <GreenlightsButton type="button" variant="outlined">View more</GreenlightsButton>
                     </Link>
                 </div>
-                {/* <div className={`${classes.chatBubble} ${classes.chatBubbleTri}`}>&ldquo;Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...&rdquo;</div> */}
                 <div className={classes.sliderTwoQuote}>
                     <div className={classes.quoteText}>&ldquo;Reach beyond your grasp, have immortal finish lines, and turn your red light green because a roof is a man-made thing...&rdquo;</div>
                     <div className={classes.quoteBy}>- Matthew McConaughey</div>

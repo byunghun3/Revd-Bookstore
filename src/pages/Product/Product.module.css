@@ -4,13 +4,9 @@
     justify-content: space-between;
     min-height: 100vh;
     width: 100%;
-    /* border: solid black; */
 }
 
 .bookCover {
-    /* height: auto; */
-    /* width: 70%; */
-    /* min-width: 50%; */
     width: 60%;
     margin: 10vh 0;
 }

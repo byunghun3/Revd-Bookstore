@@ -9,16 +9,13 @@
 .checkoutHeader {
     position: relative;
     align-items: center;
-    /* height: 2rem; */
     width: 100%;
     font-size: 1.6rem;
-    /* border: solid black; */
 }
 
 .checkoutForm {
     display: flex;
     flex-direction: row;
-    /* width: 100%; */
 }
 
 .shippingInfoSection {
@@ -33,15 +30,9 @@
     float: right;
     margin: -2.5rem 3rem 0 0;
     text-decoration: none;
-    /* border: solid black; */
 }
 
 .processing {
-    /* position: absolute;
-    z-index: 3;
-    top: 40%;
-    left: 50%; */
-    /* transform: translate(-50%, -50%); */
     display: flex;
     flex-direction: column;
     justify-content: center;

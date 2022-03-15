@@ -12,19 +12,13 @@ import classes from "./Product.module.css"
 
 const ContainerGrid = styled(Grid)({
   display: "flex",
-  justifyContent: "center",
-  // margin: "0",
-  // maxWidth: "100%",
-  // border: "solid black"
+  justifyContent: "center"
 })
 
 const ItemGrid = styled(Grid)({
   display: "block",
-  marginBottom: "5vh",
-  // border: "solid red"
+  marginBottom: "5vh"
 })
-
-
 
 const ReaderReviewGrid = styled(Grid)({
   flex: "1",
@@ -32,8 +26,7 @@ const ReaderReviewGrid = styled(Grid)({
   justifyContent: "space-between",
   alignItems: "center",
   marginBottom: "5%",
-  maxWidth: "100%",
-  // border: "solid black"
+  maxWidth: "100%"
 })
 
 export const Product: FC = () => {
@@ -60,8 +53,6 @@ export const Product: FC = () => {
       setShowDialog(true)
     }
   }
-
-
 
   const maxStock = books.find((book: any) => {
     return book.id === books[id - 1].id
@@ -168,34 +159,6 @@ export const Product: FC = () => {
             stock={books[id - 1].stock}
             onSubmit={handleAddToCart}
           />
-          {/* <BookDetailsCard>
-            <form className={classes.bookDetails} onSubmit={handleAddToCart}>
-              {books[id - 1].title}
-              <div className={classes.bookAuthor}>
-                <span className={classes.bookAuthorBy}>
-                  by&nbsp;
-                </span>
-                <span className={classes.bookAuthorName}>
-                  {books[id - 1].author}
-                </span>
-              </div>
-              <h4 className={classes.bookType}>
-                <div className={classes.bookTypeWord}>{books[id - 1].type}</div></h4>
-              <h4 className={classes.bookRating}><BookRating rating={rating} /></h4>
-              <h3 className={classes.bookPrice}>${books[id - 1].price}</h3>
-              <Button type="submit">Add to Cart</Button>
-              {books[id - 1].stock < 4 ?
-                <div className={classes.bookStock}>
-                  Only {books[id - 1].stock} books left in stock
-                </div> :
-                <div className={classes.bookStock}>
-                </div>}
-            </form>
-            <AccordionComponent
-              accordionSummary="hello"
-              accordionDetails="well"
-            />
-          </BookDetailsCard> */}
           <div className={classes.accordion}>
             <AccordionComponent
               accordionSummary="Revd Review (may contain spoilers!)"
@@ -211,60 +174,11 @@ export const Product: FC = () => {
           comment={comment}
           open={showDialog}
           onSubmit={handleSubmitReview}
-          // onRate={() => handleRating(rating)}
           onRate={handleRating}
           onChange={handleChangeReviewComment}
           onClose={handleCloseDialog}
           onLogIn={handleGoToLogin}
         />
-        {/* <div className={classes.readerReviewsTitle}>Reader Reviews</div>
-        <div>
-          <div className={classes.avgReaderRating}>
-            <AvgReaderRating rating={avgRating} />
-            {avgRating ? avgRating.toFixed(1) : null}&nbsp;
-            ({numOfTotalRatings} reviews)
-          </div>
-          <div className={classes.readerReviews}>
-            {displayHardCodedReaderReviews}
-            {displayReaderReviews}
-          </div>
-        </div>
-        <form className={classes.readerReviewsForm} onSubmit={handleSubmitReview}>
-          <div className={classes.submitRatingAndButton}>
-            <Rating
-              onClick={handleRating}
-              ratingValue={rating}
-              allowHalfIcon
-              fillColor="#FDCC0D"
-              emptyColor="#EEE"
-            />
-            <Button variant="outlined" type="submit">Submit</Button>
-          </div>
-          <ReviewTextField
-            multiline
-            minRows={3}
-            label="Leave a review..."
-            name="reviewComments"
-            type="text"
-            value={comment}
-            // onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setReviewComments(e.target.value) }}
-            onChange={handleChangeReviewComment}
-            required
-          />
-        </form>
-        <Dialog
-          open={showAlert}
-          onClose={handleCloseAlert}
-        >
-          <DialogContent>
-            <DialogContentText>
-              Please log in to submit your review
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleGoToLogin}>Log In</Button>
-          </DialogActions>
-        </Dialog> */}
       </ReaderReviewGrid>
     </div>
   )

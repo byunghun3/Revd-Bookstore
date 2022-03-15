@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Button, Card, TextField } from "@mui/material"
+import { Card } from "@mui/material"
 import { ReaderRating } from "../../components/ReaderRating/ReaderRating"
 import { styled } from "@mui/system"
 import classes from "./ReaderReview.module.css"
@@ -11,7 +11,6 @@ interface ReaderReviewProps {
     firstName: string
     lastName: string
     date: string
-    // onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
 const ReaderReviewCard = styled(Card)({
@@ -26,19 +25,8 @@ const ReaderReviewCard = styled(Card)({
     borderRadius: "0%",
     "@media (max-width: 499px)": {
         flexDirection: "column",
-        justifyContent: "space-between",
-        // height: "25vh"
-        // height: "200px"
+        justifyContent: "space-between"
     }
-})
-
-const StyledButton = styled(Button)({
-    fontSize: "1.3rem"
-})
-
-const ReviewTextField = styled(TextField)({
-    width: "60%",
-    margin: "1% 0"
 })
 
 export const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, lastName, date }) => {

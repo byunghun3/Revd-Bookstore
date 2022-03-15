@@ -103,8 +103,6 @@ export const About: FC = () => {
                             <img className={classes.ourStoryImage} src={OurStoryImage} alt="" />
                         </div>
                     </OurStorySection>
-                    {/* </div> */}
-                    {/* <div className={classes.sectionTwo} id="section-our-collection"> */}
                     <ColumnSection id="section-our-collection">
                         <div className={classes.sectionImageCollection}>
                             <img className={classes.ourCollectionImage} src={OurCollectionImage} alt="" />

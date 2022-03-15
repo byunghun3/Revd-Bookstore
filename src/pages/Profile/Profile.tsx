@@ -2,7 +2,7 @@ import React, { FC, useContext } from "react"
 import { LoginContext } from "../../contexts/LoginContext"
 import { useNavigate } from "react-router-dom"
 import { NavHashLink } from "react-router-hash-link"
-import { Card, Container } from "@mui/material"
+import { Card } from "@mui/material"
 import { ReaderReviewsData } from "../../data/ReaderReviewsData"
 import { OrderHistory } from "../../components/OrderHistory/OrderHistory"
 import { ReviewHistory } from "../../components/ReviewHistory/ReviewHistory"
@@ -12,11 +12,6 @@ import { styled } from "@mui/system"
 import classes from "./Profile.module.css"
 
 const SectionCardCol = styled(Card)({
-    // display: "flex",
-    // flexDirection: "column",
-    // alignItems: "center",
-    // margin: "1% 0",
-    // margin: "4% 0",
     margin: "1% 0",
     padding: "5% 0",
     minHeight: "100vh",
@@ -32,25 +27,9 @@ export const Profile: FC = () => {
     const suggestions = JSON.parse(localStorage.getItem("suggestions") || "[]")
     const readerReviews = ReaderReviewsData
     const navigate = useNavigate()
-    // useEffect(() => {
-    //     if (currentUser.length) {
-    //         setIsLoggedIn(true)
-    //     } else { setIsLoggedIn(false) }
-    // }, [currentUser])
     const currentUserEmail = isLoggedIn ? currentUser[0].email : null
     const currentUserFirstName = isLoggedIn ? currentUser[0].firstName : null
     const currentUserLastName = isLoggedIn ? currentUser[0].lastName : null
-
-    // const hardCodedOrderHistory = customerOrders.filter((order: any) => {
-    //     return order.user.email === `${currentUserEmail}`
-    // }).map((order: any) => {
-    //     return <OrderHistory
-    //         key={order.id}
-    //         id={order.id}
-    //         date={order.date}
-    //         total={order.total}
-    //     />
-    // })
 
     const orderExists = orders.find((order: any) => {
         return order.user.email === `${currentUserEmail}`
@@ -101,7 +80,6 @@ export const Profile: FC = () => {
 
     return (
         <div className={classes.profilePage}>
-            {/* <ProfileContainer> */}
             <div className={classes.profileContainer}>
                 <div className={classes.sideNav}>
                     <div className={classes.sideNavGroup}>
@@ -121,7 +99,6 @@ export const Profile: FC = () => {
                     </div>
                 </div>
                 <div className={classes.profileContent}>
-                    {/* <div className={classes.section} id="section-user-profile"> */}
                     <SectionCardCol id="section-user-profile">
                         <div className={classes.profileTitle}>Profile</div>
                         <CurrentUserInfo
@@ -130,9 +107,7 @@ export const Profile: FC = () => {
                             currentUserEmail={currentUserEmail}
                         />
                     </SectionCardCol>
-                    {/* </div> */}
                     <SectionCardCol id="section-order-history">
-                        {/* <div className={classes.section} id="section-order-history"> */}
                         <div className={classes.orderHistoryTitle}>Order History</div>
                         {currentUserEmail === "byunghun3@gmail.com" ?
                             <OrderHistory
@@ -145,11 +120,8 @@ export const Profile: FC = () => {
                                     <div className={classes.noEntry}>No orders yet</div>
                             )
                         }
-                        {/* {hardCodedOrderHistory} */}
-                        {/* </div> */}
                     </SectionCardCol>
                     <SectionCardCol id="section-review-history">
-                        {/* <div className={classes.section} id="section-review-history"> */}
                         <div className={classes.reviewHistoryTitle}>Review History</div>
                         {hardCodedReviewHistory.length || reviewHistory.length ?
                             <div>{hardCodedReviewHistory}
@@ -157,19 +129,15 @@ export const Profile: FC = () => {
                             <div className={classes.noEntry}>No reviews yet</div>
                         }
                     </SectionCardCol>
-                    {/* </div> */}
                     <SectionCardCol id="section-suggestion-history">
-                        {/* <div className={classes.section} id="section-suggestion-history"> */}
                         <div className={classes.suggestionHistoryTitle}>Suggestion History</div>
                         {suggestionHistory.length ?
                             suggestionHistory :
                             <div className={classes.noEntry}>No suggestions yet</div>
                         }
-                        {/* </div> */}
                     </SectionCardCol>
                 </div>
             </div >
-            {/* </ProfileContainer> */}
         </div >
     )
 }

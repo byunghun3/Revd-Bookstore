@@ -1,7 +1,6 @@
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import { Link } from "react-router-dom"
-import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
+import { AppBar, Toolbar } from "@mui/material"
 import { styled } from "@mui/system"
 import classes from "./HeaderTwo.module.css"
 
@@ -13,11 +12,6 @@ const HeaderToolbar = styled(Toolbar)({
 
 
 export const HeaderTwo: FC = () => {
-    // const users = JSON.parse(localStorage.getItem("users") || "[]")
-
-    // useEffect(() => {
-    //     localStorage.setItem("users", JSON.stringify(users))
-    // }, [users])
     return (
         <div>
             <AppBar

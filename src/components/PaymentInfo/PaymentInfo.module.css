@@ -1,14 +1,12 @@
 .paymentInfo {
     display: inline-block;
-    /* flex-direction: row; */
     justify-content: center;
     align-items: center;
 }
 
 .paymentInfoHeader {
-    margin-left: 5%;
     margin-bottom: 2.5rem;
-    /* border: solid black; */
+    margin-left: 5%;
     text-align: left;
     font-size: 3rem;
     font-weight: 600;

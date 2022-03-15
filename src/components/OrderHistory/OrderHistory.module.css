@@ -7,7 +7,6 @@
 .orderImage {
     flex: 1;
     width: 15rem;
-    /* width: 15%; */
 }
 
 .bookCover {
@@ -31,12 +30,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* border: solid orange; */
 }
 
 .bookInfo {
     margin: 10% 0;
-    /* border: solid black; */
 }
 
 .bookTitle {
@@ -81,8 +78,4 @@
         flex-direction: row;
         margin-bottom: 5%;
     }
-    /* .bookCover { */
-        /* flex: 1; */
-        /* width: 100%; */
-    /* } */
 }

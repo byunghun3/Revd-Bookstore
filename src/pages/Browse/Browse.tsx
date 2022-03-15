@@ -1,13 +1,9 @@
 import React, { FC, useState } from "react"
-import { Link } from "react-router-dom"
-import { Container } from "@mui/material"
-import { Grid } from "@mui/material"
-import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
+import { Container, Grid, SelectChangeEvent } from "@mui/material"
 import { Filter } from "../../components/Filter/Filter"
 import { Books } from "../../components/Books/Books"
 import { BooksData } from "../../data/BooksData"
 import { styled } from "@mui/system"
-import styles from "styled-components"
 import classes from "./Browse.module.css"
 
 const ContainerGrid = styled(Grid)({
@@ -106,31 +102,7 @@ export const Browse: FC = () => {
                 onClick={handleClearFilter}
                 showClearButton={showClearButton}
             />
-            {/* <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={filterValue}
-                    label="Age"
-                    onChange={handleChange}
-                >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl> */}
             <Container>
-                {/* <button>placeholder</button> */}
-                {/* <select name="sort"
-                value={props.sort} onChange={props.sortBooks}
-                >
-                    <option value="">Sort</option>
-                    <option value="highest-price">Highest price</option>
-                    <option value="lowest-price">Lowest price</option>
-                    <option value="highest-rating">Lowest rating</option>
-                    <option value="lowest-rating">Lowest rating</option>
-                </select> */}
                 <ContainerGrid container spacing={15}>
                     {showBookList && bookList}
                     {typeFilter}
@@ -141,6 +113,5 @@ export const Browse: FC = () => {
                 </div>
             </Container>
         </div>
-
     )
 }

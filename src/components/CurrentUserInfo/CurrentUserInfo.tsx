@@ -29,14 +29,6 @@ const StyledButton = styled(Button)({
     fontSize: "1.5rem"
 })
 
-const StyledDialogContentText = styled(DialogContentText)({
-    fontSize: "1.6rem"
-})
-
-const DialogButton = styled(Button)({
-    fontSize: "1.3rem"
-})
-
 export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUserFirstName, currentUserLastName }) => {
     const { setIsLoggedIn } = useContext(LoginContext)
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
@@ -107,56 +99,6 @@ export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, cu
 
     const userProfile = currentUser.map((user: any) => {
         return <div className={classes.profileSection} key={user.email}>
-            {/* <div className={classes.firstName}>
-                <div className={classes.firstNameLabel}>First Name:</div>
-                <div className={classes.firstNameValue}>
-                    {isEditingFirstName ?
-                        <form className={classes.profileValue} onSubmit={(e) => handleEditFirstName(e)}>
-                            <input
-                                value={userFirstName}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserFirstName(e.target.value) }}
-                            />
-                            <button className={classes.editButton} type="submit">
-                                <StyledEditIcon />
-                            </button>
-                        </form> :
-                        <form className={classes.profileValue} onSubmit={(e) => handleEditFirstName(e)}>
-                            <div>{userFirstName}</div>
-                            <button className={classes.editButton} type="submit">
-                                <StyledEditIcon />
-                            </button>
-                        </form>
-                    }
-                </div>
-            </div>
-            <div className={classes.lastName}>
-                <div className={classes.lastNameLabel}>Last Name:</div>
-                <div className={classes.lastNameValue}>
-                    {isEditingLastName ?
-                        <form className={classes.profileValue} onSubmit={(e) => handleEditLastName(e)}>
-                            <input
-                                value={userLastName}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserLastName(e.target.value) }}
-                            />
-                            <button className={classes.editButton} type="submit">
-                                <StyledEditIcon />
-                            </button>
-                        </form> :
-                        <form className={classes.profileValue} onSubmit={(e) => handleEditLastName(e)}>
-                            <div>{userLastName}</div>
-                            <button className={classes.editButton} type="submit">
-                                <StyledEditIcon />
-                            </button>
-                        </form>
-                    }
-                </div>
-            </div>
-            <div className={classes.email}>
-                <div className={classes.emailLabel}>Email:</div>
-                <div className={classes.emailValue}>
-                    {user.email}
-                </div>
-            </div> */}
             <div className={classes.labels}>
                 <div className={classes.profileLabel}>First Name:</div>
                 <div className={classes.profileLabel}>Last Name:</div>
@@ -220,19 +162,6 @@ export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, cu
                 onClick={handleLogOut}
                 buttonText="Log Out"
             />
-            {/* <Dialog
-                open={showAlert}
-                onClose={handleCloseAlert}
-            >
-                <DialogContent>
-                    <StyledDialogContentText>
-                        Are you sure you want to log out?
-                    </StyledDialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <DialogButton color="error" onClick={handleLogOut}>Log Out</DialogButton>
-                </DialogActions>
-            </Dialog> */}
         </div>
     )
 }

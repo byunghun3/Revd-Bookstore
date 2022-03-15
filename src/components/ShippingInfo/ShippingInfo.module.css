@@ -6,7 +6,6 @@
 .shippingInfoHeader {
     margin-bottom: 15px;
     margin-left: 5%;
-    /* border: solid black; */
     text-align: left;
     font-size: 3rem;
     font-weight: 600;
@@ -14,7 +13,5 @@
 
 .shippingInputs {
     display: inline;
-    /* display: flex; */
-    /* justify-content: flex-start; */
     align-items: left;
 }

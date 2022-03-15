@@ -1,4 +1,4 @@
-import React, { useState, useContext, FC } from "react"
+import React, { FC, useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
@@ -6,7 +6,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"
-import HighlightOffIcon from "@mui/icons-material/HighlightOff"
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import { BooksData } from "../../data/BooksData"
 import { LoginContext } from "../../contexts/LoginContext"
@@ -59,13 +58,6 @@ const CheckoutButton = styled(Button)({
 const EmptyCartIcon = styled(ShoppingCartOutlinedIcon)({
     position: "relative",
     fontSize: "18rem"
-})
-
-const StyledEmptyIcon = styled(HighlightOffIcon)({
-    position: "absolute",
-    top: "16%",
-    color: "red",
-    fontSize: "3rem"
 })
 
 const StyledSmileIcon = styled(InsertEmoticonIcon)({
@@ -152,7 +144,6 @@ export const Cart: FC = () => {
                 />
             </div>
             <RemoveButton
-                // variant="contained"
                 color="error"
                 type="button"
                 onClick={() => handleRemoveFromCart(book.id)}
@@ -207,7 +198,6 @@ export const Cart: FC = () => {
                     </Link>
                 </div>
             }
-
         </div>
     )
 }

@@ -6,7 +6,6 @@ import { styled } from "@mui/system"
 interface AccordionProps {
     accordionSummary: string
     accordionDetails: string
-    // square: string
 }
 
 const StyledAccordion = styled(Accordion)({
@@ -17,8 +16,6 @@ const StyledAccordion = styled(Accordion)({
 const StyledAccordionSummary = styled(AccordionSummary)({
     fontSize: "1.5rem",
     fontWeight: "500"
-    // textAlign: "left"
-
 })
 
 const StyledAccordionDetails = styled(AccordionDetails)({

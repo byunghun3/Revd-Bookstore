@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import { Button, Card } from "@mui/material"
-import { AccordionComponent } from "../../components/AccordionComponent/AccordionComponent"
 import { BookRating } from "../../components/BookRating/BookRating"
 import { styled } from "@mui/system"
 import classes from "./ProductDetails.module.css"

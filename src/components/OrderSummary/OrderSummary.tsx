@@ -32,20 +32,6 @@ export const OrderSummary: FC<OrderSummaryProps> = ({ item, shipping, tax, total
                     <div>${total}</div>
                 </div>
             </div>
-            {/* <div className={classes.costLabel}>
-                    <div>Items:</div>
-                    <div>Shipping & handling:</div>
-                    <div>Estimated tax:</div>
-                    <hr />
-                    <div>Total: </div>
-                </div>
-                <div className={classes.costs}>
-                    <div>${item}</div>
-                    <div>${shipping}</div>
-                    <div>${tax}</div>
-                    <div>${total}</div>
-                </div> */}
-            {/* </div> */}
         </div >
     )
 }

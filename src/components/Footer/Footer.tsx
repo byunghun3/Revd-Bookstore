@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react"
-import { NavLink } from "react-router-dom"
 import { AppBar, Toolbar } from "@mui/material"
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material"
 import { DialogComponent } from "../../components/DialogComponent/DialogComponent"
@@ -13,8 +12,6 @@ const FooterToolbar = styled(Toolbar)({
 })
 
 const FacebookIcon = styled(Facebook)({
-    // display: "flex",
-    // flexBasis: "50%",
     borderRadius: "15%",
     background: "#3b5998",
     color: "white",
@@ -27,8 +24,6 @@ const FacebookIcon = styled(Facebook)({
 })
 
 const InstagramIcon = styled(Instagram)({
-    // display: "flex",
-    // flexBasis: "50%",
     borderRadius: "15%",
     background: "linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)",
     color: "white",
@@ -42,9 +37,6 @@ const InstagramIcon = styled(Instagram)({
 })
 
 const TwitterIcon = styled(Twitter)({
-    // display: "flex",
-    // margin: "10px",
-    // flexBasis: "50%",
     borderRadius: "15%",
     background: "#00acee",
     color: "white",
@@ -57,8 +49,6 @@ const TwitterIcon = styled(Twitter)({
 })
 
 const YouTubeIcon = styled(YouTube)({
-    // display: "flex",
-    // flexBasis: "50%",
     borderRadius: "15%",
     background: "#FF0000",
     color: "white",
@@ -99,10 +89,6 @@ export const Footer: FC = () => {
                         </a>
                     </div>
                     <div className={classes.middleSection}>
-                        {/* <NavLink to="/about" className={classes.navLink}>About</NavLink>
-                        <NavLink to="/browse" className={classes.navLink}>Browse</NavLink>
-                        <NavLink to="/suggest" className={classes.navLink}>Suggest</NavLink>
-                        <NavLink to="/contact" className={classes.navLink}>Contact</NavLink> */}
                         <div className={classes.termsAndConditions} onClick={() => { setShowDialog(true) }}>Terms and Conditions</div>
                         <DialogComponent
                             open={showDialog}
