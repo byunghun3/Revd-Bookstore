@@ -1,41 +1,39 @@
 .homePage {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
     position: relative;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
     overflow: hidden;
 }
 
 .imageOne {
-    width: 100vw;
-    height: 200vh;
     display: flex;
     align-items: center;
+    height: 200vh;
+    width: 100vw;
     background-image: url("../../assets/images/diette-henderson-egmEb0HgtgU-unsplash.jpg");
     background-position: center;
     background-size: cover;
-    width: 100vw;
 }
 
 .imageTwo {
-    width: 100vw;
-    height: 100vh;
     display: flex;
     align-items: center;
+    height: 100vh;
+    width: 100vw;
     background-image: url("../../assets/images/greenlights-slider.jpeg");
     background-position: center;
     background-size: cover;
-    width: 100vw;
 }
 
 .imageThree {
+   height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
     background-image: url("../../assets/images/alexei-maridashvili-gqk2hoqGAL0-unsplash.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
 }
 
 .sliderOne {
