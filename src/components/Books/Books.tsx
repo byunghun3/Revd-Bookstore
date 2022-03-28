@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useState } from "react"
 import { Link } from "react-router-dom"
 import { Card } from "@mui/material"
 import ChromeReaderModeOutlinedIcon from "@mui/icons-material/ChromeReaderModeOutlined"

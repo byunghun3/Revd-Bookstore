@@ -44,7 +44,7 @@ export const Product: FC = () => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart))
     navigate(`/browse/${books[id - 1].id}`)
-  }, [cart])
+  }, [cart, reviews])
 
   const handleChangeReviewComment = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (isLoggedIn) {
@@ -64,8 +64,6 @@ export const Product: FC = () => {
     let duplicateInCart = newCart.find((book: any) => {
       return book.id === books[id - 1].id
     })
-
-    console.log(newCart, duplicateInCart)
 
     if (duplicateInCart && duplicateInCart.quantity === maxStock) {
       alert("out of stock")
@@ -98,6 +96,7 @@ export const Product: FC = () => {
   }
 
   const handleSubmitReview = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     const thisDay = new Date().getDate()
     const thisMonth = new Date().getMonth() + 1
     const thisFullYear = new Date().getFullYear()
@@ -128,8 +127,11 @@ export const Product: FC = () => {
       setReviews(newReview)
 
       localStorage.setItem("reviews", JSON.stringify(newReview))
+
+      setRating(0)
+
+      setComment("")
     } else {
-      e.preventDefault()
       setShowDialog(true)
     }
   }
