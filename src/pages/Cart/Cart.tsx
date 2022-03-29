@@ -36,11 +36,13 @@ const ItemGrid = styled(Grid)({
 })
 
 const DownArrow = styled(ArrowDropDownIcon)({
-    fontSize: "2rem"
+    fontSize: "2rem",
+    cursor: "pointer"
 })
 
 const UpArrow = styled(ArrowDropUpIcon)({
-    fontSize: "2rem"
+    fontSize: "2rem",
+    cursor: "pointer"
 })
 
 const RemoveButton = styled(Button)({
