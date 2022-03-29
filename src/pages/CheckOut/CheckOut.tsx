@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import { Oval } from "react-loader-spinner"
@@ -41,7 +41,6 @@ const CheckOutButton = styled(Button)({
 })
 
 export const Checkout: FC = () => {
-    const [itemsText, setItemsText] = useState("items")
     const [addressLineOne, setAddressLineOne] = useState("")
     const [addressLineTwo, setAddressLineTwo] = useState("")
     const [city, setCity] = useState("")
@@ -67,12 +66,6 @@ export const Checkout: FC = () => {
     const numOfItems = cart.reduce((total: number, item: any) => {
         return total + item.quantity
     }, 0)
-
-    useEffect(() => {
-        if (numOfItems === 1) {
-            setItemsText("item")
-        } else { itemsText }
-    }, [cart])
 
     const itemPrice = cart.reduce((total: number, item: any) => {
         return total + (item.price * item.quantity)
@@ -180,7 +173,7 @@ export const Checkout: FC = () => {
         <div className={classes.checkoutPage}>
             <div className={classes.checkoutHeader}>
                 <div className={classes.checkoutHeaderText}>
-                    Checkout - {numOfItems} {itemsText}
+                    Checkout - {numOfItems} {numOfItems === 1 ? "item" : "items"}
                 </div>
                 <Link className={classes.buttonLink} to="/cart">
                     <CartButton type="button">
