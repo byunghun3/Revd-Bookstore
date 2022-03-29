@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Revd Bookstore
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app serves as the website for an imaginary small-scale online bookstore that carries only the books the owners have personally read and reviewed.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+https://byunghun3.github.io/revd-bookstore/
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project was created with:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    * React.js
+    * Typescript
+    * CSS Modules
+    * Styled-components
+    * Material UI
+    * ESLint
 
-### `npm test`
+## Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can either use the default account below or sign up with a new account to access all functions of the website.
 
-### `npm run build`
+Username: byunghun3@gmail.com
+Password: byunghun3
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![revd-bookstore-homepage](./src/assets/images/revd-bookstore-homepage.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The home page contains a nav bar for links to the other pages in the website. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In the top right corner, the account icon takes you to the login or the profile page, depending on the login status. The cart icon takes you to the cart for review and check out.
 
-### `npm run eject`
+The body includes a slider for advertisements and news for Revd Bookstore.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The footer includes links to social media and terms and condtions policies.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![revd-bookstore-login](./src/assets/images/revd-bookstore-login.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The login page contains a form to login with an existing account, a link to signup form, and a link to forgot password form.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![revd-bookstore-about](./src/assets/images/revd-bookstore-about.png)
 
-## Learn More
+The about page introduces the story and goal behind Revd Bookstore.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The page also explains the way our collection rotates and the way our suggest form works.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+At the bottom, there is a link to see any icons or images used.
 
-### Code Splitting
+![revd-bookstore-browse](./src/assets/images/revd-bookstore-browse.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The browse page displays the current books in our collection. You can use the filter to show books by type (ebook, audiobook, hard copy) or genre (nonfiction, fiction).
 
-### Analyzing the Bundle Size
+When you hover over each book, two action icons appear. The glass icon takes you to each product page containing book details, review from Revd, and reviews from other customers. The cart icon adds the book to the cart.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![revd-bookstore-suggest](./src/assets/images/revd-bookstore-suggest.png)
 
-### Making a Progressive Web App
+The suggest page contains a form where you can submit suggestions for a book you want to see us add to our rotating collection. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![revd-bookstore-profile](./src/assets/images/revd-bookstore-profile.png)
 
-### Advanced Configuration
+The profile page can only be access after login. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The page allows you to edit your first and last name and see your order, review, and suggestion history.
 
-### Deployment
+## Reflection
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+My first goal for this project was to build a multi-page e-commerce site with products and login.
 
-### `npm run build` fails to minify
+As with the golf course weather project, I used my hobby for reading as a starting point to build a site around books that I've read as the products. I started keeping a reading log since the start of the COVID pandemic, so I already material for book reviews.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+It was a challenge to code with react functional components and typescript for the first time. In the beginning, it took a bit of time to get used to figuring out which issue came from react or typescript. 
+
+I found that writing hooks over classes made the code more intuitive, look simpler, and easier to maintain/fix. useContext became an integral part as I used the react context API to handle signup/login. I thought about using a back end for a more secure login authentication, but I decided that I wanted to see whether I could get it working using just the context API, instead of trying to learn too many new stacks in one project.
+
+Typescript helped me to really think about what type of value I wanted to use for each variable and to keep variables consistent throughout all the components and pages. For example, it saved me time in the long run to declare each book's price as number instead of as string with the dollar sign, because it was easier to add in the feature for showing and calculating sale price later.
+
+I used CSS modules to try out a new way of styling CSS. In the golf weather app, I noticed how the styles crossed over between components before I migrated the CSS to SCSS. I liked that I didn't have to worry about the cross over, but it did feel like the style codes were all over the place with there being a separate .module.css files and MUI styled components being directly in the .tsx files as well. 
+
+Because I didn't know much about responsive design at the start of this project, I left it until the end to return to each component and page to update numbers and units, and add in media queries. Even though it was a slow process, updating all at once at the end was probably the best way for me to test and understand how to implement responsiveness to my apps moving forward. 
+
+There were other technologies/techniques that I used for the first time to help me expand my knowledge and appreciation for what I can achieve with react: React Router v6, styled-components, MUI, ESLint, and a few NPM packages.
+
+The biggest lesson I learned from this project is how to approach bug fixes. Because of expansive size of the website (at least for me at the time), there were many times when a component would break when I coded a new one. I learned to research multiple resources (look at both written posts and tutorial videos), try console log at different stages of component render, search/try for similar problems (ex. array methods, similar MUI components), and really read carefully what the error message says, etc. I feel proud and grateful to have finished this project, as this experience will give me the confidence to tackle more advanced coding projects and challenges moving forward.
