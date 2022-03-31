@@ -10,12 +10,12 @@ https://byunghun3.github.io/revd-bookstore/
 
 This project was created with:
 
-    - React.js
-    - Typescript
-    - CSS Modules
-    - Styled-components
-    - Material UI
-    - ESLint
+- React.js
+- Typescript
+- CSS Modules
+- Styled-components
+- Material UI
+- ESLint
 
 ## Usage
 
