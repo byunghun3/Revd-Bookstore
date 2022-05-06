@@ -11,7 +11,7 @@ https://byunghun3.github.io/revd-bookstore/
 This project was created with:
 
 - React.js
-- Typescript
+- TypeScript
 - CSS Modules
 - Styled-components
 - Material UI
