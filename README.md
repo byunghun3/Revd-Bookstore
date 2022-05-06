@@ -76,7 +76,7 @@ My goal for this project was to build a multi-page e-commerce site with products
 
 As with the Golf Course Weather project, I used my hobby for reading as a starting point to build a site around books that I've read as the products. I started keeping a reading log since the start of the COVID pandemic, so I already material for book reviews.
 
-It was a challenge to code with React functional components and TypeScript for the first time. In the beginning, it took a bit of time to get used to figuring out which issue came from React or TypeScript. 
+It was a challenge to code with React hooks and TypeScript for the first time. In the beginning, it took a bit of time to get used to figuring out which issue came from React or TypeScript. 
 
 I found that writing hooks over classes made the code more intuitive, look simpler, and easier to maintain/fix. useContext became an integral part as I used the React context API to handle sign up/login. I thought about using a back end for a more secure login authentication, but I decided that I wanted to see whether I could get it working using just the context API, instead of trying to learn too many new technologies in one project.
 
