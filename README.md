@@ -76,11 +76,11 @@ My goal for this project was to build a multi-page e-commerce site with products
 
 As with the Golf Course Weather project, I used my hobby for reading as a starting point to build a site around books that I've read as the products. I started keeping a reading log since the start of the COVID pandemic, so I already material for book reviews.
 
-It was a challenge to code with React functional components and Typescript for the first time. In the beginning, it took a bit of time to get used to figuring out which issue came from React or Typescript. 
+It was a challenge to code with React functional components and TypeScript for the first time. In the beginning, it took a bit of time to get used to figuring out which issue came from React or TypeScript. 
 
 I found that writing hooks over classes made the code more intuitive, look simpler, and easier to maintain/fix. useContext became an integral part as I used the React context API to handle sign up/login. I thought about using a back end for a more secure login authentication, but I decided that I wanted to see whether I could get it working using just the context API, instead of trying to learn too many new technologies in one project.
 
-Typescript helped me to really think about what type of value I wanted to use for each variable and to keep variables consistent throughout all the components and pages. For example, it saved me time in the long run to declare each book's price as a number instead of as a string with the dollar sign, because it was easier to add in the feature for showing and calculating the sale price later.
+TypeScript helped me to really think about what type of value I wanted to use for each variable and to keep variables consistent throughout all the components and pages. For example, it saved me time in the long run to declare each book's price as a number instead of as a string with the dollar sign, because it was easier to add in the feature for showing and calculating the sale price later.
 
 I used CSS modules to try out a new way of styling CSS. In the Golf Course Weather app, I noticed how the styles crossed over between components before I migrated the CSS to SCSS. I liked that I didn't have to worry about the cross over, but it did feel like the style codes were all over the place with there being a separate module.css files and MUI styled components also being directly in the .tsx files. 
 
