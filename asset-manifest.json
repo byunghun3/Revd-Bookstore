@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/revd-bookstore/static/css/main.094ec4df.css",
+    "main.css": "/revd-bookstore/static/css/main.e7101e2d.css",
     "main.js": "/revd-bookstore/static/js/main.2493545c.js",
     "static/js/787.40a69612.chunk.js": "/revd-bookstore/static/js/787.40a69612.chunk.js",
     "static/media/pexels-helena-lopes-711009.jpg": "/revd-bookstore/static/media/pexels-helena-lopes-711009.7115f490d2b7c30c9d7b.jpg",
@@ -29,12 +29,12 @@
     "static/media/in-cold-blood.jpeg": "/revd-bookstore/static/media/in-cold-blood.3ed12e3dc00881059bff.jpeg",
     "static/media/page-not-found.jpeg": "/revd-bookstore/static/media/page-not-found.0ecd81b15adf2f391990.jpeg",
     "index.html": "/revd-bookstore/index.html",
-    "main.094ec4df.css.map": "/revd-bookstore/static/css/main.094ec4df.css.map",
+    "main.e7101e2d.css.map": "/revd-bookstore/static/css/main.e7101e2d.css.map",
     "main.2493545c.js.map": "/revd-bookstore/static/js/main.2493545c.js.map",
     "787.40a69612.chunk.js.map": "/revd-bookstore/static/js/787.40a69612.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.094ec4df.css",
+    "static/css/main.e7101e2d.css",
     "static/js/main.2493545c.js"
   ]
 }
