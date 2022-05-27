@@ -19,7 +19,8 @@ const ItemGrid = styled(Grid)({
     borderBottom: "solid #adadad 0.1rem",
     "@media (max-width: 499px)": {
         flexDirection: "column",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        marginTop: "2rem"
     }
 })
 

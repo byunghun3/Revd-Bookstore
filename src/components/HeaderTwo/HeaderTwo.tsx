@@ -6,7 +6,8 @@ import classes from "./HeaderTwo.module.css"
 
 
 const HeaderToolbar = styled(Toolbar)({
-    justifyContent: "space-between",
+    display: "flex",
+    justifyContent: "center",
     maxWidth: "100%"
 })
 
@@ -20,11 +21,9 @@ export const HeaderTwo: FC = () => {
                 position="relative"
             >
                 <HeaderToolbar>
-                    <div>
-                        <Link to="/" className={classes.homeLink}>
-                            <span className={classes.title}>Revd Bookstore</span>
-                        </Link>
-                    </div>
+                    <Link to="/" className={classes.homeLink}>
+                        <span className={classes.title}>Revd Bookstore</span>
+                    </Link>
                 </HeaderToolbar>
             </AppBar>
         </div>

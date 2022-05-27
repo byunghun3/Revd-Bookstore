@@ -68,9 +68,9 @@ p {
     align-items: start;
 }
 
-.sectionContentOurStory > p,
-.sectionContentCollection > p, 
-.sectionContentSuggest > p {
+.sectionContentOurStory>p,
+.sectionContentCollection>p,
+.sectionContentSuggest>p {
     display: flex;
     align-items: start;
 }
@@ -80,7 +80,6 @@ p {
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin-top: 7%; 
     padding: 2rem;
     font-size: 1.7rem;
 }
@@ -89,12 +88,11 @@ p {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 }
 
 .ourStoryImage {
     width: 30vw;
-    height: auto;
 }
 
 .sectionContentCollection {
@@ -175,16 +173,57 @@ p {
     .sideNav {
         display: none;
     }
+
     .sideNavGroup {
         display: none;
+    }
+
+    .aboutContent {
+        margin: 0 1%;
+    }
+
+    .sectionImageOurStory {
+        align-items: center;
+    }
+
+    .ourStoryImage {
+        width: 40vw;
     }
 }
 
 @media (max-width: 699px) {
-    .sectionContentOurStory {
-        margin-top: 0;
+    .ourStoryImage {
+        width: 60vw;
     }
+
     .sectionImageCollection {
         flex: 0.75;
+    }
+
+    .ourCollectionImage {
+        width: 70vw;
+    }
+
+    .suggestABookImage {
+        width: 35vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .ourStoryImage {
+        width: 80vw;
+    }
+
+    .ourCollectionImage {
+        width: 80vw;
+    }
+
+    .suggestABookImage {
+        width: 40vw;
+    }
+
+    .sectionContentAttribution {
+        width: 90%;
+        margin-top: -60%;
     }
 }

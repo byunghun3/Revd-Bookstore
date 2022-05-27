@@ -25,7 +25,8 @@ const SuggestionCard = styled(Card)({
     borderRadius: "0%",
     "@media (max-width: 499px)": {
         flexDirection: "column",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        padding: "1rem 0.5rem"
     }
 })
 

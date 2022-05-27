@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    /* border: solid black; */
 }
 
 .headerLink {
@@ -24,6 +25,7 @@
     justify-content: flex-end;
     align-items: center;
     font-size: 1.7rem;
+    /* border: solid black; */
 }
 
 .greeting {
@@ -65,16 +67,36 @@
     text-decoration: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
+    .leftSection {
+        flex: 3;
+    }
+
     .greeting {
         display: none;
     }
+}
+
+@media (max-width: 500px) {
+    .leftSection {
+        align-items: start;
+    }
+
+    .title {
+        display: flex;
+        text-align: left;
+    }
+
     .navLink {
         display: none;
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 335px) {
+    .leftSection {
+        flex: 1;
+    }
+
     .title {
         font-size: 4rem;
     }

@@ -12,6 +12,10 @@ import classes from "./Suggest.module.css"
 const TitleForm = styled(FormControl)({
     margin: "1% 0",
     width: "30%",
+    "@media (max-width: 900px)": {
+        width: "50vw",
+        margin: "1rem 0"
+    },
     "@media (max-width: 499px)": {
         width: "50%"
     }
@@ -20,6 +24,10 @@ const TitleForm = styled(FormControl)({
 const AuthorForm = styled(FormControl)({
     margin: "1% 0",
     width: "30%",
+    "@media (max-width: 900px)": {
+        width: "50vw",
+        margin: "1rem 0"
+    },
     "@media (max-width: 499px)": {
         width: "50%"
     }
@@ -29,6 +37,10 @@ const CommentTextField = styled(TextField)({
     marginTop: "1%",
     width: "40%",
     fontSize: "1.5rem",
+    "@media (max-width: 900px)": {
+        width: "70vw",
+        margin: "1rem 0"
+    },
     "@media (max-width: 499px)": {
         width: "70%"
     }

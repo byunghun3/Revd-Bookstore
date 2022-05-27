@@ -37,7 +37,7 @@
     width: 100%;
 }
 
-.bookInfo{
+.bookInfo {
     flex: 3;
     padding: 0 2%;
 }
@@ -94,7 +94,7 @@
 
 .emptyCartText {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
     margin-top: 5%;
     font-size: 2rem;
@@ -109,7 +109,32 @@
     .cartTitle {
         margin-top: 10%;
     }
+
+    .bookTitle {
+        margin: 0.5rem 0;
+    }
+
+    .bookAuthor {
+        margin: 0.5rem 0;
+    }
+
+    .bookPrice {
+        margin: 0.5rem 0;
+    }
+
+    .adjustQty {
+        margin: 0.5rem 0;
+    }
+
+    .bookQty {
+        margin: 0.5rem 0;
+    }
+
     .totalPrice {
         margin-bottom: 10%;
+    }
+
+    .emptyCartText {
+        width: 95%;
     }
 }

@@ -14,6 +14,7 @@ const StyledAccordion = styled(Accordion)({
 })
 
 const StyledAccordionSummary = styled(AccordionSummary)({
+    textAlign: "left",
     fontSize: "1.5rem",
     fontWeight: "500"
 })

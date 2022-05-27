@@ -15,7 +15,8 @@ const ForgotPWCard = styled(Card)({
     width: "40rem",
     "@media (max-width: 499px)": {
         minHeight: "45vh",
-        width: "30rem"
+        width: "90vw",
+        marginTop: "20%"
     }
 })
 
@@ -47,7 +48,10 @@ const BackToLoginButton = styled(Button)({
 const SendLinkButton = styled(Button)({
     margin: "3% 0 5% 0",
     width: "60%",
-    fontSize: "1.3rem"
+    fontSize: "1.3rem",
+    "@media (max-width: 499px)": {
+        width: "80%"
+    }
 })
 
 const SignUpButton = styled(Button)({

@@ -65,7 +65,10 @@ const EmptyCartIcon = styled(ShoppingCartOutlinedIcon)({
 const StyledSmileIcon = styled(InsertEmoticonIcon)({
     marginLeft: "0.5rem",
     color: "black",
-    fontSize: "2rem"
+    fontSize: "2rem",
+    "@media (max-width: 400px)": {
+        display: "none"
+    }
 })
 
 const BrowseButton = styled(Button)({

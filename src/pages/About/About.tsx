@@ -18,12 +18,10 @@ const OurStorySection = styled(Card)({
     flexDirection: "row",
     margin: "1% 0",
     padding: "5% 0",
-    minHeight: "100vh",
     width: "100%",
     backgroundColor: "white",
-    "@media (max-width: 699px)": {
+    "@media (max-width: 859px)": {
         flexDirection: "column",
-        minHeight: "75vh",
     }
 })
 

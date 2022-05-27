@@ -27,7 +27,7 @@
 }
 
 .imageThree {
-   height: 100vh;
+    height: 100vh;
     width: 100vw;
     overflow-x: hidden;
     background-image: url("../../assets/images/alexei-maridashvili-gqk2hoqGAL0-unsplash.jpg");
@@ -100,7 +100,7 @@
     justify-content: center;
     align-items: center;
     height: 10rem;
-	width: 30rem;
+    width: 30rem;
     color: white;
     font-family: 'PT Serif';
 }
@@ -129,37 +129,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-	height: 10rem;
-	width: 20rem;
+    height: 10rem;
+    width: 20rem;
     padding: 1rem;
     border-radius: 3rem;
     box-shadow: -0.5rem 0.5rem #666;
-	background-color: lightyellow;
+    background-color: lightyellow;
     font-family: 'PT Serif';
     font-size: 1.5rem;
 }
 
 .chatBubbleTri:before {
-	content: ' ';
-	position: absolute;
-	left: -0.5rem;
-	bottom: -3.5rem;
-	height: 0;
-	width: 0;
-	border: 3.2rem solid;
-	border-color: transparent transparent transparent #666;
+    content: ' ';
+    position: absolute;
+    left: -0.5rem;
+    bottom: -3.5rem;
+    height: 0;
+    width: 0;
+    border: 3.2rem solid;
+    border-color: transparent transparent transparent #666;
 }
 
 .chatBubbleTri:after {
-	content: ' ';
-	position: absolute;
-	bottom: -19%;
-	left: 0;
-	width: 0;
-	height: 0;	
+    content: ' ';
+    position: absolute;
+    bottom: -19%;
+    left: 0;
+    width: 0;
+    height: 0;
     border: 2.2rem solid;
     border-width: 3rem;
-	border-color: transparent transparent transparent lightyellow;
+    border-color: transparent transparent transparent lightyellow;
 }
 
 .sliderThree {
@@ -205,26 +205,33 @@
         background-size: cover;
         background-position: 40%;
     }
+
     .sliderOneText {
         top: 15%;
         right: 7%;
         width: 15rem;
     }
+
     .firstLine {
         font-size: 5rem;
     }
+
     .secondLine {
         font-size: 3rem;
     }
+
     .imageTwo {
         background-size: cover;
     }
+
     .sliderTwoText {
         display: none;
     }
+
     .sliderTwoQuote {
         display: none;
     }
+
     .newIcon {
         position: absolute;
         top: 25%;
@@ -233,6 +240,7 @@
         width: 10rem;
         transform: translate(-50%, -50%);
     }
+
     .chatBubble {
         display: none;
     }
@@ -242,6 +250,7 @@
     .sliderThree {
         object-position: 70%;
     }
+
     .sliderThreeText {
         bottom: -18%;
         left: 50%;
@@ -255,9 +264,11 @@
         width: 20rem;
         font-size: 1.5rem;
     }
+
     .firstLine {
         font-size: 2.5rem;
     }
+
     .secondLine {
         font-size: 2rem;
     }
@@ -269,7 +280,27 @@
         left: 35%;
         font-size: 2rem;
     }
+
     .sliderThreeText {
         font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .sliderOneText {
+        right: 1%;
+        width: 18rem;
+    }
+
+    .sliderTwo {
+        position: relative;
+        min-height: 100vh;
+        width: 100vw;
+        object-fit: cover;
+        object-position: 51.8% 25%;
+    }
+
+    .newIcon {
+        left: 27%;
     }
 }

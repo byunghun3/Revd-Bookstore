@@ -18,7 +18,8 @@ const SignUpCard = styled(Card)({
     width: "40rem",
     "@media (max-width: 499px)": {
         minHeight: "45vh",
-        width: "30rem"
+        width: "90vw",
+        marginTop: "20%"
     }
 })
 
@@ -30,7 +31,8 @@ const StyledAccountCircleIcon = styled(AccountCircleIcon)({
 
 const NameForm = styled(FormControl)({
     margin: "3% 2%",
-    width: "40%"
+    width: "40%",
+
 })
 
 const StyledForm = styled(FormControl)({

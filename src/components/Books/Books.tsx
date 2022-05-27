@@ -30,6 +30,9 @@ const BookCard = styled(Card)({
     transition: "ease 0.3s",
     "&:hover": {
         opacity: "0.8",
+    },
+    "@media (max-width: 400px)": {
+        width: "80vw"
     }
 })
 

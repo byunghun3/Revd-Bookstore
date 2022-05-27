@@ -7,7 +7,10 @@ import { styled } from "@mui/system"
 import classes from "./Browse.module.css"
 
 const ContainerGrid = styled(Grid)({
-    padding: "7rem 5rem"
+    padding: "7rem 5rem",
+    "@media (max-width: 400px)": {
+        padding: "5rem 0 5rem 3rem"
+    }
 })
 
 export const Browse: FC = () => {
@@ -144,7 +147,13 @@ export const Browse: FC = () => {
                 onClick={handleClearFilter}
                 showClearButton={showClearButton}
             />
-            <Container>
+            <Container
+                sx={{
+                    "@media (max-width: 400px)": {
+                        padding: "0"
+                    }
+                }}
+            >
                 <ContainerGrid container spacing={15}>
                     {showBookList && bookList}
                     {typeFilter}

@@ -20,7 +20,8 @@ const LoginCard = styled(Card)({
     width: "40rem",
     "@media (max-width: 499px)": {
         minHeight: "45vh",
-        width: "30rem"
+        width: "90vw",
+        marginTop: "20%"
     }
 })
 

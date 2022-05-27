@@ -25,9 +25,15 @@
 }
 
 .signUpContent {
-    margin: 2% 0;    
+    margin: 2% 0;
 }
 
 .signUpText {
     font-size: 1.4rem;
+}
+
+@media (max-width: 499px) {
+    .loginPage {
+        justify-content: flex-start;
+    }
 }
