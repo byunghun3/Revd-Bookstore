@@ -21,8 +21,8 @@
 }
 
 .readerReviewComment:hover {
-    opacity: 0.8;
-    cursor: pointer;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .readerReviewCommentExpanded {
@@ -35,8 +35,8 @@
 }
 
 .readerReviewCommentExpanded:hover {
-    opacity: 0.8;
-    cursor: pointer;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .readerReviewDate {
@@ -48,10 +48,19 @@
 @media (max-width: 499px) {
   .readerReviewComment {
     align-self: flex-start;
-    margin: 5% 0 0 1%;
+    margin: 5% 0 5% 1%;
   }
+
   .readerReviewCommentExpanded {
     align-self: flex-start;
-    margin: 5% 0;
+    margin: 5% 0 5% 1%;
+  }
+
+  .readerReviewName {
+    margin: 1rem 0;
+  }
+
+  .readerReviewDate {
+    margin: 1rem 0;
   }
 }
