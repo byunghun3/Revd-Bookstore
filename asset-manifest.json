@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/revd-bookstore/static/css/main.dfe60666.css",
-    "main.js": "/revd-bookstore/static/js/main.1a6bd498.js",
+    "main.js": "/revd-bookstore/static/js/main.a8c4a466.js",
     "static/js/787.40a69612.chunk.js": "/revd-bookstore/static/js/787.40a69612.chunk.js",
     "static/media/pexels-helena-lopes-711009.jpg": "/revd-bookstore/static/media/pexels-helena-lopes-711009.7115f490d2b7c30c9d7b.jpg",
     "static/media/eugenio-mazzone-6ywyo2qtaZ8-unsplash.jpg": "/revd-bookstore/static/media/eugenio-mazzone-6ywyo2qtaZ8-unsplash.0d64371566263102bb1c.jpg",
@@ -30,11 +30,11 @@
     "static/media/page-not-found.jpeg": "/revd-bookstore/static/media/page-not-found.0ecd81b15adf2f391990.jpeg",
     "index.html": "/revd-bookstore/index.html",
     "main.dfe60666.css.map": "/revd-bookstore/static/css/main.dfe60666.css.map",
-    "main.1a6bd498.js.map": "/revd-bookstore/static/js/main.1a6bd498.js.map",
+    "main.a8c4a466.js.map": "/revd-bookstore/static/js/main.a8c4a466.js.map",
     "787.40a69612.chunk.js.map": "/revd-bookstore/static/js/787.40a69612.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dfe60666.css",
-    "static/js/main.1a6bd498.js"
+    "static/js/main.a8c4a466.js"
   ]
 }
