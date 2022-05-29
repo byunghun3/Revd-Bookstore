@@ -1,15 +1,15 @@
-import React, { FC, useState } from "react"
-import { AppBar, Toolbar } from "@mui/material"
-import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material"
-import { DialogComponent } from "../../components/DialogComponent/DialogComponent"
-import { styled } from "@mui/system"
-import classes from "./Footer.module.css"
+import React, { FC, useState } from "react";
+import { AppBar, Toolbar } from "@mui/material";
+import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import { DialogComponent } from "../../components/DialogComponent/DialogComponent";
+import { styled } from "@mui/system";
+import classes from "./Footer.module.css";
 
 const FooterToolbar = styled(Toolbar)({
     maxWidth: "100%",
     display: "flex",
     backgroundColor: "black",
-})
+});
 
 const FacebookIcon = styled(Facebook)({
     borderRadius: "15%",
@@ -21,7 +21,7 @@ const FacebookIcon = styled(Facebook)({
         color: "#3b5998",
         backgroundColor: "white"
     }
-})
+});
 
 const InstagramIcon = styled(Instagram)({
     borderRadius: "15%",
@@ -33,8 +33,7 @@ const InstagramIcon = styled(Instagram)({
         color: "#dc2743",
         background: "white"
     }
-
-})
+});
 
 const TwitterIcon = styled(Twitter)({
     borderRadius: "15%",
@@ -46,7 +45,7 @@ const TwitterIcon = styled(Twitter)({
         color: "#00acee",
         backgroundColor: "white"
     }
-})
+});
 
 const YouTubeIcon = styled(YouTube)({
     borderRadius: "15%",
@@ -58,14 +57,14 @@ const YouTubeIcon = styled(YouTube)({
         color: "#FF0000",
         backgroundColor: "white"
     }
-})
+});
 
 export const Footer: FC = () => {
-    const [showDialog, setShowDialog] = useState(false)
+    const [showDialog, setShowDialog] = useState<boolean>(false);
 
-    const handleCloseDialog = () => {
-        setShowDialog(false)
-    }
+    const handleCloseDialog = (): void => {
+        setShowDialog(false);
+    };
     return (
         <div className={classes.footer}>
             <AppBar
@@ -89,7 +88,7 @@ export const Footer: FC = () => {
                         </a>
                     </div>
                     <div className={classes.middleSection}>
-                        <div className={classes.termsAndConditions} onClick={() => { setShowDialog(true) }}>Terms and Conditions</div>
+                        <div className={classes.termsAndConditions} onClick={() => { setShowDialog(true); }}>Terms and Conditions</div>
                         <DialogComponent
                             open={showDialog}
                             onClose={handleCloseDialog}
@@ -200,7 +199,7 @@ export const Footer: FC = () => {
                                 </div>
                             }
                             color="error"
-                            onClick={() => { setShowDialog(false) }}
+                            onClick={() => { setShowDialog(false); }}
                             buttonText="Close"
                         />
                     </div>
@@ -210,6 +209,6 @@ export const Footer: FC = () => {
                     </div>
                 </FooterToolbar>
             </AppBar>
-        </div >
-    )
-}
+        </div>
+    );
+};

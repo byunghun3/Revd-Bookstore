@@ -1,15 +1,15 @@
-import SoundAndFury from "../assets/images/the-sound-and-the-fury.jpeg"
-import Namesake from "../assets/images/the-namesake.jpeg"
-import Greenlights from "../assets/images/greenlights.jpeg"
-import HVRoad from "../assets/images/hidden-valley-road.jpeg"
-import LordOfFlies from "../assets/images/lord-of-the-flies.jpeg"
-import InColdBlood from "../assets/images/in-cold-blood.jpeg"
-import SirensOfTitan from "../assets/images/the-sirens-of-titan.jpeg"
-import BornACrime from "../assets/images/born-a-crime.jpeg"
-import Hamnet from "../assets/images/hamnet.jpeg"
-import HPOP from "../assets/images/harry-potter-and-the-order-of-phoenix.jpeg"
-import Perfume from "../assets/images/perfume.jpeg"
-import BluestEye from "../assets/images/the-bluest-eye.jpeg"
+import SoundAndFury from "../assets/images/the-sound-and-the-fury.jpeg";
+import Namesake from "../assets/images/the-namesake.jpeg";
+import Greenlights from "../assets/images/greenlights.jpeg";
+import HVRoad from "../assets/images/hidden-valley-road.jpeg";
+import LordOfFlies from "../assets/images/lord-of-the-flies.jpeg";
+import InColdBlood from "../assets/images/in-cold-blood.jpeg";
+import SirensOfTitan from "../assets/images/the-sirens-of-titan.jpeg";
+import BornACrime from "../assets/images/born-a-crime.jpeg";
+import Hamnet from "../assets/images/hamnet.jpeg";
+import HPOP from "../assets/images/harry-potter-and-the-order-of-phoenix.jpeg";
+import Perfume from "../assets/images/perfume.jpeg";
+import BluestEye from "../assets/images/the-bluest-eye.jpeg";
 
 export const BooksData = [
     {
@@ -180,4 +180,4 @@ export const BooksData = [
         status: "old",
         review: "It's a disheartening story told from the point of view of the child narrator Claudia. This narrative perspective put me in a helpless position as the reader, as the unfolding story slowly portrays a bleak future for these children, because of the cyclical tragedies of each generation and the characters' conviction that they're not beautiful, smart, strong, or worthy. Morrison humanizes each character, while not excusing them from their actions.\n\nThe way Morrison ties in conflicts between beauty vs ugliness, abuse and violence within family home, sexuality and rape, and the disconnect between white and black communities shows me how complex and deeply-ingrained in society the challenges a black female growing up in America faces."
     }
-]
+];

@@ -1,9 +1,10 @@
-import React, { FC, useState } from "react"
-import { Link } from "react-router-dom"
-import { InputLabel, FormControl, OutlinedInput, Button, Card } from "@mui/material"
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"
-import { styled } from "@mui/system"
-import classes from "./ForgotPassword.module.css"
+import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
+import { InputLabel, FormControl, OutlinedInput, Button, Card } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { IUser } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./ForgotPassword.module.css";
 
 const ForgotPWCard = styled(Card)({
     display: "flex",
@@ -18,32 +19,32 @@ const ForgotPWCard = styled(Card)({
         width: "90vw",
         marginTop: "20%"
     }
-})
+});
 
 const StyledAccountCircleIcon = styled(AccountCircleIcon)({
     flex: "1",
     marginTop: "5%",
     fontSize: "3.5rem"
-})
+});
 
 const EmailForm = styled(FormControl)({
     margin: "2% 0",
     width: "80%"
-})
+});
 
 const StyledInputLabel = styled(InputLabel)({
     fontSize: "1.5rem"
-})
+});
 
 const StyledOutlinedInput = styled(OutlinedInput)({
     fontSize: "1.5rem"
-})
+});
 
 const BackToLoginButton = styled(Button)({
     margin: "2% 0",
     textDecoration: "none",
     fontSize: "1.3rem"
-})
+});
 
 const SendLinkButton = styled(Button)({
     margin: "3% 0 5% 0",
@@ -52,36 +53,36 @@ const SendLinkButton = styled(Button)({
     "@media (max-width: 499px)": {
         width: "80%"
     }
-})
+});
 
 const SignUpButton = styled(Button)({
     textDecoration: "none",
     fontSize: "1.3rem"
-})
+});
 
 export const ForgotPassword: FC = () => {
-    const [email, setEmail] = useState("")
-    const [showForgotPassword, setShowForgotPassword] = useState(true)
-    const [resetLinkSent, setResetLinkSent] = useState(false)
-    const [emailError, setEmailError] = useState(false)
-    const users = JSON.parse(localStorage.getItem("users") || "[]")
+    const [email, setEmail] = useState<string>("");
+    const [showForgotPassword, setShowForgotPassword] = useState<boolean>(true);
+    const [resetLinkSent, setResetLinkSent] = useState<boolean>(false);
+    const [emailError, setEmailError] = useState<boolean>(false);
+    const users: IUser[] = JSON.parse(localStorage.getItem("users") || "[]");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const emailExists = users.find((user: any) => {
-            return email === user.email
-        })
+        const emailExists = users.find((user: IUser) => {
+            return email === user.email;
+        });
 
         if (emailExists) {
-            setShowForgotPassword(false)
-            setEmailError(false)
-            setResetLinkSent(true)
+            setShowForgotPassword(false);
+            setEmailError(false);
+            setResetLinkSent(true);
         } else {
-            setShowForgotPassword(true)
-            setEmailError(true)
+            setShowForgotPassword(true);
+            setEmailError(true);
         }
-    }
+    };
 
     return (
         <div className={classes.forgotPasswordPage}>
@@ -97,7 +98,7 @@ export const ForgotPassword: FC = () => {
                                 label="Email"
                                 name="email"
                                 value={email}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value); }}
                                 required />
                             {emailError && <div className={classes.errorMessage}>The email you entered does not exist</div>}
                         </EmailForm>
@@ -135,5 +136,5 @@ export const ForgotPassword: FC = () => {
                 }
             </ForgotPWCard>
         </div >
-    )
-}
+    );
+};

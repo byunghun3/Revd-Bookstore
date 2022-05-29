@@ -1,18 +1,18 @@
-import React, { FC, useState } from "react"
-import { Link } from "react-router-dom"
-import { Button } from "@mui/material"
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
-import SliderImgOne from "../../assets/images/diette-henderson-egmEb0HgtgU-unsplash.jpg"
-import SliderImgTwo from "../../assets/images/greenlights-slider1.jpg"
-import SliderImgThree from "../../assets/images/alexei-maridashvili-gqk2hoqGAL0-unsplash1.jpg"
-import NewIcon from "../../assets/icons/icons8-new-96.png"
-import { styled } from "@mui/system"
-import styles from "styled-components"
-import classes from "./HomePage.module.css"
+import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import SliderImgOne from "../../assets/images/diette-henderson-egmEb0HgtgU-unsplash.jpg";
+import SliderImgTwo from "../../assets/images/greenlights-slider1.jpg";
+import SliderImgThree from "../../assets/images/alexei-maridashvili-gqk2hoqGAL0-unsplash1.jpg";
+import NewIcon from "../../assets/icons/icons8-new-96.png";
+import { styled } from "@mui/system";
+import styles from "styled-components";
+import classes from "./HomePage.module.css";
 
 interface SliderProps {
-    newSlideOrder: number
+    newSlideOrder: number;
 }
 
 const SlideContainer = styles.div<SliderProps>`
@@ -22,7 +22,7 @@ const SlideContainer = styles.div<SliderProps>`
     maxWidth: 100%;
     transform: translateX(${(props) => props.newSlideOrder * -100}vw);
     transition: ease 1.0s;
-`
+`;
 
 const LeftArrow = styled(ArrowBackIosIcon)({
     position: "absolute",
@@ -32,7 +32,7 @@ const LeftArrow = styled(ArrowBackIosIcon)({
     margin: "0 1rem",
     fontSize: "2rem",
     cursor: "pointer"
-})
+});
 
 const RightArrow = styled(ArrowForwardIosIcon)({
     position: "absolute",
@@ -42,7 +42,7 @@ const RightArrow = styled(ArrowForwardIosIcon)({
     margin: "0 1rem",
     fontSize: "2rem",
     cursor: "pointer"
-})
+});
 
 const BrowseButton = styled(Button)({
     marginTop: "5%",
@@ -56,7 +56,7 @@ const BrowseButton = styled(Button)({
         marginTop: "0",
         fontSize: "1rem"
     }
-})
+});
 
 const GreenlightsButton = styled(Button)({
     marginTop: "5%",
@@ -72,7 +72,7 @@ const GreenlightsButton = styled(Button)({
     "@media (max-width: 630px)": {
         marginTop: "0"
     }
-})
+});
 
 const SuggestButton = styled(Button)({
     marginBottom: "1.5rem",
@@ -81,20 +81,20 @@ const SuggestButton = styled(Button)({
     "@media (max-width: 550px)": {
         fontSize: "1.5rem"
     }
-})
+});
 
 export const HomePage: FC = () => {
-    const [slideOrder, setSlideOrder] = useState(0)
+    const [slideOrder, setSlideOrder] = useState<number>(0);
 
     const handleClick = (e: React.MouseEvent<any>) => {
         if (e.currentTarget.id === "left") {
-            setSlideOrder(slideOrder > 0 ? slideOrder - 1 : 2)
-            console.log("left")
+            setSlideOrder(slideOrder > 0 ? slideOrder - 1 : 2);
+            console.log("left");
         } else {
-            setSlideOrder(slideOrder < 2 ? slideOrder + 1 : 0)
-            console.log("right")
+            setSlideOrder(slideOrder < 2 ? slideOrder + 1 : 0);
+            console.log("right");
         }
-    }
+    };
 
     return (
         <div className={classes.homePage}>
@@ -138,5 +138,5 @@ export const HomePage: FC = () => {
                 </div>
             </SlideContainer>
         </div>
-    )
-}
+    );
+};

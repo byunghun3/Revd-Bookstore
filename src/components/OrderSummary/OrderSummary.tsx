@@ -1,12 +1,11 @@
-import React, { FC } from "react"
-import classes from "./OrderSummary.module.css"
-
+import React, { FC } from "react";
+import classes from "./OrderSummary.module.css";
 
 interface OrderSummaryProps {
-    item: number
-    shipping: number | string
-    tax: number | string
-    total: number
+    item: number;
+    shipping: number;
+    tax: number;
+    total: number;
 }
 
 export const OrderSummary: FC<OrderSummaryProps> = ({ item, shipping, tax, total }) => {
@@ -33,5 +32,5 @@ export const OrderSummary: FC<OrderSummaryProps> = ({ item, shipping, tax, total
                 </div>
             </div>
         </div >
-    )
-}
+    );
+};

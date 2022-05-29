@@ -1,17 +1,17 @@
-import React, { FC, useState } from "react"
-import { Link } from "react-router-dom"
-import { NavHashLink } from "react-router-hash-link"
-import { Card, Button } from "@mui/material"
-import { DialogComponent } from "../../components/DialogComponent/DialogComponent"
-import OurStoryImage from "../../assets/images/pexels-cottonbro-3585048.jpg"
-import OurCollectionImage from "../../assets/images/eugenio-mazzone-6ywyo2qtaZ8-unsplash.jpg"
-import SuggestABookImageOne from "../../assets/images/pexels-cottonbro-4861347.jpg"
-import SuggestABookImageTwo from "../../assets/images/matthew-feeney-Nwkh-n6l25w-unsplash.jpg"
-import SuggestABookImageFour from "../../assets/images/alexandra-fuller-wkgv7I2VTzM-unsplash.jpg"
-import SuggestABookImageFive from "../../assets/images/pexels-helena-lopes-711009.jpg"
-import AttributionsImage from "../../assets/images/alex-lvrs-2zDw14yCYqk-unsplash.jpg"
-import { styled } from "@mui/system"
-import classes from "./About.module.css"
+import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
+import { Card, Button } from "@mui/material";
+import { DialogComponent } from "../../components/DialogComponent/DialogComponent";
+import OurStoryImage from "../../assets/images/pexels-cottonbro-3585048.jpg";
+import OurCollectionImage from "../../assets/images/eugenio-mazzone-6ywyo2qtaZ8-unsplash.jpg";
+import SuggestABookImageOne from "../../assets/images/pexels-cottonbro-4861347.jpg";
+import SuggestABookImageTwo from "../../assets/images/matthew-feeney-Nwkh-n6l25w-unsplash.jpg";
+import SuggestABookImageFour from "../../assets/images/alexandra-fuller-wkgv7I2VTzM-unsplash.jpg";
+import SuggestABookImageFive from "../../assets/images/pexels-helena-lopes-711009.jpg";
+import AttributionsImage from "../../assets/images/alex-lvrs-2zDw14yCYqk-unsplash.jpg";
+import { styled } from "@mui/system";
+import classes from "./About.module.css";
 
 const OurStorySection = styled(Card)({
     display: "flex",
@@ -23,7 +23,7 @@ const OurStorySection = styled(Card)({
     "@media (max-width: 859px)": {
         flexDirection: "column",
     }
-})
+});
 
 const ColumnSection = styled(Card)({
     display: "flex",
@@ -38,7 +38,7 @@ const ColumnSection = styled(Card)({
     "@media (max-width: 699px)": {
         minHeight: "75vh",
     }
-})
+});
 
 const AttributionSection = styled(Card)({
     display: "flex",
@@ -55,18 +55,18 @@ const AttributionSection = styled(Card)({
     "@media (max-width: 699px)": {
         minHeight: "75vh",
     }
-})
+});
 
 const StyledButton = styled(Button)({
     fontSize: "1.3rem"
-})
+});
 
 export const About: FC = () => {
-    const [showDialog, setShowDialog] = useState(false)
+    const [showDialog, setShowDialog] = useState<boolean>(false);
 
-    const handleCloseDialog = () => {
-        setShowDialog(false)
-    }
+    const handleCloseDialog = (): void => {
+        setShowDialog(false);
+    };
 
     return (
         <div className={classes.aboutPage}>
@@ -135,7 +135,7 @@ export const About: FC = () => {
                     </ColumnSection>
                     <AttributionSection id="section-attribution">
                         <div className={classes.sectionContentAttribution}>
-                            <div className={classes.sectionTitleAttribution} onClick={() => { setShowDialog(true) }}>See Contributors</div>
+                            <div className={classes.sectionTitleAttribution} onClick={() => { setShowDialog(true); }}>See Contributors</div>
                             <p>Thank you to everyone who has helped make this website more beautiful!</p>
                         </div>
                         <DialogComponent
@@ -162,12 +162,12 @@ export const About: FC = () => {
                                 </ul>
                             }
                             color="error"
-                            onClick={() => { setShowDialog(false) }}
+                            onClick={() => { setShowDialog(false); }}
                             buttonText="Close"
                         />
                     </AttributionSection>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

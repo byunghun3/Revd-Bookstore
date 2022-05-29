@@ -1,14 +1,14 @@
-import React, { FC } from "react"
-import { Navigate, RouteProps, Outlet } from "react-router-dom"
+import React, { FC } from "react";
+import { Navigate, RouteProps, Outlet } from "react-router-dom";
 
 
 interface UnprotectedRouteProps extends RouteProps {
-    isLoggedIn: boolean
+    isLoggedIn: boolean;
 }
 
 export const UnprotectedRoute: FC<UnprotectedRouteProps> = ({ isLoggedIn }) => {
     if (!isLoggedIn) {
-        return <Outlet />
+        return <Outlet />;
     }
-    return <Navigate to="/profile" />
-}
+    return <Navigate to="/profile" />;
+};

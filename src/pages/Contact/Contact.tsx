@@ -1,15 +1,15 @@
-import React, { FC } from "react"
-import { Card } from "@mui/material"
-import EmailIcon from "@mui/icons-material/Email"
-import HelpIcon from "@mui/icons-material/Help"
-import { AccordionComponent } from "../../components/AccordionComponent/AccordionComponent"
-import { styled } from "@mui/system"
-import classes from "./Contact.module.css"
+import React, { FC } from "react";
+import { Card } from "@mui/material";
+import EmailIcon from "@mui/icons-material/Email";
+import HelpIcon from "@mui/icons-material/Help";
+import { AccordionComponent } from "../../components/AccordionComponent/AccordionComponent";
+import { styled } from "@mui/system";
+import classes from "./Contact.module.css";
 
 const StyledEmailIcon = styled(EmailIcon)({
     color: "white",
     fontSize: "3.3rem"
-})
+});
 
 const ContactContent = styled(Card)({
     display: "flex",
@@ -29,13 +29,13 @@ const ContactContent = styled(Card)({
     "@media (max-width: 320px)": {
         wordBreak: "break-word",
     }
-})
+});
 
 const StyledHelpIcon = styled(HelpIcon)({
     margin: "1% 0",
     color: "#0d3d85",
     fontSize: "5rem"
-})
+});
 
 export const Contact: FC = () => {
     return (
@@ -86,5 +86,5 @@ export const Contact: FC = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

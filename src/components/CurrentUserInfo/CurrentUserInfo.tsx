@@ -1,20 +1,21 @@
-import React, { FC, useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
-import EditIcon from "@mui/icons-material/Edit"
-import { LoginContext } from "../../contexts/LoginContext"
-import { UsersData } from "../../data/UsersData"
-import { DialogComponent } from "../DialogComponent/DialogComponent"
-import { styled } from "@mui/system"
-import classes from "./CurrentUserInfo.module.css"
+import React, { FC, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import { LoginContext } from "../../contexts/LoginContext";
+import { UsersData } from "../../data/UsersData";
+import { DialogComponent } from "../DialogComponent/DialogComponent";
+import { IUser } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./CurrentUserInfo.module.css";
 
 interface CurrentUserInfoProps {
-    currentUserFirstName: string
-    currentUserLastName: string
-    currentUserEmail: string
+    currentUserFirstName: string | null;
+    currentUserLastName: string | null;
+    currentUserEmail: string | null;
 }
 
-const hardCodedUsers = UsersData
+const hardCodedUsers = UsersData;
 
 const StyledEditIcon = styled(EditIcon)({
     marginBottom: "3%",
@@ -22,82 +23,82 @@ const StyledEditIcon = styled(EditIcon)({
     "&:hover": {
         cursor: "pointer"
     }
-})
+});
 
 const StyledButton = styled(Button)({
     marginTop: "2%",
     fontSize: "1.5rem"
-})
+});
 
 export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, currentUserFirstName, currentUserLastName }) => {
-    const { setIsLoggedIn } = useContext(LoginContext)
-    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
-    const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers)))
-    const [isEditingFirstName, setIsEditingFirstName] = useState(false)
-    const [isEditingLastName, setIsEditingLastName] = useState(false)
-    const [userFirstName, setUserFirstName] = useState(currentUserFirstName)
-    const [userLastName, setUserLastName] = useState(currentUserLastName)
-    const [showDialog, setShowDialog] = useState(false)
-    const navigate = useNavigate()
+    const { setIsLoggedIn } = useContext(LoginContext);
+    const [currentUser, setCurrentUser] = useState<IUser[]>(JSON.parse(localStorage.getItem("currentUser") || "[]"));
+    const [users, setUsers] = useState<IUser[]>(JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers)));
+    const [isEditingFirstName, setIsEditingFirstName] = useState<boolean>(false);
+    const [isEditingLastName, setIsEditingLastName] = useState<boolean>(false);
+    const [userFirstName, setUserFirstName] = useState<string | null>(currentUserFirstName);
+    const [userLastName, setUserLastName] = useState<string | null>(currentUserLastName);
+    const [showDialog, setShowDialog] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        localStorage.setItem("users", JSON.stringify(users))
-    }, [users])
+        localStorage.setItem("users", JSON.stringify(users));
+    }, [users]);
 
-    const handleEditFirstName = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const handleEditFirstName = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
         if (!isEditingFirstName) {
-            setIsEditingFirstName(true)
+            setIsEditingFirstName(true);
         } else {
-            const updatedUser = users.map((user: any) => user.email === currentUserEmail ?
+            const updatedUser = users.map((user: IUser) => user.email === currentUserEmail ?
                 { ...user, firstName: userFirstName } :
                 user
-            )
-            const updatedCurrentUser = currentUser.map((user: any) => user.email === currentUserEmail ?
+            );
+            const updatedCurrentUser = currentUser.map((user: IUser) => user.email === currentUserEmail ?
                 { ...user, firstName: userFirstName } :
                 user
-            )
-            setUsers(updatedUser)
-            setCurrentUser(updatedCurrentUser)
-            localStorage.setItem("users", JSON.stringify(updatedUser))
-            localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser))
-            setIsEditingFirstName(false)
-            window.location.reload()
+            );
+            setUsers(updatedUser);
+            setCurrentUser(updatedCurrentUser);
+            localStorage.setItem("users", JSON.stringify(updatedUser));
+            localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser));
+            setIsEditingFirstName(false);
+            window.location.reload();
         }
-    }
+    };
 
-    const handleEditLastName = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const handleEditLastName = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
         if (!isEditingLastName) {
-            setIsEditingLastName(true)
+            setIsEditingLastName(true);
         } else {
-            const updatedUser = users.map((user: any) => user.email === currentUserEmail ?
+            const updatedUser = users.map((user: IUser) => user.email === currentUserEmail ?
                 { ...user, lastName: userLastName } :
                 user
-            )
-            const updatedCurrentUser = currentUser.map((user: any) => user.email === currentUserEmail ?
+            );
+            const updatedCurrentUser = currentUser.map((user: IUser) => user.email === currentUserEmail ?
                 { ...user, lastName: userLastName } :
                 user
-            )
-            setUsers(updatedUser)
-            setCurrentUser(updatedCurrentUser)
-            localStorage.setItem("users", JSON.stringify(updatedUser))
-            localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser))
-            setIsEditingLastName(false)
+            );
+            setUsers(updatedUser);
+            setCurrentUser(updatedCurrentUser);
+            localStorage.setItem("users", JSON.stringify(updatedUser));
+            localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser));
+            setIsEditingLastName(false);
         }
-    }
+    };
 
-    const handleLogOut = () => {
-        setIsLoggedIn(false)
-        localStorage.removeItem("currentUser")
-        navigate("/")
-    }
+    const handleLogOut = (): void => {
+        setIsLoggedIn(false);
+        localStorage.removeItem("currentUser");
+        navigate("/");
+    };
 
-    const handleCloseDialog = () => {
-        setShowDialog(false)
-    }
+    const handleCloseDialog = (): void => {
+        setShowDialog(false);
+    };
 
-    const userProfile = currentUser.map((user: any) => {
+    const userProfile = currentUser.map((user: IUser) => {
         return <div className={classes.profileSection} key={user.email}>
             <div className={classes.labels}>
                 <div className={classes.profileLabel}>First Name:</div>
@@ -108,8 +109,8 @@ export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, cu
                 {isEditingFirstName ?
                     <form className={classes.profileValue} onSubmit={(e) => handleEditFirstName(e)}>
                         <input
-                            value={userFirstName}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserFirstName(e.target.value) }}
+                            value={userFirstName!}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserFirstName(e.target.value); }}
                         />
                         <button className={classes.editButton} type="submit">
                             <StyledEditIcon />
@@ -125,8 +126,8 @@ export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, cu
                 {isEditingLastName ?
                     <form className={classes.profileValue} onSubmit={(e) => handleEditLastName(e)}>
                         <input
-                            value={userLastName}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserLastName(e.target.value) }}
+                            value={userLastName!}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setUserLastName(e.target.value); }}
                         />
                         <button className={classes.editButton} type="submit">
                             <StyledEditIcon />
@@ -141,8 +142,8 @@ export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, cu
                 }
                 <div className={classes.profileValue}>{user.email}</div>
             </div>
-        </div>
-    })
+        </div>;
+    });
     return (
         <div>
             {userProfile}
@@ -150,7 +151,7 @@ export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, cu
                 variant="outlined"
                 color="error"
                 type="button"
-                onClick={() => { setShowDialog(true) }}
+                onClick={() => { setShowDialog(true); }}
             >
                 Log Out
             </StyledButton>
@@ -163,5 +164,5 @@ export const CurrentUserInfo: FC<CurrentUserInfoProps> = ({ currentUserEmail, cu
                 buttonText="Log Out"
             />
         </div>
-    )
-}
+    );
+};

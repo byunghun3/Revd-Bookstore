@@ -1,7 +1,7 @@
-import React from "react"
-import { PageRoutes } from "./components/PageRoutes/PageRoutes"
-import { LoginProvider } from "./contexts/LoginContext"
-import "./App.css"
+import React from "react";
+import { PageRoutes } from "./components/PageRoutes/PageRoutes";
+import { LoginProvider } from "./contexts/LoginContext";
+import "./App.css";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <PageRoutes />
       </div>
     </LoginProvider >
-  )
+  );
 }
 
-export default App
+export default App;

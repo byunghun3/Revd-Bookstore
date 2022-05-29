@@ -1,56 +1,56 @@
-import React, { FC } from "react"
-import Cards from "react-credit-cards"
-import { InputLabel, FormControl, OutlinedInput } from "@mui/material"
-import "react-credit-cards/es/styles-compiled.css"
-import { styled } from "@mui/system"
-import classes from "./PaymentInfo.module.css"
+import React, { FC } from "react";
+import Cards from "react-credit-cards";
+import { InputLabel, FormControl, OutlinedInput } from "@mui/material";
+import "react-credit-cards/es/styles-compiled.css";
+import { styled } from "@mui/system";
+import classes from "./PaymentInfo.module.css";
 
 interface PaymentInfoProps {
-    cardName: string
-    cardNumber: string
-    expiry: string
-    cvc: string
-    focus: string
-    onFocus: React.FocusEventHandler<HTMLInputElement>
-    onChangeName: React.ChangeEventHandler<HTMLInputElement>
-    onChangeNumber: React.ChangeEventHandler<HTMLInputElement>
-    onChangeExpiry: React.ChangeEventHandler<HTMLInputElement>
-    onChangeCvc: React.ChangeEventHandler<HTMLInputElement>
-    cardNumberError: boolean
-    expiryError: boolean
-    cvcError: boolean
-    cardNumberErrorText: string
-    expiryErrorText: string
-    cvcErrorText: string
+    cardName: string;
+    cardNumber: string;
+    expiry: string;
+    cvc: string;
+    focus: string;
+    onFocus: React.FocusEventHandler<HTMLInputElement>;
+    onChangeName: React.ChangeEventHandler<HTMLInputElement>;
+    onChangeNumber: React.ChangeEventHandler<HTMLInputElement>;
+    onChangeExpiry: React.ChangeEventHandler<HTMLInputElement>;
+    onChangeCvc: React.ChangeEventHandler<HTMLInputElement>;
+    cardNumberError: boolean;
+    expiryError: boolean;
+    cvcError: boolean;
+    cardNumberErrorText: string;
+    expiryErrorText: string;
+    cvcErrorText: string;
 }
 
 const CardNumberForm = styled(FormControl)({
     margin: "1.2rem",
     width: "80%"
-})
+});
 
 const CardNameForm = styled(FormControl)({
     margin: "1.2rem",
     width: "80%"
-})
+});
 
 const ExpiryForm = styled(FormControl)({
     margin: "1.2rem",
     width: "38%",
-})
+});
 
 const CvcForm = styled(FormControl)({
     margin: "1.2rem",
     width: "38%",
-})
+});
 
 const StyledInputLabel = styled(InputLabel)({
     fontSize: "1.5rem"
-})
+});
 
 const StyledOutlinedInput = styled(OutlinedInput)({
     fontSize: "1.5rem"
-})
+});
 
 export const PaymentInfo: FC<PaymentInfoProps> = ({
     cardName, cardNumber, expiry, cvc, focus, onFocus,
@@ -127,5 +127,5 @@ export const PaymentInfo: FC<PaymentInfoProps> = ({
                 }
             </CvcForm>
         </div>
-    )
-}
+    );
+};

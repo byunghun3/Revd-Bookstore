@@ -1,48 +1,48 @@
-import React, { FC } from "react"
-import { InputLabel, FormControl, OutlinedInput } from "@mui/material"
-import { styled } from "@mui/system"
-import classes from "./ShippingInfo.module.css"
+import React, { FC } from "react";
+import { InputLabel, FormControl, OutlinedInput } from "@mui/material";
+import { styled } from "@mui/system";
+import classes from "./ShippingInfo.module.css";
 
 interface ShippingInfoProps {
-    addressLineOne: string
-    addressLineTwo: string
-    city: string
-    stateCode: string
-    zipCode: string
-    onChangeAddressLineOne: React.ChangeEventHandler<HTMLInputElement>
-    onChangeAddressLineTwo: React.ChangeEventHandler<HTMLInputElement>
-    onChangeCity: React.ChangeEventHandler<HTMLInputElement>
-    onChangeStateCode: React.ChangeEventHandler<HTMLInputElement>
-    onChangeZipCode: React.ChangeEventHandler<HTMLInputElement>
+    addressLineOne: string;
+    addressLineTwo: string;
+    city: string;
+    stateCode: string;
+    zipCode: string;
+    onChangeAddressLineOne: React.ChangeEventHandler<HTMLInputElement>;
+    onChangeAddressLineTwo: React.ChangeEventHandler<HTMLInputElement>;
+    onChangeCity: React.ChangeEventHandler<HTMLInputElement>;
+    onChangeStateCode: React.ChangeEventHandler<HTMLInputElement>;
+    onChangeZipCode: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const StreetForm = styled(FormControl)({
     margin: "1.2rem",
     width: "80%",
-})
+});
 
 const CityForm = styled(FormControl)({
     margin: "1.2rem",
     width: "80%",
-})
+});
 
 const StateCodeForm = styled(FormControl)({
     margin: "1.2rem",
     width: "38%",
-})
+});
 
 const ZipCodeForm = styled(FormControl)({
     margin: "1.2rem",
     width: "38%",
-})
+});
 
 const StyledInputLabel = styled(InputLabel)({
     fontSize: "1.5rem"
-})
+});
 
 const StyledOutlinedInput = styled(OutlinedInput)({
     fontSize: "1.5rem"
-})
+});
 
 export const ShippingInfo: FC<ShippingInfoProps> = ({
     addressLineOne, addressLineTwo, city, stateCode, zipCode,
@@ -109,5 +109,5 @@ export const ShippingInfo: FC<ShippingInfoProps> = ({
                 </ZipCodeForm>
             </div>
         </div>
-    )
-}
+    );
+};

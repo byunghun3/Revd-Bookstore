@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuidv4 } from "uuid";
 
 export const SuggestionsData = [
     {
@@ -18,4 +18,4 @@ export const SuggestionsData = [
             date: "8/15/2019"
         }
     }
-]
+];

@@ -1,12 +1,13 @@
-import React, { FC } from "react"
-import { Link } from "react-router-dom"
-import { Grid } from "@mui/material"
-import { OrdersData } from "../../data/OrdersData"
-import { styled } from "@mui/system"
-import classes from "./OrderHistory.module.css"
+import React, { FC } from "react";
+import { Link } from "react-router-dom";
+import { Grid } from "@mui/material";
+import { OrdersData } from "../../data/OrdersData";
+import { IOrder, IBookForOrder, IBook, ISuggestion } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./OrderHistory.module.css";
 
 interface OrderHistoryProps {
-    currentUserEmail: string
+    currentUserEmail: string | null;
 }
 
 const ItemGrid = styled(Grid)({
@@ -22,21 +23,21 @@ const ItemGrid = styled(Grid)({
         justifyContent: "space-between",
         marginTop: "2rem"
     }
-})
+});
 
 export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
-    const orders = JSON.parse(localStorage.getItem("orders") || "[]")
-    const customerOrders = OrdersData
+    const orders: IOrder[] = JSON.parse(localStorage.getItem("orders") || "[]");
+    const customerOrders = OrdersData;
 
-    const hardCodedOrderHistory = customerOrders.filter((order: any) => {
-        return order.user.email === `${currentUserEmail}`
-    }).map((order: any) => {
+    const hardCodedOrderHistory = customerOrders.filter((order: IOrder) => {
+        return order.user.email === `${currentUserEmail}`;
+    }).map((order: IOrder) => {
         return <ItemGrid item key={order.id} id={order.id}>
             <div className={classes.orderImage}>
-                {order.details.map((book: any) => {
+                {order.details.map((book: IBookForOrder) => {
                     return <Link key={book.id} to={`/browse/${book.id}`}>
                         <img className={classes.bookCover} src={book.image} alt="" />
-                    </Link>
+                    </Link>;
                 })}
             </div>
             <div className={classes.orderId}>
@@ -44,7 +45,7 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
                 {order.id}
             </div>
             <div className={classes.orderBookInfo}>
-                {order.details.map((book: any) => {
+                {order.details.map((book: IBookForOrder) => {
                     return <div className={classes.bookInfo} key={book.title}>
                         <div className={classes.bookTitle}>
                             {book.title}
@@ -56,25 +57,25 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
                             <span className={classes.bookQtyLabel}>Qty:&nbsp;</span>
                             <span className={classes.bookQty}>{book.quantity}</span>
                         </div>
-                    </div>
+                    </div>;
                 })}
             </div>
             <div className={classes.orderDetails}>
                 <div className={classes.orderDate}>{order.date}</div>
                 <div className={classes.orderTotal}>${order.total}</div>
             </div>
-        </ItemGrid >
-    })
+        </ItemGrid >;
+    });
 
-    const orderHistory = orders.filter((order: any) => {
-        return order.user.email === `${currentUserEmail}`
-    }).map((order: any) => {
+    const orderHistory = orders.filter((order: IOrder) => {
+        return order.user.email === `${currentUserEmail}`;
+    }).map((order: IOrder) => {
         return <ItemGrid item key={order.id} id={order.id}>
             <div className={classes.orderImage}>
-                {order.details.map((book: any) => {
+                {order.details.map((book: IBookForOrder) => {
                     return <Link key={book.id} to={`/browse/${book.id}`}>
                         <img className={classes.bookCover} src={book.image} alt="" />
-                    </Link>
+                    </Link>;
                 })}
             </div>
             <div className={classes.orderId}>
@@ -82,7 +83,7 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
                 {order.id}
             </div>
             <div className={classes.orderBookInfo}>
-                {order.details.map((book: any) => {
+                {order.details.map((book: IBookForOrder) => {
                     return <div className={classes.bookInfo} key={book.title}>
                         <div className={classes.bookTitle}>
                             {book.title}
@@ -94,20 +95,20 @@ export const OrderHistory: FC<OrderHistoryProps> = ({ currentUserEmail }) => {
                             <span className={classes.bookQtyLabel}>Qty:&nbsp;</span>
                             <span className={classes.bookQty}>{book.quantity}</span>
                         </div>
-                    </div>
+                    </div>;
                 })}
             </div>
             <div className={classes.orderDetails}>
                 <div className={classes.orderDate}>{order.date}</div>
                 <div className={classes.orderTotal}>${order.total}</div>
             </div>
-        </ItemGrid >
-    })
+        </ItemGrid >;
+    });
 
     return (
         <div className={classes.orderHistory}>
             {hardCodedOrderHistory}
             {orderHistory}
         </div>
-    )
-}
+    );
+};

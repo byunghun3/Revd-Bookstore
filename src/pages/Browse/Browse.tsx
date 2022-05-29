@@ -1,61 +1,62 @@
-import React, { FC, useState, useEffect } from "react"
-import { Container, Grid, SelectChangeEvent } from "@mui/material"
-import { Filter } from "../../components/Filter/Filter"
-import { Books } from "../../components/Books/Books"
-import { BooksData } from "../../data/BooksData"
-import { styled } from "@mui/system"
-import classes from "./Browse.module.css"
+import React, { FC, useState, useEffect } from "react";
+import { Container, Grid, SelectChangeEvent } from "@mui/material";
+import { Filter } from "../../components/Filter/Filter";
+import { Books } from "../../components/Books/Books";
+import { BooksData } from "../../data/BooksData";
+import { IBook, IBookForOrder } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./Browse.module.css";
 
 const ContainerGrid = styled(Grid)({
     padding: "7rem 5rem",
     "@media (max-width: 400px)": {
         padding: "5rem 0 5rem 3rem"
     }
-})
+});
 
 export const Browse: FC = () => {
-    const [filterValue, setFilterValue] = useState("")
-    const [showBookList, setShowBookList] = useState(true)
-    const [showClearButton, setShowClearButton] = useState(false)
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
-    const books = BooksData
+    const [filterValue, setFilterValue] = useState<string>("");
+    const [showBookList, setShowBookList] = useState<boolean>(true);
+    const [showClearButton, setShowClearButton] = useState<boolean>(false);
+    const [cart, setCart] = useState<IBookForOrder[]>(JSON.parse(localStorage.getItem("cart") || "[]"));
+    const books = BooksData;
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart))
-    }, [cart])
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
-    const handleChange = (e: SelectChangeEvent) => {
+    const handleChange = (e: SelectChangeEvent): void => {
         if (e.target.value as string === "All") {
-            setFilterValue(e.target.value as string)
-            setShowBookList(true)
+            setFilterValue(e.target.value as string);
+            setShowBookList(true);
         } else {
-            setFilterValue(e.target.value as string)
-            setShowBookList(false)
-            setShowClearButton(true)
+            setFilterValue(e.target.value as string);
+            setShowBookList(false);
+            setShowClearButton(true);
         }
-    }
+    };
 
-    const handleClearFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
-        setFilterValue("")
-        setShowBookList(true)
-        setShowClearButton(false)
-    }
+    const handleClearFilter = (e: React.MouseEvent<HTMLButtonElement>): void => {
+        setFilterValue("");
+        setShowBookList(true);
+        setShowClearButton(false);
+    };
 
-    const handleAddToCart = (book: any) => {
-        let newCart = [...cart]
+    const handleAddToCart = (book: IBook): void => {
+        let newCart = [...cart];
 
-        const maxStock = books.find((item: any) => {
-            return item.id === book.id
-        })?.stock
+        const maxStock = books.find((item: IBook) => {
+            return item.id === book.id;
+        })?.stock;
 
-        let duplicateInCart = newCart.find((item: any) => {
-            return item.id === book.id
-        })
+        let duplicateInCart = newCart.find((item: IBookForOrder) => {
+            return item.id === book.id;
+        });
 
         if (duplicateInCart && duplicateInCart.quantity === maxStock) {
-            alert("out of stock")
+            alert("out of stock");
         } else if (duplicateInCart) {
-            duplicateInCart.quantity++
+            duplicateInCart.quantity++;
         } else {
             newCart.push({
                 id: book.id,
@@ -63,19 +64,24 @@ export const Browse: FC = () => {
                 author: book.author,
                 image: book.image,
                 type: book.type,
-                price: book.sale > 0 ? (book.price - (book.price * book.sale)).toFixed(2) : book.price,
+                genre: book.genre,
+                rating: book.rating,
+                price: book.sale > 0 ? Number((book.price - (book.price * book.sale)).toFixed(2)) : book.price,
                 stock: book.stock,
-                quantity: 1
-            })
+                sale: book.sale,
+                status: book.status,
+                quantity: 1,
+                review: book.review
+            });
         }
-        setCart(newCart)
+        setCart(newCart);
 
-        localStorage.setItem("cart", JSON.stringify(newCart))
-    }
+        localStorage.setItem("cart", JSON.stringify(newCart));
+    };
 
-    const typeFilter = books.filter(book =>
+    const typeFilter = books.filter((book: IBook) =>
         book.type === filterValue)
-        .map(book =>
+        .map((book: IBook) =>
             <Grid key={book.id} item sm={8} md={5} lg={4}>
                 <form onSubmit={() => handleAddToCart(book)}>
                     <Books
@@ -92,10 +98,10 @@ export const Browse: FC = () => {
                     />
                 </form>
             </Grid>
-        )
+        );
 
-    const genreFilter = books.filter(book =>
-        book.genre === filterValue).map(book => {
+    const genreFilter = books.filter((book: IBook) =>
+        book.genre === filterValue).map((book: IBook) => {
             return <Grid key={book.id} item sm={8} md={5} lg={4}>
                 <form onSubmit={() => handleAddToCart(book)}>
                     <Books
@@ -111,16 +117,16 @@ export const Browse: FC = () => {
                         status={book.status}
                     />
                 </form>
-            </Grid>
-        })
+            </Grid>;
+        });
 
-    const typeFilterLength = books.filter(book =>
-        book.type === filterValue).length
+    const typeFilterLength = books.filter((book: IBook) =>
+        book.type === filterValue).length;
 
-    const genreFilterLength = books.filter(book =>
-        book.genre === filterValue).length
+    const genreFilterLength = books.filter((book: IBook) =>
+        book.genre === filterValue).length;
 
-    const bookList = books.map(book => {
+    const bookList = books.map((book: IBook) => {
         return <Grid key={book.id} item sm={8} md={5} lg={4}>
             <form onSubmit={() => handleAddToCart(book)}>
                 <Books
@@ -136,8 +142,8 @@ export const Browse: FC = () => {
                     status={book.status}
                 />
             </form>
-        </Grid>
-    })
+        </Grid>;
+    });
 
     return (
         <div className={classes.browsePage}>
@@ -164,5 +170,5 @@ export const Browse: FC = () => {
                 </div>
             </Container>
         </div>
-    )
-}
+    );
+};

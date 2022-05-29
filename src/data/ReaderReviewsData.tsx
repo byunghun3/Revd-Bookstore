@@ -341,4 +341,4 @@ export const ReaderReviewsData = [
             rating: 5
         }
     }
-]
+];

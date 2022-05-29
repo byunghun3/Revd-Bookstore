@@ -1,16 +1,13 @@
-import React, { FC, useState, useEffect, useContext } from "react"
-import { Link, NavLink } from "react-router-dom"
-import { AppBar, Toolbar } from "@mui/material"
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import MenuIcon from "@mui/icons-material/Menu"
-import { LoginContext } from "../../contexts/LoginContext"
-import { styled } from "@mui/system"
-import classes from "./Header.module.css"
-
-const HeaderAppbar = styled(AppBar)({
-
-})
+import React, { FC, useState, useEffect, useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AppBar, Toolbar } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import MenuIcon from "@mui/icons-material/Menu";
+import { LoginContext } from "../../contexts/LoginContext";
+import { IBookForOrder, IUser } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./Header.module.css";
 
 const HeaderToolbar = styled(Toolbar)({
     display: "flex",
@@ -20,7 +17,7 @@ const HeaderToolbar = styled(Toolbar)({
     "@media (max-width: 350px)": {
         padding: "0 3%"
     }
-})
+});
 
 const StyledAccountIcon = styled(AccountCircleIcon)({
     verticalAlign: "middle",
@@ -30,7 +27,7 @@ const StyledAccountIcon = styled(AccountCircleIcon)({
     "@media (max-width: 320px)": {
         fontSize: "2.3rem"
     }
-})
+});
 
 const StyledCartIcon = styled(ShoppingCartIcon)({
     verticalAlign: "middle",
@@ -40,13 +37,13 @@ const StyledCartIcon = styled(ShoppingCartIcon)({
     "@media (max-width: 320px)": {
         fontSize: "2.3rem"
     }
-})
+});
 
 const NavBar = styled(Toolbar)({
     minHeight: "7rem",
     maxWidth: "100%",
     backgroundColor: "#6993ab"
-})
+});
 
 const ExpandedNavBar = styled(Toolbar)({
     minHeight: "7rem",
@@ -60,7 +57,7 @@ const ExpandedNavBar = styled(Toolbar)({
         color: "black",
         cursor: "pointer"
     }
-})
+});
 
 const StyledMenuIcon = styled(MenuIcon)({
     position: "absolute",
@@ -73,28 +70,27 @@ const StyledMenuIcon = styled(MenuIcon)({
     "@media (min-width: 501px)": {
         display: "none"
     }
-})
+});
 
 export const Header: FC = () => {
-    const { isLoggedIn } = useContext(LoginContext)
-    const [isExpanded, setIsExpanded] = useState(false)
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]")
-    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
+    const { isLoggedIn } = useContext(LoginContext);
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const cart: IBookForOrder[] = JSON.parse(localStorage.getItem("cart") || "[]");
+    const currentUser: IUser[] = JSON.parse(localStorage.getItem("currentUser") || "[]");
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart))
-    }, [cart])
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
-    const greeting = currentUser.map((user: any) => {
-        return <div key={user.email}>Hello, {user.firstName}</div>
-    })
+    const greeting = currentUser.map((user: IUser) => {
+        return <div key={user.email}>Hello, {user.firstName}</div>;
+    });
 
-    const handleExpandMenu = () => {
-        setTimeout(() => { setIsExpanded(!isExpanded) }, 200)
-    }
+    const handleExpandMenu = (): void => {
+        setTimeout(() => { setIsExpanded(!isExpanded); }, 200);
+    };
 
     return (
-        // <div>
         <AppBar
             color="inherit"
             elevation={0}
@@ -149,6 +145,5 @@ export const Header: FC = () => {
             </div>
             }
         </AppBar>
-        // </div>
-    )
-}
+    );
+};

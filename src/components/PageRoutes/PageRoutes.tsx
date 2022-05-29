@@ -1,36 +1,37 @@
-import React, { FC, useContext, useEffect } from "react"
-import { Route, Routes, useLocation } from "react-router-dom"
-import { HomePage } from "../../pages/HomePage/HomePage"
-import { About } from "../../pages/About/About"
-import { Browse } from "../../pages/Browse/Browse"
-import { Suggest } from "../../pages/Suggest/Suggest"
-import { Contact } from "../../pages/Contact/Contact"
-import { Error } from "../../pages/Error/Error"
-import { Login } from "../../pages/Login/Login"
-import { Profile } from "../../pages/Profile/Profile"
-import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute"
-import { SignUp } from "../../pages/SignUp/SignUp"
-import { ForgotPassword } from "../../pages/ForgotPassword/ForgotPassword"
-import { Cart } from "../../pages/Cart/Cart"
-import { Checkout } from "../../pages/Checkout/Checkout"
-import { OrderComplete } from "../../pages/OrderComplete/OrderComplete"
-import { Product } from "../../pages/Product/Product"
-import { Header } from "../Header/Header"
-import { HeaderTwo } from "../HeaderTwo/HeaderTwo"
-import { Footer } from "../Footer/Footer"
-import { LoginContext } from "../../contexts/LoginContext"
-import { UnprotectedRoute } from "../UnprotectedRoute/UnprotectedRoute"
+import React, { FC, useContext, useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { HomePage } from "../../pages/HomePage/HomePage";
+import { About } from "../../pages/About/About";
+import { Browse } from "../../pages/Browse/Browse";
+import { Suggest } from "../../pages/Suggest/Suggest";
+import { Contact } from "../../pages/Contact/Contact";
+import { Error } from "../../pages/Error/Error";
+import { Login } from "../../pages/Login/Login";
+import { Profile } from "../../pages/Profile/Profile";
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
+import { SignUp } from "../../pages/SignUp/SignUp";
+import { ForgotPassword } from "../../pages/ForgotPassword/ForgotPassword";
+import { Cart } from "../../pages/Cart/Cart";
+import { Checkout } from "../../pages/Checkout/Checkout";
+import { OrderComplete } from "../../pages/OrderComplete/OrderComplete";
+import { Product } from "../../pages/Product/Product";
+import { Header } from "../Header/Header";
+import { HeaderTwo } from "../HeaderTwo/HeaderTwo";
+import { Footer } from "../Footer/Footer";
+import { LoginContext } from "../../contexts/LoginContext";
+import { UnprotectedRoute } from "../UnprotectedRoute/UnprotectedRoute";
+import { IUser } from "../../interfaces/Interfaces";
 
 export const PageRoutes: FC = () => {
-    const location = useLocation()
-    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
-    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]")
+    const location = useLocation();
+    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+    const currentUser: IUser[] = JSON.parse(localStorage.getItem("currentUser") || "[]");
 
     useEffect(() => {
         if (currentUser.length) {
-            setIsLoggedIn(true)
-        } else { setIsLoggedIn(false) }
-    }, [currentUser])
+            setIsLoggedIn(true);
+        } else { setIsLoggedIn(false); }
+    }, [currentUser]);
 
     return (
         <div>
@@ -62,5 +63,5 @@ export const PageRoutes: FC = () => {
             </Routes>
             <Footer />
         </div>
-    )
-}
+    );
+};

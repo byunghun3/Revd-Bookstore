@@ -1,16 +1,16 @@
-import React, { FC, useState } from "react"
-import { Card } from "@mui/material"
-import { ReaderRating } from "../../components/ReaderRating/ReaderRating"
-import { styled } from "@mui/system"
-import classes from "./ReaderReview.module.css"
+import React, { FC, useState } from "react";
+import { Card } from "@mui/material";
+import { ReaderRating } from "../../components/ReaderRating/ReaderRating";
+import { styled } from "@mui/system";
+import classes from "./ReaderReview.module.css";
 
 interface ReaderReviewProps {
-    id: number
-    rating: number
-    comment: string
-    firstName: string
-    lastName: string
-    date: string
+    id: string;
+    rating: number;
+    comment: string;
+    firstName: string;
+    lastName: string;
+    date: string;
 }
 
 const ReaderReviewCard = styled(Card)({
@@ -27,18 +27,18 @@ const ReaderReviewCard = styled(Card)({
         flexDirection: "column",
         justifyContent: "space-between"
     }
-})
+});
 
 export const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, firstName, lastName, date }) => {
-    const [isExpanded, setIsExpanded] = useState(false)
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-    const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleExpand = (e: React.MouseEvent<HTMLDivElement>): void => {
         if (e.currentTarget.scrollHeight > e.currentTarget.clientHeight) {
-            setIsExpanded(true)
+            setIsExpanded(true);
         } else if (isExpanded) {
-            setIsExpanded(false)
+            setIsExpanded(false);
         }
-    }
+    };
 
     return (
         <ReaderReviewCard key={id} elevation={0}>
@@ -50,5 +50,5 @@ export const ReaderReview: FC<ReaderReviewProps> = ({ id, rating, comment, first
             <div className={`${isExpanded ? classes.readerReviewCommentExpanded : classes.readerReviewComment}`} onClick={(e) => handleExpand(e)}>{comment}</div>
             <div className={classes.readerReviewDate}>{date}</div>
         </ReaderReviewCard >
-    )
-}
+    );
+};

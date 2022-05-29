@@ -1,14 +1,15 @@
-import React, { FC, useContext, useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { InputLabel, FormControl, OutlinedInput, InputAdornment, IconButton, Button } from "@mui/material"
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"
-import Visibility from "@mui/icons-material/Visibility"
-import VisibilityOff from "@mui/icons-material/VisibilityOff"
-import { LoginContext } from "../../contexts/LoginContext"
-import { UsersData } from "../../data/UsersData"
-import { styled } from "@mui/system"
-import classes from "./Login.module.css"
-import { Card } from "@mui/material"
+import React, { FC, useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { InputLabel, FormControl, OutlinedInput, InputAdornment, IconButton, Button } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { LoginContext } from "../../contexts/LoginContext";
+import { UsersData } from "../../data/UsersData";
+import { IUser } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./Login.module.css";
+import { Card } from "@mui/material";
 
 const LoginCard = styled(Card)({
     display: "flex",
@@ -23,110 +24,108 @@ const LoginCard = styled(Card)({
         width: "90vw",
         marginTop: "20%"
     }
-})
+});
 
 const StyledAccountCircleIcon = styled(AccountCircleIcon)({
     flex: "1",
     margin: "5% 0",
     fontSize: "3.5rem"
-})
+});
 
 const EmailForm = styled(FormControl)({
     margin: "1% 0 3% 0",
     width: "80%"
-})
+});
 
 const PasswordForm = styled(FormControl)({
     margin: "3% 0",
     width: "80%"
-})
+});
 
 const StyledInputLabel = styled(InputLabel)({
     fontSize: "1.5rem"
-})
+});
 
 const StyledOutlinedInput = styled(OutlinedInput)({
     fontSize: "1.5rem"
-})
+});
 
 const ForgotPWButton = styled(Button)({
     margin: "2% 0",
     textDecoration: "none",
     fontSize: "1.3rem"
-})
+});
 
 const LogInButton = styled(Button)({
     margin: "2% 0",
     width: "60%",
     fontSize: "1.3rem"
-})
+});
 
 const SignUpButton = styled(Button)({
     textDecoration: "none",
     fontSize: "1.3rem"
-})
+});
 
 export const Login: FC = () => {
-    const hardCodedUsers = UsersData
-    const [email, setEmail] = useState("")
-    const [isUserInvalid, setIsUserInvalid] = useState(false)
-    const [password, setPassword] = useState("")
-    const [showPassword, setShowPassword] = useState(false)
-    const { setIsLoggedIn } = useContext(LoginContext)
-    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "[]"))
-    const users = JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers))
+    const hardCodedUsers: IUser[] = UsersData;
+    const [email, setEmail] = useState<string>("");
+    const [isUserInvalid, setIsUserInvalid] = useState<boolean>(false);
+    const [password, setPassword] = useState<string>("");
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const { setIsLoggedIn } = useContext(LoginContext);
+    const [currentUser, setCurrentUser] = useState<IUser[]>(JSON.parse(localStorage.getItem("currentUser") || "[]"));
+    const users: IUser[] = JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers));
 
     useEffect(() => {
-        localStorage.setItem("users", JSON.stringify(users))
-    }, [users])
+        localStorage.setItem("users", JSON.stringify(users));
+    }, [users]);
 
-    const handleClickShowPassword = () => {
+    const handleClickShowPassword = (): void => {
         setShowPassword(
             !showPassword
-        )
-    }
+        );
+    };
 
-    console.log(email)
-
-    const handleLogIn = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        const userExists = users.filter((user: any) => {
-            return email === user.email
-        }).find((user: any) => {
-            return password === user.password
-        })
+    const handleLogIn = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        const userExists = users.filter((user: IUser) => {
+            return email === user.email;
+        }).find((user: IUser) => {
+            return password === user.password;
+        });
 
         if (userExists) {
-            let newCurrentUser = []
+            let newCurrentUser = [];
 
-            const currentUserFirstName = users.filter((user: any) => {
-                return email === user.email
-            }).map((user: any) => {
-                return user.firstName
-            })
+            const currentUserFirstName = users.filter((user: IUser) => {
+                return email === user.email;
+            }).map((user: IUser) => {
+                return user.firstName;
+            });
 
-            const currentUserLastName = users.filter((user: any) => {
-                return email === user.email
-            }).map((user: any) => {
-                return user.lastName
-            })
+            const currentUserLastName = users.filter((user: IUser) => {
+                return email === user.email;
+            }).map((user: IUser) => {
+                return user.lastName;
+            });
 
             newCurrentUser.push({
                 firstName: `${currentUserFirstName}`,
                 lastName: `${currentUserLastName}`,
                 email: email,
                 password: password,
-            })
+            });
 
-            setCurrentUser(newCurrentUser)
+            setCurrentUser(newCurrentUser);
 
-            localStorage.setItem("currentUser", JSON.stringify(newCurrentUser))
+            localStorage.setItem("currentUser", JSON.stringify(newCurrentUser));
 
-            setIsLoggedIn(true)
+            setIsLoggedIn(true);
         } else {
-            setIsUserInvalid(true)
+            setIsUserInvalid(true);
         }
-    }
+    };
 
     return (
         <div className={classes.loginPage}>
@@ -140,7 +139,7 @@ export const Login: FC = () => {
                             label="Email"
                             name="email"
                             value={email}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value); }}
                             required />
                     </EmailForm>
                     <PasswordForm>
@@ -150,7 +149,7 @@ export const Login: FC = () => {
                             name="Password"
                             type={showPassword ? "text" : "password"}
                             value={password}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value) }}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value); }}
                             endAdornment={<InputAdornment position="end">
                                 <IconButton
                                     aria-label="toggle password visibility"
@@ -184,5 +183,5 @@ export const Login: FC = () => {
                 </form>
             </LoginCard>
         </div >
-    )
-}
+    );
+};

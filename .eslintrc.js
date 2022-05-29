@@ -20,7 +20,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "semi": [1, "never"],
+        "semi": [1, "always"],
         "quotes": [1, "double", { "avoidEscape": true }],
         "react/prop-types": "off",
         "indent": "off",
@@ -28,4 +28,4 @@ module.exports = {
         "comma-dangle": "off",
         "import/prefer-default-export": "off"
     }
-}
+};

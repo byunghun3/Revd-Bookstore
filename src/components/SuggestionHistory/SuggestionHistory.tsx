@@ -1,16 +1,17 @@
-import React, { FC, useState, useContext } from "react"
-import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material"
-import EditIcon from "@mui/icons-material/Edit"
-import ClearIcon from "@mui/icons-material/Clear"
-import { styled } from "@mui/system"
-import classes from "./SuggestionHistory.module.css"
+import React, { FC, useState } from "react";
+import { Card, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import ClearIcon from "@mui/icons-material/Clear";
+import { ISuggestion } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./SuggestionHistory.module.css";
 
-interface ReviewHistoryProps {
-    id: string
-    suggestedTitle: string
-    suggestedAuthor: string
-    suggestedComment: string
-    date: string
+interface SuggestionHistoryProps {
+    id: string;
+    suggestedTitle: string;
+    suggestedAuthor: string;
+    suggestedComment: string;
+    date: string;
 }
 
 const SuggestionCard = styled(Card)({
@@ -28,12 +29,12 @@ const SuggestionCard = styled(Card)({
         justifyContent: "space-between",
         padding: "1rem 0.5rem"
     }
-})
+});
 
 const ReviewTextField = styled(TextField)({
     flex: "3",
     margin: "1% 0"
-})
+});
 
 const StyledEditIcon = styled(EditIcon)({
     marginBottom: "0.5rem",
@@ -45,7 +46,7 @@ const StyledEditIcon = styled(EditIcon)({
         marginRight: "1rem",
         marginBottom: "0"
     }
-})
+});
 
 const StyledRemoveIcon = styled(ClearIcon)({
     marginTop: "0.5rem",
@@ -57,65 +58,64 @@ const StyledRemoveIcon = styled(ClearIcon)({
         marginTop: "0",
         marginLeft: "1rem"
     }
-})
+});
 
 const StyledDialogContentText = styled(DialogContentText)({
     fontSize: "1.6rem"
-})
+});
 
 const StyledButton = styled(Button)({
     fontSize: "1.3rem"
-})
+});
 
-export const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
+export const SuggestionHistory: FC<SuggestionHistoryProps> = ({ id, suggestedTitle,
     suggestedAuthor, suggestedComment, date }) => {
-    const [suggestions, setSuggestions] = useState(JSON.parse(localStorage.getItem("suggestions") || "[]"))
-    const [comment, setComment] = useState(suggestedComment)
-    const [isEditing, setIsEditing] = useState(false)
-    const [showDialog, setShowDialog] = useState(false)
-    const [isExpanded, setIsExpanded] = useState(false)
+    const [suggestions, setSuggestions] = useState<ISuggestion[]>(JSON.parse(localStorage.getItem("suggestions") || "[]"));
+    const [comment, setComment] = useState<string>(suggestedComment);
+    const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [showDialog, setShowDialog] = useState<boolean>(false);
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-    const handleExpand = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleExpand = (e: React.MouseEvent<HTMLDivElement>): void => {
         if (e.currentTarget.scrollHeight > e.currentTarget.clientHeight) {
-            setIsExpanded(true)
+            setIsExpanded(true);
         } else if (isExpanded) {
-            setIsExpanded(false)
+            setIsExpanded(false);
         }
-    }
+    };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setComment(e.currentTarget.value)
-    }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        setComment(e.currentTarget.value);
+    };
 
-    const handleEditSuggestion = (e: React.FormEvent<HTMLFormElement>, id: string) => {
-        const reviewDetails = suggestions.map((suggestion: any) => suggestion.id === id ?
+    const handleEditSuggestion = (e: React.FormEvent<HTMLFormElement>, id: string): void => {
+        const reviewDetails = suggestions.map((suggestion: ISuggestion) => suggestion.id === id ?
             { ...suggestion, suggested: { ...suggestion.suggested, comment: comment } } :
             suggestion
-        )
-        console.log(id, reviewDetails)
-        e.preventDefault()
-
+        );
+        console.log(id, reviewDetails);
+        e.preventDefault();
 
         if (!isEditing) {
-            setIsEditing(true)
+            setIsEditing(true);
         } else {
-            setSuggestions(reviewDetails)
-            localStorage.setItem("suggestions", JSON.stringify(reviewDetails))
-            setIsEditing(false)
+            setSuggestions(reviewDetails);
+            localStorage.setItem("suggestions", JSON.stringify(reviewDetails));
+            setIsEditing(false);
         }
-    }
+    };
 
-    const handleCloseDialog = () => {
-        setShowDialog(false)
-    }
+    const handleCloseDialog = (): void => {
+        setShowDialog(false);
+    };
 
-    const handleDeleteSuggestion = (id: string) => {
-        let newSuggestions = suggestions.filter((suggestion: any) => suggestion.id !== id)
-        setSuggestions(newSuggestions)
-        localStorage.setItem("suggestions", JSON.stringify(newSuggestions))
-        setShowDialog(false)
-        window.location.reload()
-    }
+    const handleDeleteSuggestion = (id: string): void => {
+        let newSuggestions = suggestions.filter((suggestion: ISuggestion) => suggestion.id !== id);
+        setSuggestions(newSuggestions);
+        localStorage.setItem("suggestions", JSON.stringify(newSuggestions));
+        setShowDialog(false);
+        window.location.reload();
+    };
 
     return (
         <form className={classes.suggestion} onSubmit={(e) => handleEditSuggestion(e, id)}>
@@ -150,7 +150,7 @@ export const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                     <button className={classes.editButton} type="submit"><StyledEditIcon /></button>
                     <StyledRemoveIcon
                         color="warning"
-                        onClick={() => { setShowDialog(true) }}
+                        onClick={() => { setShowDialog(true); }}
                     />
                 </div>
                 <Dialog
@@ -168,5 +168,5 @@ export const SuggestionHistory: FC<ReviewHistoryProps> = ({ id, suggestedTitle,
                 </Dialog>
             </SuggestionCard>
         </form>
-    )
-}
+    );
+};

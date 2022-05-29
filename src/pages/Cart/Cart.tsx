@@ -1,22 +1,23 @@
-import React, { FC, useState, useContext } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import Grid from "@mui/material/Grid"
-import Button from "@mui/material/Button"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"
-import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
-import { BooksData } from "../../data/BooksData"
-import { LoginContext } from "../../contexts/LoginContext"
-import { styled } from "@mui/system"
-import classes from "./Cart.module.css"
+import React, { FC, useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
+import { BooksData } from "../../data/BooksData";
+import { LoginContext } from "../../contexts/LoginContext";
+import { IBook, IBookForOrder } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./Cart.module.css";
 
 const StyledCartIcon = styled(ShoppingCartIcon)({
     verticalAlign: "middle",
     color: "black",
     fontSize: "1.5rem"
-})
+});
 
 const ItemGrid = styled(Grid)({
     flex: "1",
@@ -33,34 +34,34 @@ const ItemGrid = styled(Grid)({
         justifyContent: "space-between",
         minHeight: "40vh"
     }
-})
+});
 
 const DownArrow = styled(ArrowDropDownIcon)({
     fontSize: "2rem",
     cursor: "pointer"
-})
+});
 
 const UpArrow = styled(ArrowDropUpIcon)({
     fontSize: "2rem",
     cursor: "pointer"
-})
+});
 
 const RemoveButton = styled(Button)({
     flex: "1",
     fontSize: "1.2rem"
-})
+});
 
 const CheckoutButton = styled(Button)({
     fontSize: "1.4rem",
     "@media (max-width: 499px)": {
         marginBottom: "10%",
     }
-})
+});
 
 const EmptyCartIcon = styled(ShoppingCartOutlinedIcon)({
     position: "relative",
     fontSize: "18rem"
-})
+});
 
 const StyledSmileIcon = styled(InsertEmoticonIcon)({
     marginLeft: "0.5rem",
@@ -69,66 +70,66 @@ const StyledSmileIcon = styled(InsertEmoticonIcon)({
     "@media (max-width: 400px)": {
         display: "none"
     }
-})
+});
 
 const BrowseButton = styled(Button)({
     fontSize: "1.3rem"
-})
+});
 
 export const Cart: FC = () => {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
-    const { isLoggedIn } = useContext(LoginContext)
-    const books = BooksData
-    const navigate = useNavigate()
+    const [cart, setCart] = useState<IBookForOrder[]>(JSON.parse(localStorage.getItem("cart") || "[]"));
+    const { isLoggedIn } = useContext(LoginContext);
+    const books = BooksData;
+    const navigate = useNavigate();
 
-    const handleRemoveFromCart = (id: number) => {
-        let newCart = cart.filter((item: any) => item.id !== id)
-        setCart(newCart)
-        localStorage.setItem("cart", JSON.stringify(newCart))
-    }
+    const handleRemoveFromCart = (id: number): void => {
+        let newCart = cart.filter((item: IBookForOrder) => item.id !== id);
+        setCart(newCart);
+        localStorage.setItem("cart", JSON.stringify(newCart));
+    };
 
-    const handleIncrementQty = (id: number) => {
-        let item = cart.find((item: any) => {
-            return item.id === id
-        })
+    const handleIncrementQty = (id: number): void => {
+        let item = cart.find((item: IBookForOrder) => {
+            return item.id === id;
+        });
 
-        const maxStock = books.find((item: any) => {
-            return item.id === id
-        })?.stock
+        const maxStock = books.find((item: IBook) => {
+            return item.id === id;
+        })?.stock;
 
-        console.log(maxStock)
+        console.log(maxStock);
 
-        if (item.quantity < maxStock!) {
-            item.quantity++
-            let newCart = [...cart]
-            setCart(newCart)
-            localStorage.setItem("cart", JSON.stringify(newCart))
+        if (item!.quantity < maxStock!) {
+            item!.quantity++;
+            let newCart = [...cart];
+            setCart(newCart);
+            localStorage.setItem("cart", JSON.stringify(newCart));
         }
-    }
+    };
 
-    const handleDecrementQty = (id: number) => {
-        let item = cart.find((item: any) => {
-            return item.id === id
-        })
+    const handleDecrementQty = (id: number): void | null => {
+        let item = cart.find((item: IBookForOrder) => {
+            return item!.id === id;
+        });
 
-        if (item.quantity > 1) {
-            item.quantity--
-            let newCart = [...cart]
-            setCart(newCart)
-            localStorage.setItem("cart", JSON.stringify(newCart))
-        }
-    }
+        if (item!.quantity > 1) {
+            item!.quantity--;
+            let newCart = [...cart];
+            setCart(newCart);
+            localStorage.setItem("cart", JSON.stringify(newCart));
+        } else { return null; }
+    };
 
-    const handleGoToCheckout = () => {
-        navigate("/checkout")
-    }
+    const handleGoToCheckout = (): void => {
+        navigate("/checkout");
+    };
 
-    const handleGoToLogin = () => {
-        navigate("/login")
-    }
+    const handleGoToLogin = (): void => {
+        navigate("/login");
+    };
 
-    const cartItems = cart.map((book: any) => {
-        return <ItemGrid item key={book.id} id={book.id}>
+    const cartItems = cart.map((book: IBookForOrder) => {
+        return <ItemGrid item key={book.id} id={`${book.id}`}>
             <Link className={classes.bookImage} to={`/browse/${book.id}`}>
                 <img className={classes.bookCover} src={book.image} alt="" />
             </Link>
@@ -139,12 +140,12 @@ export const Cart: FC = () => {
             <div className={classes.bookPrice}>${book.price}</div>
             <div className={classes.adjustQty}>
                 <DownArrow
-                    id={book.id}
+                    id={`${book.id}`}
                     onClick={() => handleDecrementQty(book.id)}
                 />
                 <div className={classes.bookQty}>{book.quantity}</div>
                 <UpArrow
-                    id={book.id}
+                    id={`${book.id}`}
                     onClick={() => handleIncrementQty(book.id)}
                 />
             </div>
@@ -155,12 +156,12 @@ export const Cart: FC = () => {
             >
                 Remove
             </RemoveButton>
-        </ItemGrid>
-    })
+        </ItemGrid>;
+    });
 
-    const totalPrice = cart.reduce((total: number, item: any) => {
-        return total + (item.price * item.quantity)
-    }, 0)
+    const totalPrice = cart.reduce((total: number, item: IBookForOrder) => {
+        return total + (item.price * item.quantity);
+    }, 0);
 
     return (
         <div className={classes.cartPage}>
@@ -204,5 +205,5 @@ export const Cart: FC = () => {
                 </div>
             }
         </div>
-    )
-}
+    );
+};

@@ -1,12 +1,13 @@
-import React, { FC, useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { Card, InputLabel, FormControl, OutlinedInput, InputAdornment, IconButton, Button } from "@mui/material"
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"
-import Visibility from "@mui/icons-material/Visibility"
-import VisibilityOff from "@mui/icons-material/VisibilityOff"
-import { UsersData } from "../../data/UsersData"
-import { styled } from "@mui/system"
-import classes from "./SignUp.module.css"
+import React, { FC, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Card, InputLabel, FormControl, OutlinedInput, InputAdornment, IconButton, Button } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { UsersData } from "../../data/UsersData";
+import { IUser } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./SignUp.module.css";
 
 const SignUpCard = styled(Card)({
     display: "flex",
@@ -21,131 +22,131 @@ const SignUpCard = styled(Card)({
         width: "90vw",
         marginTop: "20%"
     }
-})
+});
 
 const StyledAccountCircleIcon = styled(AccountCircleIcon)({
     flex: "1",
     margin: "5% 0",
     fontSize: "3.5rem"
-})
+});
 
 const NameForm = styled(FormControl)({
     margin: "3% 2%",
     width: "40%",
 
-})
+});
 
 const StyledForm = styled(FormControl)({
     margin: "3% 0",
     width: "80%"
-})
+});
 
 const StyledInputLabel = styled(InputLabel)({
     fontSize: "1.5rem"
-})
+});
 
 const StyledOutlinedInput = styled(OutlinedInput)({
     fontSize: "1.5rem"
-})
+});
 
 const SignUpButton = styled(Button)({
     margin: "5% 0",
     fontSize: "1.3rem"
-})
+});
 
 export const SignUp: FC = () => {
-    const navigate = useNavigate()
-    const hardCodedUsers = UsersData
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [showPassword, setShowPassword] = useState(false)
-    const [emailInputError, setEmailInputError] = useState("")
-    const [passwordLengthError, setPasswordLengthError] = useState("")
-    const [isEmailInvalid, setIsEmailInvalid] = useState(false)
-    const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
-    const [passwordMatchError, setPasswordMatchError] = useState("")
-    const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers)))
+    const navigate = useNavigate();
+    const hardCodedUsers = UsersData;
+    const [firstName, setFirstName] = useState<string>("");
+    const [lastName, setLastName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [emailInputError, setEmailInputError] = useState<string>("");
+    const [passwordLengthError, setPasswordLengthError] = useState<string>("");
+    const [isEmailInvalid, setIsEmailInvalid] = useState<boolean>(false);
+    const [isPasswordInvalid, setIsPasswordInvalid] = useState<boolean>(false);
+    const [passwordMatchError, setPasswordMatchError] = useState<string>("");
+    const [users, setUsers] = useState<IUser[]>(JSON.parse(localStorage.getItem("users") || JSON.stringify(hardCodedUsers)));
 
 
     useEffect(() => {
-        localStorage.setItem("users", JSON.stringify(users))
-    }, [users])
+        localStorage.setItem("users", JSON.stringify(users));
+    }, [users]);
 
-    const handleValidateEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleValidateEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (!e.target.value.includes("@")) {
-            setEmailInputError("Please enter a valid email")
-            setIsEmailInvalid(true)
+            setEmailInputError("Please enter a valid email");
+            setIsEmailInvalid(true);
         } else {
-            setEmailInputError("")
-            setIsEmailInvalid(false)
+            setEmailInputError("");
+            setIsEmailInvalid(false);
         }
-        setEmail(e.target.value)
-    }
+        setEmail(e.target.value);
+    };
 
-    const handleClickShowPassword = () => {
+    const handleClickShowPassword = (): void => {
         setShowPassword(
             !showPassword
-        )
-    }
+        );
+    };
 
-    const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.value !== password) {
-            setPasswordMatchError("Passwords don't match")
-            setIsPasswordInvalid(true)
+            setPasswordMatchError("Passwords don't match");
+            setIsPasswordInvalid(true);
         } else {
-            setPasswordMatchError("")
-            setIsPasswordInvalid(false)
+            setPasswordMatchError("");
+            setIsPasswordInvalid(false);
         }
-        setConfirmPassword(e.target.value)
-    }
+        setConfirmPassword(e.target.value);
+    };
 
-    const handlePasswordLength = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePasswordLength = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.value.length < 8) {
-            setPasswordLengthError("Password should be at least 8 characters")
-            setIsPasswordInvalid(true)
+            setPasswordLengthError("Password should be at least 8 characters");
+            setIsPasswordInvalid(true);
         } else if (e.target.value.length > 16) {
-            setPasswordLengthError("Password should not exceed 16 characters")
-            setIsPasswordInvalid(true)
+            setPasswordLengthError("Password should not exceed 16 characters");
+            setIsPasswordInvalid(true);
         } else {
-            setPasswordLengthError("")
-            setIsPasswordInvalid(false)
+            setPasswordLengthError("");
+            setIsPasswordInvalid(false);
         }
-        setPassword(e.target.value)
-    }
+        setPassword(e.target.value);
+    };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
 
-        const userExists = users.find((user: any) => {
-            return user.email === email
-        })
+        const userExists = users.find((user: IUser) => {
+            return user.email === email;
+        });
 
         if (userExists) {
-            setEmailInputError("Account already exists with this email")
-            setIsEmailInvalid(true)
+            setEmailInputError("Account already exists with this email");
+            setIsEmailInvalid(true);
         } else {
-            setEmailInputError("")
-            setIsEmailInvalid(false)
+            setEmailInputError("");
+            setIsEmailInvalid(false);
 
-            let newUser = [...users]
+            let newUser = [...users];
 
             newUser.push({
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 password: password
-            })
+            });
 
-            setUsers(newUser)
+            setUsers(newUser);
 
-            localStorage.setItem("users", JSON.stringify(newUser))
+            localStorage.setItem("users", JSON.stringify(newUser));
 
-            navigate("/login")
+            navigate("/login");
         }
-    }
+    };
 
     return (
         <div className={classes.signUpPage}>
@@ -160,7 +161,7 @@ export const SignUp: FC = () => {
                                 name="firstName"
                                 type="text"
                                 value={firstName}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setFirstName(e.target.value) }}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setFirstName(e.target.value); }}
                                 required
                             />
                         </NameForm>
@@ -171,7 +172,7 @@ export const SignUp: FC = () => {
                                 name="lastName"
                                 type="text"
                                 value={lastName}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setLastName(e.target.value) }}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setLastName(e.target.value); }}
                                 required
                             />
                         </NameForm>
@@ -245,5 +246,5 @@ export const SignUp: FC = () => {
                 </form>
             </SignUpCard>
         </div >
-    )
-}
+    );
+};

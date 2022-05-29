@@ -1,27 +1,27 @@
-import React, { FC } from "react"
-import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
-import { styled } from "@mui/system"
-import classes from "./Filter.module.css"
+import React, { FC } from "react";
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { styled } from "@mui/system";
+import classes from "./Filter.module.css";
 
 interface FilterProps {
-    filter: string
-    onChange: (e: SelectChangeEvent<string>, child: React.ReactNode) => void
-    onClick: React.MouseEventHandler<HTMLButtonElement>
-    showClearButton: boolean
+    filter: string;
+    onChange: (e: SelectChangeEvent<string>, child: React.ReactNode) => void;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    showClearButton: boolean;
 }
 
 const StyledFilter = styled(FormControl)({
     width: "15rem",
     fontSize: "5.5rem"
-})
+});
 
 const StyledInputLabel = styled(InputLabel)({
     fontSize: "1.5rem"
-})
+});
 
 const StyledMenuItem = styled(MenuItem)({
     fontSize: "1.5rem"
-})
+});
 
 export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearButton }) => {
     return (
@@ -47,5 +47,5 @@ export const Filter: FC<FilterProps> = ({ filter, onChange, onClick, showClearBu
                 </Select>
             </StyledFilter>
         </div >
-    )
-}
+    );
+};

@@ -1,18 +1,18 @@
-import React, { FC } from "react"
-import { Button, Card } from "@mui/material"
-import { BookRating } from "../../components/BookRating/BookRating"
-import { styled } from "@mui/system"
-import classes from "./ProductDetails.module.css"
+import React, { FC } from "react";
+import { Button, Card } from "@mui/material";
+import { BookRating } from "../../components/BookRating/BookRating";
+import { styled } from "@mui/system";
+import classes from "./ProductDetails.module.css";
 
 interface ProductDetailsProps {
-    title: string
-    author: string
-    rating: number
-    type: string
-    price: number
-    sale: number
-    stock: number
-    onSubmit: React.FormEventHandler<HTMLFormElement>
+    title: string;
+    author: string;
+    rating: number;
+    type: string;
+    price: number;
+    sale: number;
+    stock: number;
+    onSubmit: React.FormEventHandler<HTMLFormElement>;
 }
 
 const BookDetailsCard = styled(Card)({
@@ -26,11 +26,11 @@ const BookDetailsCard = styled(Card)({
         margin: "0 auto",
         width: "80%"
     }
-})
+});
 
 const StyledButton = styled(Button)({
     fontSize: "1.5rem"
-})
+});
 
 export const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating, type, price, sale, stock, onSubmit }) => {
     return (
@@ -60,5 +60,5 @@ export const ProductDetails: FC<ProductDetailsProps> = ({ title, author, rating,
                     </div>}
             </form>
         </BookDetailsCard>
-    )
-}
+    );
+};

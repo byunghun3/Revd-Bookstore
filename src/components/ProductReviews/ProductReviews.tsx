@@ -20,6 +20,26 @@ interface ProductReviewsProps {
     onLogIn: React.MouseEventHandler<HTMLButtonElement>
 }
 
+interface ReviewProps {
+    id: string
+    date: string
+    user:
+    {
+        firstName: string
+        lastName: string
+        email: string
+        password: string
+    }
+    review:
+    {
+        bookId: number
+        title: string
+        author: string
+        comment: string
+        rating: number
+    }
+}
+
 const StyledButton = styled(Button)({
     fontSize: "1.3rem"
 })
@@ -36,29 +56,29 @@ export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, o
     const reviews = JSON.parse(localStorage.getItem("reviews") || "[]")
     const readerReviews = ReaderReviewsData
 
-    const hardCodedRatings = readerReviews.filter((review: any) => {
+    const hardCodedRatings = readerReviews.filter((review: ReviewProps) => {
         return review.review.bookId === id
-    }).reduce((total: number, review: any) => {
+    }).reduce((total: number, review: ReviewProps) => {
         return total + review.review.rating
     }, 0)
 
-    const numOfHardCodedRatings = readerReviews.filter((review: any) => {
+    const numOfHardCodedRatings = readerReviews.filter((review: ReviewProps) => {
         return review.review.bookId === id
     }).length
 
-    const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((review: any) => {
+    const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((review: ReviewProps) => {
         return review.review.bookId === id
     }).length
 
-    const avgRating = reviews.filter((review: any) => {
+    const avgRating = reviews.filter((review: ReviewProps) => {
         return review.review.bookId === id
-    }).reduce((total: number, review: any) => {
+    }).reduce((total: number, review: ReviewProps) => {
         return total + review.review.rating
     }, (hardCodedRatings)) / numOfTotalRatings
 
-    const displayHardCodedReaderReviews = readerReviews.filter((review: any) => {
+    const displayHardCodedReaderReviews = readerReviews.filter((review: ReviewProps) => {
         return review.review.bookId === id
-    }).map((review: any) => {
+    }).map((review: ReviewProps) => {
         return <ReaderReview
             key={review.id}
             id={review.id}
@@ -70,9 +90,9 @@ export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, o
         />
     })
 
-    const displayReaderReviews = reviews.filter((review: any) => {
+    const displayReaderReviews = reviews.filter((review: ReviewProps) => {
         return review.review.bookId === id
-    }).map((review: any) => {
+    }).map((review: ReviewProps) => {
         return <ReaderReview
             key={review.id}
             id={review.id}
