@@ -29,17 +29,6 @@ export interface IBookForOrder {
     review: string;
 }
 
-// export interface ICart {
-//     id: number;
-//     title: string;
-//     author: string;
-//     image: any;
-//     type: string;
-//     price: number;
-//     stock: number;
-//     quantity: number;
-// }
-
 export interface IUser {
     firstName: string | null;
     lastName: string | null;
@@ -66,25 +55,7 @@ export interface IOrder {
     };
     user: IUser;
     details: IBookForOrder[];
-    // id: number;
-    // title: string;
-    // author: string;
-    // image: any;
-    // type: string;
-    // genre: string;
-    // rating: number;
-    // price: number;
-    // stock: number;
-    // status: string;
-    // quantity: number;
 }
-
-// export interface ICurrentUser {
-//     firstName: string | null;
-//     lastName: string | null;
-//     email: string | null;
-//     password: string | null;
-// }
 
 export interface IReview {
     id: string;

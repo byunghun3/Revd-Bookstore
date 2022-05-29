@@ -4,7 +4,6 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    /* border: solid black; */
 }
 
 .headerLink {
@@ -25,7 +24,6 @@
     justify-content: flex-end;
     align-items: center;
     font-size: 1.7rem;
-    /* border: solid black; */
 }
 
 .greeting {
