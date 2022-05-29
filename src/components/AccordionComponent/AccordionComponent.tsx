@@ -21,6 +21,8 @@ const StyledAccordionSummary = styled(AccordionSummary)({
 
 const StyledAccordionDetails = styled(AccordionDetails)({
     textAlign: "left",
+    whiteSpace: "pre-line",
+    lineHeight: "1.4",
     fontSize: "1.7rem"
 });
 
