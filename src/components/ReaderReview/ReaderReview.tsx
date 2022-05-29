@@ -8,8 +8,8 @@ interface ReaderReviewProps {
     id: string;
     rating: number;
     comment: string;
-    firstName: string;
-    lastName: string;
+    firstName: string | null;
+    lastName: string | null;
     date: string;
 }
 

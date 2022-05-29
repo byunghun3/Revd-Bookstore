@@ -1,48 +1,29 @@
-import React, { FC, useState } from "react"
-import { Rating } from "react-simple-star-rating"
-import { Button, TextField } from "@mui/material"
-import { AvgReaderRating } from "../AvgReaderRating/AvgReaderRating"
-import { ReaderReviewsData } from "../../data/ReaderReviewsData"
-import { DialogComponent } from "../DialogComponent/DialogComponent"
-import { ReaderReview } from "../ReaderReview/ReaderReview"
-import { styled } from "@mui/system"
-import classes from "./ProductReviews.module.css"
+import React, { FC, useState } from "react";
+import { Rating } from "react-simple-star-rating";
+import { Button, TextField } from "@mui/material";
+import { AvgReaderRating } from "../AvgReaderRating/AvgReaderRating";
+import { ReaderReviewsData } from "../../data/ReaderReviewsData";
+import { DialogComponent } from "../DialogComponent/DialogComponent";
+import { ReaderReview } from "../ReaderReview/ReaderReview";
+import { IReview } from "../../interfaces/Interfaces";
+import { styled } from "@mui/system";
+import classes from "./ProductReviews.module.css";
 
 interface ProductReviewsProps {
-    id: number
-    rating: number
-    comment: string
-    open: boolean
-    onSubmit: React.FormEventHandler<HTMLFormElement>
-    onRate: any
-    onChange: React.ChangeEventHandler<HTMLInputElement>
-    onClose: React.MouseEventHandler<any>
-    onLogIn: React.MouseEventHandler<HTMLButtonElement>
-}
-
-interface ReviewProps {
-    id: string
-    date: string
-    user:
-    {
-        firstName: string
-        lastName: string
-        email: string
-        password: string
-    }
-    review:
-    {
-        bookId: number
-        title: string
-        author: string
-        comment: string
-        rating: number
-    }
+    id: number;
+    rating: number;
+    comment: string;
+    open: boolean;
+    onSubmit: React.FormEventHandler<HTMLFormElement>;
+    onRate: any;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
+    onClose: React.MouseEventHandler<any>;
+    onLogIn: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const StyledButton = styled(Button)({
     fontSize: "1.3rem"
-})
+});
 
 const ReviewTextField = styled(TextField)({
     margin: "1% 0",
@@ -50,35 +31,35 @@ const ReviewTextField = styled(TextField)({
     "@media (max-width: 499px)": {
         width: "100%"
     }
-})
+});
 
 export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, open, onSubmit, onRate, onChange, onClose, onLogIn }) => {
-    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]")
-    const readerReviews = ReaderReviewsData
+    const reviews: IReview[] = JSON.parse(localStorage.getItem("reviews") || "[]");
+    const readerReviews = ReaderReviewsData;
 
-    const hardCodedRatings = readerReviews.filter((review: ReviewProps) => {
-        return review.review.bookId === id
-    }).reduce((total: number, review: ReviewProps) => {
-        return total + review.review.rating
-    }, 0)
+    const hardCodedRatings = readerReviews.filter((review: IReview) => {
+        return review.review.bookId === id;
+    }).reduce((total: number, review: IReview) => {
+        return total + review.review.rating;
+    }, 0);
 
-    const numOfHardCodedRatings = readerReviews.filter((review: ReviewProps) => {
-        return review.review.bookId === id
-    }).length
+    const numOfHardCodedRatings = readerReviews.filter((review: IReview) => {
+        return review.review.bookId === id;
+    }).length;
 
-    const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((review: ReviewProps) => {
-        return review.review.bookId === id
-    }).length
+    const numOfTotalRatings = numOfHardCodedRatings + reviews.filter((review: IReview) => {
+        return review.review.bookId === id;
+    }).length;
 
-    const avgRating = reviews.filter((review: ReviewProps) => {
-        return review.review.bookId === id
-    }).reduce((total: number, review: ReviewProps) => {
-        return total + review.review.rating
-    }, (hardCodedRatings)) / numOfTotalRatings
+    const avgRating = reviews.filter((review: IReview) => {
+        return review.review.bookId === id;
+    }).reduce((total: number, review: IReview) => {
+        return total + review.review.rating;
+    }, (hardCodedRatings)) / numOfTotalRatings;
 
-    const displayHardCodedReaderReviews = readerReviews.filter((review: ReviewProps) => {
-        return review.review.bookId === id
-    }).map((review: ReviewProps) => {
+    const displayHardCodedReaderReviews = readerReviews.filter((review: IReview) => {
+        return review.review.bookId === id;
+    }).map((review: IReview) => {
         return <ReaderReview
             key={review.id}
             id={review.id}
@@ -87,12 +68,12 @@ export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, o
             firstName={review.user.firstName}
             lastName={review.user.lastName}
             date={review.date}
-        />
-    })
+        />;
+    });
 
-    const displayReaderReviews = reviews.filter((review: ReviewProps) => {
-        return review.review.bookId === id
-    }).map((review: ReviewProps) => {
+    const displayReaderReviews = reviews.filter((review: IReview) => {
+        return review.review.bookId === id;
+    }).map((review: IReview) => {
         return <ReaderReview
             key={review.id}
             id={review.id}
@@ -101,12 +82,12 @@ export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, o
             firstName={review.user.firstName}
             lastName={review.user.lastName}
             date={review.date}
-        />
-    })
+        />;
+    });
 
     const handleStarRating = (rating: number) => {
-        onRate(rating)
-    }
+        onRate(rating);
+    };
 
     return (
         <div className={classes.productReviews}>
@@ -155,5 +136,5 @@ export const ProductReviews: FC<ProductReviewsProps> = ({ id, rating, comment, o
                 />
             </form>
         </div >
-    )
-}
+    );
+};
